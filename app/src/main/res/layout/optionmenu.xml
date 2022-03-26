@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_5sdp"
+    android:animateLayoutChanges="true"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/optionmenuheight"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingVertical="@dimen/_5sdp"
+        android:text="Select Option"
+        android:textColor="@color/white"
+        android:background="@drawable/curve_box_white"
+        android:backgroundTint="@color/for3"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:textSize="@dimen/_14ssp"
+        android:theme="@style/texttheme" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/curve_box_white"
+        android:backgroundTint="@color/yellow"
+        android:orientation="vertical">
+
+
+
+      <!--  <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />-->
+
+        <LinearLayout
+            android:id="@+id/AgreementMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/paymentprocess"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Process Payment"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/deleteagreement"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Delete Agreement"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/editAgreement"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Edit Agreement"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/checkout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Check Out"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/printAgreement"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Print Agreement"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/email_agreement"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Email Agreement"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textColorHint" />
+
+            <TextView
+                android:id="@+id/changedate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/optionmenuheight"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="@string/change_dates"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_14ssp"
+                android:theme="@style/texttheme" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textColorHint" />
+
+            <TextView
+                android:id="@+id/changevehicle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/optionmenuheight"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="@string/change_vehicle"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_14ssp"
+                android:theme="@style/texttheme" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textColorHint" />
+
+            <TextView
+                android:id="@+id/extendagreement"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/optionmenuheight"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="@string/extend_agreement"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_14ssp"
+                android:theme="@style/texttheme" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textColorHint" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/optionmenuheight"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="@string/tall_charges"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_14ssp"
+                android:theme="@style/texttheme" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textColorHint" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/optionmenuheight"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="@string/traffic_tick"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_14ssp"
+                android:theme="@style/texttheme" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textColorHint" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/optionmenuheight"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="Cancel Reservation"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_14ssp"
+                android:theme="@style/texttheme" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bookingconfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/optionmenuheight"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="@string/print_confirmation"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_14ssp"
+                android:theme="@style/texttheme" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textColorHint" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/optionmenuheight"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="@string/print_receipt"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_14ssp"
+                android:theme="@style/texttheme" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textColorHint" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/optionmenuheight"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="@string/email_confirmation"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_14ssp"
+                android:theme="@style/texttheme" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textColorHint" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/optionmenuheight"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="@string/email_receipt"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_14ssp"
+                android:theme="@style/texttheme" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textColorHint" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/optionmenuheight"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="@string/change_dates"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_14ssp"
+                android:theme="@style/texttheme" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textColorHint" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/optionmenuheight"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="@string/change_vehicle"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_14ssp"
+                android:theme="@style/texttheme" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textColorHint" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/cancel2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/optionmenuheight"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/curve_box_white"
+        android:backgroundTint="@color/yellow"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingVertical="@dimen/_3sdp"
+        android:text="Cancel"
+        android:textColor="@color/themebackgroundtext"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        android:theme="@style/texttheme" />
+</LinearLayout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="Inventory"
+            type="com.abel.app.b2b.model.reservation.ReservationInventory" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/lbl_Equipment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/curve_box_gray_box_bg"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:theme="@style/texttheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="78"
+                    android:padding="5dp"
+                    android:hint="Logo T Shirt"
+                    android:text="@{Inventory.Name}"
+                    android:textColor="@color/selected_dot"
+                    android:textColorHint="@color/selected_dot"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="22"
+                    android:gravity="right">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="17dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/aquamarine_bc"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:gravity="right"
+                            android:text="Available"
+                            android:textAlignment="gravity"
+                            android:textAllCaps="false"
+                            android:textColor="@color/btn"
+                            android:theme="@style/texttheme"
+                            android:textSize="8sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="20">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/tshirt"
+                        app:_imageUrl="@{Inventory.AttachmentsModel.AttachmentPath}" />
+                </RelativeLayout>
+
+                <TextView
+                    android:theme="@style/texttheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="70"
+                    android:inputType="textMultiLine"
+                    android:hint="This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. "
+                    android:text="@{Inventory.Description}"
+                    android:textSize="@dimen/textsize_ten"
+                    android:justificationMode="inter_word"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="65"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Per Day"
+                        android:theme="@style/texttheme"
+                        android:textSize="@dimen/textsize_ten" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="US$7.85 + 6% Tax (Max US$50)"
+                        android:theme="@style/texttheme"
+                        android:textSize="@dimen/textsize_ten" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="35"
+                    android:background="@drawable/aquamarine_bc"
+                    android:backgroundTint="@color/regtcolor"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:gravity="right"
+                        android:text="Total Amount"
+                        android:theme="@style/texttheme"
+                        android:textColor="@color/TitleTextColor"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:gravity="right"
+                        android:text="US$30.00"
+                        app:_values="@{Inventory.Price}"
+                        android:textColor="@color/TitleTextColor"
+                        android:theme="@style/texttheme"
+                        android:textSize="14dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

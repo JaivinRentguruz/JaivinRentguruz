@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor">
+
+        <!--        <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:shapeAppearanceOverlay="@style/customeImage"
+                    app:srcCompat="@drawable/home_background"
+                    android:scaleType="centerCrop"
+                    />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/test"
+                android:layout_width="match_parent"
+                android:layout_height="450dp" />
+
+            <!--  <RelativeLayout
+                  android:layout_width="match_parent"
+                  android:id="@+id/selectedlocation"
+                  android:background="@drawable/profile_curve_shape"
+                  android:layout_height="400dp"
+                  >
+
+
+                  <RelativeLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      tools:ignore="UselessParent">
+
+                &lt;!&ndash;      <com.google.android.material.imageview.ShapeableImageView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          app:strokeColor="@color/backgroundColor"
+                          app:srcCompat="@drawable/home_background"
+                          app:shapeAppearanceOverlay="@style/customeImage"
+                          android:scaleType="centerCrop"
+                          app:strokeWidth="10dp"
+                          />&ndash;&gt;
+
+                    &lt;!&ndash;  <ImageView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:src="@drawable/home_background"/>&ndash;&gt;
+
+                  &lt;!&ndash;    <com.google.android.material.imageview.ShapeableImageView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginStart="-50dp"
+                          android:layout_marginEnd="-50dp"
+                          android:layout_marginTop="-40dp"
+                          android:layout_marginBottom="-50dp"
+                          android:scaleType="centerCrop"
+                          app:shapeAppearanceOverlay="@style/customeImage"
+                          app:srcCompat="@drawable/home_background"
+                          app:strokeColor="@color/backgroundColor"
+                          app:strokeWidth="100dp"/>&ndash;&gt;
+
+                      <RelativeLayout
+                          android:layout_width="match_parent"
+                          android:layout_alignParentBottom="true"
+                          android:layout_height="match_parent"
+                          >
+
+
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:layout_alignParentTop="true"
+                              android:orientation="vertical">
+
+                              <RelativeLayout
+                                  android:layout_width="match_parent"
+                                  android:layout_height="match_parent"
+                                  android:layout_marginTop="30dp"
+                                  android:layout_marginBottom="20dp">
+
+                                  <RelativeLayout
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content">
+
+
+                                      <LinearLayout
+                                          android:layout_width="wrap_content"
+                                          android:layout_height="wrap_content"
+                                          android:orientation="horizontal">
+
+                                          <ImageView
+                                              android:layout_width="wrap_content"
+                                              android:layout_height="wrap_content"
+                                              android:layout_marginTop="3dp"
+                                              android:layout_marginLeft="20dp"
+                                              android:src="@drawable/ic_location_white_icon"/>
+
+                                          <LinearLayout
+                                              android:layout_width="wrap_content"
+                                              android:orientation="vertical"
+                                              android:layout_height="wrap_content">
+
+                                              <TextView
+                                                  android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  android:layout_marginLeft="5dp"
+                                                  android:textSize="13dp"
+                                                  android:text=""
+                                                  android:textAllCaps="true"
+                                                   style="@style/textfont"
+                                                  android:textColor="@color/white"/>
+
+                                              <TextView
+                                                  android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  android:layout_marginLeft="5dp"
+                                                  android:textSize="11dp"
+                                                  android:text="03/12/2019"
+                                                  android:textAllCaps="true"
+                                                   style="@style/textfont"
+                                                  android:textColor="@color/white"/>
+
+                                              <TextView
+                                                  android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  android:layout_marginLeft="5dp"
+                                                  android:textSize="11dp"
+                                                  android:text=""
+                                                  android:textAllCaps="true"
+                                                   style="@style/textfont"
+                                                  android:textColor="@color/white"/>
+                                          </LinearLayout>
+
+
+                                      </LinearLayout>
+                                      <RelativeLayout
+                                          android:layout_width="wrap_content"
+                                          android:layout_alignParentRight="true"
+                                          android:layout_centerVertical="true"
+                                          android:layout_height="wrap_content">
+
+                                          <ImageView
+                                              android:layout_width="wrap_content"
+                                              android:layout_height="wrap_content"
+                                              android:src="@drawable/small_logo"
+                                              android:layout_marginRight="13dp"/>
+                                      </RelativeLayout>
+                                  </RelativeLayout>
+
+
+                              </RelativeLayout>
+                          </LinearLayout>
+
+                          <RelativeLayout
+                              android:layout_width="wrap_content"
+                              android:layout_alignParentBottom="true"
+                              android:gravity="center_vertical"
+                              android:layout_height="wrap_content">
+
+                              <LinearLayout
+                                  android:layout_width="match_parent"
+                                  android:orientation="vertical"
+                                  android:layout_marginLeft="10dp"
+                                  android:layout_height="wrap_content">
+                                  <RelativeLayout
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content">
+                                      <ImageView
+                                          android:layout_width="wrap_content"
+                                          android:layout_height="wrap_content"
+                                          android:src="@drawable/user_icon"/>
+                                  </RelativeLayout>
+
+                                  <TextView
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_marginTop="8dp"
+                                       style="@style/textfont"
+                                      android:text="Welcome!"
+                                      android:textColor="@color/splash_screen_bg_color"
+                                      android:textSize="17dp" />
+
+                                  <TextView
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:text="Neeraj"
+                                      android:layout_marginBottom="5dp"
+                                      android:textSize="34dp"
+                                       style="@style/textfont"
+                                      android:textColor="@color/white"/>
+                              </LinearLayout>
+
+                              <RelativeLayout
+                                  android:layout_width="wrap_content"
+                                  android:layout_marginRight="10dp"
+                                  android:layout_alignParentRight="true"
+                                  android:layout_marginTop="50dp"
+                                  android:layout_height="wrap_content">
+                                  <ImageView
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:src="@drawable/default_cmp_logo"/>
+
+                              </RelativeLayout>
+                          </RelativeLayout>
+
+
+                      </RelativeLayout>
+                  </RelativeLayout>
+              </RelativeLayout>-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/selectedlocation"
+                android:background="@color/lightgreen2">
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/top_curvebox_blue"
+                    android:backgroundTint="@color/black"
+                    android:paddingTop="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal"
+                            android:weightSum="20">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="3dp"
+                                android:layout_weight="5"
+                                android:background="@drawable/curve_box_gray"
+                                android:backgroundTint="@color/for1"
+                                android:orientation="vertical"
+                                android:padding="4dp"
+                                android:paddingVertical="5dp">
+
+                                <TextView
+                                    style="@style/textfont"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="00"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/twenty_two" />
+
+                                <TextView
+                                    android:id="@+id/txtopnres"
+                                    style="@style/textfont"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center"
+                                    android:text="Open \n Reservations"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/twelve" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp"
+                                android:layout_weight="5"
+                                android:background="@drawable/curve_box_gray"
+                                android:backgroundTint="@color/for2"
+                                android:orientation="vertical"
+                                android:padding="4dp">
+
+                                <TextView
+                                    style="@style/textfont"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="00"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/twenty_two" />
+
+                                <TextView
+                                    android:id="@+id/txtopnagr"
+                                    style="@style/textfont"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center"
+                                    android:text="Open \n Reservations"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/twelve" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp"
+                                android:layout_weight="5"
+                                android:background="@drawable/curve_box_gray"
+                                android:backgroundTint="@color/for3"
+                                android:orientation="vertical"
+                                android:padding="4dp">
+
+                                <TextView
+                                    style="@style/textfont"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="00"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/twenty_two" />
+
+                                <TextView
+                                    android:id="@+id/txtopntick"
+                                    style="@style/textfont"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center"
+                                    android:text="Open \n Reservations"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/twelve" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="3dp"
+                                android:layout_weight="5"
+                                android:background="@drawable/curve_box_gray"
+                                android:backgroundTint="@color/for4"
+                                android:orientation="vertical"
+                                android:padding="4dp">
+
+                                <TextView
+                                    style="@style/textfont"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="00"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/twenty_two" />
+
+                                <TextView
+                                    android:id="@+id/opntxt"
+                                    style="@style/textfont"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center"
+                                    android:text="Open \n Reservations"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/twelve" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="20">
+
+                                <LinearLayout
+                                    android:id="@+id/lblUserTimeLine"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="3dp"
+                                    android:layout_weight="5"
+                                    android:background="@drawable/curve_box_gray"
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:layout_margin="7dp"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/listing_icon" />
+
+                                    <TextView
+                                        android:id="@+id/txt1time"
+                                        style="@style/textfont"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="@string/timeline"
+                                        android:textColor="@color/textlightcolor"
+                                        android:textSize="@dimen/eleven"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/lblAgreement"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
+                                    android:layout_weight="5"
+                                    android:background="@drawable/curve_box_gray"
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:layout_margin="7dp"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/agreements_icon" />
+
+                                    <TextView
+                                        android:id="@+id/txt1agr"
+                                        style="@style/textfont"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="@string/agreement"
+                                        android:textColor="@color/textlightcolor"
+                                        android:textSize="@dimen/eleven"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/lblReservation"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
+                                    android:layout_weight="5"
+                                    android:background="@drawable/curve_box_gray"
+                                    android:orientation="vertical"
+                                    android:padding="2dp">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:layout_margin="7dp"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/reservation_icon" />
+
+                                    <TextView
+                                        android:id="@+id/txt1res"
+                                        style="@style/textfont"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="@string/reservation"
+                                        android:textColor="@color/textlightcolor"
+                                        android:textSize="10.5dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_weight="5"
+                                    android:background="@drawable/curve_box_gray"
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:layout_margin="7dp"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/chat_icon" />
+
+                                    <TextView
+                                        style="@style/textfont"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="@string/chat"
+                                        android:textColor="@color/textlightcolor"
+                                        android:textSize="@dimen/eleven" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginRight="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="20">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="3dp"
+                                    android:layout_weight="5"
+                                    android:background="@drawable/curve_box_gray"
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:layout_margin="7dp"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/listing_icon" />
+
+                                    <TextView
+                                        style="@style/textfont"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="@string/timeline"
+                                        android:textColor="@color/textlightcolor"
+                                        android:textSize="@dimen/eleven"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
+                                    android:layout_weight="5"
+                                    android:background="@drawable/curve_box_gray"
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:layout_margin="7dp"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/agreements_icon" />
+
+                                    <TextView
+                                        android:id="@+id/txt2agr"
+                                        style="@style/textfont"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="@string/agreement"
+                                        android:textColor="@color/textlightcolor"
+                                        android:textSize="@dimen/eleven" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
+                                    android:layout_weight="5"
+                                    android:background="@drawable/curve_box_gray"
+                                    android:orientation="vertical"
+                                    android:padding="2dp">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:layout_margin="7dp"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/reservation_icon" />
+
+                                    <TextView
+                                        android:id="@+id/txt2res"
+                                        style="@style/textfont"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="@string/reservation"
+                                        android:textColor="@color/textlightcolor"
+                                        android:textSize="10.5dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_weight="5"
+                                    android:background="@drawable/curve_box_gray"
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:layout_margin="7dp"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/chat_icon" />
+
+                                    <TextView
+                                        style="@style/textfont"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="@string/chat"
+                                        android:textColor="@color/textlightcolor"
+                                        android:textSize="@dimen/eleven" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/curve_box_gray"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="5dp"
+                            android:weightSum="100">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="20"
+                                android:gravity="center_vertical">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/sun_cloud" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="7dp"
+                                android:layout_weight="40"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/weatherReport"
+                                    style="@style/textfont"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textCapWords"
+                                    android:text="Partly Cloudy"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/green"
+                                    android:textSize="@dimen/eighteen" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/temp"
+                                        style="@style/textfont"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="25°c"
+                                        android:textColor="@color/black"
+                                        android:textSize="27dp" />
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="7dp"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                style="@style/textfont"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Humidity: "
+                                                android:textColor="@color/textlightcolor"
+                                                android:textSize="10dp" />
+
+                                            <TextView
+                                                android:id="@+id/humidity"
+                                                style="@style/textfont"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="65%"
+                                                android:textColor="@color/textlightcolor"
+                                                android:textSize="10dp" />
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                style="@style/textfont"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Wind: "
+                                                android:textColor="@color/textlightcolor"
+                                                android:textSize="10dp" />
+
+                                            <TextView
+                                                android:id="@+id/wind"
+                                                style="@style/textfont"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="4km/hr"
+                                                android:textColor="@color/textlightcolor"
+                                                android:textSize="10dp" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="40"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_contact_map_pin" />
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:id="@+id/location"
+                                    style="@style/textfont"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="Niagara Falls"
+                                    android:textColor="@color/textlightcolor"
+                                    android:textSize="@dimen/eighteen" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.core.widget.NestedScrollView>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

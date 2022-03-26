@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/selected_dot"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/row_header"/>
+
+       <!-- <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/selectedlocation"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/backimg_editprofile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:src="@drawable/ic_chevron_left"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="17dp"
+                        android:text="USER PROFILE"
+                        android:textAllCaps="false"
+
+                        android:textColor="@color/TitleTextColor"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_DiscardProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Discard"
+                    android:textColor="@color/TitleTextColor"
+                    android:textSize="14dp"
+                    android:textAllCaps="false"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"/>
+            </RelativeLayout>
+        </LinearLayout>-->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/header"
+            android:paddingTop="10dp"
+            android:paddingRight="3dp"
+            android:paddingLeft="3dp"
+            android:layout_above="@+id/lblSubmitprofile"
+            android:background="@drawable/curve_box"
+            android:paddingBottom="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        style="@style/titletext2"
+                        android:text="@string/edit_profile"
+                        />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/textColorHint"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:weightSum="100"
+                        android:layout_marginLeft="23dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="23dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="25"
+                            android:layout_height="match_parent">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="100dp"
+                                app:cardCornerRadius="8dp"
+                                android:layout_height="85dp">
+                                <ImageView
+                                    android:id="@+id/Img_ProfilePic"
+                                    android:adjustViewBounds="true"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/user_icon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+
+                                <ImageView
+                                    android:id="@+id/RemoveProfilePic"
+                                    android:adjustViewBounds="true"
+                                    android:layout_gravity="right"
+                                    android:layout_width="20dp"
+                                    android:layout_margin="1dp"
+                                    android:layout_height="20dp"
+                                    android:src="@drawable/ic_cross_symbol_red"
+                                    android:background="@color/btn_bg_color_2"
+                                    android:padding="3dp"
+                                    android:layout_alignParentRight="true"/>
+                            </androidx.cardview.widget.CardView>
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="75"
+                            android:layout_alignParentBottom="true"
+                            android:orientation="horizontal"
+                            android:layout_height="match_parent">
+                            <LinearLayout
+                                android:layout_gravity="bottom"
+                                android:id="@+id/ll_Profile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                            <ImageView
+                                android:src="@drawable/ic_camera_icon_green"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:adjustViewBounds="true"
+                                android:layout_marginLeft="7dp"
+                                android:layout_marginBottom="4dp"
+                                android:layout_height="wrap_content"
+                                app:tint="@color/regtcolor" />
+                            <TextView
+                                android:id="@+id/EditProfilePic"
+                                android:layout_gravity="bottom"
+                                android:text="Edit Photo"
+
+                                android:textSize="@dimen/fab_margin"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="23dp"
+                        android:layout_marginRight="23dp"
+                        android:orientation="vertical">
+
+                    <TextView
+                        style="@style/edittextheader"
+                        android:text="@string/first_name"/>
+
+                    <EditText
+                        android:id="@+id/edt_Firstname"
+                        android:theme="@style/loginedit"
+                        style="@style/edittext" />
+
+                    <TextView
+                        style="@style/edittextheader"
+                        android:text="@string/last_name"
+                         />
+
+                    <EditText
+                        android:id="@+id/edt_LastName"
+                        android:theme="@style/loginedit"
+                        style="@style/edittext" />
+
+
+                    <TextView
+                        style="@style/edittextheader"
+                        android:text="@string/telephone"/>
+
+                    <EditText
+                        android:id="@+id/edt_PhoneNO"
+                        style="@style/edittext"
+                        android:inputType="number"
+                        />
+
+                    <TextView
+                        style="@style/edittextheader"
+                        android:text="@string/email"/>
+
+                    <EditText
+                        android:id="@+id/edt_Email"
+                        style="@style/edittext"
+                        android:inputType="textEmailAddress" />
+
+                    <TextView
+                        style="@style/edittextheader"
+                        android:text="@string/country" />
+
+
+                    <Spinner
+                        android:id="@+id/sp_Country"
+                        style="@style/spinner"
+                        android:theme="@style/loginedit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/ic_spinner_bg_light"
+                        android:dropDownSelector="@drawable/ic_down_arrow"
+                        android:entries="@array/items_class_countary">
+                    </Spinner>
+                    <TextView
+                        style="@style/edittextheader"
+                        android:text="@string/street_no_amp_name"
+                         />
+
+                    <EditText
+                        android:id="@+id/edt_streetNum"
+                        style="@style/edittext"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/unit"
+                            style="@style/edittextheader"/>
+
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/pin_zip_code"
+                            style="@style/edittextheader" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <EditText
+                            android:id="@+id/edt_UnitNum"
+                            android:layout_width="0dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            style="@style/edittext"
+                            android:hint="@string/enterunit" />
+
+                        <EditText
+                            android:id="@+id/edt_Zipcode"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            style="@style/edittext"
+                            android:hint="@string/enterpincode"
+                             />
+                    </LinearLayout>
+
+                    <TextView
+                       style="@style/edittextheader"
+                        android:text="@string/city"/>
+
+                    <EditText
+                        android:id="@+id/edt_City"
+                        style="@style/edittext"/>
+
+                    <TextView
+                       style="@style/edittextheader"
+                        android:text="@string/state_province"/>
+
+                    <Spinner
+                        android:id="@+id/Sp_State"
+                        style="@style/spinner"
+                        android:theme="@style/loginedit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/ic_spinner_bg_light"
+                        android:entries="@array/items_class"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/lblSubmitprofile"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_SaveCard"
+                style="@style/fullbtn"
+                android:text="@string/submit"/>
+
+            <!--<TextView
+                android:layout_gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="14dp"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+
+                android:textAllCaps="false"
+                android:textColor="@color/themebackgroundtext"/>-->
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

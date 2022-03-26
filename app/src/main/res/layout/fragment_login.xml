@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/selected_dot">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/llWelcomeNote"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_alignParentTop="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_gravity="center_vertical|center_horizontal">
+
+            <TextView
+                android:id="@+id/test"
+                style="@style/textfont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal|center_vertical"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Welcome Back"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="28dp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/textfont"
+                android:layout_below="@+id/test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal|center_vertical"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="5dp"
+                android:text="Please login to your account"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="16dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/llWelcomeNote"
+            android:background="@drawable/curve_box">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="@dimen/logow"
+                        android:layout_height="@dimen/logoh"
+                        android:layout_centerHorizontal="true"
+                        android:adjustViewBounds="true" />
+
+                </RelativeLayout>
+
+                <!-- <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                      style="@style/textfont"
+                     android:text="Welcome Back"
+                     android:textColor="@color/black"
+                     android:textSize="28dp"
+                     android:textStyle="bold" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:layout_marginTop="5dp"
+                      style="@style/textfont"
+                     android:gravity="bottom"
+                     android:text="Please login to your account"
+                     android:textColor="@color/txtBlack"
+                     android:textSize="16dp" />-->
+
+
+                <TextView
+                    style="@style/textfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="53dp"
+                    android:layout_marginTop="30dp"
+                    android:gravity="left"
+                    android:text="@string/username"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/textlightcolor"
+                    android:textSize="@dimen/txt_font_size" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/emailid"
+                    style="@style/textfont"
+                    android:theme="@style/loginedit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_actions_user"
+                    android:inputType="text"
+                    android:text="nk@siimbaz.com"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/textlightcolor"
+                    android:textSize="@dimen/edt_font_size" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/textfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="53dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:text="@string/password"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/textlightcolor"
+                    android:textSize="@dimen/txt_font_size" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:drawableEnd="@drawable/ic_security_locked"
+                    app:hintEnabled="false"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/password"
+                        style="@style/textfont"
+                        android:theme="@style/loginedit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_security_locked"
+                        android:inputType="textPassword"
+                        android:text="RGZv22021"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/textlightcolor"
+                        android:imeOptions="actionDone"
+                        android:textSize="@dimen/edt_font_size" />
+
+                    <!--   <com.google.android.material.textfield.TextInputEditText
+                           android:id="@+id/password"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:textSize="@dimen/edt_font_size"
+                           android:textColor="@color/textlightcolor"
+                           android:inputType="textPassword"
+                           android:textAlignment="textStart"
+                           android:text="RGZv22021"
+                           style="@style/textfont"
+                           android:drawableEnd="@drawable/ic_security_locked"
+                           />-->
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="49dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <CheckBox
+                        android:id="@+id/checkboxSavePass"
+                        style="@style/textfont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_weight="1"
+                        android:text="Save Password"
+                        android:textColor="@color/textlightcolor"
+                        android:theme="@style/loginedit"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:id="@+id/txt_forgetPassword"
+                        style="@style/textfont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="Forgot Password?"
+                        android:textAlignment="gravity"
+                        android:textColor="@color/textlightcolor"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/lblRegister"
+                android:orientation="horizontal"
+                android:layout_weight="10"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textlightcolor"
+                     style="@style/textfont"
+                    android:textSize="18dp"
+                    android:text="REGISTER"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lbllogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroundColor"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LOGIN"
+                     style="@style/textfont"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:weightSum="15">
+
+            <!--    <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textlightcolor"
+                     style="@style/textfont"
+                    android:textSize="18dp"
+                    android:visibility="gone"
+                    android:text="@string/guest"/>-->
+
+            <TextView
+                android:id="@+id/registration"
+                style="@style/textfont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/register"
+                android:textColor="@color/textlightcolor"
+                android:textSize="18dp" />
+
+            <TextView
+                style="@style/textfont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/textlightcolor"
+                android:textSize="18dp"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@color/bottommenucolor"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/lbllogin"
+                    style="@style/textfont"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/login"
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="20dp" />
+
+                <ProgressBar
+                    android:id="@+id/fullProgressbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="@color/white"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

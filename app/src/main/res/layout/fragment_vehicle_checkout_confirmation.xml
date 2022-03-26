@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100"
+        android:orientation="vertical">
+
+        <include layout="@layout/row_header"/>
+
+         <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/curve_box">
+
+             <RelativeLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="start">
+
+                 <ImageView
+                     android:layout_width="@dimen/_60sdp"
+                     android:layout_height="@dimen/_60sdp"
+                     android:scaleType="fitXY"
+                     android:src="@drawable/ic_baseline_check_circle_outline_24"
+                     app:tint="@color/onBoardingScreen2bg" />
+             </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/vehicle_images"
+
+                            android:textAllCaps="false"
+                            android:textColor="@color/selected_dot"
+                            android:textSize="17dp"
+                            android:theme="@style/texttheme" />
+                    </LinearLayout>
+         </LinearLayout>
+
+
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You Are All Set!"
+            android:gravity="center_horizontal"
+            android:paddingVertical="@dimen/_5sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            android:theme="@style/texttheme"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/curve_box_light_green_bg"
+            android:backgroundTint="@color/red"
+            android:paddingTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/car"
+                    layout="@layout/do_carimg_3"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/lightgreen"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_minus5sdp"
+                android:paddingBottom="@dimen/_5sdp">
+
+                <include
+                    android:id="@+id/customer"
+                    layout="@layout/do_customer"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/curve_box_light_gray">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/vehicle_odometer"
+
+                            android:textAllCaps="false"
+                            android:textColor="@color/selected_dot"
+                            android:textSize="17dp"
+                            android:theme="@style/texttheme" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/ic_rectangle_blackbox"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="5"
+
+                                android:gravity="center_vertical"
+                                android:text="Odometer Out"
+                                android:textColor="@color/TitleTextColor"
+                                android:textSize="@dimen/fab_margin"
+                                android:theme="@style/texttheme" />
+
+                            <EditText
+                                android:id="@+id/txt_OdoMeter"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="5"
+                                android:background="@drawable/black_curve"
+                                android:gravity="right"
+                                android:singleLine="true"
+                                android:text="000000"
+                                android:textColor="#FFFF0D"
+                                android:textSize="40dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/curve_box"
+                        android:backgroundTint="@color/lightgreen">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="15dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:gravity="left"
+                                    android:text="@string/gas_tank_fuel_level"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/selected_dot"
+                                    android:textSize="17dp"
+                                    android:theme="@style/texttheme" />
+
+                                <TextView
+                                    android:id="@+id/txt_progressvalue"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="right"
+                                    android:text=" "
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/selected_dot"
+                                    android:textSize="17dp"
+                                    android:theme="@style/texttheme" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:orientation="vertical">
+
+                                <SeekBar
+                                    android:id="@+id/simpleSeekBar"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:indeterminate="false"
+                                    android:max="100"
+                                    android:maxHeight="15dp"
+                                    android:minHeight="10dp"
+                                    android:progress="100"
+                                    android:progressDrawable="@drawable/custom_progress"
+                                    android:thumb="@drawable/custom_thumb"
+                                    android:thumbOffset="-0.2dp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="10dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/gastankstatus1" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="20dp"
+                                    android:orientation="horizontal"
+                                    android:weightSum="20">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="4"
+
+                                        android:gravity="left"
+                                        android:text="Empty"
+                                        android:textColor="@color/selected_dot"
+                                        android:textSize="@dimen/textsize_ten"
+                                        android:theme="@style/texttheme" />
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="4"
+
+                                        android:gravity="center"
+                                        android:text="Quarter"
+                                        android:textColor="@color/selected_dot"
+                                        android:textSize="@dimen/textsize_ten"
+                                        android:theme="@style/texttheme" />
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="4"
+                                        android:gravity="center"
+
+                                        android:text="Half"
+                                        android:textColor="@color/selected_dot"
+                                        android:textSize="@dimen/textsize_ten"
+                                        android:theme="@style/texttheme" />
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="5"
+                                        android:gravity="center"
+                                        android:text="Three Quarter"
+
+                                        android:textColor="@color/selected_dot"
+                                        android:textSize="@dimen/textsize_ten"
+                                        android:theme="@style/texttheme" />
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_weight="2"
+                                        android:gravity="right"
+
+                                        android:text="Full"
+                                        android:textColor="@color/selected_dot"
+                                        android:textSize="@dimen/textsize_ten"
+                                        android:theme="@style/texttheme" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                     <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/curve_box">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/vehicle_images"
+
+                            android:textAllCaps="false"
+                            android:textColor="@color/selected_dot"
+                            android:textSize="17dp"
+                            android:theme="@style/texttheme" />
+                    </LinearLayout>
+
+                         <include layout="@layout/all_vehicle_image"/>
+
+
+                         <LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="@dimen/_5sdp"
+                             android:orientation="vertical"
+                             android:backgroundTint="@color/gray"
+                             android:background="@drawable/curve_box">
+
+                             <LinearLayout
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:layout_marginTop="5dp">
+
+                                 <TextView
+                                     android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content"
+                                     android:layout_marginLeft="15dp"
+                                     android:text="Notes"
+
+                                     android:textAllCaps="false"
+                                     android:textColor="@color/selected_dot"
+                                     android:textSize="17dp"
+                                     android:theme="@style/texttheme" />
+                             </LinearLayout>
+
+                             <EditText
+                                 android:id="@+id/Edt_Notes"
+                                 android:layout_width="match_parent"
+                                 android:layout_height="@dimen/_80sdp"
+                                 android:layout_marginLeft="17dp"
+                                 android:layout_marginRight="17dp"
+                                 android:background="@drawable/ic_rectangle_box_23"
+                                 android:focusable="true"
+                                 android:focusableInTouchMode="true"
+                                 android:gravity="top"
+                                 android:hint="Type here"
+                                 android:imeOptions="actionDone"
+                                 android:inputType="text"
+                                 android:maxLines="5"
+                                 android:minLines="1"
+                                 android:padding="7dp"
+                                 android:textColor="@color/registerTextColor"
+                                 android:textSize="@dimen/edt_font_size" />
+
+
+                             <LinearLayout
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:layout_marginTop="@dimen/_5sdp"
+                                 android:orientation="vertical"
+                                 android:background="@drawable/curve_box">
+
+                                 <LinearLayout
+                                     android:layout_width="match_parent"
+                                     android:layout_height="wrap_content"
+                                     android:layout_marginTop="5dp">
+
+                                     <TextView
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:layout_marginLeft="15dp"
+                                         android:text="@string/acceptance_signature"
+
+                                         android:textAllCaps="false"
+                                         android:textColor="@color/selected_dot"
+                                         android:textSize="17dp"
+                                         android:theme="@style/texttheme" />
+                                 </LinearLayout>
+
+                                 <EditText
+                                     android:layout_width="match_parent"
+                                     android:layout_height="@dimen/_80sdp"
+                                     android:layout_marginLeft="17dp"
+                                     android:layout_marginRight="17dp"
+                                     android:background="@drawable/ic_rectangle_box_23"
+                                     android:focusable="true"
+                                     android:focusableInTouchMode="true"
+                                     android:gravity="top"
+                                     android:hint="Type here"
+                                     android:imeOptions="actionDone"
+                                     android:inputType="text"
+                                     android:maxLines="5"
+                                     android:minLines="1"
+                                     android:padding="7dp"
+                                     android:textColor="@color/registerTextColor"
+                                     android:textSize="@dimen/edt_font_size" />
+
+                                  <LinearLayout
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:layout_marginTop="@dimen/_5sdp"
+                                 android:orientation="vertical"
+                                 android:backgroundTint="@color/lightgreen"
+                                 android:background="@drawable/curve_box">
+
+
+                                      <TextView
+                                          android:layout_width="match_parent"
+                                          android:layout_height="wrap_content"
+                                          android:layout_marginLeft="15dp"
+                                          android:text="Agreement copy sent by email to\nThe ID on account"
+                                          android:gravity="center"
+                                          android:textAllCaps="false"
+                                          android:textColor="@color/selected_dot"
+                                          android:textSize="17dp"
+                                          android:theme="@style/texttheme" />
+                                  </LinearLayout>
+
+                             </LinearLayout>
+
+                         </LinearLayout>
+
+
+
+                     </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

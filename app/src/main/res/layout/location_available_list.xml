@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="Location"
+            type="com.abel.app.b2b.model.response.LocationList" />
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/layout_loc_available"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/lblselectedlocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="2dp"
+
+            android:weightSum="100">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="20"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/curve_single_text">
+
+                    <ImageView
+                        android:id="@+id/plane_img"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_centerHorizontal="true"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_black_location_pin"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="60"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:paddingVertical="@dimen/_5sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_ariportname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/texttheme"
+                    android:hint="TORONTO AIRPORT"
+                    android:text="@{Location.Name}"
+                    android:layout_marginTop="@dimen/_minus3sdp"
+                    android:textColorHint="@color/fontwhitebackground"
+                    android:textColor="@color/fontwhitebackground"
+                    android:textSize="@dimen/_12ssp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txt_street"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/texttheme"
+                        android:hint="street"
+                        android:text="asd \nasds \ndad "
+                        app:_html="@{Location.AddressesModel.PreviewAddress}"
+                        android:textColorHint="@color/regtcolor"
+                        android:textColor="@color/regtcolor"
+                        android:textSize="@dimen/_8ssp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/lblselectedlocation1"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="20"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:background="@drawable/curved_box_bg"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtSelect"
+                    android:theme="@style/texttheme"
+                    android:text="Select"
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="@dimen/edt_font_size"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint"/>
+    </LinearLayout>
+</layout>

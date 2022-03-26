@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/header"
+                layout="@layout/row_header" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/selectedlocation"
+                android:layout_marginTop="0dp"
+
+                android:background="@drawable/curve_box">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="60dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginStart="5dp"
+                        android:padding="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Insurance"
+                            style="@style/textfont"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/fab_margin"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="end"
+                            android:weightSum="3">
+                            <TextView
+                                android:id="@+id/defaultIns"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:gravity="center"
+                                style="@style/textfont"
+                                android:text="Decline"
+                                android:textSize="@dimen/edt_font_size"
+                                />
+
+                            <ToggleButton
+                                android:id="@+id/insuranceDecline"
+                                android:layout_width="40dp"
+                                android:clickable="true"
+                                android:layout_height="25dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/toggle_selector_green"
+                                android:text=""
+                                android:textOff=""
+                                android:textOn="" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/green" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_InsurancePolicyList"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+               <!--     <include layout="@layout/detail_insurance"/>
+                    <include layout="@layout/detail_insurance"/>
+                    <include layout="@layout/detail_insurance"/>-->
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+       <!-- <LinearLayout
+            android:id="@+id/process"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:paddingEnd="20dp"
+            android:gravity="end"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+                <LinearLayout
+                    android:id="@+id/lbl_confirm_2"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/curved_box_bg"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:gravity="center"
+                        android:text="@string/next"
+                        android:textColor="@color/TitleTextColor"
+                        android:textSize="@dimen/appbar_padding"/>
+            </LinearLayout>
+        </LinearLayout>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/lblnext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/text"
+                    style="@style/fullbtn"
+                    android:text="@string/update"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

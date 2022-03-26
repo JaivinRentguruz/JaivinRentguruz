@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/selected_dot">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/createprofile"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_75sdp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/headertopmargin"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/BackToLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:src="@drawable/ic_chevron_left" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="6dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/progress_rectangle_selected" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/progress_rectangle_default" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/progress_rectangle_default" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/progress_rectangle_default" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="Create Your Profile"
+                    android:textAllCaps="false"
+                    android:textColor="@color/topcolor"
+                    android:textSize="22dp"
+                    android:theme="@style/texttheme" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/createprofile"
+            android:layout_marginBottom="48dp"
+            android:background="@drawable/curve_box">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/scanimglayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="60dp"
+                    android:visibility="visible"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/imgScanDrivingLicense"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/barcode_scanner"/>
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="80dp"
+                        android:text="Scan Your\nDriving License"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/MGrey"
+                        android:textSize="24dp"
+                        android:theme="@style/texttheme" />
+
+                </LinearLayout>
+
+               <!-- <RelativeLayout
+                    android:id="@+id/camera"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_gravity="center"
+                    android:background="@color/black"
+                    android:gravity="center"
+                    tools:context="com.acuant.acuantcamera.camera.AcuantCameraActivity">
+
+
+
+                   &lt;!&ndash; <com.acuant.acuantcamera.overlay.MrzRectangleView
+                        android:id="@+id/acu_mrz_rectangle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleY="100"
+                        android:scaleX="100"
+                        android:visibility="visible" />&ndash;&gt;
+
+                &lt;!&ndash;    <com.acuant.acuantcamera.camera.mrz.cameraone.MrzCameraSourcePreview
+                        android:id="@+id/cam1_mrz_preview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/black" />&ndash;&gt;
+
+                </RelativeLayout>-->
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/lbl_enter_details"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottommenuheight"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bottommenucolor"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/btntext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="14dp"
+                android:text="Manually Enter Details"
+                android:textAllCaps="false"
+                android:textSize="20dp"
+                android:theme="@style/texttheme" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

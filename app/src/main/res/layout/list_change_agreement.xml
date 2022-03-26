@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_50sdp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal|center_vertical"
+
+        android:background="@drawable/curve_box_green2"
+        android:layout_marginHorizontal="@dimen/startmargin"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_weight="20">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1.99"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+
+            <TextView
+                android:theme="@style/texttheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nodays"
+                android:textSize="@dimen/_9ssp"
+                android:textColor="@color/themebackgroundtext"
+                android:gravity="center"/>
+
+
+            <TextView
+                android:id="@+id/days"
+                android:theme="@style/texttheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/themebackgroundtext"
+                android:gravity="center"/>
+            </LinearLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_weight=".02"
+                android:layout_height="wrap_content"
+                android:background="@color/textColorHint" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_weight="20">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1.99"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+
+            <TextView
+                android:theme="@style/texttheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mileage_included"
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/_9ssp"
+                android:gravity="center"/>
+
+
+            <TextView
+                android:id="@+id/mileage"
+                android:theme="@style/texttheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/themebackgroundtext"
+                android:gravity="center"/>
+            </LinearLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_weight=".02"
+                android:layout_height="wrap_content"
+                android:background="@color/textColorHint" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_weight="20">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1.99"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+
+            <TextView
+                android:theme="@style/texttheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/total_amount"
+                android:textSize="@dimen/_9ssp"
+                android:textColor="@color/themebackgroundtext"
+                android:gravity="center"/>
+
+
+            <TextView
+                android:id="@+id/totalamt"
+                android:theme="@style/texttheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/themebackgroundtext"
+                android:gravity="center"/>
+            </LinearLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_weight=".02"
+                android:layout_height="wrap_content"
+                android:background="@color/textColorHint" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_weight="20">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1.99"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+
+            <TextView
+                android:theme="@style/texttheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_made"
+                android:textSize="@dimen/_9ssp"
+                android:textColor="@color/themebackgroundtext"
+                android:gravity="center"/>
+
+
+            <TextView
+                android:id="@+id/paymentmade"
+                android:theme="@style/texttheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/themebackgroundtext"
+                android:gravity="center"/>
+            </LinearLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_weight=".02"
+                android:layout_height="wrap_content"
+                android:background="@color/textColorHint" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_weight="20">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1.99"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+
+            <TextView
+                android:theme="@style/texttheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/deposit_paid"
+                android:textSize="@dimen/_9ssp"
+                android:textColor="@color/themebackgroundtext"
+                android:gravity="center"/>
+
+
+            <TextView
+                android:id="@+id/deposite"
+                android:theme="@style/texttheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="$ 0"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/themebackgroundtext"
+                android:gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

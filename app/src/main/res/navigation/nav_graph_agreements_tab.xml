@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/Agreement">
+
+    <fragment
+        android:id="@+id/Agreement"
+        android:name="com.abel.app.b2b.home.agreement.Fragment_Agreement"
+        android:label="Agreement"
+        tools:layout="@layout/fragment_agreement">
+
+     <!--   <action
+            android:id="@+id/action_Agreement_to_Agreement_Filter"
+            app:destination="@id/Agreement_Filter" />
+
+        <action
+            android:id="@+id/action_Agreement_to_Agreement_Summary"
+            app:destination="@+id/Agreement_Summary" />-->
+
+        <action
+            android:id="@+id/action_Agreement_to_Agreement_Summary"
+            app:destination="@+id/SummaryOfChargesForAgreements" />
+
+    </fragment>
+<!--
+    <fragment
+        android:id="@+id/Agreement_Filter"
+        android:name="com.rentguruzb2b.Agreements_tab.Fragment_Agreement_Filter"
+        android:label="Agreement_Filter"
+        tools:layout="@layout/fragment_agreement_filter">
+
+        <action
+            android:id="@+id/action_Agreement_Filter_to_Agreement"
+            app:destination="@id/Agreement" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/Agreement_Summary"
+        android:name="com.rentguruzb2b.Agreements_tab.Fragment_Summary_Of_Charges_For_Agreements"
+        android:label="Agreement_Summary"
+        tools:layout="@layout/fragment_summary_of_charges_for_agreements">
+
+    </fragment>-->
+
+    <fragment
+        android:id="@+id/SummaryOfChargesForAgreements"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Summary_Of_Charges_For_Agreements"
+        android:label="SummaryOfChargesForAgreements"
+        tools:layout="@layout/fragment_summary_of_charges_for_agreements">
+        <action
+            android:id="@+id/action_SummaryOfChargesForAgreements_to_Agreements"
+            app:destination="@id/Agreement" />
+        <action
+            android:id="@+id/action_SummaryOfChargesForAgreements_to_TermAndCondition"
+            app:destination="@id/TermAndCondition" />
+        <action
+            android:id="@+id/action_SummaryOfChargesForAgreements_to_Total_tax_fee_details"
+            app:destination="@id/Total_tax_fee_details" />
+        <action
+            android:id="@+id/action_SummaryOfChargesForAgreements_to_Self_check_Out"
+            app:destination="@id/Self_check_Out" />
+        <action
+            android:id="@+id/action_SummaryOfChargesForAgreements_to_LocationKey_ForSelfCheckOut"
+            app:destination="@id/LocationKey_ForSelfCheckOut" />
+
+        <action
+            android:id="@+id/action_SummaryOfChargesForAgreements_to_Self_check_In"
+            app:destination="@+id/Self_check_In"
+            />
+
+        <action android:id="@+id/action_SummaryOfChargesForAgreements_to_chnageAgeement"
+            app:destination="@+id/chnageAgeement"/>
+
+        <action android:id="@+id/action_SummaryOfChargesForAgreements_to_chnageAgeementVehicle"
+            app:destination="@+id/chnageAgeementVehicle"/>
+
+        <action android:id="@+id/action_SummaryOfChargesForAgreements_to_chnageAgeementextend"
+            app:destination="@+id/chnageAgeementextend"/>
+
+        <action android:id="@+id/action_SummaryOfChargesForAgreements_to_Printpreview"
+            app:destination="@+id/Printpreview"/>
+
+        <action android:id="@+id/action_Acceptance_signature_to_Agreements_to_payment"
+            app:destination="@+id/Payment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/TermAndCondition"
+        android:name="com.abel.app.b2b.flexiicar.commonfragment.Fragment_Term_And_Condition"
+        android:label="TermAndCondition"
+        tools:layout="@layout/fragment_terms_and_conditions">
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/Self_check_Out"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckout.Fragment_Self_Check_out"
+        android:label="Self_check_Out"
+        tools:layout="@layout/fragment_self_chekout">
+        <action
+            android:id="@+id/action_Self_check_Out_to_SummaryOfChargesForAgreements"
+            app:destination="@id/SummaryOfChargesForAgreements" />
+        <action
+            android:id="@+id/action_Self_check_Out_to_Vehicle_Image_1"
+            app:destination="@id/Vehicle_Image_1" />
+        <action
+            android:id="@+id/action_Self_check_Out_to_Agreements"
+            app:destination="@id/Agreement" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/Vehicle_Image_1"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckout.Fragment_Vehicle_Image_1"
+        android:label="Vehicle_Image_1"
+        tools:layout="@layout/fragment_vehicle_images_1">
+        <action
+            android:id="@+id/action_Vehicle_Image_1_to_Self_check_Out"
+            app:destination="@id/Self_check_Out" />
+
+        <action
+            android:id="@+id/same"
+            app:destination="@id/Vehicle_Image_1" />
+
+        <action android:id="@+id/allvechicelimage"
+            app:destination="@id/Vehicle_Additional_image"/>
+
+        <action
+            android:id="@+id/action_Vehicle_Image_1_to_Agreements"
+            app:destination="@id/Agreement" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/Vehicle_Additional_image"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckout.Fragment_Vehicle_Additional_Image_All"
+        android:label="Vehicle_Additional_image"
+        tools:layout="@layout/fragment_vehicle_images_additional_all">
+        <action
+            android:id="@+id/action_Vehicle_Additional_image_to_Vehicle_Image_10"
+            app:destination="@id/Vehicle_Image_10" />
+        <action
+            android:id="@+id/action_Vehicle_Additional_image_to_Acceptance_signature"
+            app:destination="@id/Acceptance_signature" />
+        <action
+            android:id="@+id/action_Vehicle_Additional_image_to_Agreements"
+            app:destination="@id/Agreement" />
+        <action android:id="@+id/action_Vehicle_Additional_image_to_Image"
+            app:destination="@+id/Vehicle_Image_1"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/Acceptance_signature"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckout.Fragment_Acceptance_singnature"
+        android:label="Acceptance_signature"
+        tools:layout="@layout/fragment_acceptance_signature">
+        <action
+            android:id="@+id/action_Acceptance_signature_to_Vehicle_Additional_image"
+            app:destination="@id/Vehicle_Additional_image" />
+        <action
+            android:id="@+id/action_Acceptance_signature_to_Waiver_Signature"
+            app:destination="@id/Waiver_Signature" />
+
+        <action android:id="@+id/action_Acceptance_signature_to_Agreements"
+            app:destination="@+id/Agreement"
+            />
+        <action
+            android:id="@+id/action_Acceptance_signature_to_Location_And_Key"
+            app:destination="@id/Location_And_Key" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/Waiver_Signature"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckout.Fragment_Waiver_Signature"
+        android:label="Waiver_Signature"
+        tools:layout="@layout/fragment_waiver_signature">
+        <action
+            android:id="@+id/action_Waiver_Signature_to_Acceptance_signature"
+            app:destination="@id/Acceptance_signature" />
+        <action
+            android:id="@+id/action_Waiver_Signature_to_Location_And_Key"
+            app:destination="@id/Location_And_Key" />
+        <action
+            android:id="@+id/action_Waiver_Signature_to_Agreements"
+            app:destination="@id/Agreement" />
+    </fragment>
+    <fragment
+        android:id="@+id/Location_And_Key"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckout.Fragment_Location_And_Key"
+        android:label="Location_And_Key"
+        tools:layout="@layout/fragment_location_and_key_2">
+        <action
+            android:id="@+id/action_Location_And_Key_to_Waiver_Signature"
+            app:destination="@id/Waiver_Signature" />
+
+        <action
+            android:id="@+id/action_Waiver_Signature_to_Agreements"
+            app:destination="@id/Agreement" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/LocationKey_ForSelfCheckOut"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Location_And_Key"
+        android:label="Location_And_Key"
+        tools:layout="@layout/fragment_location_and_key_2">
+        <action
+            android:id="@+id/action_LocationKey_ForSelfCheckOut_to_SummaryOfChargesForAgreements"
+            app:destination="@id/SummaryOfChargesForAgreements" />
+        <action
+            android:id="@+id/action_Location_And_Key_to_VehImage_SelfCheckIn_1"
+            app:destination="@id/VehImage_SelfCheckIn_1" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/VehImage_SelfCheckIn_1"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Vehicle_Image_1"
+        android:label="Vehicle_Image1_SelfCheckIn"
+        tools:layout="@layout/fragment_vehicle_images_1">
+        <action
+            android:id="@+id/action_VehImage_SelfCheckIn_1_to_LocationKey_ForSelfCheckOut"
+            app:destination="@id/LocationKey_ForSelfCheckOut" />
+        <action
+            android:id="@+id/action_VehImage_SelfCheckIn_1_to_VehImage_SelfCheckIn_2"
+            app:destination="@id/VehImage_SelfCheckIn_2" />
+
+        <action
+            android:id="@+id/same1"
+            app:destination="@id/VehImage_SelfCheckIn_1" />
+
+        <action
+            android:id="@+id/action_VehImage_SelfCheckIn_1_to_Agreements"
+            app:destination="@id/Agreement" />
+
+        <action android:id="@+id/allvechicelimage2"
+            app:destination="@id/Vehicle_All_image_SelfCheckIn"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/Vehicle_All_image_SelfCheckIn"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Vehicle_Additional_Image_All"
+        android:label="Vehicle_Additional_image"
+        tools:layout="@layout/fragment_vehicle_images_additional_all">
+        <action
+            android:id="@+id/action_Vehicle_All_image_SelfCheckIn_to_VehImage_SelfCheckIn_10"
+            app:destination="@id/VehImage_SelfCheckIn_10" />
+        <action
+            android:id="@+id/action_Vehicle_Additional_image_to_Signature"
+            app:destination="@id/Signature" />
+        <action
+            android:id="@+id/action_Vehicle_All_image_SelfCheckIn_to_Agreements"
+            app:destination="@id/Agreement" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/Signature"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Acceptance_singnature"
+        android:label="Signature"
+        tools:layout="@layout/fragment_acceptance_signature">
+        <action
+            android:id="@+id/action_Signature_to_Vehicle_All_image_SelfCheckIn"
+            app:destination="@id/Vehicle_All_image_SelfCheckIn" />
+        <action
+            android:id="@+id/action_Signature_to_Self_check_In"
+            app:destination="@id/Self_check_In" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/Self_check_In"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Self_Check_In"
+        android:label="Self_check_In"
+        tools:layout="@layout/fragment_self_checkin">
+        <action
+            android:id="@+id/action_Self_check_In_to_Signature"
+            app:destination="@id/Signature" />
+        <action
+            android:id="@+id/action_Self_check_In_to_SummaryOfChargeForSelfCheckIn"
+            app:destination="@id/SummaryOfChargeForSelfCheckIn" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/SummaryOfChargeForSelfCheckIn"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Summary_Of_Charges_For_SelfCheckIn"
+        android:label="SummaryOfChargeForSelfCheckIn"
+        tools:layout="@layout/fragment_summary_of_charges_for_selfcheckin">
+        <action
+            android:id="@+id/action_SummaryOfChargeForSelfCheckIn_to_Self_check_In"
+            app:destination="@id/Self_check_In" />
+        <action
+            android:id="@+id/action_SummaryOfChargeForSelfCheckIn_to_PaymentCheckOutSelfCheckIn"
+            app:destination="@id/PaymentCheckOutSelfCheckIn" />
+        <action
+            android:id="@+id/action_SummaryOfChargeForSelfCheckIn_to_TermAndCondition"
+            app:destination="@id/TermAndCondition" />
+        <action
+            android:id="@+id/action_SummaryOfChargeForSelfCheckIn_to_Total_tax_fee_details"
+            app:destination="@id/Total_tax_fee_details" />
+        <action
+            android:id="@+id/action_SummaryOfChargeForSelfCheckIn_to_Agreements"
+            app:destination="@id/Agreement" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/PaymentCheckOutSelfCheckIn"
+        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Payment_CheckOut_For_User_SelfCheckIn"
+        android:label="PaymentCheckOutSelfCheckIn"
+        tools:layout="@layout/fragment_payment_checkout_process">
+        <action
+            android:id="@+id/action_PaymentCheckOutSelfCheckIn_to_CardsOnAccount"
+            app:destination="@id/CardsOnAccount" />
+        <action
+            android:id="@+id/action_PaymentCheckOutSelfCheckIn_to_SummaryOfChargeForSelfCheckIn"
+            app:destination="@id/SummaryOfChargeForSelfCheckIn" />
+        <action
+            android:id="@+id/action_PaymentCheckOutSelfCheckIn_to_Payment_Success"
+            app:destination="@id/Payment_Success" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/Payment_Success"
+        android:name="com.abel.app.b2b.flexiicar.commonfragment.Fragment_Payment_checkout_Success"
+        android:label="Payment_Success"
+        tools:layout="@layout/fragment_payment_checkout_success">
+        <action
+            android:id="@+id/action_Payment_Success_to_Bills_and_Payment"
+            app:destination="@id/Bills_and_Payment" />
+        <action
+            android:id="@+id/action_Payment_Success_to_User_Details"
+            app:destination="@id/User_Details" />
+        <action
+            android:id="@+id/action_Payment_Success_to_WaiverSign_ForSelfCheckIn"
+            app:destination="@id/WaiverSign_ForSelfCheckIn" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chnageAgeement"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Agreement_DateChange"
+        android:label="Change Date"
+        tools:layout="@layout/fragment_agreement_datechange">
+
+        <action android:id="@+id/test"
+            app:destination="@id/chnageAgeementVehicle"/>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/chnageAgeementVehicle"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Agreement_VehicleChange"
+        android:label="Change Vehicle"
+        tools:layout="@layout/fragment_agreement_vehiclechange">
+        <action android:id="@+id/test"
+            app:destination="@id/chnageAgeementextend"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/chnageAgeementextend"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Agreement_Extend"
+        android:label="Agreement Extend"
+        tools:layout="@layout/fragment_agreement_extend">
+
+
+    </fragment>
+
+
+    <fragment android:id="@+id/Printpreview"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Print_Preview"
+        android:label="Print Preview"
+        tools:layout="@layout/fragment_print_preview">
+
+
+    </fragment>
+
+    <fragment android:id="@+id/Payment"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Payment"
+        android:label="Agreement Payment"
+        tools:layout="@layout/fragment_new_agreement_payment">
+
+        <action android:id="@+id/payment_to_paymentsucess"
+            app:destination="@+id/PaymentSuccess"/>
+
+        <action android:id="@+id/payment_to_optionpayment"
+            app:destination="@+id/PaymentChangeOption"/>
+
+        <action android:id="@+id/payment_to_paymentoffline"
+            app:destination="@+id/PaymentOffline"/>
+
+        <action android:id="@+id/payment_to_select_card"
+            app:destination="@+id/CardsOnAccount"/>
+
+        <action android:id="@+id/payment_to_agreement"
+            app:destination="@+id/Agreement_Confirmation"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/CardsOnAccount"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_CreditCards_List_For_User"
+        android:label="CardsOnAccount"
+        tools:layout="@layout/fragment_creditcards_list">
+        <action
+            android:id="@+id/action_CardsOnAccount_to_UpdateCreditCard"
+            app:destination="@id/UpdateCreditCard" />
+        <action
+            android:id="@+id/action_CardsOnAccount_to_AddCreditCard"
+            app:destination="@id/AddCreditCard" />
+    </fragment>
+
+
+    <fragment android:id="@+id/PaymentOffline"
+        android:name="com.abel.app.b2b.home.Fragment_Payment_Offline"
+        android:label="Payment Success"
+        tools:layout="@layout/fragment_payment_offline">
+
+        <action android:id="@+id/paymentoffline_to_paymentchangeoption"
+            app:destination="@+id/PaymentChangeOption"/>
+
+        <action android:id="@+id/paymentoffline_to_payment"
+            app:destination="@+id/Payment"/>
+
+        <action android:id="@+id/paymentoffline_to_paymentsucess"
+            app:destination="@+id/PaymentSuccess"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/UpdateCreditCard"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Update_CreditCard_For_user"
+        android:label="EditCreditCard"
+        tools:layout="@layout/fragment_update_creditcard">
+        <action
+            android:id="@+id/action_UpdateCreditCard_to_CardsOnAccount"
+            app:destination="@id/CardsOnAccount" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AddCreditCard"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Add_credit_card_For_User"
+        android:label="AddCreditCard"
+        tools:layout="@layout/fragment_add_creditcard">
+        <action
+            android:id="@+id/action_AddCreditCard_to_CardsOnAccount"
+            app:destination="@id/CardsOnAccount" />
+    </fragment>
+
+    <fragment android:id="@+id/PaymentChangeOption"
+        android:name="com.abel.app.b2b.home.Fragment_Change_Payment_Option"
+        android:label="Payment Change Option"
+        tools:layout="@layout/fragment_change_payment_option">
+
+        <action android:id="@+id/paymentChangeOption_to_paymentsuccess"
+            app:destination="@+id/PaymentSuccess"/>
+
+        <action android:id="@+id/paymentChangeOption_to_PaymentOffline"
+            app:destination="@+id/PaymentOffline"/>
+
+        <action android:id="@+id/paymentChangeOption_to_Payment"
+            app:destination="@+id/Payment"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/PaymentSuccess"
+        android:name="com.abel.app.b2b.home.Fragment_Payment_Success"
+        android:label="Payment Success"
+        tools:layout="@layout/fragment_payment_success">
+
+        <action android:id="@+id/payment_sucess_to_reservation_summarry"
+            app:destination="@+id/Reservation_Summarry"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/Reservation_Summarry"
+        android:name="com.abel.app.b2b.home.Fragment_Resevation_Summarry"
+        android:label="Reservation Summarry"
+        tools:layout="@layout/fragment_vehicle_current_rental"/>
+
+</navigation>

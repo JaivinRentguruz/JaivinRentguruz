@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="Location"
+            type="com.abel.app.b2b.model.response.LocationList" />
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/top_curve_black"
+            android:backgroundTint="@color/white"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_5sdp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:paddingVertical="@dimen/_3sdp"
+                android:src="@drawable/onboard_icon" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bottom_curve_white2"
+            android:backgroundTint="@color/yellow"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:hint="4 James Street "
+                android:text="@={Location.Name}"
+                android:textColor="@color/themebackgroundtext"
+                android:textColorHint="@color/themebackgroundtext"
+                android:textSize="@dimen/_15ssp"
+
+                android:theme="@style/texttheme" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtstreet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:gravity="center_horizontal"
+                    android:hint=" Street "
+                    android:text="@={Location.AddressesModel.Street}"
+                    android:textColor="@color/themebackgroundtext"
+                    android:textColorHint="@color/themebackgroundtext"
+                    android:textSize="@dimen/_10ssp"
+                    android:theme="@style/texttheme" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_minus1sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- <RelativeLayout
+                         android:layout_width="0dp"
+                         android:layout_weight="1"
+                         android:layout_height="wrap_content"
+                         android:gravity="center_vertical|center_horizontal"
+                         android:layout_gravity="center|center_horizontal">
+     -->
+                    <TextView
+                        android:id="@+id/txtcity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:hint="Mississauga ON"
+                        android:gravity="center_horizontal"
+                        android:text="@{@string/twovalue(Location.AddressesModel.City,Location.AddressesModel.ZipCode)}"
+                        android:textColor="@color/themebackgroundtext"
+                        android:textColorHint="@color/themebackgroundtext"
+                        android:textSize="@dimen/_10ssp"
+                        android:theme="@style/texttheme" />
+
+                    <!--<TextView
+                        android:id="@+id/txtzip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="L6H8K9"
+                        android:gravity="center_horizontal"
+                        android:text="@={Location.AddressesModel.ZipCode}"
+                        android:textColor="@color/MGrey"
+                        android:textColorHint="@color/MGrey"
+                        android:textSize="@dimen/_10ssp"
+                        android:theme="@style/texttheme" />-->
+
+                    <!-- </RelativeLayout>-->
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtCountary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:text="Canada"
+                android:textColor="@color/themebackgroundtext"
+                android:textColorHint="@color/themebackgroundtext"
+                android:textSize="10dp"
+                android:theme="@style/texttheme"
+
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_Phone_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:gravity="center_horizontal"
+                android:hint="905 444 6789"
+                android:text="@={Location.PhoneNo}"
+                android:textColor="@color/themebackgroundtext"
+                android:textColorHint="@color/themebackgroundtext"
+                android:textSize="@dimen/_12ssp"
+                android:theme="@style/texttheme" />
+
+            <LinearLayout
+                android:id="@+id/txt_Select_layout"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_margin="@dimen/_4sdp"
+                android:background="@drawable/curved_box_bg"
+
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select"
+                    android:textAllCaps="false"
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="12dp"
+                    android:theme="@style/texttheme" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

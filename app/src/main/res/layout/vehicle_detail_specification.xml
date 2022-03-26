@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="Vehicle"
+            type="com.abel.app.b2b.model.response.VehicleModel" />
+    </data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Year" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{String.valueOf(Vehicle.Year)}" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Make" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{Vehicle.MakeName}" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Model" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{Vehicle.ModelName}" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Manufacturer" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{Vehicle.Manufacturer}" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Engine" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{Vehicle.EngineName}" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Transmission" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{Vehicle.TransmissionDesc}" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Vehicle Number" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{Vehicle.VehicleNumber}" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="License Plate" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{Vehicle.LicenseNumber}" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Key Code" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{Vehicle.KeyCode}" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Vehicle Class" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{Vehicle.VehicleClass}" />
+
+    </LinearLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Fuel Type" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{Vehicle.FuelTypeDesc}" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Tank Capacity" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{String.valueOf(Vehicle.TankSize)}" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Exterior Color" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{Vehicle.FuelTypeDesc}" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Interior Color" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{String.valueOf(Vehicle.TankSize)}" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="No of Doors" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{String.valueOf(Vehicle.NoOfDoors)}" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="No of Bags" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{String.valueOf(Vehicle.NoOfBags)}" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Parked Location" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{String.valueOf(Vehicle.ParkedLocation)}" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            style="@style/vehicle_specification_detail_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Fleet Category" />
+
+        <TextView
+            style="@style/vehicle_specification_detail_normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="@{String.valueOf(Vehicle.VehicleCategory)}" />
+
+    </LinearLayout>
+
+
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="start"
+            android:text="Year"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="end"
+            android:text="Year"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="start"
+            android:text="Year"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="end"
+            android:text="Year"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txtBlack" />-->
+</LinearLayout>
+</layout>

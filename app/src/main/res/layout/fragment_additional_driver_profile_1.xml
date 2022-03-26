@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/selected_dot">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/createprofile"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/header"
+                layout="@layout/row_header" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="6dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/progress_rectangle_selected" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/progress_rectangle_default" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/progress_rectangle_default" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/progress_rectangle_default" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/titletext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/topcolor"
+                    android:text="License Details" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/createprofile"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/curve_box"
+            android:paddingBottom="10dp"
+            android:scrollbars="vertical"
+            android:windowSoftInputMode="adjustResize|adjustPan">
+
+            <LinearLayout
+                android:id="@+id/layout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="25dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/edittextheader"
+                    android:text="@string/driver_s_name" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/edtcust_Fullname"
+                        style="@style/edittext"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_rectangle_box_2152"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:hint="@string/first_name"
+                        android:imeOptions="actionNext"
+                        android:nextFocusLeft="@id/edtcust_Lname"
+                        android:windowSoftInputMode="adjustResize|adjustPan" />
+
+                    <EditText
+                        android:id="@+id/edtcust_Lname"
+                        style="@style/edittext"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_rectangle_box_2152"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:hint="@string/last_name"
+                        android:imeOptions="actionNext"
+                        android:nextFocusDown="@id/edt_CustStreet"
+                        android:textAlignment="textStart"
+                        android:windowSoftInputMode="adjustResize|adjustPan" />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/edittextheader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/street_no_amp_name" />
+
+                <EditText
+                    android:id="@+id/edt_CustStreet"
+                    style="@style/edittext"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/street_no_amp_name"
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@id/edt_CustUnitNo" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        style="@style/edittextheader"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="@string/unit" />
+
+                    <TextView
+                        style="@style/edittextheader"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="17dp"
+                        android:layout_weight="1"
+                        android:text="@string/pin_zip_code" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/edt_CustUnitNo"
+                        style="@style/edittext"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_rectangle_box_2152"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:hint="@string/unit"
+                        android:imeOptions="actionNext"
+                        android:nextFocusLeft="@id/edt_CustZipCode" />
+
+                    <EditText
+                        android:id="@+id/edt_CustZipCode"
+                        style="@style/edittext"
+                        android:layout_width="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_rectangle_box_2152"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:hint="@string/pin_zip_code"
+                        android:imeOptions="actionDone"
+                        android:nextFocusLeft="@id/sp_Countrylist" />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/edittextheader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/country" />
+
+                <Spinner
+                    android:id="@+id/sp_Countrylist"
+                    style="@style/spinner"
+                    android:clickable="true"
+                    android:entries="@array/items_class_countary"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:nextFocusDown="@id/Sp_Statelist"
+                    android:theme="@style/loginedit"
+                    android:windowSoftInputMode="stateHidden" />
+
+                <TextView
+                    style="@style/edittextheader"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/state_province" />
+
+                <Spinner
+                    android:id="@+id/Sp_Statelist"
+                    style="@style/spinner"
+                    android:entries="@array/items_class"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:imeOptions="actionNext"
+                    android:nextFocusUp="@id/sp_Countrylist"
+                    android:nextFocusDown="@id/cust_cityName"
+                    android:theme="@style/loginedit" />
+
+                <TextView
+                    style="@style/edittextheader"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:text="@string/city" />
+
+                <EditText
+                    android:id="@+id/cust_cityName"
+                    style="@style/edittext"
+                    android:hint="@string/city_name"
+                    android:imeOptions="actionDone" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/lblnext11"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottommenuheight"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bottommenucolor"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtnext"
+                style="@style/btntext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="14dp"
+                android:text="@string/next" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="10dp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="15">
+
+        <ImageView
+            android:id="@+id/QR_Image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:src="@drawable/qr_icon" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:layout_weight="13"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="You’re All Set"
+                android:textColor="@color/regtcolor"
+
+                android:textSize="@dimen/edt_font_size"
+                android:theme="@style/texttheme" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Confirmation Number"
+                android:textColor="@color/regtcolor"
+
+                android:textSize="@dimen/thirteen"
+                android:theme="@style/texttheme" />
+
+            <TextView
+                android:id="@+id/txt_conformationNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="DRG234234"
+                android:textColor="@color/regtcolor"
+
+                android:textSize="@dimen/fab_margin"
+                android:theme="@style/texttheme" />
+        </LinearLayout>
+
+
+
+
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_gravity="end"
+            android:src="@drawable/regular_logo" />
+
+
+
+    </LinearLayout>
+
+    <!--   <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="horizontal"
+           android:layout_marginHorizontal="10dp"
+           android:weightSum="15">
+
+           <RelativeLayout
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:layout_weight="5">
+
+               <ImageView
+                   android:id="@+id/QR_Image"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:src="@drawable/qr_icon" />
+
+           </RelativeLayout>
+
+           <LinearLayout
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:layout_marginTop="1dp"
+               android:layout_weight="10"
+               android:orientation="vertical">
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="10dp"
+                   android:text="You’re All Set"
+                   android:textColor="@color/selected_dot"
+
+                   android:textSize="@dimen/edt_font_size"
+                   android:theme="@style/texttheme" />
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginTop="12dp"
+                   android:text="Confirmation Number"
+                   android:textColor="@color/selected_dot"
+
+                   android:textSize="@dimen/thirteen"
+                   android:theme="@style/texttheme" />
+
+               <TextView
+                   android:id="@+id/txt_conformationNo"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="10dp"
+                   android:text="DRG234234"
+                   android:textColor="@color/selected_dot"
+
+                   android:textSize="@dimen/fab_margin"
+                   android:theme="@style/texttheme" />
+           </LinearLayout>
+
+           <RelativeLayout
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:layout_weight="5">
+
+               <ImageView
+                   android:id="@+id/icon"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:src="@drawable/qr_icon" />
+
+           </RelativeLayout>
+
+       </LinearLayout>-->
+
+
+</LinearLayout>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/bottommenucolor"
+    android:layout_height="@dimen/bottommenuheight">
+
+    <!--  <LinearLayout
+          android:id="@+id/process"
+          android:background="@color/black"
+          android:layout_width="match_parent"
+          android:layout_height="70dp"
+          android:gravity="center_vertical"
+          android:layout_alignParentBottom="true"
+          android:orientation="horizontal"
+          android:weightSum="100">
+
+          <LinearLayout
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="13dp"
+              android:layout_weight="30"
+              android:orientation="vertical">
+
+              <TextView  android:theme="@style/texttheme"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Amount"
+                  android:textColor="#DEDDDD"
+                  android:textSize="@dimen/edt_font_size"/>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_height="match_parent">
+                  <TextView  android:theme="@style/texttheme"
+                      android:id="@+id/currency"
+                      android:layout_width="wrap_content"
+                      android:text="$ "
+                      android:textColor="@color/themebackgroundtext"
+                      android:textSize="@dimen/_14ssp"
+                      android:layout_height="wrap_content"/>
+                  <TextView  android:theme="@style/texttheme"
+                      android:id="@+id/txt_TotalAmount"
+                      android:layout_width="wrap_content"
+                      android:text="2000.00"
+                      android:textColor="@color/themebackgroundtext"
+                      android:singleLine="true"
+                      android:minLines="1"
+                      android:maxLines="1"
+                      android:textSize="@dimen/_14ssp"
+                      android:layout_height="wrap_content"/>
+              </LinearLayout>
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="35"
+              android:orientation="vertical">
+
+              <TextView  android:theme="@style/texttheme"
+                  android:id="@+id/fueltype"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Mileage"
+                  android:textColor="#DEDDDD"
+                  android:textSize="@dimen/edt_font_size"/>
+
+              <TextView  android:theme="@style/texttheme"
+                  android:id="@+id/txtMileage"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="400 kms"
+                  android:singleLine="true"
+                  android:minLines="1"
+                  android:maxLines="1"
+                  android:textColor="@color/themebackgroundtext"
+                  android:textSize="@dimen/_14ssp"/>
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:layout_gravity="center"
+              android:layout_marginRight="13dp"
+              android:layout_weight="35"
+              android:gravity="center"
+              android:orientation="vertical">
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_marginVertical="10dp"
+                  android:background="@drawable/curved_box_bg"
+                  android:gravity="end">
+
+                  <TextView
+                      android:id="@+id/next"
+                      android:theme="@style/texttheme"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:textAllCaps="true"
+                      android:layout_marginEnd="7dp"
+                      android:paddingVertical="3dp"
+                      android:paddingStart="10dp"
+                      android:gravity="end"
+                      android:text="Select\nCustomer"
+                      style="@style/btntext"
+                      android:textSize="@dimen/appbar_padding"/>
+              </LinearLayout>
+          </LinearLayout>
+      </LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/process"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_weight="30"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount"
+
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/edt_font_size"
+                android:theme="@style/texttheme" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$ "
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="@dimen/_14ssp"
+                    android:theme="@style/texttheme" />
+
+                <TextView
+                    android:id="@+id/textview_TotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="@dimen/_14ssp"
+                    android:theme="@style/texttheme" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="35"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fueltype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mileage"
+
+                android:textColor="@color/themebackgroundtext"
+                android:textSize="@dimen/edt_font_size"
+                android:theme="@style/texttheme" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtMileage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:singleLine="true"
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="@dimen/_14ssp"
+                    android:theme="@style/texttheme" />
+
+                <!--       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+
+                           android:text="Unlimited"
+                           android:textColor="@color/themebackgroundtext"
+                           android:textSize="@dimen/twenty_two"/>-->
+            </LinearLayout>
+
+            <!--    <TextView
+                    android:id="@+id/txtMileage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="0kms"
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="@dimen/twenty_two"/>-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginRight="13dp"
+            android:layout_weight="40"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_payment"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:background="@drawable/curved_box_bg"
+                android:backgroundTint="@color/rentalselectbtn"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pay Now"
+                    android:textAllCaps="false"
+                    android:textColor="@color/btntext"
+                    android:textSize="@dimen/appbar_padding"
+                    android:theme="@style/texttheme" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fullProgressbar"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:background="@drawable/curved_box_bg"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="@color/white"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

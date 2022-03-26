@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".SplashScreen">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/headertopmargin">
+
+        <RelativeLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|center_horizontal"
+            android:paddingStart="@dimen/_20sdp"
+            android:visibility="visible"
+            tools:ignore="UselessParent">
+
+            <!--<ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_flexxicar_app_logo_50"
+                android:adjustViewBounds="true"/>-->
+
+            <!--  <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/small_logo"
+                android:adjustViewBounds="true"/>-->
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="@dimen/logow"
+                android:layout_height="@dimen/logoh"
+                android:layout_alignParentTop="true"
+                android:adjustViewBounds="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:adjustViewBounds="true"
+                android:src="@drawable/spalshcarimg" />
+
+        </RelativeLayout>
+    </FrameLayout>
+
+</FrameLayout>

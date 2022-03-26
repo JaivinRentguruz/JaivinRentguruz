@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/Vehicles">
+
+    <fragment
+        android:id="@+id/Vehicles"
+        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicles"
+        android:label="Vehicles"
+        tools:layout="@layout/fragment_vehicles">
+
+        <action
+            android:id="@+id/action_Vehicles_to_update_vehicle"
+            app:destination="@id/update_vehicle" />
+
+        <action android:id="@+id/action_Vehicles_to_VehiclesBasicDetail"
+            app:destination="@+id/insert_vehicle"/>
+
+        <action android:id="@+id/action_Vehicles_to_Vehicle_Master"
+            app:destination="@+id/vehicle_master"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/insert_vehicle"
+        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicles_Basic_Details"
+        android:label="Insert Vehicle"
+        tools:layout="@layout/fragment_vehicle_basic_details">
+
+        <action android:id="@+id/action_insert_vehicles_to_Vehicles"
+            app:destination="@+id/Vehicles"/>
+
+    </fragment>
+
+
+    <fragment android:id="@+id/update_vehicle"
+        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicles_Edit_Basic_Details"
+        android:label="Update Vehicle"
+        tools:layout="@layout/fragment_vehicle_basic_details">
+
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_master"
+        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_master"
+        android:label="Update Vehicle"
+        tools:layout="@layout/fragment_vehicle_master">
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_master_reservation"
+            app:destination="@+id/vehicle_master_reservation"/>
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_master_agreement"
+            app:destination="@+id/vehicle_master_agreement"/>
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_current_rental"
+            app:destination="@+id/vehicle_current_rental"/>
+
+        <action
+            android:id="@+id/action_Vehicles_to_update_vehicle"
+            app:destination="@id/update_vehicle" />
+        <action
+            android:id="@+id/action_Vehicles_to_vehicle_specification"
+            app:destination="@+id/vehicle_specification"/>
+        <action
+            android:id="@+id/action_Vehicles_to_vehicle_images"
+            app:destination="@+id/vehicle_images"/>
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_owner"
+            app:destination="@+id/vehicle_owner"/>
+
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_master_reservation"
+        android:name="com.abel.app.b2b.home.vehicles.Vehicle_Master_Reservation"
+        android:label="Update Vehicle"
+        tools:layout="@layout/vehicle_common_list">
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_master_agreement"
+        android:name="com.abel.app.b2b.home.vehicles.Vehicle_Master_Agreement"
+        android:label="Update Vehicle"
+        tools:layout="@layout/vehicle_common_list">
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_current_rental"
+            app:destination="@+id/vehicle_current_rental"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_current_rental"
+        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Current_Rental"
+        android:label="Current Rantal"
+        tools:layout="@layout/fragment_vehicle_current_rental">
+
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_specification"
+        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Master_Specification"
+        android:label="@string/specification"
+        tools:layout="@layout/fragment_vehicle_master_specification">
+
+        <action android:id="@+id/vehicle_specification_to_vehicle_image"
+            app:destination="@+id/vehicle_master_image"/>
+
+        <action android:id="@+id/vehicle_specification_to_vehicle_additional"
+            app:destination="@+id/vehicle_additional_info"/>
+
+        <action android:id="@+id/vehicle_specification_to_vehicle_rate"
+            app:destination="@+id/vehicle_rate_info"/>
+
+        <action android:id="@+id/vehicle_specification_to_home"
+            app:destination="@+id/vehicle_master"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_master_image"
+        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Master_Specification_Image"
+        android:label="Specification Image"
+        tools:layout="@layout/fragment_vehicle_master_specification_image">
+        <action android:id="@+id/vehicle_specification_to_vehicle_additional"
+            app:destination="@+id/vehicle_additional_info"/>
+
+        <action android:id="@+id/vehicle_specification_to_vehicle_specification"
+            app:destination="@+id/vehicle_specification"/>
+
+        <action android:id="@+id/vehicle_specification_to_vehicle_rate"
+            app:destination="@+id/vehicle_rate_info"/>
+
+        <action android:id="@+id/vehicle_specification_to_home"
+            app:destination="@+id/vehicle_master"/>
+
+    </fragment>
+
+
+
+
+    <fragment android:id="@+id/vehicle_additional_info"
+        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Master_Specification_Additional_Info"
+        android:label="@string/specification"
+        tools:layout="@layout/fragment_vehicle_master_specification2">
+
+        <action android:id="@+id/vehicle_specification_to_vehicle_image"
+            app:destination="@+id/vehicle_master_image"/>
+
+        <action android:id="@+id/vehicle_specification_to_vehicle_specification"
+            app:destination="@+id/vehicle_specification"/>
+
+        <action android:id="@+id/vehicle_specification_to_vehicle_rate"
+            app:destination="@+id/vehicle_rate_info"/>
+
+        <action android:id="@+id/vehicle_specification_to_home"
+            app:destination="@+id/vehicle_master"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_rate_info"
+        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Master_Specification_Rate_Info"
+        android:label="@string/specification"
+        tools:layout="@layout/fragment_vehicle_master_specification3">
+
+        <action android:id="@+id/vehicle_specification_to_vehicle_image"
+            app:destination="@+id/vehicle_master_image"/>
+
+        <action android:id="@+id/vehicle_specification_to_vehicle_specification"
+            app:destination="@+id/vehicle_specification"/>
+
+        <action android:id="@+id/vehicle_specification_to_vehicle_rate"
+            app:destination="@+id/vehicle_rate_info"/>
+
+        <action android:id="@+id/vehicle_specification_to_home"
+            app:destination="@+id/vehicle_master"/>
+
+        <action android:id="@+id/vehicle_specification_to_vehicle_additional"
+            app:destination="@+id/vehicle_additional_info"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_images"
+        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Master_Images"
+        android:label="@string/specification"
+        tools:layout="@layout/fragment_vehicle_master_uploadimage">
+
+
+
+    </fragment>
+
+
+    <fragment android:id="@+id/vehicle_owner"
+        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Master_Ownership"
+        android:label="Vehicle Master"
+        tools:layout="@layout/fragment_vehicle_master_ownership"/>
+
+
+    <!--    <fragment
+            android:id="@+id/Vehicles_Filter"
+            android:name="com.rentguruzb2b.Vehicles_tab.Fragment_Vehicles_Filter"
+            android:label="Vehicles_Filter"
+            tools:layout="@layout/fragment_vehicle_filterlist">
+
+            <action
+                android:id="@+id/action_Vehicles_Filter_to_Vehicles"
+                app:destination="@id/Vehicles" />
+        </fragment>
+
+
+        <fragment
+            android:id="@+id/VehiclesBasicDetail"
+            android:name="com.rentguruzb2b.Vehicles_tab.Fragment_Vehicles_Basic_Details"
+            android:label="Fragment_Vehicles_Basic_Details"
+            tools:layout="@layout/fragment_vehicle_basic_details">
+            <action
+                android:id="@+id/action_Fragment_Vehicles_Basic_Details_to_Fragment_Vehicles_Rental_Rates"
+                app:destination="@id/VehiclesRentalRates" />
+
+            <action
+                android:id="@+id/action_Fragment_Vehicles_Basic_Details_to_Vehicles"
+                app:destination="@id/Vehicles" />
+        </fragment>
+
+
+        <fragment
+            android:id="@+id/VehiclesRentalRates"
+            android:name="com.rentguruzb2b.Vehicles_tab.Fragment_Vehicles_Rental_Rates"
+            android:label="Fragment_Vehicles_Rental_Rates"
+            tools:layout="@layout/fragment_vehicle_rental_rates">
+                <action
+                    android:id="@+id/action_VehiclesRentalRates_to_Fragment_Vehicles_OwnerShip_Details"
+                    app:destination="@id/VehiclesOwnerShip" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/VehiclesOwnerShip"
+            android:name="com.rentguruzb2b.Vehicles_tab.Fragment_Vehicles_OwnerShip_Details"
+            android:label="Fragment_Vehicles_OwnerShip_Details"
+            tools:layout="@layout/fragment_vehicle_ownership_details">
+                <action
+                    android:id="@+id/action_VehiclesOwnerShip_to_Fragment_Vehicle_Features"
+                    app:destination="@id/VehiclesFeature" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/VehiclesFeature"
+            android:name="com.rentguruzb2b.Vehicles_tab.Fragment_Vehicle_Features"
+            android:label="Fragment_Vehicle_Features"
+            tools:layout="@layout/fragment_vehicle_features">
+                <action
+                    android:id="@+id/action_VehiclesFeature_to_VehiclesLicenceCerti"
+                    app:destination="@id/VehiclesLicenceCerti" />
+        </fragment>
+
+
+        <fragment
+            android:id="@+id/VehiclesLicenceCerti"
+            android:name="com.rentguruzb2b.Vehicles_tab.Fragment_Vehicle_License_And_Certificate"
+            android:label="Fragment_Vehicle_License_And_Certificate"
+            tools:layout="@layout/fragment_vehicle_license_and_certifications">
+                <action
+                    android:id="@+id/action_VehiclesLicenceCerti_to_VehiclesInspection"
+                    app:destination="@id/VehiclesInspection" />
+        </fragment>
+
+
+        <fragment
+            android:id="@+id/VehiclesInspection"
+            android:name="com.rentguruzb2b.Vehicles_tab.Fragment_Vehicle_Inspection"
+            android:label="Fragment_Vehicle_Inspection"
+            tools:layout="@layout/fragment_vehicle_inspection">
+
+            <action
+                android:id="@+id/action_VehiclesInspection_to_VehiclesInspectionBasic"
+                app:destination="@id/VehiclesInspectionBasic" />
+
+        </fragment>
+
+        <fragment
+            android:id="@+id/VehiclesInspectionBasic"
+            android:name="com.rentguruzb2b.Vehicles_tab.Fragment_Vehicle_Inspection_Basic"
+            android:label="Fragment_Vehicle_Inspection_Basic"
+            tools:layout="@layout/fragment_vehicle_inspection_basic">
+            &lt;!&ndash;    <action
+                    android:id="@+id/action_Vehicles_to_Vehicles_Filter"
+                    app:destination="@id/Vehicles_Filter" />&ndash;&gt;
+        </fragment>-->
+</navigation>

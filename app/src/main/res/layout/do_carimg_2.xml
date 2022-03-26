@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@drawable/curve_box_top_green"
+    android:backgroundTint="@color/b2bheadercurve"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rl_Checkin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/llvhg"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:background="@drawable/curve_box_top_green"
+            android:gravity="center_horizontal|center_vertical"
+            android:backgroundTint="@color/yellow">
+
+            <TextView
+                android:theme="@style/texttheme"
+                android:id="@+id/reservationNumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="0123456789"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal|center_vertical"
+                android:singleLine="true"
+                android:minLines="1"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llvhg2"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_toRightOf="@+id/llvhg">
+
+            <TextView
+                android:id="@+id/carAgr"
+                android:theme="@style/texttheme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Retail"
+                android:gravity="center_horizontal|center_vertical"
+                style="@style/btntext"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llvhg"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:paddingBottom="@dimen/_20sdp"
+            android:background="@drawable/light_gray_box2"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:id="@+id/test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:paddingTop="@dimen/_1sdp"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:src="@drawable/ic_pickup_location_circle" />
+
+                    <View
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:background="@color/black" />
+
+                    <ImageView
+                        android:paddingTop="@dimen/_1sdp"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:src="@drawable/ic_return_location_circle" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@id/test">
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:id="@+id/txt_CheckOutLocName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_18sdp"
+                        android:hint=" "
+                        android:text=""
+                        android:textStyle="bold"
+                        android:textColor="@color/pickupcarimag"
+                        android:textSize="@dimen/_14ssp" />
+
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:id="@+id/txt_CheckOutDateTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_14sdp"
+                        android:hint="18/12/2019, 12:00pm"
+                        android:textColor="@color/pickupcarimag"
+                        android:textSize="@dimen/_11ssp" />
+
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:id="@+id/checkinLocName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_marginTop="@dimen/_18sdp"
+                        android:hint=""
+                        android:text=""
+                        android:textStyle="bold"
+                        android:textColor="@color/pickupcarimag"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:id="@+id/checkIn_DateTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_14sdp"
+                        android:hint="18/12/2019, 12:00pm"
+                        android:textColor="@color/pickupcarimag"
+                        android:textSize="@dimen/_11ssp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+           <!-- <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="100">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/ic_pickup_location_circle" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="@color/black" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/ic_return_location_circle" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="80"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:theme="@style/texttheme"
+                                android:id="@+id/txt_CheckOutLocName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint=" "
+                                android:textColor="@color/registerTextColor"
+                                android:textSize="@dimen/heading1_font_size" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:theme="@style/texttheme"
+                                    android:id="@+id/txt_CheckOutDateTime"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="18/12/2019, 12:00pm"
+                                    android:textColor="@color/textColorHint"
+                                    android:textSize="@dimen/txt_font_size" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:theme="@style/texttheme"
+                                android:id="@+id/checkinLocName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:hint=""
+                                android:textColor="@color/registerTextColor"
+                                android:textSize="@dimen/heading1_font_size" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:theme="@style/texttheme"
+                                    android:id="@+id/checkIn_DateTime"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:hint="18/12/2019, 12:00pm"
+                                    android:textColor="@color/textColorHint"
+                                    android:textSize="@dimen/txt_font_size" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/_210sdp"
+            android:layout_height="@dimen/_115sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/llvhg2"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:paddingStart="@dimen/_6sdp"
+            android:background="@drawable/curve_box_white"
+            android:orientation="vertical">
+
+            <TextView
+                android:theme="@style/texttheme"
+                android:id="@+id/vehicleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="2011 Mitsubhshi Mirage"
+                android:textColor="@color/fontwhitebackground"
+                android:singleLine="true"
+                android:textSize="@dimen/_10sdp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:paddingVertical="@dimen/_3sdp">
+
+             <!--   <ImageView
+                    android:id="@+id/VehImage"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_75sdp"
+                    android:src="@drawable/car_icon" />-->
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/VehImage"
+                    android:scaleType="fitXY"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_75sdp"
+                    android:src="@drawable/car_icon"
+                    app:shapeAppearance="@style/roundedImageViewRounded" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="16dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/_5sdp"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.6"
+            android:ellipsize="end"
+            android:gravity="start|end"
+            android:singleLine="true"
+            android:justificationMode="inter_word"
+            android:text="Insurance Company Name"
+            android:layout_gravity="start"
+            android:textSize="@dimen/textsize_ten"
+            style="@style/textfont"
+            />
+
+        <TextView
+            android:id="@+id/value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Company"
+            android:layout_gravity="start"
+            style="@style/textfont"
+            android:gravity="start"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/textColorHint" />
+
+</LinearLayout>

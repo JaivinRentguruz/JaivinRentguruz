@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/backgroundColor"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editCreditCard"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:text="Payment Success"
+
+                    android:textAllCaps="false"
+                    android:textColor="@color/topcolor"
+                    android:textSize="17dp"
+                    android:theme="@style/texttheme" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <include
+            android:visibility="gone"
+            android:id="@+id/header"
+            layout="@layout/row_header" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+            <TextView android:theme="@style/texttheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="28dp"
+                android:gravity="center"
+
+                android:textColor="@color/btntext"
+                android:text="Success"/>
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_width="@dimen/icon"
+                android:layout_height="@dimen/icon"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="7dp"
+        android:layout_below="@id/editCreditCard"
+        android:background="@drawable/curve_box">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView android:theme="@style/texttheme"
+                        android:text="Thank You."
+                        android:textSize="20dp"
+
+                        android:gravity="center"
+                        android:textColor="@color/fontwhitebackground"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                    <TextView android:theme="@style/texttheme"
+                        android:id="@+id/txtMessage"
+                        android:layout_marginTop="10dp"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:textColor="@color/fontwhitebackground"
+
+                        android:text=""
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="10"
+            android:paddingTop="5dp"
+
+            android:background="@color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/curve_box_yellow"
+                android:backgroundTint="@color/black"
+                android:layout_width="match_parent"
+                android:weightSum="10"
+                android:layout_height="58dp">
+                <TextView android:theme="@style/texttheme"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="17dp"
+                    style="@style/btntext"
+                    android:textSize="@dimen/heading1_font_size"
+                    android:text="Amount\nPayable"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:layout_weight="7"
+                    android:layout_height="wrap_content">
+                    <TextView android:theme="@style/texttheme"
+                        android:id="@+id/txtAmtPayable"
+                        android:layout_gravity="center"
+                        android:gravity="right"
+                        android:textSize="36dp"
+                        style="@style/btntext"
+                        android:text="US$ 2,000"
+                        android:layout_marginRight="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/next"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottommenuheight"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtprocess"
+                    style="@style/fullbtn"/>
+            <!--    <TextView
+                    android:id="@+id/nexttext"
+                    android:layout_gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="14dp"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/btntext"
+                    android:text="@string/next"
+                    style="@style/btntext"/>-->
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

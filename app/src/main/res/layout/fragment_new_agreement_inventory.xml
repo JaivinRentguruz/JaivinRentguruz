@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/header"
+                layout="@layout/row_header" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="5dp"
+                android:orientation="horizontal"
+                android:background="@drawable/curve_box">
+
+                <TextView
+                    android:theme="@style/texttheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select Inventory"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:textSize="@dimen/fab_margin"/>
+
+
+                <TextView
+                    android:theme="@style/texttheme"
+                    android:id="@+id/add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="end"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/fab_margin"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/green" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/selectedlocation"
+                android:layout_marginTop="0dp"
+                android:background="@color/white">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+
+                    <RelativeLayout
+                        android:id="@+id/adddata"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                  <!--  <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="15dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/lbl_Equipment"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/curve_box_gray_box_bg"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:weightSum="100"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="78"
+                                    android:padding="5dp"
+                                    android:layout_gravity="left"
+                                    android:textSize="16dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:textColor="@color/selected_dot"
+
+                                    android:text="Logo T Shirt"/>
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="22"
+                                    android:gravity="right"
+                                    android:layout_marginRight="7dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_height="wrap_content">
+                                    <LinearLayout
+                                        android:background="@drawable/aquamarine_bc"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:layout_height="17dp">
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Available"
+                                            android:textSize="8sp"
+                                            android:textAllCaps="false"
+                                            android:gravity="right"
+                                            android:layout_marginRight="10dp"
+                                            android:textAlignment="gravity"
+
+                                            android:textColor="@color/TitleTextColor">
+                                        </TextView>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="100"
+                                android:layout_height="wrap_content">
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="20"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp">
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/tshirt"/>
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="70"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:textSize="@dimen/textsize_ten"
+                                    android:inputType="textMultiLine"
+
+                                    android:text="This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. "/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:weightSum="100"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:orientation="horizontal">
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="65"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:orientation="vertical"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Per Day"
+
+                                        android:textSize="@dimen/textsize_ten"
+                                        android:textColor="@color/footerButtonBC"/>
+                                    <TextView
+                                        android:layout_marginTop="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="US$7.85 + 6% Tax (Max US$50)"
+                                        android:textSize="@dimen/textsize_ten"
+
+                                        android:textColor="@color/selected_dot"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="35"
+                                    android:orientation="vertical"
+                                    android:gravity="center_vertical"
+                                    android:background="@drawable/aquamarine_bc"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_marginRight="8dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Total Amount"
+                                        android:textColor="#ECFF0A"
+
+                                        android:gravity="right"
+                                        android:textSize="10dp" />
+                                    <TextView
+                                        android:layout_marginRight="8dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="US$30.00"
+                                        android:textColor="@color/TitleTextColor"
+                                        android:gravity="right"
+
+                                        android:textSize="14dp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/curve_box_gray_box_bg"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:weightSum="100"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="78"
+                                    android:padding="5dp"
+                                    android:layout_gravity="left"
+                                    android:textSize="16dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:textColor="@color/selected_dot"
+
+                                    android:text="Logo Keychain"/>
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="22"
+                                    android:gravity="right"
+                                    android:layout_marginRight="7dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_height="wrap_content">
+                                    <LinearLayout
+                                        android:background="@drawable/aquamarine_bc"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:layout_height="17dp">
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Available"
+                                            android:textSize="8sp"
+                                            android:textAllCaps="false"
+                                            android:gravity="right"
+                                            android:layout_marginRight="10dp"
+                                            android:textAlignment="gravity"
+
+                                            android:textColor="@color/TitleTextColor">
+                                        </TextView>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="100"
+                                android:layout_height="wrap_content">
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="20"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp">
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/keychain"/>
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="70"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:textSize="@dimen/textsize_ten"
+                                    android:inputType="textMultiLine"
+
+                                    android:text="This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. "/>                    </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:weightSum="100"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:orientation="horizontal">
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="65"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:orientation="vertical"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Per Day"
+
+                                        android:textSize="@dimen/textsize_ten"
+                                        android:textColor="@color/footerButtonBC"/>
+                                    <TextView
+                                        android:layout_marginTop="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="US$7.85 + 6% Tax (Max US$50)"
+                                        android:textSize="@dimen/textsize_ten"
+
+                                        android:textColor="@color/selected_dot"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="35"
+                                    android:orientation="vertical"
+                                    android:gravity="center_vertical"
+                                    android:background="@drawable/aquamarine_bc"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_marginRight="8dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Total Amount"
+                                        android:textColor="#ECFF0A"
+
+                                        android:gravity="right"
+                                        android:textSize="10dp" />
+                                    <TextView
+                                        android:layout_marginRight="8dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="US$30.00"
+                                        android:textColor="@color/TitleTextColor"
+                                        android:gravity="right"
+
+                                        android:textSize="14dp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/curve_box_gray_box_bg"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:weightSum="100"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="78"
+                                    android:padding="5dp"
+                                    android:layout_gravity="left"
+                                    android:textSize="16dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:textColor="@color/selected_dot"
+
+                                    android:text="Logo Cap"/>
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="22"
+                                    android:gravity="right"
+                                    android:layout_marginRight="7dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_height="wrap_content">
+                                    <LinearLayout
+                                        android:background="@drawable/aquamarine_bc"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:layout_height="17dp">
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Available"
+                                            android:textSize="8sp"
+                                            android:textAllCaps="false"
+                                            android:gravity="right"
+                                            android:layout_marginRight="10dp"
+                                            android:textAlignment="gravity"
+
+                                            android:textColor="@color/TitleTextColor">
+                                        </TextView>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="100"
+                                android:layout_height="wrap_content">
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="20"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp">
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/cap"/>
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="70"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:textSize="@dimen/textsize_ten"
+                                    android:inputType="textMultiLine"
+
+                                    android:text="This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. "/>                    </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:weightSum="100"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:orientation="horizontal">
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="65"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:orientation="vertical"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Per Day"
+
+                                        android:textSize="@dimen/textsize_ten"
+                                        android:textColor="@color/footerButtonBC"/>
+                                    <TextView
+                                        android:layout_marginTop="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="US$7.85 + 6% Tax (Max US$50)"
+                                        android:textSize="@dimen/textsize_ten"
+
+                                        android:textColor="@color/selected_dot"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="35"
+                                    android:orientation="vertical"
+                                    android:gravity="center_vertical"
+                                    android:background="@drawable/aquamarine_bc"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_marginRight="8dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Total Amount"
+                                        android:textColor="#ECFF0A"
+
+                                        android:gravity="right"
+                                        android:textSize="10dp" />
+                                    <TextView
+                                        android:layout_marginRight="8dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="US$30.00"
+                                        android:textColor="@color/TitleTextColor"
+                                        android:gravity="right"
+
+                                        android:textSize="14dp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/curve_box_gray_box_bg"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:weightSum="100"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="78"
+                                    android:padding="5dp"
+                                    android:layout_gravity="left"
+                                    android:textSize="16dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:textColor="@color/selected_dot"
+
+                                    android:text="Logo Wrist Watch"/>
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="22"
+                                    android:gravity="right"
+                                    android:layout_marginRight="7dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_height="wrap_content">
+                                    <LinearLayout
+                                        android:background="@drawable/aquamarine_bc"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:layout_height="17dp">
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Available"
+                                            android:textSize="8sp"
+                                            android:textAllCaps="false"
+                                            android:gravity="right"
+                                            android:layout_marginRight="10dp"
+                                            android:textAlignment="gravity"
+
+                                            android:textColor="@color/TitleTextColor">
+                                        </TextView>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="100"
+                                android:layout_height="wrap_content">
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="20"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp">
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/watch"/>
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="70"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:textSize="@dimen/textsize_ten"
+                                    android:inputType="textMultiLine"
+
+                                    android:text="This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. "/>                    </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:weightSum="100"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:orientation="horizontal">
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="65"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:orientation="vertical"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Per Day"
+
+                                        android:textSize="@dimen/textsize_ten"
+                                        android:textColor="@color/footerButtonBC"/>
+                                    <TextView
+                                        android:layout_marginTop="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="US$7.85 + 6% Tax (Max US$50)"
+                                        android:textSize="@dimen/textsize_ten"
+
+                                        android:textColor="@color/selected_dot"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="35"
+                                    android:orientation="vertical"
+                                    android:gravity="center_vertical"
+                                    android:background="@drawable/aquamarine_bc"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_marginRight="8dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Total Amount"
+                                        android:textColor="#ECFF0A"
+
+                                        android:gravity="right"
+                                        android:textSize="10dp" />
+                                    <TextView
+                                        android:layout_marginRight="8dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="US$30.00"
+                                        android:textColor="@color/TitleTextColor"
+                                        android:gravity="right"
+
+                                        android:textSize="14dp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>-->
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

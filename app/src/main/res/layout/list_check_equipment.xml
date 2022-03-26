@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:weightSum="100">
+
+    <CheckBox
+        android:id="@+id/chk_red"
+        android:layout_width="0dp"
+        android:layout_weight="7"
+        android:layout_height="wrap_content"
+        android:button="@drawable/sharp_checkbox_drawable"
+        android:buttonTint="@color/red"/>
+
+    <TextView
+        android:id="@+id/txt_chkOptionName"
+        android:layout_width="0dp"
+        android:layout_weight="65"
+        android:layout_height="match_parent"
+        android:text="Snow Brush"
+        android:textColor="@color/txtBlack"
+        android:textSize="@dimen/_11ssp"
+        android:theme="@style/texttheme" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="28"
+        android:orientation="horizontal"
+        android:background="@drawable/curve_white33"
+        android:backgroundTint="@color/MGrey"
+        android:weightSum="100">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="end"
+            android:layout_gravity="end"
+            android:background="@drawable/curve_white22r"
+            android:backgroundTint="@color/green"
+            android:layout_weight="20">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/pluse_img"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60">
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/txtBlack"
+                android:textSize="@dimen/_11ssp"
+                android:theme="@style/texttheme" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:background="@drawable/curve_white22l"
+            android:backgroundTint="@color/green"
+            android:layout_weight="20">
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/pluse_img"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="3dp"
+            android:layout_weight="20"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingRight="2dp"
+            android:paddingBottom="25dp">
+
+           <!-- <TextView
+                android:id="@+id/txt_Activityname"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Reminder"
+                android:textColor="@color/selected_dot"
+
+                android:textSize="@dimen/txt_font_size"
+                android:theme="@style/texttheme" />
+-->
+            <TextView
+                android:id="@+id/ActivityTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="08:30 AM"
+                android:textColor="@color/regtcolor"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12ssp"
+                android:theme="@style/texttheme" />
+
+            <TextView
+                android:id="@+id/ActivityDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="right"
+                android:text="Jan 20, 2020"
+                android:textColor="@color/regtcolor"
+
+                android:textSize="@dimen/_10ssp"
+                android:theme="@style/texttheme" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="80"
+            android:weightSum="80" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="80">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="0.8dp"
+                        android:layout_height="10dp"
+
+                        android:background="@color/MGrey" />
+
+                    <RelativeLayout
+                        android:layout_width="15.9dp"
+                        android:layout_height="15.9dp"
+                        android:background="@drawable/default_dot"
+                        android:backgroundTint="@color/red"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:id="@+id/circle_bg"
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/circle_bg" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="0.8dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/MGrey" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/post_on_timeline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="74"
+                    android:background="@drawable/round_image"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_Activityname"
+                        android:visibility="visible"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Reminder"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:textColor="@color/fontwhitebackground"
+                        android:padding="@dimen/_2sdp"
+                        android:textSize="@dimen/_12ssp"
+                        android:theme="@style/texttheme" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/LinearLayoutActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_5sdp"
+                            android:background="@drawable/bottom_curve_black_box"
+                            android:backgroundTint="@color/red">
+
+                            <TextView
+                                android:id="@+id/Activity_Desc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="This is a my sample text, read? This is a my sample text, read? This is a my"
+                                android:singleLine="false"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/txt_font_size"
+                                android:theme="@style/texttheme" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--  <View
+                          android:layout_width="match_parent"
+                          android:layout_height="@dimen/_2sdp"
+                          android:layout_marginTop="@dimen/_2sdp"
+                          android:layout_marginStart="-20dp"
+                          android:background="@color/selected_dot" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_dark_gray_bottom_curve"
+                        android:visibility="gone"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="7dp"
+                        android:weightSum="10">
+
+
+
+                        <TextView
+                            android:id="@+id/ActivityTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="9"
+                            android:text="Neeraj Kaneria "
+                            android:visibility="gone"
+                            android:textColor="@color/screen_bg_color"
+                            android:textSize="@dimen/txt_font_size"
+                            android:theme="@style/texttheme" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_chat_icon"
+                            android:visibility="gone"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+          <!--  <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginStart="11dp"
+                android:background="@color/textColorHint" />-->
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

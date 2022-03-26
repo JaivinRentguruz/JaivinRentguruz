@@ -1,0 +1,596 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+<!--    &lt;!&ndash; Base application theme. &ndash;&gt;
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
+    </style>
+
+    <style name="roundedImageViewRounded2">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">30%</item>
+        <item name="android:background">@color/green</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/green</item>
+    </style>
+
+    <style name="dlg_datePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:datePickerStyle">@style/datePicker_style</item>
+
+    </style>
+
+    <style name="datePicker_style" parent="android:Widget.Material.Light.DatePicker">
+        <item name="android:datePickerMode">spinner</item>
+        <item name="colorAccent">@color/green</item>
+    </style>
+
+    <style name="progress" parent="Widget.AppCompat.ProgressBar">
+        <item name="colorAccent">@color/green</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:actionBarSize">10dp</item>
+    </style>
+
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/selected_dot</item>
+        <item name="android:statusBarColor">@color/selected_dot</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="my_checkbox_style">
+        <item name="buttonTint">#fff</item>
+    </style>
+
+    <style name="WhiteCheck">
+        <item name="buttonTint">#fff</item>
+        <item name="android:colorBackground">#fff</item>
+        <item name="android:textColorSecondary">#333</item>
+    </style>
+
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <item name="android:colorControlActivated">@color/green</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="SwitchThemepink" parent="Theme.AppCompat.Light">
+        <item name="android:colorControlActivated">#C74141</item>
+    </style>
+
+    <style name="SwitchThemeblue" parent="Theme.AppCompat.Light">
+        <item name="android:colorControlActivated">#00ABFF</item>
+    </style>
+
+    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">13dp</item>
+        &lt;!&ndash;  <item name="android:fontFamily">@font/ubuntu</item>&ndash;&gt;
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+    </style>
+
+    <style name="TransparentText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#00000000</item>
+    </style>
+
+
+    &lt;!&ndash;use for header on edit text&ndash;&gt;
+    <style name="edittextheader">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:singleLine">true</item>
+        &lt;!&ndash;   <item name="android:fontFamily">@font/ubuntu</item>&ndash;&gt;
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/AppLightGray</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    &lt;!&ndash; normal edittext&ndash;&gt;
+    <style name="edittext" parent="android:Widget.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/ic_rectanglebox_215</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:paddingStart">@dimen/_10sdp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="maxLines">1</item>
+        &lt;!&ndash;  <item name="android:fontFamily">@font/ubuntu</item>&ndash;&gt;
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textColor">@color/AppBlack</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="android:inputType">text</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAlignment">gravity</item>
+    </style>
+
+
+    <style name="btntext">
+        &lt;!&ndash;  <item name="android:fontFamily">@font/ubuntu_medium</item>&ndash;&gt;
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/btntext</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="titletext">
+        &lt;!&ndash; <item name="android:fontFamily">@font/ubuntu_medium</item>&ndash;&gt;
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22dp</item>
+    </style>
+
+    &lt;!&ndash;using for updateprofile title edittext&ndash;&gt;
+    <style name="titletext2">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        &lt;!&ndash; <item name="android:fontFamily">@font/ubuntu_medium</item>&ndash;&gt;
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">22dp</item>
+    </style>
+
+    <style name="spinner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/ic_spinner_bg</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+        <item name="android:spinnerMode">dropdown</item>
+        <item name="android:dropDownSelector">@color/green</item>
+        <item name="android:paddingStart">@dimen/_8sdp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="loginedit">
+        <item name="android:colorControlNormal">@color/black</item>
+        <item name="android:colorControlActivated">@color/green</item>
+        <item name="android:colorControlHighlight">@color/green</item>
+        <item name="android:colorPrimary">@color/green</item>
+        <item name="android:colorPrimaryDark">@color/green</item>
+        <item name="colorSecondary">@color/green</item>
+        <item name="android:colorAccent">@color/green</item>
+        <item name="android:colorEdgeEffect">@color/green</item>
+        <item name="selectableItemBackground">@color/green</item>
+        <item name="android:dropDownSelector">@color/green</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    &lt;!&ndash;use header images&ndash;&gt;
+    <style name="header2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">15dp</item>
+        &lt;!&ndash;<item name="android:fontFamily">@font/ubuntu</item>&ndash;&gt;
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="datetext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/ic_rectanglebox_215</item>
+        <item name="android:drawableRight">@drawable/ic_calender</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="textfont">
+        <item name="android:textAllCaps">false</item>
+        &lt;!&ndash;<item name="android:textStyle">normal</item>&ndash;&gt;
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+    </style>
+
+    <style name="texttheme">
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="hintTextColor">@color/green</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="textthemeHeader">
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="fontStyle">italic</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="hintTextColor">@color/green</item>
+    </style>
+
+    <style name="textthemenormal">
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="fontStyle">italic</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="hintTextColor">@color/green</item>
+    </style>
+
+
+    <style name="vehicle_specification_detail_bold">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">start</item>
+        &lt;!&ndash;<item name="android:letterSpacing">1.2</item>&ndash;&gt;
+    </style>
+
+    <style name="vehicle_specification_detail_normal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">end</item>
+    </style>-->
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
+    </style>
+
+    <style name="roundedImageViewRounded2">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">30%</item>
+        <item name="android:background">@color/green</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/green</item>
+    </style>
+
+    <style name="dlg_datePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:datePickerStyle">@style/datePicker_style</item>
+
+    </style>
+
+    <style name="datePicker_style" parent="android:Widget.Material.Light.DatePicker">
+        <item name="android:datePickerMode">spinner</item>
+        <item name="colorAccent">@color/green</item>
+    </style>
+
+    <style name="progress" parent="Widget.AppCompat.ProgressBar">
+        <item name="colorAccent">@color/green</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:actionBarSize">10dp</item>
+    </style>
+
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/selected_dot</item>
+        <item name="android:statusBarColor">@color/selected_dot</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="my_checkbox_style">
+        <item name="buttonTint">#fff</item>
+    </style>
+
+    <style name="WhiteCheck">
+        <item name="buttonTint">#fff</item>
+        <item name="android:colorBackground">#fff</item>
+        <item name="android:textColorSecondary">#333</item>
+    </style>
+
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <item name="android:colorControlActivated">@color/green</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/MGrey</item>
+    </style>
+
+    <style name="SwitchThemepink" parent="Theme.AppCompat.Light">
+        <item name="android:colorControlActivated">#C74141</item>
+    </style>
+
+    <style name="SwitchThemeblue" parent="Theme.AppCompat.Light">
+        <item name="android:colorControlActivated">#00ABFF</item>
+    </style>
+
+    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">13dp</item>
+        <!--  <item name="android:fontFamily">@font/ubuntu</item>-->
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+    </style>
+
+    <style name="TransparentText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#00000000</item>
+    </style>
+
+    <style name="MyRadioButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/red</item>
+        <item name="colorControlActivated">@color/black</item>
+    </style>
+
+    <!--use for header on edit text-->
+    <style name="edittextheader">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:singleLine">true</item>
+        <!--   <item name="android:fontFamily">@font/ubuntu</item>-->
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/MGrey</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <!-- normal edittext-->
+    <style name="edittext" parent="android:Widget.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/ic_rectanglebox_215</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:paddingStart">@dimen/_10sdp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="maxLines">1</item>
+        <!--  <item name="android:fontFamily">@font/ubuntu</item>-->
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textColor">@color/MGrey</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="android:inputType">text</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+
+    <style name="btntext">
+        <!--  <item name="android:fontFamily">@font/ubuntu_medium</item>-->
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/btntext</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="fullbtn">
+        <item name="android:layout_height">@dimen/bottommenuheight</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:text">@string/next</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@color/red</item>
+        <item name="android:gravity">center_vertical|center_horizontal|center</item>
+        <item name="android:textColor">@color/btntext</item>
+    </style>
+
+    <style name="shortbtn">
+        <item name="android:layout_height">@dimen/_35sdp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:text">@string/next</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_vertical|center_horizontal|center</item>
+        <item name="android:layout_gravity">center_vertical|center_horizontal|center</item>
+        <item name="android:textColor">@color/btntext</item>
+        <item name="android:background">@drawable/curve_box_green</item>
+        <item name="android:backgroundTint">@color/black</item>
+    </style>
+
+    <style name="titletext">
+        <!-- <item name="android:fontFamily">@font/ubuntu_medium</item>-->
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/MGrey</item>
+        <item name="android:textSize">22dp</item>
+    </style>
+
+    <!--using for updateprofile title edittext-->
+    <style name="titletext2">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <!-- <item name="android:fontFamily">@font/ubuntu_medium</item>-->
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/MGrey</item>
+        <item name="android:textSize">22dp</item>
+    </style>
+
+    <style name="spinner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/ic_spinner_bg</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+        <item name="android:spinnerMode">dropdown</item>
+        <item name="android:dropDownSelector">@color/green</item>
+        <item name="android:paddingStart">@dimen/_8sdp</item>
+        <item name="android:textColor">@color/MGrey</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="loginedit">
+        <item name="android:colorControlNormal">@color/black</item>
+        <item name="android:colorControlActivated">@color/green</item>
+        <item name="android:colorControlHighlight">@color/green</item>
+        <item name="android:colorPrimary">@color/green</item>
+        <item name="android:colorPrimaryDark">@color/green</item>
+        <item name="colorSecondary">@color/green</item>
+        <item name="android:colorAccent">@color/green</item>
+        <item name="android:colorEdgeEffect">@color/green</item>
+        <item name="selectableItemBackground">@color/green</item>
+        <item name="android:dropDownSelector">@color/green</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/MGrey</item>
+    </style>
+
+    <!--use header images-->
+    <style name="header2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">15dp</item>
+        <!--<item name="android:fontFamily">@font/ubuntu</item>-->
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="datetext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/ic_rectanglebox_215</item>
+        <item name="android:drawableRight">@drawable/ic_calender</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="textfont">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textColor">@color/MGrey</item>
+    </style>
+
+    <style name="texttheme">
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textColor">@color/MGrey</item>
+        <item name="hintTextColor">@color/green</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="textthemeHeader">
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="fontStyle">italic</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="hintTextColor">@color/green</item>
+    </style>
+
+    <style name="textthemenormal">
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="fontStyle">italic</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="hintTextColor">@color/green</item>
+    </style>
+
+    <style name="vehicle_specification_detail_bold">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="vehicle_specification_detail_normal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">end</item>
+    </style>
+</resources>

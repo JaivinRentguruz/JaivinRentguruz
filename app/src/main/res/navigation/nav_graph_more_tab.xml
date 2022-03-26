@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/MoreInfo">
+
+  <!--  <fragment
+        android:id="@+id/MoreInfo"
+        android:name="com.abel.app.b2b.home.more.Fragment_More"
+        android:label="More_Info"
+        tools:layout="@layout/fragment_more_details">
+
+        <action
+            android:id="@+id/action_MoreInfo_to_CustomerList"
+            app:destination="@id/CustomerList" />
+
+    </fragment>-->
+
+   <fragment
+        android:id="@+id/CustomerList"
+        android:name="com.abel.app.b2b.home.more.Fragment_CustomerList"
+        android:label="CustomerList"
+        tools:layout="@layout/fragment_customer_list">
+
+    <!--    <action
+            android:id="@+id/action_CustomerList_to_CustomerList_2"
+            app:destination="@id/CustomerList_2" />
+
+
+        <action
+            android:id="@+id/action_CustomerList_to_MoreInfo"
+            app:destination="@id/MoreInfo" />
+
+        <action
+            android:id="@+id/action_CustomerList_to_InsertCustomerFragment"
+            app:destination="@+id/InsertCustomerFragment" />
+
+        <action
+            android:id="@+id/action_CustomerList_to_Customerfilter"
+            app:destination="@+id/Customerfilter"/>-->
+    </fragment>
+
+    <!--
+        <fragment
+            android:id="@+id/Customerfilter"
+            android:name="com.rentguruzb2b.MoreTab.Fragment_Customer_Filter"
+            android:label="Customerfilter"
+            tools:layout="@layout/fragment_customer_filter">
+
+            <action
+                android:id="@+id/Customerfilter_to_CustomerList"
+                app:destination="@+id/CustomerList"/>
+
+        </fragment>
+
+
+        <fragment
+            android:id="@+id/CustomerList_2"
+            android:name="com.rentguruzb2b.MoreTab.Fragment_CustomerList_2"
+            android:label="CustomerList_2"
+            tools:layout="@layout/fragment_customer_list_2">
+
+            <action
+                android:id="@+id/action_CustomerList_2_to_CustomerList"
+                app:destination="@id/CustomerList" />
+
+            <action
+                android:id="@+id/action_CustomerList_2_to_MoreInfo"
+                app:destination="@id/MoreInfo" />
+
+        </fragment>
+
+
+        <fragment
+            android:id="@+id/InsertCustomerFragment"
+            android:name="com.rentguruzb2b.user.customer.Fragment_Create_Profile"
+            android:label="Customer"
+            tools:layout="@layout/fragment_create_profile">
+
+            <action
+                android:id="@+id/InsertCustomerFragment_to_CustomerList"
+                app:destination="@id/CustomerList" />
+
+            <action
+                android:id="@+id/InsertCustomerFragment_to_CustomerProfile"
+                app:destination="@+id/CustomerProfile" />
+
+        </fragment>
+
+
+        <fragment
+            android:id="@+id/CustomerProfile"
+            android:name="com.rentguruzb2b.user.customer.Fragment_Customer_Profile_1"
+            android:label="Profile"
+            tools:layout="@layout/fragment_customer_profile_1">
+            <action
+                android:id="@+id/action_CustomerProfile_to_DriverProfile2"
+                app:destination="@id/CustomerProfile2" />
+            <action
+                android:id="@+id/action_CustomerProfile_to_CreateProfile"
+                app:destination="@id/InsertCustomerFragment" />
+            <action
+                android:id="@+id/action_CustomerProfile_to_CustomerList"
+                app:destination="@+id/CustomerList"/>
+        </fragment>
+
+        <fragment
+            android:id="@+id/CustomerProfile2"
+            android:name="com.rentguruzb2b.user.customer.Fragment_Customer_Profile_2"
+            android:label="Profile"
+            tools:layout="@layout/fragment_customer_profile_2">
+            <action
+                android:id="@+id/action_CustomerProfile2_to_DriverProfile3"
+                app:destination="@id/CustomerProfile3" />
+            <action
+                android:id="@+id/action_CustomerProfile2_to_CustomerProfile"
+                app:destination="@id/CustomerProfile" />
+            <action
+                android:id="@+id/action_CustomerProfile2_to_CustomerList"
+                app:destination="@+id/CustomerList"/>
+        </fragment>
+
+
+        <fragment
+            android:id="@+id/CustomerProfile3"
+            android:name="com.rentguruzb2b.user.customer.Fragment_Customer_Profile_3"
+            android:label="Profile"
+            tools:layout="@layout/fragment_customer_profile_3">
+            <action
+                android:id="@+id/action_CustomerProfile3_to_CustomerProfile4"
+                app:destination="@id/CustomerProfile4" />
+            <action
+                android:id="@+id/action_CustomerProfile3_to_CustomerProfile2"
+                app:destination="@id/CustomerProfile2" />
+            <action
+                android:id="@+id/action_CustomerProfile3_to_CustomerList"
+                app:destination="@+id/CustomerList"/>
+        </fragment>
+
+
+        <fragment
+            android:id="@+id/CustomerProfile4"
+            android:name="com.rentguruzb2b.user.customer.Fragment_Customer_Profile_4"
+            android:label="Profile"
+            tools:layout="@layout/fragment_customer_profile_4">
+            <action
+                android:id="@+id/action_CustomerProfile4_to_RegistrationCompleted"
+                app:destination="@id/RegistrationCompleted" />
+            <action
+                android:id="@+id/action_CustomerProfile4_to_CustomerProfile3"
+                app:destination="@id/CustomerProfile3" />
+            <action
+                android:id="@+id/action_CustomerProfile4_to_CustomerList"
+                app:destination="@+id/CustomerList"/>
+        </fragment>
+
+
+        <fragment
+            android:id="@+id/RegistrationCompleted"
+            android:name="com.rentguruzb2b.user.customer.Fragment_Register_Completed"
+            android:label="RegistrationCompleted"
+            tools:layout="@layout/fragment_registration_completed">
+            <action
+                android:id="@+id/action_RegistrationCompleted_to_CustomerList"
+                app:destination="@id/CustomerList" />
+        </fragment>-->
+</navigation>

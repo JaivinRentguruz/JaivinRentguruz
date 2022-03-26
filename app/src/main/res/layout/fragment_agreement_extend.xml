@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundColor"
+    tools:context=".flexiicar.user.Fragment_Agreement_DateChange">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/next"
+            android:orientation="vertical">
+            <include
+                android:id="@+id/header"
+                layout="@layout/row_header"/>
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:background="@drawable/curve_box"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/reservation"
+                    layout="@layout/reservation_list"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/startmargin"
+                    android:orientation="vertical">
+                <include
+                    android:id="@+id/first"
+                    layout="@layout/list_change_agreement"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/startmargin"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_weight="2">
+                    <ToggleButton
+                        android:id="@+id/vehicleclass"
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/toggle_selector_green"
+                        android:clickable="true"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn="" />
+
+                    <TextView
+                        style="@style/textfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=" Extend Agreement"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:layout_marginEnd="5dp"
+                        android:textColor="@color/regtcolor"
+                        android:textSize="@dimen/txt_font_size"
+                        android:theme="@style/texttheme" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_weight="0">
+                    <ToggleButton
+                        android:id="@+id/vehicleupgreade"
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/toggle_selector_green"
+                        android:clickable="true"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn="" />
+
+                    <TextView
+                        style="@style/textfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=" Upgread Vehicle"
+                        android:textStyle="bold"
+                        android:gravity="end|center_vertical"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/regtcolor"
+                        android:textSize="@dimen/txt_font_size"
+                        android:theme="@style/texttheme" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="@dimen/startmargin"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/texttheme"
+                        android:layout_marginTop="1dp"
+                        android:textSize="@dimen/_11ssp"
+                        android:text="Extend By"/>
+
+                    <RadioGroup
+                        android:id="@+id/split_percentage_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="5dp">
+
+                        <RadioButton
+                            android:id="@+id/splitpercentage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="5dp"
+                            android:buttonTint="@color/green"
+                            android:text="  Date &amp; Time"
+                            android:textColor="@color/textlightcolor" />
+
+                        <RadioButton
+                            android:id="@+id/splitfixamount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="4dp"
+                            android:buttonTint="@color/green"
+                            android:text="  No of Days"
+                            android:textColor="@color/textlightcolor" />
+
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:weightSum="2"
+                    android:layout_marginHorizontal="@dimen/startmargin"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/curve_white3"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="100">
+
+                        <TextView android:theme="@style/texttheme"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="70"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:hint="1000.00"
+                            android:singleLine="true"
+                            android:inputType="numberDecimal"
+                            android:background="@null"
+                            android:textColor="@color/textlightcolor"
+                            android:textSize="@dimen/fifteen" />
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="end"
+                            android:layout_gravity="end"
+                            android:layout_weight="30">
+
+                            <TextView android:theme="@style/texttheme"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="30"
+                                android:layout_alignParentEnd="true"
+                                android:background="@drawable/curve_white22"
+                                android:backgroundTint="@color/green"
+                                android:gravity="center"
+                                android:paddingHorizontal="5dp"
+                                android:padding="5dp"
+                                android:text=""
+                                android:textColor="@color/btn"
+                                style="@style/btntext"
+                                android:textSize="@dimen/fifteen" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/curve_white3"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="100">
+
+                        <TextView android:theme="@style/texttheme"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="70"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:hint="1000.00"
+                            android:singleLine="true"
+                            android:inputType="numberDecimal"
+                            android:background="@null"
+                            android:textColor="@color/textlightcolor"
+                            android:textSize="@dimen/fifteen" />
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="end"
+                            android:layout_gravity="end"
+                            android:layout_weight="30">
+
+                            <TextView android:theme="@style/texttheme"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="30"
+                                android:layout_alignParentEnd="true"
+                                android:background="@drawable/curve_white22"
+                                android:backgroundTint="@color/green"
+                                android:gravity="center"
+                                android:paddingHorizontal="5dp"
+                                android:padding="5dp"
+                                android:text=""
+                                android:textColor="@color/btn"
+                                style="@style/btntext"
+                                android:textSize="@dimen/fifteen" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="@dimen/startmargin"
+                    android:orientation="horizontal">
+                    <ToggleButton
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/toggle_selector_green"
+                        android:clickable="true"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn="" />
+
+                    <TextView
+                        style="@style/textfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=" Auto Renew Agreement"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:layout_marginEnd="5dp"
+                        android:textColor="@color/regtcolor"
+                        android:textSize="@dimen/txt_font_size"
+                        android:theme="@style/texttheme" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_DriverLicenseNO"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="@dimen/startmargin"
+                    style="@style/edittext"
+                    android:hint="Enter How Many Times (Cycle)"
+                    android:focusableInTouchMode="true"
+                    android:focusable="true"
+                    android:imeOptions="actionDone"
+                    android:nextFocusDown="@id/edt_ExpiryDateDL" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Additional Days, Mileage &amp; Charges"
+                    android:theme="@style/texttheme"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="@dimen/startmargin"
+                    android:textSize="@dimen/_11ssp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/startmargin"
+                    android:orientation="vertical">
+                    <include
+                        android:id="@+id/second"
+                        layout="@layout/list_change_agreement"/>
+                </LinearLayout>
+
+                <TextView
+                    android:theme="@style/texttheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/startmargin"
+                    android:layout_marginTop="15dp"
+                    android:text="Notes "
+                    android:textAllCaps="false"
+                    android:textColor="@color/textlightcolor"
+                    android:textSize="@dimen/thirteen" />
+
+
+                <EditText
+                    style="@style/edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/startmargin"
+                    android:background="@drawable/ic_rectangle_for_note"
+                    android:inputType="text"
+                    android:maxLines="3"
+                    android:minLines="3"
+                    android:imeOptions="actionDone"/>
+            </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:id="@+id/text"
+                    style="@style/fullbtn"
+                    android:text="@string/save"/>
+
+            </LinearLayout>
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

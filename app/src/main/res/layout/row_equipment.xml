@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="Equipment"
+            type="com.abel.app.b2b.model.reservation.ReservationEquipment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+       <!-- <LinearLayout
+            android:id="@+id/lbl_Equipment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/curve_box_gray_box_bg"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="78"
+                    android:hint="GPS Navigation System"
+                    android:padding="5dp"
+                    android:text="@{Equipment.Name}"
+                    android:textColor="@color/selected_dot"
+                    android:textColorHint="@color/selected_dot"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="22"
+                    android:gravity="right">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="17dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/aquamarine_bc"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:gravity="right"
+                            android:text="Available"
+                            android:textAlignment="gravity"
+                            android:textAllCaps="false"
+                            android:textColor="@color/TitleTextColor"
+
+                            android:textSize="8sp"></TextView>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="20">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/desktop_img"
+                        app:_imageUrl="@{Equipment.AttachmentsModel.AttachmentPath}"
+                        app:shapeAppearance="@style/roundedImageViewRounded" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="70"
+                    android:hint="This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. "
+                    android:text="@{Equipment.Description}"
+                    android:justificationMode="inter_word"
+                    android:textSize="@dimen/textsize_ten" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="65"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingStart="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Per Day"
+
+                        android:textColor="@color/footerButtonBC"
+                        android:textSize="@dimen/textsize_ten" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="US$7.85 + 6% Tax (Max US$50)"
+                        android:textColor="@color/selected_dot"
+
+                        android:textSize="@dimen/textsize_ten" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_weight="35"
+                    android:background="@drawable/aquamarine_bc"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:gravity="right"
+                            android:text="Total Amount"
+
+                            android:textColor="#ECFF0A"
+                            android:textSize="10dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:gravity="right"
+                            android:hint="US$30.00"
+                            android:textColor="@color/TitleTextColor"
+                            android:textColorHint="@color/TitleTextColor"
+                            android:textSize="14dp"
+                            app:_values="@{Equipment.Price}" />
+                    </LinearLayout>
+                    </RelativeLayout>
+
+                      <ToggleButton
+                          android:visibility="@{Equipment.IsActive ?  View.VISIBLE : View.INVISIBLE }"
+                          android:layout_width="40dp"
+                          android:clickable="true"
+                          android:layout_height="25dp"
+                          android:layout_marginStart="5dp"
+                          android:layout_marginEnd="5dp"
+                          android:layout_centerHorizontal="true"
+                          android:layout_centerVertical="true"
+                          android:background="@drawable/toggle_selector_green"
+                          android:text=""
+                          android:textOff=""
+                          android:textOn=""
+                          android:layout_gravity="center_vertical"
+                          android:gravity="center_vertical"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>-->
+
+
+
+        <LinearLayout
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/curve_box_gray_box_bg"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="100"
+                android:orientation="horizontal">
+                <TextView
+                    android:theme="@style/texttheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="78"
+                    android:padding="5dp"
+                    android:layout_gravity="left"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="5dp"
+                    android:hint="GPS Navigation System"
+                    android:textColorHint="@color/registerTextColor"
+                    android:textColor="@color/registerTextColor"
+                    android:text="@{Equipment.Name}"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="22"
+                    android:gravity="right"
+                    android:layout_marginRight="7dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:background="@drawable/aquamarine_blue_bg"
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_height="17dp">
+                        <TextView
+                            android:theme="@style/texttheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Available"
+                            android:textSize="@dimen/textsize_ten"
+                            android:gravity="right"
+                            android:textColor="@color/btntext"
+                            android:layout_marginRight="10dp">
+                        </TextView>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="100"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="20"
+                    android:layout_height="wrap_content">
+                   <!-- <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/gps_nav_system"/>-->
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/desktop_img"
+                        app:_imageUrl="@{Equipment.AttachmentsModel.AttachmentPath}"
+                        app:shapeAppearance="@style/roundedImageViewRounded" />
+                </RelativeLayout>
+
+                <TextView
+                    android:theme="@style/texttheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="70"
+                    android:hint="This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. "
+                    android:text="@{Equipment.Description}"
+                    android:textColor="@color/txtBlack"
+                    android:textColorHint="@color/txtBlack"
+                    android:justificationMode="inter_word"
+                    android:textSize="@dimen/textsize_ten"  />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="100"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="70"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Per Day"
+                        android:textSize="@dimen/textsize_ten"
+                        android:textColor="@color/footerButtonBC"/>
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="US$7.85 + 6% Tax (Max US$50)"
+                        android:textSize="@dimen/textsize_ten"
+                        android:textColor="@color/registerTextColor"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="30"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:weightSum="100"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:background="@drawable/curved_box_darkblue_4dp"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="100"
+                        android:gravity="end"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="5dp"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:theme="@style/texttheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Total Amount"
+                            android:textColor="@color/themebackgroundtext"
+                            android:gravity="end"
+                            android:textSize="@dimen/textsize_ten" />
+                        <TextView
+                            android:theme="@style/texttheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="US$30.00"
+                            app:_values="@{Equipment.Price}"
+                            android:textColor="@color/themebackgroundtext"
+                            android:textColorHint="@color/themebackgroundtext"
+                            android:gravity="end"
+                            android:textSize="@dimen/fourteen" />
+                    </LinearLayout>
+                  <!--  <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="40"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:layout_height="match_parent">
+                        &lt;!&ndash;<Switch
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:checked="true"
+                            android:theme="@style/SwitchThemeblue" />&ndash;&gt;
+
+                        <ToggleButton
+                            android:theme="@style/texttheme"
+                            android:id="@+id/select_equip"
+                            android:visibility="@{Equipment.IsActive ?  View.VISIBLE : View.INVISIBLE }"
+                            android:layout_width="40dp"
+                            android:clickable="true"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/toggle_selector_green"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"/>
+
+                    </LinearLayout>-->
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

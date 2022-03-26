@@ -1,0 +1,352 @@
+<resources>
+    <string name="app_name">ABEL</string>
+
+    <string name="title_activity_splash_screen">@string/app_name</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="title_activity_guide_screen">GuideScreen</string>
+    <string name="title_activity_on_boarding">OnBoarding</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="streetno">STREET NO &amp; NAME</string>
+    <string name="cp_additional_driver">This is our additional driver policy. Please read carefully.</string>
+    <!--    <string name="onBoardingScreen1Text">
+        <b> Commitment</b>
+        \n\n
+        Return the car at\n any time! Just let \n us know one week \n in advance to allow \n for processing.
+    </string>
+
+    <string name="onBoardingScreen2Text">
+       <b> High Mileage</b>
+        \n\n
+        Drive to your heart’s \n content! Our rental \n package allows for \n unlimited mileage! \n Enjoy your ride!
+    </string>
+
+    <string name="onBoardingScreen3Text">
+       <b> Tlc &amp; Uber Ready</b>
+        \n\n
+        Our vehicles are all \n registered and \n insured according to \n TLC regulations \n allowing you to start \n earning immediately.
+    </string>-->
+
+    <string name="onBoardingScreen1Text">
+       Sample Text. Sample \nText. Sample Text. \nSample Text. Sample \nText. Sample Text. \nSample Text. Sample \nText. Sample Text. \nSample Text. Sample \nText.
+    </string>
+
+    <string name="onBoardingScreen2Text">
+        Sample Text. Sample \nText. Sample Text. \nSample Text. Sample \nText. Sample Text. \nSample Text. Sample \nText. Sample Text. \nSample Text. Sample \nText.
+    </string>
+
+    <string name="onBoardingScreen3Text">
+        Sample Text. Sample \nText. Sample Text. \nSample Text. Sample \nText. Sample Text. \nSample Text. Sample \nText. Sample Text. \nSample Text. Sample \nText.
+    </string>
+
+
+    <string name="twovalue">%1$s, %2$s</string>
+    <string name="taxee">Tax</string>
+    <string name="max">Max</string>
+    <string name="seats"> \u0020 Seats</string>
+    <string name="doors">\u0020 Doors</string>
+    <string name="bags">\u0020 Bags</string>
+    <string name="id">id</string>
+    <string name="role">role</string>
+
+    <string name="dollar">US$ \u0020</string>
+    <string name="charge">/ Day</string>
+    <string name="deposite">/ Deposite)</string>
+
+    <string name="damage">Damage</string>
+    <string name="image">Images</string>
+    <string name="basic">Basic</string>
+    <string name="detailed">Detailed</string>
+    <string name="additional">Additional</string>
+    <string name="report">Report</string>
+    <string name="rate">Rate</string>
+    <string name="fix">Fix</string>
+    <string name="offer">Offer</string>
+
+    <string name="dollar2">(US$ \u0020</string>
+    <string-array name="items_class_countary">
+        <item>Select Country</item>
+    </string-array>
+
+
+    <string-array name="items_class_city">
+        <item>Select City</item>
+        <item>Vadodara</item>
+        <item>Surat</item>
+    </string-array>
+    <string-array name="items_class">
+        <item>Select State or Province</item>
+    </string-array>
+
+    <string-array name="items_class2">
+        <item>Automatic</item>
+        <item>Manual</item>
+    </string-array>
+
+    <string-array name="passengerList">
+        <item>All</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>v
+    </string-array>
+    <string name="map_api_key">AIzaSyA9VPZ-gfNIjpDW4QLX4jtVj3LPndrK73A</string>
+    <!--<string name="map_api_key">AIzaSyB8GVnpTSKV8BBBf3nqhHL4fmrFar3A5sM</string>-->
+    <!--    <string name="map_api_key">AIzaSyBI_lIw-YvKBuiyXC3GVi2QTx2RgFmGcWQ</string>-->
+    <!--<string name="map_api_key">AIzaSyDLDdpvPMi9P5z75AknbTuakKYl6H_HWoo</string>-->
+
+    <string name="car_rental_tax">@ 12% =$ 157.68</string>
+    <string name="con_recovery">10 Days @ 0.50 = $5.00</string>
+    <string name="con_recovery_fees">@11.11% = $ 136.52</string>
+    <string name="sales_tax">@8.88% = $ 116.61</string>
+    <string name="car_description">A car (or automobile) is a wheeled motor vehicle used for transportation. Most definitions of car say they run primarily on roads,seat one to eight people, have four tires.I really love this car and i want to drive.</string>
+    <string name="tax">Rates Taxes and Fees do not reflect rates taxes and fees applicable to non-\nincluded coverages,extras added later or to coverage required if the \ncustomer fails to provide acceptable proof of current liability coverage</string>
+
+    <string name="scan_back_side_id">Scan back side of document.</string>
+    <string name="classification_error">Could not classify the document</string>
+    <string name="classification_error_retry">Retry</string>
+    <string name="classification_error_image_preview">Image Preview</string>
+    <string name="userType">UserTypesss</string>
+
+    <string-array name="Bill_Status">
+        <item>ALL</item>
+        <item>Unpaid</item>
+        <item>Paid</item>
+    </string-array>
+
+    <string-array name="Trans_Type">
+        <item>ALL</item>
+        <item>Payment</item>
+        <item>Invoice</item>
+        <item>Traffic Fine</item>
+        <item>Toll Charge</item>
+    </string-array>
+    <string name="membershipplandesc">Standard Base Rate, includes unlimited miles. Basic Insurance  included in this price with zero down and 2000$. Standard  Base Rate, includes unlimited miles. </string>
+    <string name="SpecialInstructor">This is a special instructions to the driver. This is a special instructions \n to the driver. This is a special instructions
+        to \n the driver. This is a special instructions to the driver. \n This is a special instructions to the driver. This is a special \n instructions to the
+        driver. This is a special instructions to \n the driver. This is a special instructions to the driver. This \n is a special instructions to the driver.
+        This is a special \n instructions to the driver. This is a special instructions to \n  the driver. This is a special instructions to the driver.
+        \n This is a special instructions to the driver. This is a special \n  instructions to the driver.</string>
+
+    <string name="acceptterms">Please Accept Term &amp; Condition</string>
+    <string name="select">Select</string>
+    <string name="available">Available</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="open">Open</string>
+    <string name="opens">\u0020 Open</string>
+    <string name="line">\u0020 \n</string>
+    <string name="profile">Profile</string>
+    <string name="policy">Policy</string>
+    <string name="space">\u0020  </string>
+    <string name="driver">Driver</string>
+    <string name="custome">Custome</string>
+    <string name="creditcardupdate">Update Credit card</string>
+
+    <string name="guest">Guest</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+
+    <string name="selectcountry">Select A Country</string>
+    <string name="selectstate">Select State or Province</string>
+    <string name="next">Next</string>
+    <string name="accept">Accept</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="back">back</string>
+    <string name="discard">Discard</string>
+    <string name="done">Done</string>
+    <string name="create_your_profile">Create Your Profile</string>
+
+    <string name="basic_details">Basic Details</string>
+    <string name="please_enter_vin_number">Please Enter VIN Number</string>
+
+    <string name="agreement">Agreement</string>
+    <string name="reservation">Reservation</string>
+    <string name="chat">Chat</string>
+    <string name="booking">Vehicle Booking</string>
+    <string name="add">Add</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="new_reservation">New Reservation</string>
+    <string name="new_agreement">New Agreement</string>
+    <string name="customer_list">Customer list</string>
+    <string name="driver_s_name">Driver\&#39;s Name </string>
+    <string name="street_no_amp_name"><![CDATA[Street No & Name]]></string>
+    <string name="unit">Unit</string>
+    <string name="pin_zip_code">Pin / Zip Code</string>
+    <string name="country">Country</string>
+    <string name="state_province">State / Province</string>
+    <string name="city">City</string>
+    <string name="edit_profile">Edit Pofile</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="telephone">Telephone</string>
+    <string name="email">Email</string>
+
+
+    <string name="enterunit">Enter Unit</string>
+    <string name="enterpincode">Enter Code</string>
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
+    <string name="city_name">City Name</string>
+    <string name="license_number">License Number</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="issue_date">Issue Date</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="issue_by">Issue By</string>
+    <string name="upload_image_front">Upload image (front)</string>
+    <string name="upload_image_back">Upload image (Back)</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="enter_an_email">Enter An Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="re_enter_password">Re-Enter Password</string>
+    <string name="card_number">Card Number</string>
+    <string name="cvv_code">CVV Code</string>
+    <string name="name_on_the_card">Name on The Card</string>
+    <string name="enter_card_number">Enter Card Number</string>
+    <string name="enter_card_holder_name">Enter Card Holder Name</string>
+    <string name="enter_city">Enter City</string>
+    <string name="enter_license_number">Enter License Number</string>
+    <string name="enter_cvv_code">Enter CVV Code</string>
+    <string name="mm_dd_yyyy">MM/DD/YYYY</string>
+    <string name="username">Username</string>
+    <string name="full_name">Full Name</string>
+    <string name="save_amp_continue"><![CDATA[Save & Continue]]></string>
+    <string name="timeline">Timeline</string>
+    <string name="agreements">Agreements</string>
+    <string name="reservations">Reservations</string>
+    <string name="statement">Statement</string>
+    <string name="customer_profile">Customer Profile</string>
+    <string name="current_password">Current Password</string>
+    <string name="enter_current_password">Enter Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="enter_new_password">Enter New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="driving_license">Driving License</string>
+    <string name="relationship">Relationship</string>
+    <string name="enter_street"><![CDATA[Enter Street No & Name]]></string>
+    <string name="insurance_policy">Insurance Policy</string>
+    <string name="policy_number">Policy Number</string>
+    <string name="enter_policy_number">Enter Policy Number</string>
+    <string name="insurance_company">Insurance Company</string>
+    <string name="upload_policy">Upload Policy</string>
+    <string name="primary_driver">Primary Driver</string>
+    <string name="secondary_driver">Secondary Driver</string>
+    <string name="select_location">Select Location</string>
+    <string name="vehicle_available">Vehicle Available</string>
+    <string name="select_vehicle">Select Vehicle</string>
+    <string name="password_must">Password must be 8 letters, a special character and a letter</string>
+    <string name="location_available">Location Available</string>
+    <string name="pick_up_location">Pick Up Location</string>
+    <string name="return_at_different_location">Return at Different Location</string>
+    <string name="insurance_cover_amp_protection"><![CDATA[Insurance Cover & Protection]]></string>
+    <string name="equipment_extras">Equipment (extras)</string>
+    <string name="miscellaneous_charges_applicable">Miscellaneous Charges Applicable</string>
+    <string name="confirm">Confirm</string>
+    <string name="summary_of_charges">Summary Of Charges</string>
+    <string name="driver_details">Driver Details</string>
+    <string name="continue_as_guest">Continue As Guest</string>
+    <string name="flight_detail">Flight Detail</string>
+    <string name="flight_details">Flight Details</string>
+    <string name="terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="customize_your_rental">Customize Your Rental</string>
+    <string name="select_additional_options">Select Additional Options</string>
+    <string name="payment_checkout">Payment Checkout</string>
+    <string name="cards">Cards</string>
+    <string name="continuee">Continue</string>
+    <string name="self_checkout">Self Checkout</string>
+    <string name="vehicle_odometer">Vehicle Odometer</string>
+    <string name="gas_tank_fuel_level">Gas Tank Fuel Level</string>
+    <!--<string name="gas_tank_fuel_level">Battery Charge Level</string>-->
+    <string name="accessories_and_rest">Accessories and Rest</string>
+    <string name="notes_amp_observation"><![CDATA[Notes & Observation]]></string>
+    <string name="vehicle_images">Vehicle Images</string>
+    <string name="sample_image">Sample Image</string>
+    <string name="add_your_signature">Add Your Signature</string>
+    <string name="acceptance_signature">Acceptance Signature</string>
+    <string name="forgot_password">Forget Password</string>
+    <string name="cards_on_account">Cards On Account</string>
+    <string name="specification">Specification</string>
+    <string name="include">Include</string>
+
+
+    <!--screening name-->
+    <string name="locationkey">Location &amp; Key</string>
+    <string name="datechange">Date Change</string>
+    <string name="vehiclechange">Vehicle Change</string>
+    <string name="extendagreement">Extend Agreement</string>
+    <string name="MobileBasicDetails">MobileBasicDetails</string>
+    <string name="HomePageScreen">HomePageScreen</string>
+    <string name="SplashScreens">SplashScreens</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="print_confirmation">Print Confirmation</string>
+    <string name="print_receipt">Print receipt</string>
+    <string name="email_confirmation">Email Confirmation</string>
+    <string name="email_receipt">Email Receipt</string>
+    <string name="cancel_booking">Cancel booking</string>
+    <string name="change_dates">Change Dates</string>
+    <string name="change_vehicle">Change Vehicle</string>
+    <string name="extend_agreement">Extend Agreement</string>
+    <string name="tall_charges">Tall Charges</string>
+    <string name="traffic_tick">Trafic Tickets</string>
+    <string name="nodays">Total \nNo of Days</string>
+    <string name="mileage_included">Mileage \nIncluded</string>
+    <string name="total_amount">Total \nAmount</string>
+    <string name="payment_made">Payment \nMade</string>
+    <string name="deposit_paid">Deposit \nPaid</string>
+
+    <string name="icon">icon</string>
+    <string name="logo">logo</string>
+    <string name="update">Update</string>
+    <string name="submit">Submit</string>
+    <string name="scompany">scompany</string>
+
+
+    <string-array name="vehicleyear">
+        <item>Select Year</item>
+    </string-array>
+</resources>

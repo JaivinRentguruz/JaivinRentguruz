@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundColor">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/next"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/header"
+                layout="@layout/row_header"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_below="@id/selectedlocation"
+            android:background="@drawable/curve_box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginTop="1dp"
+                    style="@style/textfont"
+                    android:text="Ownership Details"
+                    android:textColor="@color/textlightcolor"
+                    android:textSize="17dp" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/txtBlack"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="15dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_gravity="center_vertical"
+
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:theme="@style/texttheme"
+                    android:layout_weight="5"
+                    android:text="Name Of The Fleet Owner"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_marginTop="0dp"
+                    style="@style/edittextheader"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="end|center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <ToggleButton
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/toggle_selector_green"
+                        android:clickable="true"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn="" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Available Online"
+                        android:theme="@style/texttheme"
+                        android:layout_marginStart="10dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <EditText
+                style="@style/edittext"
+                android:hint="Select Fleet Owner Table"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:imeOptions="actionNext"
+                android:nextFocusDown="@id/edt_CustUnitNo"/>
+
+
+            <TextView
+                android:text="@string/email"
+                style="@style/edittextheader" />
+
+            <EditText
+                style="@style/edittext"
+                android:hint="@string/enter_an_email"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:imeOptions="actionNext"
+                android:nextFocusDown="@id/edt_CustUnitNo"/>
+
+            <TextView
+                android:text="@string/telephone"
+                style="@style/edittextheader" />
+
+            <EditText
+                style="@style/edittext"
+                android:hint="@string/enter_phone_number"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:imeOptions="actionNext"
+                android:nextFocusDown="@id/edt_CustUnitNo"/>
+
+        </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/txtBlack"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:layout_marginStart="15dp"
+                android:text="Upload Images"
+                android:textSize="@dimen/_12ssp"
+                style="@style/textfont"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/txtBlack"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp">
+            <TextView
+                android:text="Select Vendor"
+                style="@style/edittextheader" />
+
+            <EditText
+                style="@style/edittext"
+                android:hint="Name Of The Vendor"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:imeOptions="actionNext"
+                android:nextFocusDown="@id/edt_CustUnitNo"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_full_curve_box"
+                android:backgroundTint="@color/lightgreen"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="6dp"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:layout_weight="35">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/audi" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:layout_weight="65"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:theme="@style/texttheme"
+                                android:text="AUDI OF MISSISSAUGA"
+                                android:textSize="@dimen/sixteen" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="2dp"
+                                    android:src="@drawable/ic_call_icon_small"
+                                    app:tint="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/number"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:theme="@style/texttheme"
+                                    android:text="TEL 8282920002"
+                                    android:textColor="@color/textlightcolor"
+                                    android:textSize="@dimen/twelve" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="2dp"
+                                    android:src="@drawable/ic_mail_icon"
+                                    app:tint="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/email"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:theme="@style/texttheme"
+                                    android:text="expedia@expedia.com"
+                                    android:textColor="@color/textlightcolor"
+                                    android:textSize="@dimen/twelve" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:src="@drawable/ic_black_location_pin"
+                                    app:tint="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/address"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:theme="@style/texttheme"
+                                    android:text="4 James Potter Street\nPrinceton NJ 89354 USA"
+                                    android:textColor="@color/textlightcolor"
+                                    android:textSize="@dimen/twelve" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/txtBlack"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:layout_marginStart="15dp"
+                android:text="Purchase Details"
+                android:textSize="@dimen/_12ssp"
+                style="@style/textfont"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/txtBlack"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="15dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:text="Purchase By"
+                        style="@style/edittextheader" />
+
+                    <RadioGroup
+                        android:id="@+id/transationtype"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/Payment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="6dp"
+                            android:buttonTint="@color/green"
+                            android:text=" Cash "
+                            android:textColor="@color/textlightcolor" />
+
+                        <RadioButton
+                            android:id="@+id/Deposit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="6dp"
+                            android:buttonTint="@color/green"
+                            android:text=" Finance "
+                            android:textColor="@color/textlightcolor" />
+
+                        <RadioButton
+                            android:id="@+id/preAuthorization"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="6dp"
+                            android:buttonTint="@color/green"
+                            android:text=" Lease "
+                            android:textColor="@color/textlightcolor" />
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="Per Tax Amount"
+                            style="@style/edittextheader" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:layout_weight="1"
+                            android:text="Paid By"
+                            style="@style/edittextheader"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <EditText
+                            android:id="@+id/edt_CustUnitNo"
+                            android:layout_width="0dp"
+                            style="@style/edittext"
+                            android:layout_weight="1"
+                            android:hint="Per Tax Amount"
+                            android:focusableInTouchMode="true"
+                            android:background="@drawable/ic_rectangle_box_2152"
+                            android:focusable="true"
+                            android:imeOptions="actionNext"
+                            android:nextFocusLeft="@id/edt_CustZipCode"
+                            />
+
+                        <EditText
+                            android:id="@+id/edt_CustZipCode"
+                            android:layout_width="0dp"
+                            style="@style/edittext"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:hint="Paid By"
+                            android:gravity="center_vertical"
+                            android:textAlignment="gravity"
+                            android:background="@drawable/ic_rectangle_box_2152"
+                            android:focusableInTouchMode="true"
+                            android:focusable="true"
+                            android:imeOptions="actionDone"
+                            android:nextFocusLeft="@id/sp_Countrylist"/>
+
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Date Of Payment"
+                        style="@style/edittextheader" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="17dp"
+                        android:layout_weight="1"
+                        android:text="Amount Paid Monthly"
+                        style="@style/edittextheader"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        style="@style/edittext"
+                        android:layout_weight="1"
+                        android:hint="Date Of Payment"
+                        android:focusableInTouchMode="true"
+                        android:background="@drawable/ic_rectangle_box_2152"
+                        android:focusable="true"
+                        android:imeOptions="actionNext"
+                        android:nextFocusLeft="@id/edt_CustZipCode"
+                        />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        style="@style/edittext"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:hint="Amount Paid Monthly"
+                        android:gravity="center_vertical"
+                        android:textAlignment="gravity"
+                        android:background="@drawable/ic_rectangle_box_2152"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:imeOptions="actionDone"
+                        android:nextFocusLeft="@id/sp_Countrylist"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Date Of Payment"
+                        style="@style/edittextheader" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="17dp"
+                        android:layout_weight="1"
+                        android:text="Amount Paid Monthly"
+                        style="@style/edittextheader"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        style="@style/edittext"
+                        android:layout_weight="1"
+                        android:hint="Date Of Payment"
+                        android:focusableInTouchMode="true"
+                        android:background="@drawable/ic_rectangle_box_2152"
+                        android:focusable="true"
+                        android:imeOptions="actionNext"
+                        android:nextFocusLeft="@id/edt_CustZipCode"
+                        />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        style="@style/edittext"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:hint="Amount Paid Monthly"
+                        android:gravity="center_vertical"
+                        android:textAlignment="gravity"
+                        android:background="@drawable/ic_rectangle_box_2152"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:imeOptions="actionDone"
+                        android:nextFocusLeft="@id/sp_Countrylist"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Date Of Payment"
+                        style="@style/edittextheader" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="17dp"
+                        android:layout_weight="1"
+                        android:text="Amount Paid Monthly"
+                        style="@style/edittextheader"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        style="@style/edittext"
+                        android:layout_weight="1"
+                        android:hint="Date Of Payment"
+                        android:focusableInTouchMode="true"
+                        android:background="@drawable/ic_rectangle_box_2152"
+                        android:focusable="true"
+                        android:imeOptions="actionNext"
+                        android:nextFocusLeft="@id/edt_CustZipCode"
+                        />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        style="@style/edittext"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:hint="Amount Paid Monthly"
+                        android:gravity="center_vertical"
+                        android:textAlignment="gravity"
+                        android:background="@drawable/ic_rectangle_box_2152"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:imeOptions="actionDone"
+                        android:nextFocusLeft="@id/sp_Countrylist"/>
+
+                </LinearLayout>
+
+                </LinearLayout>
+
+
+
+       <!--     <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:background="@color/white"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/next"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="end">
+
+                    <TextView
+                        style="@style/fullbtn"
+                        android:text="@string/done"/>
+
+                   &lt;!&ndash; <TextView
+                        android:theme="@style/texttheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:text="@string/done"
+                        android:textAllCaps="false"
+                        style="@style/btntext"
+                        android:textSize="@dimen/_15ssp" />&ndash;&gt;
+                </LinearLayout>
+            </LinearLayout>-->
+
+        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:gravity="end">
+
+                <TextView
+                    style="@style/fullbtn"
+                    android:text="@string/done"/>
+
+                <!-- <TextView
+                     android:theme="@style/texttheme"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_vertical"
+                     android:gravity="center"
+                     android:text="@string/done"
+                     android:textAllCaps="false"
+                     style="@style/btntext"
+                     android:textSize="@dimen/_15ssp" />-->
+            </LinearLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

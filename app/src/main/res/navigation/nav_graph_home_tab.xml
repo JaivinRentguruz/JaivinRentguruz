@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/Customer_Profile">
+
+    <fragment
+        android:id="@+id/Customer_Profile"
+        android:name="com.abel.app.b2b.home.Fragment_Home_Tab"
+        android:label="nav_graph_customer"
+        tools:layout="@layout/fragment_home">
+
+        <action android:id="@+id/profile_to_newAgreemnent"
+            app:destination="@+id/New_Agreement"/>
+
+
+        <action android:id="@+id/profile_to_location"
+            app:destination="@+id/Location"/>
+
+        <action
+            android:id="@+id/action_SummaryOfChargesForAgreements_to_TermAndCondition"
+            app:destination="@id/TermAndCondition" />
+
+        <action android:id="@+id/testing"
+            app:destination="@+id/test"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/test"
+        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Checkout_Summarry"
+        android:label="@string/acceptance_signature"
+        tools:layout="@layout/fragment_vehicle_checkout_summarry"/>
+
+    <!--<fragment android:id="@+id/Location"
+        android:name="com.abel.app.b2b.home.Fragment_Selected_Location"
+        android:label="Select Location"
+        tools:layout="@layout/fragment_selected_location12">
+
+        <action android:id="@+id/action_Selected_location_to_Available_location"
+            app:destination="@+id/Available_location"/>
+
+        <action android:id="@+id/action_Selected_location_to_Vehicles_Available"
+            app:destination="@+id/Vehicles_Available"/>
+
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/Available_location"
+        android:name="com.abel.app.b2b.home.Fragment_Available_location"
+        android:label="Available_location"
+        tools:layout="@layout/fragment_available_location">
+        <action
+            android:id="@+id/action_Available_location_to_Selected_location"
+            app:destination="@id/Location" />
+      &lt;!&ndash;  <action
+            android:id="@+id/action_Available_location_to_Search_activity"
+            app:destination="@id/Search_activity" />&ndash;&gt;
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/Vehicles_Available"
+        android:name="com.abel.app.b2b.home.Fragment_Vehicles_Available"
+        android:label="Vehicles_Available"
+        tools:layout="@layout/fragment_vehicles_available">
+
+        <action android:id="@+id/vehicles_available_to_new_agreemnent"
+            app:destination="@+id/New_Agreement"/>
+
+        <action android:id="@+id/vehicles_available_to_location"
+            app:destination="@+id/Location"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/New_Agreement"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement"
+        android:label="Add New Agreement"
+        tools:layout="@layout/fragment_new_agreement">
+
+        <action android:id="@+id/newAgreemnent_to_slider"
+            app:destination="@+id/New_Agreement_slider"/>
+
+        <action android:id="@+id/newAgreemnent_to_booking"
+            app:destination="@+id/Booking"/>
+
+        <action android:id="@+id/newAgreemnent_to_customerlist"
+            app:destination="@+id/CustomerList"/>
+
+        <action android:id="@+id/newAgreemnent_to_vehicle"
+            app:destination="@+id/Vehicles_Available"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/CustomerList"
+        android:name="com.abel.app.b2b.home.Fragment_Customer"
+        android:label="Customer List"
+        tools:layout="@layout/fragment_customer_list">
+
+        <action android:id="@+id/customerlist_to_booking"
+            app:destination="@+id/Booking"/>
+
+        <action
+            android:id="@+id/action_CustomerList_to_CreateProfile"
+            app:destination="@id/CreateProfile" />
+
+        <action
+            android:id="@+id/action_CustomerList_to_Agreement"
+            app:destination="@+id/New_Agreement"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/CreateProfile"
+        android:name="com.abel.app.b2b.flexiicar.login.Fragment_Create_Profile"
+        android:label="Create Profile"
+        tools:layout="@layout/fragment_create_profile">
+        <action
+            android:id="@+id/action_CreateProfile_to_DriverProfile"
+            app:destination="@id/DriverProfile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DriverProfile"
+        android:name="com.abel.app.b2b.flexiicar.login.Fragment_Driver_Profile_1"
+        android:label="Profile"
+        tools:layout="@layout/fragment_driver_profile_1">
+        <action
+            android:id="@+id/action_DriverProfile_to_DriverProfile2"
+            app:destination="@id/DriverProfile2" />
+        <action
+            android:id="@+id/action_DriverProfile_to_CreateProfile"
+            app:destination="@id/CreateProfile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DriverProfile2"
+        android:name="com.abel.app.b2b.flexiicar.login.Fragment_Driver_Profile_2"
+        android:label="LicenseDetails"
+        tools:layout="@layout/fragment_driver_profile_2">
+        <action
+            android:id="@+id/action_DriverProfile2_to_DriverProfile"
+            app:destination="@id/DriverProfile"
+            />
+        <action
+            android:id="@+id/action_DriverProfile2_to_DriverProfile3"
+            app:destination="@id/DriverProfile3"            />
+
+        &lt;!&ndash; <action
+             android:id="@+id/action_DriverProfile2_to_DriverProfile3"
+             app:destination="@id/DriverProfile3"
+             app:launchSingleTop="false"
+             app:popUpTo="@+id/DriverProfile2"
+             app:popUpToInclusive="true"
+             />&ndash;&gt;
+        <action
+            android:id="@+id/action_DriverProfile2_to_CreateProfile"
+            app:destination="@id/CreateProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/DriverProfile3"
+        android:name="com.abel.app.b2b.flexiicar.login.Fragment_Driver_Profile_3"
+        android:label="Profile"
+        tools:layout="@layout/fragment_driver_profile_3">
+        <action
+            android:id="@+id/action_DriverProfile3_to_DriverProfile2"
+            app:destination="@id/DriverProfile2"
+            />
+        <action
+            android:id="@+id/action_DriverProfile3_to_DriverProfile4"
+            app:destination="@id/DriverProfile4" />
+        <action
+            android:id="@+id/action_DriverProfile3_to_CreateProfile"
+            app:destination="@id/CreateProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/DriverProfile4"
+        android:name="com.abel.app.b2b.flexiicar.login.Fragment_Driver_Profile_4"
+        android:label="Creditcard Details"
+        tools:layout="@layout/fragment_driver_profile_4">
+        <action
+            android:id="@+id/action_DriverProfile4_to_DriverProfile3"
+            app:destination="@id/DriverProfile3" />
+        <action
+            android:id="@+id/action_DriverProfile4_to_Complete_Register"
+            app:destination="@id/Complete_Register" />
+        <action
+            android:id="@+id/action_DriverProfile4_to_CreateProfile"
+            app:destination="@id/CreateProfile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/Complete_Register"
+        android:name="com.abel.app.b2b.flexiicar.login.Fragment_Register_Completed"
+        android:label="Creditcard Details"
+        tools:layout="@layout/fragment_registration_completed">
+    </fragment>
+
+    <fragment android:id="@+id/New_Agreement_slider"
+        android:name="com.abel.app.b2b.home.Fragment_Slider_Custom_Rental"
+        android:label="Slider"
+        tools:layout="@layout/slider_custom_rental">
+
+    </fragment>
+
+    <fragment android:id="@+id/Booking"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_booking"
+        android:label="Slider"
+        tools:layout="@layout/fragment_new_agreement_booking">
+
+
+        <action android:id="@+id/booking_to_insurance"
+            app:destination="@+id/Insurance"/>
+
+        <action android:id="@+id/booking_to_driver"
+            app:destination="@+id/Driver"/>
+
+        <action android:id="@+id/booking_to_refferrels"
+            app:destination="@+id/Refferrels"/>
+
+        <action android:id="@+id/booking_to_equipment"
+            app:destination="@+id/Equipment"/>
+
+        <action android:id="@+id/booking_to_inventory"
+            app:destination="@+id/Inventory"/>
+
+        <action android:id="@+id/booking_to_notes"
+            app:destination="@+id/Notes"/>
+
+        <action android:id="@+id/booking_to_flight"
+            app:destination="@+id/Flight"/>
+
+        <action android:id="@+id/booking_to_billing_info"
+            app:destination="@+id/BillingInfo"/>
+
+        <action android:id="@+id/booking_to_Agreement_Confirmation"
+            app:destination="@+id/Agreement_Confirmation"/>
+
+        <action android:id="@+id/booking_to_CustomerList"
+            app:destination="@+id/CustomerList"/>
+
+    </fragment>
+
+
+    <fragment android:id="@+id/Insurance"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Insurance"
+        android:label="Insurance"
+        tools:layout="@layout/fragment_new_agreement_insurance">
+
+        <action android:id="@+id/insurance_to_addinsurance"
+            app:destination="@+id/AddInsurance"/>
+
+        <action android:id="@+id/insurance_to_booking"
+            app:destination="@+id/Booking"/>
+
+    </fragment>
+
+
+    <fragment android:id="@+id/AddInsurance"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Add_Insurance"
+        android:label="AddInsurance"
+        tools:layout="@layout/fragment_new_agreement_add_insurance">
+
+
+
+    </fragment>
+
+
+    <fragment android:id="@+id/Driver"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Driver"
+        android:label="Driver"
+        tools:layout="@layout/fragment_new_agreement_driver">
+
+        <action android:id="@+id/driver_to_drivercreate"
+            app:destination="@+id/DriverCreate"/>
+
+        <action android:id="@+id/driver_to_booking"
+            app:destination="@+id/Booking"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/DriverCreate"
+        android:name="com.abel.app.b2b.home.Fragment_Create_Additional_Driver"
+        android:label="Driver Details"
+        tools:layout="@layout/fragment_create_additional_driver">
+
+        <action android:id="@+id/drivercreate_to_adddriver1"
+            app:destination="@+id/AddDriver1"/>
+
+    </fragment>
+
+
+    <fragment android:id="@+id/AddDriver1"
+        android:name="com.abel.app.b2b.home.Fragment_Additional_Driver_Profile1"
+        android:label="Add Driver"
+        tools:layout="@layout/fragment_additional_driver_profile_1">
+
+        <action android:id="@+id/adddriver1_to_adddriver2"
+            app:destination="@+id/AddDriver2"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/AddDriver2"
+        android:name="com.abel.app.b2b.home.Fragment_Additional_Driver_Profile2"
+        android:label="Add Driver"
+        tools:layout="@layout/fragment_additional_driver_profile_2">
+
+        <action android:id="@+id/adddriver2_to_driverdetails"
+            app:destination="@+id/Driverdetails"/>
+
+    </fragment>
+
+
+    <fragment android:id="@+id/Driverdetails"
+        android:name="com.abel.app.b2b.home.Fragment_Additional_Driver_Details"
+        android:label="Driver Details"
+        tools:layout="@layout/fragment_additional_driver_detail">
+
+        <action android:id="@+id/driverdetails_to_driver"
+            app:destination="@+id/Driver"/>
+
+    </fragment>
+
+
+
+
+
+
+    <fragment android:id="@+id/Refferrels"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Refferrels"
+        android:label="Refferrels"
+        tools:layout="@layout/fragment_new_agreement_referal">
+
+        <action android:id="@+id/refferrels_to_addrefferrels"
+            app:destination="@+id/AddRefferrels"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/AddRefferrels"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Add_Refferrels"
+        android:label="Add Refferrels"
+        tools:layout="@layout/fragment_new_agreement_add_referrals">
+
+
+
+    </fragment>
+
+
+    <fragment android:id="@+id/Equipment"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Equipment"
+        android:label="Equipment"
+        tools:layout="@layout/fragment_new_agreement_equipment">
+
+        <action android:id="@+id/equipment_to_addequipment"
+            app:destination="@+id/AddEquipment"/>
+
+        <action android:id="@+id/equipment_to_booking"
+            app:destination="@+id/Booking"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/AddEquipment"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Add_Equipment"
+        android:label="AddEquipment"
+        tools:layout="@layout/fragment_new_agreement_add_equipment">
+
+
+
+    </fragment>
+
+    <fragment android:id="@+id/Inventory"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Inventory"
+        android:label="Inventory"
+        tools:layout="@layout/fragment_new_agreement_inventory">
+
+        <action android:id="@+id/inventory_to_addinventory"
+            app:destination="@+id/AddInventory"/>
+
+        <action android:id="@+id/inventory_to_booking"
+            app:destination="@+id/Booking"/>
+
+    </fragment>
+
+
+    <fragment android:id="@+id/AddInventory"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Add_Inventory"
+        android:label="AddInventory"
+        tools:layout="@layout/fragment_new_agreement_add_inventory">
+
+
+
+    </fragment>
+
+    <fragment android:id="@+id/Notes"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Notes"
+        android:label="Notes"
+        tools:layout="@layout/fragment_new_agreement_notes">
+
+
+        <action android:id="@+id/notes_to_booking"
+            app:destination="@+id/Booking"/>
+    </fragment>
+
+
+    <fragment android:id="@+id/Flight"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_FlightDetail"
+        android:label="Flight"
+        tools:layout="@layout/fragment_new_agreement_flightdetail">
+
+
+        <action android:id="@+id/flight_to_booking"
+            app:destination="@+id/Booking"/>
+    </fragment>
+
+    <fragment android:id="@+id/BillingInfo"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Billing"
+        android:label="BillingInfo"
+        tools:layout="@layout/fragment_new_agreement_billing_info">
+
+        <action android:id="@+id/billinginfo_to_billing_details"
+            app:destination="@+id/BillingDetail"/>
+
+        <action android:id="@+id/billinginfo_to_booking"
+            app:destination="@+id/Booking"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/BillingDetail"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Detail"
+        android:label="BillingDetail"
+        tools:layout="@layout/fragment_new_agreement_billing_detail">
+
+
+
+    </fragment>
+
+    <fragment android:id="@+id/Agreement_Confirmation"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Confirmation"
+        android:label="Agreement Confirmation"
+        tools:layout="@layout/fragment_new_agreement_confirmation">
+
+        <action android:id="@+id/Agreement_Confirmation_to_PaymentOffline"
+            app:destination="@+id/PaymentOffline"/>
+
+        <action android:id="@+id/Agreement_Confirmation_to_Payment"
+            app:destination="@+id/Payment"/>
+
+
+    </fragment>
+
+    <fragment android:id="@+id/Payment"
+        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Payment"
+        android:label="Agreement Payment"
+        tools:layout="@layout/fragment_new_agreement_payment">
+
+        <action android:id="@+id/payment_to_paymentsucess"
+            app:destination="@+id/PaymentSuccess"/>
+
+        <action android:id="@+id/payment_to_optionpayment"
+            app:destination="@+id/PaymentChangeOption"/>
+
+        <action android:id="@+id/payment_to_paymentoffline"
+            app:destination="@+id/PaymentOffline"/>
+
+        <action android:id="@+id/payment_to_select_card"
+            app:destination="@+id/CardsOnAccount"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/CardsOnAccount"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_CreditCards_List_For_User"
+        android:label="CardsOnAccount"
+        tools:layout="@layout/fragment_creditcards_list">
+    <action
+        android:id="@+id/action_CardsOnAccount_to_UpdateCreditCard"
+        app:destination="@id/UpdateCreditCard" />
+    <action
+        android:id="@+id/action_CardsOnAccount_to_AddCreditCard"
+        app:destination="@id/AddCreditCard" />
+    </fragment>
+
+
+    <fragment android:id="@+id/PaymentOffline"
+        android:name="com.abel.app.b2b.home.Fragment_Payment_Offline"
+        android:label="Payment Success"
+        tools:layout="@layout/fragment_payment_offline">
+
+        <action android:id="@+id/paymentoffline_to_paymentchangeoption"
+            app:destination="@+id/PaymentChangeOption"/>
+
+        <action android:id="@+id/paymentoffline_to_payment"
+            app:destination="@+id/Payment"/>
+
+        <action android:id="@+id/paymentoffline_to_paymentsucess"
+            app:destination="@+id/PaymentSuccess"/>
+    </fragment>
+
+
+    <fragment android:id="@+id/PaymentChangeOption"
+        android:name="com.abel.app.b2b.home.Fragment_Change_Payment_Option"
+        android:label="Payment Change Option"
+        tools:layout="@layout/fragment_change_payment_option">
+
+        <action android:id="@+id/paymentChangeOption_to_paymentsuccess"
+            app:destination="@+id/PaymentSuccess"/>
+
+        <action android:id="@+id/paymentChangeOption_to_PaymentOffline"
+            app:destination="@+id/PaymentOffline"/>
+
+        <action android:id="@+id/paymentChangeOption_to_Payment"
+            app:destination="@+id/Payment"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/PaymentSuccess"
+        android:name="com.abel.app.b2b.home.Fragment_Payment_Success"
+        android:label="Payment Success"
+        tools:layout="@layout/fragment_payment_success">
+
+
+
+    </fragment>
+-->
+
+
+   <!-- <include app:graph = "@navigation/nav_graph_user"/>-->
+<!--    <action android:id="@+id/testing"
+        app:destination="@+id/testingg"/>
+    <include
+        android:id="@+id/testingg"
+        app:graph = "@navigation/nav_graph_driver_registration"/>-->
+</navigation>

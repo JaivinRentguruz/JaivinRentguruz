@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="Pickupdrop"
+            type="com.abel.app.b2b.model.display.Pickupdrop" />
+    </data>
+
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/lightgreen"
+    android:padding="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="8"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/ic_pickup_location_circle" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/black" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_return_location_circle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="68">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/pickup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pickup"
+                        android:textColor="@color/pcolor"
+                        android:textSize="@dimen/heading1_font_size"
+                        android:theme="@style/texttheme" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txt_PickupLocationName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="7dp"
+                            android:text="@{Pickupdrop.pickuploc}"
+                            android:textColor="@color/pcolort"
+                            android:textSize="@dimen/txt_font_size"
+                            android:theme="@style/texttheme" />
+
+                        <TextView
+                            android:id="@+id/txt_Pickupdate1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="7dp"
+                            android:text="@{Pickupdrop.pickupdate}"
+                            app:_displayDate="@{Pickupdrop.pickupdate}"
+                            android:textColor="@color/pcolort1"
+                            android:textSize="@dimen/txt_font_size"
+                            android:theme="@style/texttheme" />
+
+                        <TextView
+                            android:id="@+id/txt_PICKUPTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+
+                            android:textColor="@color/themebackgroundtext"
+                            android:textSize="@dimen/txt_font_size"
+                            android:theme="@style/texttheme" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="4dp">
+
+                    <TextView
+                        android:id="@+id/drop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Return"
+                        android:textColor="@color/pcolor"
+                        android:textSize="@dimen/heading1_font_size"
+                        android:theme="@style/texttheme" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txt_returnLocationName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="7dp"
+                            android:text="@{Pickupdrop.droploc}"
+                            android:textColor="@color/pcolort"
+                            android:textSize="@dimen/txt_font_size"
+                            android:theme="@style/texttheme" />
+
+                        <TextView
+                            android:id="@+id/txt_REturnDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="7dp"
+                            android:text="@{Pickupdrop.dropdate}"
+                            app:_displayDate="@{Pickupdrop.dropdate}"
+                            android:textColor="@color/pcolort1"
+                            android:textSize="@dimen/txt_font_size"
+                            android:theme="@style/texttheme" />
+
+                        <TextView
+                            android:id="@+id/txt_REturnTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+
+                            android:textColor="@color/fontwhitebackground"
+                            android:textSize="@dimen/txt_font_size"
+                            android:theme="@style/texttheme" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="24">
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="3dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/carimage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/car_icon"
+                        app:_imageUrl="@{Pickupdrop.imagepath}"
+                        android:layout_margin="5dp"
+                        android:adjustViewBounds="true" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="3dp"
+                android:background="@color/red"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+
+                    android:text="Total Days"
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="@dimen/heading1_font_size"
+                    android:theme="@style/texttheme" />
+
+                <TextView
+                    android:id="@+id/Txt_Days"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="7dp"
+
+                    android:gravity="right"
+                    android:text="@{String.valueOf(Pickupdrop.noDays)}"
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="30dp"
+                    android:theme="@style/texttheme" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+
+</layout>
+
+<!--
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:background="@color/lightgreen"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="100">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:id="@+id/test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:paddingTop="@dimen/_1sdp"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:src="@drawable/ic_pickup_location_circle" />
+
+                    <View
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:background="@color/black" />
+
+                    <ImageView
+                        android:paddingTop="@dimen/_1sdp"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:src="@drawable/ic_return_location_circle" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/test2"
+                    android:layout_width="@dimen/_170sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@id/test">
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:id="@+id/txt_CheckOutLocName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_18sdp"
+                        android:hint=" "
+                        android:text="Pickup"
+                        android:textStyle="bold"
+                        android:textColor="@color/registerTextColor"
+                        android:textSize="@dimen/_14ssp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView android:theme="@style/texttheme"
+                            android:id="@+id/textView_PickupLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="7dp"
+
+                            android:text=""
+                            android:textColor="@color/background"
+                            android:textSize="@dimen/_11ssp"  />
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:id="@+id/textView_PickupLocationDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_14sdp"
+                        android:hint="18/12/2019"
+                        android:textColor="@color/textColorHint"
+                        android:textSize="@dimen/_11ssp" />
+
+                        <TextView android:theme="@style/texttheme"
+                            android:id="@+id/textView_PickupLocationTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_14sdp"
+                            android:layout_marginLeft="3dp"
+                            android:hint="12:00 Pm"
+                            android:textColor="@color/textColorHint"
+
+                            android:textSize="@dimen/_11ssp"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:id="@+id/checkinLocName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_marginTop="@dimen/_18sdp"
+                        android:hint=""
+                        android:text="Return"
+                        android:textStyle="bold"
+                        android:textColor="@color/registerTextColor"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView android:theme="@style/texttheme"
+                            android:id="@+id/textView_ReturnLocationName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="7dp"
+
+                            android:text=""
+                            android:textColor="@color/background"
+                            android:textSize="@dimen/_11ssp"  />
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:id="@+id/textView_ReturnLocationDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_14sdp"
+                        android:hint="18/12/2019, 12:00pm"
+                        android:textColor="@color/textColorHint"
+                        android:textSize="@dimen/_11ssp" />
+
+                        <TextView android:theme="@style/texttheme"
+                            android:id="@+id/textView_ReturnLocationTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/textColorHint"
+                            android:textSize="@dimen/_11ssp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_toRightOf="@id/test2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/car"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="@color/screen_bg_color"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/carimage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/day"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@color/screen_bg_color"
+                    android:backgroundTint="@color/green"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="3dp"
+                        android:background="@color/btn1"
+                        android:backgroundTint="@color/red"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:theme="@style/texttheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+
+                            android:gravity="center"
+                            android:text="Total Days"
+                            android:textColor="@color/themebackgroundtext"
+                            android:textSize="@dimen/heading1_font_size"/>
+
+                        <TextView
+                            android:theme="@style/texttheme"
+                            android:id="@+id/txt_TotalDay1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="7dp"
+
+                            android:gravity="right"
+                            android:text=" "
+                            android:textColor="@color/themebackgroundtext"
+                            android:textSize="30dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>-->

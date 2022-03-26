@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="CreditCard"
+            type="com.abel.app.b2b.model.CreditCardModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/creditcard_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintDimensionRatio="H,16:9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/curve_box_white_2"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/onlinepayment"
+                android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/LLDefaultCard"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="7dp"
+                android:gravity="top"
+                android:visibility="@{CreditCard.IsDefault ?  View.VISIBLE : View.INVISIBLE }">
+
+                <TextView
+                    android:id="@+id/txt_DefaultCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="start"
+                    android:text="Default"
+                    android:textColor="@color/screen_bg_color"
+                    android:theme="@style/texttheme" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/cardImage"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="-30dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/visa" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp"
+                android:gravity="bottom">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_30sdp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtCardNumber1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/editcard1"
+                    android:text="@={CreditCard.Last4DigitNumber}"
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="26dp"
+                    android:gravity="start"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="@dimen/_7sdp"
+                    android:singleLine="true"
+                    android:hint="01234567890000007"
+                    android:theme="@style/texttheme"/>
+
+                <TextView
+                    android:id="@+id/editcard1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="7dp"
+                    android:gravity="center_vertical"
+                    android:text="Edit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="@dimen/_14ssp"
+
+                    android:theme="@style/texttheme" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_CardName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="@={CreditCard.NameOn}"
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="23dp"
+                    android:hint="123"
+                    android:textColorHint="@color/white"
+                    android:theme="@style/texttheme" />
+
+                <TextView
+                    android:id="@+id/txt_ExpiryDate1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="3"
+                    android:gravity="right"
+                    android:hint="111"
+                    android:text="@={CreditCard._expiry}"
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/themebackgroundtext"
+                    android:textSize="23dp"
+                    android:theme="@style/texttheme" />
+            </RelativeLayout>
+            </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

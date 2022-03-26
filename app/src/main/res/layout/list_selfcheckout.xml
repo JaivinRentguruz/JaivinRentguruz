@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/chk_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:button="@drawable/sharp_checkbox_drawable"
+            android:buttonTint="@color/checkGreen"/>
+
+        <CheckBox
+            android:id="@+id/chk_green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:button="@drawable/sharp_checkbox_drawable"
+            android:buttonTint="@color/cheeckRed"/>
+
+        <CheckBox
+            android:id="@+id/chk_yellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:button="@drawable/sharp_checkbox_drawable"
+            android:buttonTint="@color/checkYellow"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txt_chkOptionName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Snow Brush"
+            android:textColor="@color/txtBlack"
+
+            android:textSize="12dp"
+            android:theme="@style/texttheme" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="CreditCardModel"
+            type="com.abel.app.b2b.model.CreditCardModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/selected_dot"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editCreditCard"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/header"
+                    layout="@layout/row_header"/>
+                <!-- <RelativeLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="40dp"
+                     android:layout_marginBottom="10dp">
+
+                     <LinearLayout
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:gravity="center_vertical"
+                         android:orientation="horizontal">
+
+                         <ImageView
+                             android:id="@+id/back_updatecreditcard"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_marginLeft="5dp"
+                             android:paddingLeft="5dp"
+                             android:paddingRight="5dp"
+                             android:src="@drawable/ic_chevron_left" />
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_marginLeft="10dp"
+
+                             android:text="update Credit card"
+                             android:textAllCaps="false"
+                             android:textColor="@color/themebackgroundtext"
+                             android:textSize="17dp" />
+
+                     </LinearLayout>
+
+                     <TextView
+                         android:id="@+id/discardCC"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+
+                         android:text="disCARD"
+                         android:textColor="@color/themebackgroundtext"
+                         android:textSize="14dp"
+                         android:textAllCaps="false"
+                         android:layout_alignParentRight="true"
+                         android:layout_centerVertical="true"
+                         android:layout_marginRight="15dp"/>
+
+                 </RelativeLayout>-->
+                <!--  <LinearLayout
+                      android:background="@drawable/creditcardbg"
+                      android:layout_margin="15dp"
+                      android:orientation="vertical"
+                      android:gravity="bottom"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent">
+                      <LinearLayout
+                          android:orientation="horizontal"
+                          android:layout_marginBottom="20dp"
+                          android:gravity="center"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent">
+                          <TextView
+                              android:id="@+id/txt_CardNumber"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/themebackgroundtext"
+                              android:textSize="26dp"
+
+                              android:text=" "/>
+                      </LinearLayout>
+                      <LinearLayout
+                          android:orientation="horizontal"
+                          android:layout_marginBottom="10dp"
+                          android:weightSum="10"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent">
+                          <TextView
+                              android:id="@+id/txt_CardholderName"
+                              android:layout_width="0dp"
+                              android:layout_weight="7"
+                              android:layout_marginLeft="15dp"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/selected_dot"
+                              android:textSize="23dp"
+
+                              android:text=" "/>
+                          <TextView
+                              android:id="@+id/txt_cardExpiryDate"
+                              android:layout_width="0dp"
+                              android:layout_weight="3"
+                              android:layout_marginRight="10dp"
+                              android:gravity="right"
+                              android:layout_height="wrap_content"
+
+                              android:textSize="23dp"
+                              android:textColor="@color/themebackgroundtext"
+                              android:text=""/>
+                      </LinearLayout>
+                  </LinearLayout>-->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_marginTop="-15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:background="@drawable/curve_box_white_2"
+                        android:layout_margin="15dp"
+                        android:orientation="vertical"
+                        app:layout_constraintDimensionRatio="H,16:9"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:gravity="bottom"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/onlinepayment"
+                            android:gravity="bottom"
+                            android:orientation="vertical">
+                            <!--     <ImageView
+                                     android:id="@+id/cardImage"
+                                     android:layout_width="40dp"
+                                     android:layout_height="40dp"
+                                     android:layout_gravity="right"
+                                     android:layout_marginTop="15dp"
+                                     android:layout_marginEnd="17dp"
+                                     android:src="@drawable/visa" />-->
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="20dp"
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/txt_CardNumber"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/themebackgroundtext"
+                                    android:textSize="26dp"
+
+                                    android:text=" "/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="10dp"
+                                android:weightSum="10"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/txt_CardholderName"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="7"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/themebackgroundtext"
+                                    android:textSize="23dp"
+
+                                    android:text=" "/>
+                                <TextView
+                                    android:id="@+id/txt_cardExpiryDate"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="3"
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="right"
+                                    android:layout_height="wrap_content"
+
+                                    android:textSize="23dp"
+                                    android:textColor="@color/themebackgroundtext"
+                                    android:text=""/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+                        <ImageView
+                            android:id="@+id/cardImage"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/visa"
+
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_20sdp"/>
+                    </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/editCreditCard"
+                android:paddingTop="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_above="@+id/lblSaveCard"
+                android:background="@drawable/curve_box">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/layout1"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:text="@string/card_number"
+                            style="@style/edittextheader"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="10">
+
+                            <EditText
+                                android:id="@+id/edt_Card_No"
+                                android:layout_width="0dp"
+                                style="@style/edittext"
+                                android:layout_weight="10"
+                                android:inputType="number"
+                                android:singleLine="true"
+                                android:hint="**** **** **** 7878"
+                                android:maxLength="19"
+                                android:text="@{CreditCardModel.Number}"/>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:visibility="gone"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/ScanCard"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/scanimg" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="2"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                style="@style/edittextheader"
+                                android:layout_weight="1"
+                                android:gravity="left"
+                                android:text="@string/expiry_date"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                style="@style/edittextheader"
+                                android:layout_weight="1"
+                                android:gravity="left"
+                                android:layout_marginLeft="17dp"
+                                android:text="@string/cvv_code"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="2"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/edt_ExpiryDate"
+                                android:layout_width="0dp"
+                                style="@style/datetext"
+                                android:layout_weight="1"
+                                android:layout_marginRight="10dp"
+                                android:hint="MM/YY"
+                                android:text="@{String.valueOf(CreditCardModel._expiry)}"/>
+
+                            <EditText
+                                android:id="@+id/edt_CVV"
+                                android:layout_width="0dp"
+                                style="@style/edittext"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:maxLength="4"
+                                android:hint="****"
+                                android:text="@{String.valueOf(CreditCardModel.CVVCode)}"
+                                android:inputType="numberPassword" />
+
+                        </LinearLayout>
+                        <TextView
+                            style="@style/edittextheader"
+                            android:text="@string/name_on_the_card"/>
+
+                        <EditText
+                            android:id="@+id/edt_NameofCard"
+                            style="@style/edittext"
+                            android:hint="@string/full_name"
+                            android:text="@{CreditCardModel.NameOn}"/>
+
+                        <TextView
+                            style="@style/edittextheader"
+                            android:text="@string/country" />
+
+
+                        <Spinner
+                            android:id="@+id/sp_CountryListForCreditcard"
+                            style="@style/spinner"
+                            android:theme="@style/loginedit"
+                            android:entries="@array/items_class_countary">
+                        </Spinner>
+
+                        <TextView
+                            style="@style/edittextheader"
+                            android:text="@string/street_no_amp_name"/>
+
+                        <EditText
+                            android:id="@+id/edt_streetNumandName"
+                            android:hint="@string/enter_street"
+                            style="@style/edittext"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                style="@style/edittextheader"
+                                android:layout_weight="1"
+                                android:gravity="left"
+                                android:text="@string/unit" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                style="@style/edittextheader"
+                                android:layout_marginLeft="17dp"
+                                android:layout_weight="1"
+                                android:gravity="left"
+                                android:text="@string/pin_zip_code" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <EditText
+                                android:id="@+id/edtxtUnitNum"
+                                android:layout_width="0dp"
+                                style="@style/edittext"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:hint="@string/enterunit" />
+
+                            <EditText
+                                android:id="@+id/edtPincode"
+                                android:layout_width="0dp"
+                                style="@style/edittext"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:hint="@string/enterpincode"/>
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            style="@style/edittextheader"
+                            android:text="@string/city" />
+
+                        <EditText
+                            android:id="@+id/EdtextCity"
+                            style="@style/edittext"
+                            android:hint="@string/enter_city"/>
+
+                        <TextView
+                            style="@style/edittextheader"
+                            android:text="@string/state_province" />
+
+                        <Spinner
+                            android:id="@+id/Spinner_State"
+                            style="@style/spinner"
+                            android:theme="@style/loginedit"
+                            android:entries="@array/items_class"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:weightSum="10"
+                        android:layout_marginLeft="19dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <CheckBox
+                            android:id="@+id/chk_DeleteCard"
+                            android:theme="@style/SwitchTheme"
+                            android:text="Delete This Card"
+                            android:textColor="@color/regtcolor"
+                            android:layout_width="0dp"
+                            android:layout_weight="5"
+                            android:textSize="12dp"
+                            android:layout_height="wrap_content">
+                        </CheckBox>
+                        <CheckBox
+                            android:id="@+id/chk_DefaultCard"
+                            android:theme="@style/SwitchTheme"
+                            android:text="Default Card"
+                            android:textColor="@color/regtcolor"
+                            android:layout_width="0dp"
+                            android:textSize="12dp"
+                            android:layout_weight="5"
+                            android:layout_marginLeft="10dp"
+                            android:layout_height="wrap_content">
+                        </CheckBox>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+            <LinearLayout
+                android:id="@+id/lblSaveCard"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_SaveCard"
+                    style="@style/fullbtn"
+                    android:text="@string/save_amp_continue"/>
+
+               <!-- <TextView
+                    android:id="@+id/txt_SaveCard"
+                    android:layout_gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="14dp"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save_amp_continue"
+                    style="@style/btntext"
+                    android:textColor="@color/themebackgroundtext"/>-->
+
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

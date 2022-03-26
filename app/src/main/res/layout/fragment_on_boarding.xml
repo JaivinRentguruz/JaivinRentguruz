@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:context=".flexiicar.login.OnBoarding$PlaceholderFragment">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/section_img"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:visibility="visible"
+                    android:adjustViewBounds="true"
+                    android:layout_centerInParent="true"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/section_img"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/header"
+                        android:theme="@style/texttheme"
+                        style="@style/TextAppearance.AppCompat.Headline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text=""
+                        android:textColor="@color/defaulttextcolor"
+                        android:layout_below="@id/section_img"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="@dimen/_14ssp"/>
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:id="@+id/section_label"
+                        style="@style/TextAppearance.AppCompat.Headline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:justificationMode="inter_word"
+                        android:textColor="@color/defaulttextcolor"
+                        android:layout_below="@id/section_img"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:textSize="@dimen/_11ssp"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </FrameLayout>
+
+</FrameLayout>
