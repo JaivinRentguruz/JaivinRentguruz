@@ -164,13 +164,13 @@
 
 
                                 <ImageView
+                                    android:id="@+id/icon"
                                     android:layout_width="@dimen/_60sdp"
                                     android:layout_height="@dimen/_60sdp"
                                     android:layout_marginVertical="@dimen/_10sdp"
                                     android:layout_marginHorizontal="@dimen/_10sdp"
                                     android:layout_alignParentTop="true"
-                                    android:adjustViewBounds="true"
-                                    android:src="@drawable/onboard_icon" />
+                                    android:adjustViewBounds="true"/>
 
                                 <com.github.gcacace.signaturepad.views.SignaturePad
                                     android:id="@+id/signaturePad"
@@ -199,6 +199,7 @@
                                 android:theme="@style/texttheme" />
 
                             <TextView
+                                android:id="@+id/termsconditions"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"

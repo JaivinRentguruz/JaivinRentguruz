@@ -51,7 +51,7 @@ public class CustomBindingAdapter {
         /*DecimalFormat df = new DecimalFormat("#.00");
         String _total = df.format(amt);
         textView.setText(_total);*/
-        textView.setText("USD $ "  + Helper.getAmtount(amt));
+        textView.setText(Helper.getAmtount(amt, false));
     }
 
     @BindingAdapter({"bind:_displayDate"})
@@ -71,7 +71,7 @@ public class CustomBindingAdapter {
         String d2 = Helper.getTimeDisplay(DateType.fulldate,date);
         textView.setText(d1 + " , " + d2);*/
         //textView.setText( Helper.getAmtount(amt, false) + " / Per Day");
-        textView.setText( Helper.getAmtount(amt, false) + " Per Day");
+        textView.setText( Helper.getAmtount(amt, false) + " / Day");
     }
 
     @BindingAdapter({"bind:_Diposits"})
@@ -82,7 +82,7 @@ public class CustomBindingAdapter {
         String d2 = Helper.getTimeDisplay(DateType.fulldate,date);
         textView.setText(d1 + " , " + d2);*/
         //textView.setText( Helper.getAmtount(amt, false) + " / Deposit");
-        textView.setText("("+ Helper.getAmtount(amt, false) + " " + UserData.loginResponse.CompanyLabel.Deposit + ")");
+        textView.setText(" "  +Helper.getAmtount(amt, false) + " " + UserData.loginResponse.CompanyLabel.Deposit);
     }
 
     @BindingAdapter({"bind:_date"})
@@ -237,9 +237,10 @@ public class CustomBindingAdapter {
     public static void kilometers(TextView textView, String data){
         try {
             if (data.matches("0")){
-                textView.setText("Unlimited KMS Included");
+                textView.setText("Unlimited "+ Helper.fueltype  + " Included");
             } else {
-                textView.setText(Helper.fueltype +" " + data);
+              //  textView.setText(Helper.fueltype +" " + data);
+                textView.setText(data + " " + Helper.fueltype  + " Included");
             }
 
         } catch (Exception e){

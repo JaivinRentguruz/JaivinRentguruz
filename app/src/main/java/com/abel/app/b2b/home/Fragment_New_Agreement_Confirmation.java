@@ -84,7 +84,7 @@ public class Fragment_New_Agreement_Confirmation extends BaseFragment {
         binding.header.screenHeader.setText(companyLabel.Reservation + " " + getResources().getString(R.string.confirmation));
         binding.customer.selectcustomer.setOnClickListener(this);
         reservationSummarry = new ReservationSummarry();
-        binding.btmcharges.currency.setText(Helper.currencySymbol);
+        //binding.btmcharges.currency.setText(Helper.currencySymbol);
 /*        apiService = new ApiService(getTaxtDetails, RequestType.GET,
                 RESERVATIONGETBYID+"?id="+iid , BASE_URL_LOGIN, header, new JSONObject());*/
         binding.btmcharges.fueltype.setText(Helper.fueltype);
@@ -203,7 +203,7 @@ public class Fragment_New_Agreement_Confirmation extends BaseFragment {
                         bundle.putSerializable("charges", charges);
                         SummaryDisplay summaryDisplay = new SummaryDisplay(getActivity());
                         //summaryDisplay.getDatafrom(charges,)
-                        binding.btmcharges.currency.setVisibility(View.GONE);
+                        binding.btmcharges.fcurrency.setVisibility(View.GONE);
                         binding.btmcharges.txtMileage.setText(summaryDisplay.getMileage(charges));
                         binding.btmcharges.textviewTotalAmount.setText(Helper.getAmtount(Double.valueOf(summaryDisplay.getDatafrom(charges, 100)), false));
                         for (int i = 0; i <charges.length ; i++) {

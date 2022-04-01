@@ -943,12 +943,26 @@ public class Fragment_Selected_Location extends BaseFragment
             //LocationList returnlocation = new LocationList();
             location = locationListsData[i];
             returnlocation = locationListsData[i];
+            //UserData.loginResponse.User.addressesModel.Latitude ==
 
-                  if (location.Id == reservationBusinessSource.DefaultLocationId) {
+            //Double   Helper.getAmtount()
+            if (UserData.loginResponse.User.addressesModel!=null){
+                if (UserData.loginResponse.User.addressesModel.AddressFor == location.Id){
+                    binding.pickuploc.setLocation(location);
+                    binding.droploc.setLocation(returnlocation);
+                    break;
+                }
+            } else if(location.Id == reservationBusinessSource.DefaultLocationId)   {
                 binding.pickuploc.setLocation(location);
                 binding.droploc.setLocation(returnlocation);
                 break;
-                 }
+            }
+
+         /*   if (location.Id == reservationBusinessSource.DefaultLocationId) {
+                binding.pickuploc.setLocation(location);
+                binding.droploc.setLocation(returnlocation);
+                break;
+                 }*/
             }
         } else {
             binding.pickuploc.setLocation(location);

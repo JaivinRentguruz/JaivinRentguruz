@@ -6,10 +6,18 @@
     android:background="@color/white"
     tools:context=".SplashScreen">
 
+    <ImageView
+        android:id="@+id/splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"/>
+
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/headertopmargin">
+
+
 
         <RelativeLayout
             android:id="@+id/fullscreen_content_controls"
@@ -35,6 +43,8 @@
                 android:src="@drawable/small_logo"
                 android:adjustViewBounds="true"/>-->
 
+
+
             <ImageView
                 android:id="@+id/logo"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -47,10 +57,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:adjustViewBounds="true"
-                android:src="@drawable/spalshcarimg" />
+                android:adjustViewBounds="true" />
 
         </RelativeLayout>
+
+
     </FrameLayout>
+
+
+
 
 </FrameLayout>

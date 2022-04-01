@@ -36,6 +36,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.abel.app.b2b.adapters.CustomBindingAdapter;
 import com.abel.app.b2b.adapters.SummaryDisplay;
 import com.abel.app.b2b.base.BaseFragment;
+import com.abel.app.b2b.databinding.FragmentSelfCheckinBinding;
+import com.abel.app.b2b.model.base.UserData;
+import com.abel.app.b2b.model.response.CustomerProfile;
 import com.androidnetworking.AndroidNetworking;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -94,8 +97,10 @@ import java.util.Locale;
 import static android.content.Context.MODE_PRIVATE;
 import static com.abel.app.b2b.apicall.ApiEndPoint.AVAILABLELOCATION;
 import static com.abel.app.b2b.apicall.ApiEndPoint.BASE_URL_CHECKIN;
+import static com.abel.app.b2b.apicall.ApiEndPoint.BASE_URL_CUSTOMER;
 import static com.abel.app.b2b.apicall.ApiEndPoint.BASE_URL_LOGIN;
 import static com.abel.app.b2b.apicall.ApiEndPoint.CHECKOUTODMETER;
+import static com.abel.app.b2b.apicall.ApiEndPoint.GETCUSTOMER;
 import static com.abel.app.b2b.apicall.ApiEndPoint.GETSELFCHECKIN;
 import static com.abel.app.b2b.apicall.ApiEndPoint.SUMMARYCHARGE;
 import static com.abel.app.b2b.apicall.ApiEndPoint.TIMECALCULATE;
@@ -139,6 +144,8 @@ public class Fragment_Self_Check_In extends BaseFragment
     //String TAG = "Fragment_Self_Check_In";
     ReservationSummaryModels[] charges;
     RelativeLayout rsummarry;
+    FragmentSelfCheckinBinding binding;
+    SummaryDisplay summaryDisplay;
     public static void initImageLoader(Context context)
     {
         ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(context);
@@ -163,7 +170,8 @@ public class Fragment_Self_Check_In extends BaseFragment
         loginRes = new LoginRes(getContext());*/
         dialog = new CustomeDialog(getContext());
         reservationCheckout = new ReservationCheckout();
-        return inflater.inflate(R.layout.fragment_self_checkin, container, false);
+        binding = FragmentSelfCheckinBinding.inflate(inflater,container,false);
+        return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState)
@@ -176,12 +184,15 @@ public class Fragment_Self_Check_In extends BaseFragment
             reservations = new Reservation();
             SharedPreferences sp = getActivity().getSharedPreferences("FlexiiCar", MODE_PRIVATE);
             serverpath = sp.getString("serverPath", "");
-
+            summaryDisplay = new SummaryDisplay(getActivity());
            // ImageList = new JSONArray(getArguments().getString("ImageList"));
            // AgreementsBundle = getArguments().getBundle("AgreementsBundle");
            // reservationSummarry = (ReservationSummarry) getArguments().getSerializable("reservation");
             reservations = (Reservation) getArguments().getSerializable("reservation");
-
+            bundle.putInt("reservationpmt", 1);
+            binding.header.screenHeader.setText(companyLabel.CheckIn);
+            binding.header.back.setOnClickListener(this);
+            binding.header.discard.setOnClickListener(this);
             calculate = view.findViewById(R.id.calculate);
             lblAccept=view.findViewById(R.id.lblAccept);
             BackArrow = view.findViewById(R.id.back);
@@ -221,6 +232,8 @@ public class Fragment_Self_Check_In extends BaseFragment
             txtcheck_in_Location_Name.setText(reservations.DropLocationName);
             txtvehicleName.setText(reservations.VehicleName);
             reservationSummarry  = Fragment_Summary_Of_Charges_For_Agreements.reservationSummarry;
+            bundle.putSerializable("reservationSum",reservationSummarry);
+            bundle.putSerializable("reservation",reservations);
             txtoriginalCheckInDate.setText(DateConvert.DateConverter(DateType.fulldate,reservations.CheckOutDate,DateType.datetime));
             txtactualReturnDate.setText(DateConvert.DateConverter(DateType.fulldate,reservations.CheckInDate,DateType.datetime));
             enablechangeEdit(txtoriginalCheckInDate);
@@ -256,98 +269,7 @@ public class Fragment_Self_Check_In extends BaseFragment
                 }
             });
 
-            lblAccept.setOnClickListener(new View.OnClickListener()
-            {
-                @Override
-                public void onClick(View v)
-                {
-                    /*bundle.putSerializable("reservation", reservations);
-                    NavHostFragment.findNavController(Fragment_Self_Check_In.this)
-                            .navigate(R.id.action_Self_check_In_to_SummaryOfChargeForSelfCheckIn,bundle);*/
 
-                 /*   try {
-                        JSONObject bodyParam = new JSONObject();
-                        try
-                        {
-                            for(int i=0;i<ImageList.length();i++)
-                            {
-                                try
-                                {
-                                    System.out.println(i);
-                                    JSONObject imgObj = ImageList.getJSONObject(i);
-                                    String imgPath = imgObj.getString("fileBase64");
-                                    try {
-                                        File imgFile = new File(imgPath);
-
-                                            Uri selectedImage = Uri.fromFile(imgFile);
-                                            System.out.println(selectedImage);
-
-                                            Bitmap bitmap = getScaledBitmap(selectedImage, 400, 400);
-                                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
-                                            byte[] image = stream.toByteArray();
-                                            String img_str_base64 = Base64.encodeToString(image, Base64.NO_WRAP);
-
-                                            imgObj.put("fileBase64", img_str_base64);
-                                      //  ImageList.put(imgObj);
-                                    }catch (FileNotFoundException e)
-                                    {
-                                        e.printStackTrace();
-
-                                    } catch (IOException e)
-                                    {
-                                        e.printStackTrace();
-                                    }
-                                }
-                                catch (Exception e)
-                                {
-                                    e.printStackTrace();
-                                }
-                            }
-                            bodyParam.accumulate("AgreementId",AgreementsBundle.getInt("agreement_ID"));
-                            bodyParam.accumulate("VehicleId",AgreementsBundle.getInt("vehicle_ID"));
-                            bodyParam.accumulate("odometerOut",Integer.parseInt(txtOdometerOut.getText().toString()));
-                            bodyParam.accumulate("odometerIn",Integer.parseInt(txt_OdoMeterIn.getText().toString()));
-                            bodyParam.accumulate("gasTank",Integer.parseInt(txtGasTankOut.getText().toString().substring(0,txtGasTankOut.getText().length()-1)));
-                            bodyParam.accumulate("gasTankIn",Integer.parseInt(txtGasTankIn.getText().toString().substring(0,txtGasTankIn.getText().length()-1)));
-                            bodyParam.accumulate("totalMilesAllowed",Double.parseDouble(txttotalMilesAllowed.getText().toString()));
-                            bodyParam.accumulate("extraMilesCharge",Double.parseDouble(txtExtraMileageCharge.getText().toString()));
-                            bodyParam.accumulate("totalGasCharge",Double.parseDouble(txtTotalGasCharge.getText().toString().substring(0,txtTotalGasCharge.getText().length()-3)));
-                            bodyParam.accumulate("extraDayCharge",Double.parseDouble(txtExtraDayRentalCharge.getText().toString()));
-
-
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                            Date date = dateFormat.parse(txtoriginalCheckInDate.getText().toString());
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",Locale.US);
-                            originalCheckInDate = sdf.format(date);
-
-                            bodyParam.accumulate("originalCheckInDate",originalCheckInDate);
-
-                            SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd/MM/yyyy");
-                            Date date1 = dateFormat1.parse(txtactualReturnDate.getText().toString());
-                            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd",Locale.US);
-                            actualReturnDate = sdf1.format(date1);
-
-                            bodyParam.accumulate("ActualReturnDate",actualReturnDate);
-                            bodyParam.accumulate("originalCheckInLocationId",originalCheckInLocationId);
-                            bodyParam.accumulate("actualReturnLocationId",actualReturnLocationId);
-
-                            bodyParam.accumulate("ImageList", ImageList);
-                            System.out.println("bodyParam"+bodyParam);
-                        }
-                        catch (JSONException e)
-                        {
-                            e.printStackTrace();
-                        }
-                        ApiService ApiService = new ApiService(UpdatecheckIn, RequestType.POST,
-                                UPDATESELFCHECKIN, BASE_URL_CHECKIN, new HashMap<String, String>(), bodyParam);
-                    }
-                    catch (Exception e)
-                    {
-                        e.printStackTrace();
-                    }*/
-                }
-            });
         /*      String bodyParam = "";
 
             try
@@ -463,6 +385,152 @@ public class Fragment_Self_Check_In extends BaseFragment
             }
         });
 
+        lblAccept.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                bundle.putSerializable("reservation", reservations);
+                   /* NavHostFragment.findNavController(Fragment_Self_Check_In.this)
+                            .navigate(R.id.action_Self_check_In_to_SummaryOfChargeForSelfCheckIn,bundle);*/
+                String  bodyParam = "?id=" + reservations.CustomerId + "&isActive=true"+"&"+"IsWithSummary=true";
+
+                new ApiService(new OnResponseListener() {
+                    @Override
+                    public void onSuccess(String response, HashMap<String, String> headers) {
+                        handler.post(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                try {
+                                    System.out.println("Success");
+                                    System.out.println(response);
+
+                                    JSONObject responseJSON = new JSONObject(response);
+                                    Boolean status = responseJSON.getBoolean("Status");
+
+                                    if (status)
+                                    {
+                                        try
+                                        {
+                                            // JSONObject resultSet = responseJSON.getJSONObject("resultSet");
+                                            final JSONObject customerProfile= responseJSON.getJSONObject("Data");
+                                            loginRes.storedata("CustomerProfile", customerProfile.toString());
+                                            UserData.UserDetail = customerProfile.toString();
+                                            CustomerProfile customerProfile1 = new CustomerProfile();
+                                            customerProfile1 =  loginRes.callFriend("CustomerProfile", CustomerProfile.class);
+                                            UserData.customerProfile = customerProfile1;
+                                            bundle.putSerializable("customerDetail",customerProfile1);
+                                            NavHostFragment.findNavController(Fragment_Self_Check_In.this)
+                                                    .navigate(R.id.action_Self_check_In_to_Payment,bundle);
+
+                                        } catch (Exception e){
+                                            e.printStackTrace();
+                                        }
+
+
+
+                                    }
+                                }
+                                catch (Exception e)
+                                {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(String error) {
+
+                    }
+                }, RequestType.GET, GETCUSTOMER, BASE_URL_CUSTOMER, header, bodyParam);
+
+
+                 /*   try {
+                        JSONObject bodyParam = new JSONObject();
+                        try
+                        {
+                            for(int i=0;i<ImageList.length();i++)
+                            {
+                                try
+                                {
+                                    System.out.println(i);
+                                    JSONObject imgObj = ImageList.getJSONObject(i);
+                                    String imgPath = imgObj.getString("fileBase64");
+                                    try {
+                                        File imgFile = new File(imgPath);
+
+                                            Uri selectedImage = Uri.fromFile(imgFile);
+                                            System.out.println(selectedImage);
+
+                                            Bitmap bitmap = getScaledBitmap(selectedImage, 400, 400);
+                                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+                                            byte[] image = stream.toByteArray();
+                                            String img_str_base64 = Base64.encodeToString(image, Base64.NO_WRAP);
+
+                                            imgObj.put("fileBase64", img_str_base64);
+                                      //  ImageList.put(imgObj);
+                                    }catch (FileNotFoundException e)
+                                    {
+                                        e.printStackTrace();
+
+                                    } catch (IOException e)
+                                    {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                catch (Exception e)
+                                {
+                                    e.printStackTrace();
+                                }
+                            }
+                            bodyParam.accumulate("AgreementId",AgreementsBundle.getInt("agreement_ID"));
+                            bodyParam.accumulate("VehicleId",AgreementsBundle.getInt("vehicle_ID"));
+                            bodyParam.accumulate("odometerOut",Integer.parseInt(txtOdometerOut.getText().toString()));
+                            bodyParam.accumulate("odometerIn",Integer.parseInt(txt_OdoMeterIn.getText().toString()));
+                            bodyParam.accumulate("gasTank",Integer.parseInt(txtGasTankOut.getText().toString().substring(0,txtGasTankOut.getText().length()-1)));
+                            bodyParam.accumulate("gasTankIn",Integer.parseInt(txtGasTankIn.getText().toString().substring(0,txtGasTankIn.getText().length()-1)));
+                            bodyParam.accumulate("totalMilesAllowed",Double.parseDouble(txttotalMilesAllowed.getText().toString()));
+                            bodyParam.accumulate("extraMilesCharge",Double.parseDouble(txtExtraMileageCharge.getText().toString()));
+                            bodyParam.accumulate("totalGasCharge",Double.parseDouble(txtTotalGasCharge.getText().toString().substring(0,txtTotalGasCharge.getText().length()-3)));
+                            bodyParam.accumulate("extraDayCharge",Double.parseDouble(txtExtraDayRentalCharge.getText().toString()));
+
+
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                            Date date = dateFormat.parse(txtoriginalCheckInDate.getText().toString());
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",Locale.US);
+                            originalCheckInDate = sdf.format(date);
+
+                            bodyParam.accumulate("originalCheckInDate",originalCheckInDate);
+
+                            SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd/MM/yyyy");
+                            Date date1 = dateFormat1.parse(txtactualReturnDate.getText().toString());
+                            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd",Locale.US);
+                            actualReturnDate = sdf1.format(date1);
+
+                            bodyParam.accumulate("ActualReturnDate",actualReturnDate);
+                            bodyParam.accumulate("originalCheckInLocationId",originalCheckInLocationId);
+                            bodyParam.accumulate("actualReturnLocationId",actualReturnLocationId);
+
+                            bodyParam.accumulate("ImageList", ImageList);
+                            System.out.println("bodyParam"+bodyParam);
+                        }
+                        catch (JSONException e)
+                        {
+                            e.printStackTrace();
+                        }
+                        ApiService ApiService = new ApiService(UpdatecheckIn, RequestType.POST,
+                                UPDATESELFCHECKIN, BASE_URL_CHECKIN, new HashMap<String, String>(), bodyParam);
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }*/
+            }
+        });
     }
 
     @Override
@@ -819,8 +887,10 @@ public class Fragment_Self_Check_In extends BaseFragment
                             } catch (NullPointerException e){
                                 e.printStackTrace();
                             }
-                            SummaryDisplay summaryDisplay = new SummaryDisplay(getActivity());
+
                             summaryDisplay.getB2BSummarry(bundle,charges,rsummarry);
+                            Log.e(TAG, "run: " +  summaryDisplay.getDatafrom(charges,100) );
+                            bundle.putString("netrate",   summaryDisplay.getDatafrom(charges,100));
 
                             /*for (int i = 0; i <charges.length ; i++){
                                 RelativeLayout.LayoutParams subparams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -930,6 +1000,12 @@ public class Fragment_Self_Check_In extends BaseFragment
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()){
+            case R.id.discard:
+            case R.id.back:
+                NavHostFragment.findNavController(Fragment_Self_Check_In.this)
+                        .popBackStack();
+                break;
+        }
     }
 }

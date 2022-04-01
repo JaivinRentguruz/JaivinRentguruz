@@ -1090,6 +1090,160 @@
         <LinearLayout
             android:id="@+id/bottom_line"
             android:layout_width="match_parent"
+            android:layout_height="@dimen/bottommenuheight"
+            android:gravity="center_vertical"
+            android:background="@color/bottommenucolor"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:weightSum="20">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:layout_weight="5"
+                    android:background="@drawable/rectangle_curve_yellow"
+                    android:backgroundTint="@color/black"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/llCall"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:padding="9dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_call_icon_small" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_4sdp"
+                            android:text="Call"
+                            android:textAllCaps="false"
+                            android:textColor="@color/themebackgroundtext"
+                            android:textSize="14dp"
+                            android:theme="@style/texttheme" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/rectangle_curve_pink1"
+                    android:backgroundTint="@color/black"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/llEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:padding="9dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_mail_icon"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="@string/email"
+                            android:textAllCaps="false"
+                            style="@style/btntext"
+                            android:textSize="14dp"
+                            android:theme="@style/texttheme" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/ic_rectangle_darkblue"
+                    android:backgroundTint="@color/black"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/llText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:padding="9dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_image_12"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="Text"
+                            android:textAllCaps="false"
+                            style="@style/btntext"
+                            android:textSize="14dp"
+                            android:theme="@style/texttheme" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/ic_rectangle_darkblue"
+                    android:backgroundTint="@color/black"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:padding="9dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_image_12" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="Chat"
+                            android:textAllCaps="false"
+                            android:textColor="@color/themebackgroundtext"
+                            android:textSize="14dp"
+                            android:theme="@style/texttheme" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+       <!-- <LinearLayout
+            android:id="@+id/bottom_line"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ECE8E8"
             android:layout_alignParentBottom="true">
@@ -1243,7 +1397,7 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+        </LinearLayout>-->
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

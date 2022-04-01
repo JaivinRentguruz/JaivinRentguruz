@@ -51,4 +51,6 @@
     <dimen name="logow">@dimen/_150sdp</dimen>
     <dimen name="logoh">@dimen/_75sdp</dimen>
 
+    <dimen name="marginview">10dp</dimen>
+
 </resources>

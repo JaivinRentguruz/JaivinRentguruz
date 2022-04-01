@@ -132,7 +132,8 @@ public class Fragment_Self_Check_out extends BaseFragment //implements View.OnCl
             bundle.putInt("length", 10);
             bundle.putInt("temp",1);
             reservationSummarry = (ReservationSummarry) getArguments().getSerializable("resrvation");
-
+            bundle.putSerializable("resrvation",getArguments().getSerializable("resrvation"));
+            bundle.putSerializable("reservation",getArguments().getSerializable("reservation"));
             //bundle.putSerializable("resrvation", reservationSummarry);
             getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
             AgreementsBundle = getArguments().getBundle("AgreementsBundle");
@@ -141,6 +142,7 @@ public class Fragment_Self_Check_out extends BaseFragment //implements View.OnCl
             if (reservationSummarry.ReservationVehicleModel.VehicleTypeId == 0 ){
                reservationSummarry =  Fragment_Summary_Of_Charges_For_Agreements.reservationSummarry;
             }
+            bundle.putSerializable("resrvation",reservationSummarry);
             Log.e(TAG, "onViewCreated: " + reservationSummarry.ReservationVehicleModel.VehicleTypeId + " " +  reservationSummarry.ReservationVehicleModel.VehicleId);
             id = getArguments().getInt("Id");
             reservationCheckout.ReservationId = id;

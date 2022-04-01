@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="label"
+            type="com.abel.app.b2b.model.response.CompanyLabel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottom"
+            android:orientation="vertical">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/row_header"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:background="@drawable/curve_box"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/screenName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="15dp"
+                    android:text=""
+                    android:textColor="@color/fontwhitebackground"
+                    android:textAllCaps="false"
+
+                    android:textSize="17dp"
+                    android:theme="@style/texttheme" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:gravity="right"
+                    android:text=""
+                    android:textColor="@color/fontwhitebackground"
+                    android:textAllCaps="false"
+
+                    android:textSize="12dp"
+                    android:theme="@style/texttheme" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/textColorHint" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:text="@{label.License + @string/space + @string/plate}"
+                    style="@style/edittextheadershort"
+                    android:layout_marginEnd="@dimen/marginview"/>
+
+
+                <TextView
+                    android:text="@string/transationdate"
+                    android:layout_marginStart="@dimen/marginview"
+                    style="@style/edittextheadershort"/>
+
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <EditText
+                        android:id="@+id/plate"
+                        android:hint="@{label.License + @string/space + @string/plate}"
+                        style="@style/edittextshort"
+                        android:layout_marginEnd="@dimen/marginview"/>
+
+                    <TextView
+                        android:id="@+id/transationdate"
+                        android:hint="@string/transationdate"
+                        style="@style/edittextshort"
+                        android:layout_marginStart="@dimen/marginview"
+                        android:drawableRight="@drawable/ic_calender"/>
+                </LinearLayout>
+
+                <TextView
+                    android:text="Agency"
+                    style="@style/edittextheaderfull"/>
+
+                <EditText
+                    android:id="@+id/agency"
+                    style="@style/edittextfull"
+                    android:hint="Agency"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:text="Entry Plaza"
+                        style="@style/edittextheadershort"
+                        android:layout_marginEnd="@dimen/marginview"/>
+
+
+                    <TextView
+                        android:text="Entry Date &amp; Time"
+                        android:layout_marginStart="@dimen/marginview"
+                        style="@style/edittextheadershort"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <EditText
+                        android:id="@+id/entryplaza"
+                        android:hint="Entry Plaza"
+                        style="@style/edittextshort"
+                        android:layout_marginEnd="@dimen/marginview"/>
+
+                    <TextView
+                        android:id="@+id/entryplazadate"
+                        android:hint="Entry Date &amp; Time"
+                        style="@style/edittextshort"
+                        android:layout_marginStart="@dimen/marginview"
+                        android:drawableRight="@drawable/ic_calender"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:text="Exit Plaza"
+                        style="@style/edittextheadershort"
+                        android:layout_marginEnd="@dimen/marginview"/>
+
+
+                    <TextView
+                        android:text="Exit Date &amp; Time"
+                        android:layout_marginStart="@dimen/marginview"
+                        style="@style/edittextheadershort"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <EditText
+                        android:id="@+id/exitlaza"
+                        android:hint="Exit Plaza"
+                        style="@style/edittextshort"
+                        android:layout_marginEnd="@dimen/marginview"/>
+
+                    <TextView
+                        android:id="@+id/exitplazadate"
+                        android:hint="Exit Date &amp; Time"
+                        style="@style/edittextshort"
+                        android:layout_marginStart="@dimen/marginview"
+                        android:drawableRight="@drawable/ic_calender"/>
+                </LinearLayout>
+
+                <TextView
+                    android:text="@{label.Vehicle}"
+                    style="@style/edittextheaderfull"/>
+
+                <Spinner
+                    android:id="@+id/vehiclelist"
+                    style="@style/spinner"
+                    android:theme="@style/loginedit"
+                    android:focusableInTouchMode="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:nextFocusDown="@id/Sp_Statelist"
+                    android:windowSoftInputMode="stateHidden"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                <include
+                    android:id="@+id/charge"
+                    layout="@layout/ticket_charges"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_weight="6"
+                        android:text="@{label.Charge + @string/space  +label.Customer}"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:textAllCaps="false"
+                        android:textColor="@color/textlightcolor"
+                        android:textSize="@dimen/fifteen" />
+
+                    <ToggleButton
+                        android:layout_gravity="end|center_vertical"
+                        android:gravity="end|center_vertical"
+                        android:id="@+id/customerinform"
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/toggle_selector_green"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn="" />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/edittextheader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/street_no_amp_name" />
+
+                <EditText
+                    android:id="@+id/edt_CustStreet"
+                    style="@style/edittext"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/street_no_amp_name"
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@id/edt_CustUnitNo" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        style="@style/edittextheader"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="@string/unit" />
+
+                    <TextView
+                        style="@style/edittextheader"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="17dp"
+                        android:layout_weight="1"
+                        android:text="@string/pin_zip_code" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/edt_CustUnitNo"
+                        style="@style/edittext"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_rectangle_box_2152"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:hint="@string/unit"
+                        android:imeOptions="actionNext"
+                        android:nextFocusLeft="@id/edt_CustZipCode" />
+
+                    <EditText
+                        android:id="@+id/edt_CustZipCode"
+                        style="@style/edittext"
+                        android:layout_width="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_rectangle_box_2152"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:hint="@string/pin_zip_code"
+                        android:imeOptions="actionDone"
+                        android:nextFocusLeft="@id/sp_Countrylist" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="@string/issue_by"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        style="@style/edittextheader"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/state_province"
+                        style="@style/edittextheader"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/Sp_Country"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        style="@style/spinner"
+                        android:theme="@style/loginedit"
+                        android:background="@drawable/ic_small_dropdown"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:imeOptions="actionNext"
+                        android:nextFocusUp="@id/sp_Countrylist"
+                        android:nextFocusDown="@id/cust_cityName"
+                        android:windowSoftInputMode="stateHidden"
+                        android:layout_marginRight="10dp"
+                        />
+
+                    <Spinner
+                        android:id="@+id/Sp_State"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        style="@style/spinner"
+                        android:theme="@style/loginedit"
+                        android:background="@drawable/ic_small_dropdown"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
+                        android:imeOptions="actionNext"
+                        android:nextFocusUp="@id/sp_Countrylist"
+                        android:nextFocusDown="@id/cust_cityName"
+                        android:windowSoftInputMode="stateHidden"
+                        android:layout_marginLeft="10dp"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/edittextheader"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:text="@string/city" />
+
+                <EditText
+                    android:id="@+id/cust_cityName"
+                    style="@style/edittext"
+                    android:hint="@string/city_name"
+                    android:imeOptions="actionDone" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Upload Image"
+                    android:textAllCaps="false"
+                    android:textColor="@color/header1_color"
+                    android:theme="@style/edittextheader" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/ic_car_img_bg"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_main_camera" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottommenuheight"
+            android:background="@color/bottommenucolor"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/text"
+                style="@style/fullbtn"
+                android:text="@string/add"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

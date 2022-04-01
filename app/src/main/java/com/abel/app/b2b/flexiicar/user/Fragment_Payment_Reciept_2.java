@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.abel.app.b2b.adapters.Helper;
 import com.androidnetworking.AndroidNetworking;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.abel.app.b2b.R;
@@ -122,6 +123,7 @@ public class Fragment_Payment_Reciept_2 extends BaseFragment
 
             jsonObject.accumulate("ReportType",55);
             jsonObject.accumulate("Id",getArguments().getInt("IId"));
+            jsonObject.accumulate("CompanyId",Integer.valueOf(loginRes.getData("CompanyId")));
             jsonObject.accumulate("RenderFormat","PDF");
             jsonObject.accumulate("FilterBy",1);
             jsonObject.accumulate("IsExternalReport",false);

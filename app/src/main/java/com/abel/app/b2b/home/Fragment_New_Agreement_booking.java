@@ -13,6 +13,9 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.abel.app.b2b.model.insert.EquipmentDetailModels;
+import com.abel.app.b2b.model.reservation.ReservationEquipment;
+import com.abel.app.b2b.model.response.RIequipment;
 import com.bumptech.glide.Glide;
 import com.abel.app.b2b.R;
 import com.abel.app.b2b.adapters.CustomToast;
@@ -46,7 +49,9 @@ import com.abel.app.b2b.model.response.VehicleModel;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import static com.abel.app.b2b.apicall.ApiEndPoint.BASE_URL_CUSTOMER;
 import static com.abel.app.b2b.apicall.ApiEndPoint.BASE_URL_LOGIN;
@@ -84,7 +89,7 @@ public class Fragment_New_Agreement_booking extends BaseFragment {
         binding.inventory.setOnClickListener(this);
         binding.billing.setOnClickListener(this);
         binding.flight.setOnClickListener(this);
-        binding.confirm.setOnClickListener(this);
+        binding.btm.layoutPayment.setOnClickListener(this);
         binding.header.back.setOnClickListener(this);
         binding.header.screenHeader.setText(companyLabel.Reservation);
         binding.header.discard.setOnClickListener(this);
@@ -103,7 +108,7 @@ public class Fragment_New_Agreement_booking extends BaseFragment {
         bundle.putString("droptime", getArguments().getString("droptime"));
         bundle.putString("pickuptime",  getArguments().getString("pickuptime"));
         bundle.putString("reservationInsurances",getArguments().getString("reservationInsurances"));
-        binding.fueltype.setText(Helper.fueltype);
+       // binding.fueltype.setText(Helper.fueltype);
         vehicleModel = new VehicleModel();
         vehicleModel = (VehicleModel) getArguments().getSerializable("Model");
         LocationList pickuplocation = new LocationList();
@@ -129,11 +134,11 @@ public class Fragment_New_Agreement_booking extends BaseFragment {
         Glide.with(context).load(vehicleModel.DefaultImagePath).into(binding.carimage.VehImage);
         binding.carimage.vehicleName.setText(vehicleModel.VehicleShortName);
         binding.carimage.reservationNumber.setText(reservationSummarry.ReservationNo);
-        binding.currency.setText(Helper.currencySymbol);
+        //binding.currency.setText(Helper.currencySymbol);
         binding.carimage.carAgr.setText(companyLabel.Reservation + "\n" + customer.CustomerTypeName);
 
         new ApiService(GetCustomerProfile, RequestType.GET, GETCUSTOMER,BASE_URL_CUSTOMER, header,string);
-
+        binding.btm.text.setText(getResources().getString(R.string.next));
 
 
 
@@ -164,13 +169,51 @@ public class Fragment_New_Agreement_booking extends BaseFragment {
 
         try {
            // binding.additionalDriver.setText(reservationSummarry.ReservationDriversModel.get(0).)
-            binding.additionalDriver.setText(UserData.updateDL.FullName );
-            binding.bilinginfo.setText(UserData.billingdetail);
+           if (UserData.updateDL.FullName!= null){
+               binding.additionalDriver.setText(UserData.updateDL.FullName);
+           } else {
+              // binding.additionalDriver.setText("Additional Driver is Not Selected");
+               binding.additionalDriver.setText("Not Selected");
+           }
+           if (UserData.billingdetail!= null) {
+               binding.bilinginfo.setText(UserData.billingdetail);
+           } else {
+               binding.bilinginfo.setText(customer.FullName);
+           }
+            //binding.bilinginfo.setText(UserData.billingdetail);
             //binding.equipmentname.setText();
-            binding.notedata.setText(reservationSummarry.ReservationNoteModel.ExternalNote);
-            if (reservationSummarry.ReservationFlightAndHotelModel.FlightBookingReference!= null)
-            binding.flightDetails.setText(reservationSummarry.ReservationFlightAndHotelModel.FlightBookingReference + " " + reservationSummarry.ReservationFlightAndHotelModel.HotelName);
+            if (reservationSummarry.ReservationNoteModel.ExternalNote != null) {
+                binding.notedata.setText(reservationSummarry.ReservationNoteModel.ExternalNote);
+            } else {
+               // binding.notedata.setText(companyLabel.SpecialNote +" is not Inserted");
+                binding.notedata.setText("Not Inserted");
+            }
+            if (reservationSummarry.ReservationFlightAndHotelModel.FlightBookingReference!= null) {
+                binding.flightDetails.setText(reservationSummarry.ReservationFlightAndHotelModel.FlightBookingReference + " " + reservationSummarry.ReservationFlightAndHotelModel.HotelName);
+            } else {
+               // binding.flightDetails.setText(companyLabel.FlightDetails    +" is not Inserted");
+                binding.flightDetails.setText("Not Inserted");
+            }
 
+            if (reservationSummarry.ReservationEquipmentInventoryModel.size() == 0){
+                //binding.equipmentname.setText(companyLabel.Equipment + " is not Selected");
+                binding.equipmentname.setText("Not Selected");
+            } else {
+                String equip = "";
+                //for (int i = 0; i <reservationSummarry.ReservationEquipmentInventoryModel.size(); i++) {
+                    Iterator iterator = reservationSummarry.ReservationEquipmentInventoryModel.iterator();
+                    while (iterator.hasNext()){
+                        RIequipment rIequipment = new RIequipment();
+                        rIequipment = (RIequipment) iterator.next();
+                        for (int j = 0; j < UserData.equipment.length; j++) {
+                            if (rIequipment.EquipInventId == UserData.equipment[j].Id){
+                                equip += UserData.equipment[j].Name + " ";
+                            }
+                        }
+                    }
+                //}
+                binding.equipmentname.setText(equip);
+            }
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -216,11 +259,11 @@ public class Fragment_New_Agreement_booking extends BaseFragment {
                 NavHostFragment.findNavController(Fragment_New_Agreement_booking.this).navigate(R.id.booking_to_billing_info,bundle);
                 break;
 
-            case R.id.confirm:
+            //case R.id.confirm:
+            case R.id.layout_payment:
                 if (validation()){
                     NavHostFragment.findNavController(Fragment_New_Agreement_booking.this).navigate(R.id.booking_to_Agreement_Confirmation,bundle);
                 }
-
                 break;
             case R.id.selectcustomer:
             case R.id.back:
@@ -311,17 +354,17 @@ public class Fragment_New_Agreement_booking extends BaseFragment {
                                 for (int j = 0; j <charges[i].ReservationSummaryDetailModels.length ; j++) {
                                     if (charges[i].ReservationSummaryDetailModels[j].ReservationSummaryDetailType == 101)
                                         if (charges[i].ReservationSummaryDetailModels[j].Total == 0) {
-                                            binding.txtMileage.setText(charges[i].ReservationSummaryDetailModels[j].Description.trim());
+                                            binding.btm.txtMileage.setText(charges[i].ReservationSummaryDetailModels[j].Description.trim());
                                            // binding.txtMileage.setTextSize(22);
                                         } else{
-                                            binding.txtMileage.setText(Helper.getDistance(charges[i].ReservationSummaryDetailModels[j].Total));
+                                            binding.btm.txtMileage.setText(Helper.getDistance(charges[i].ReservationSummaryDetailModels[j].Total));
                                            // binding.txtMileage.setTextSize(22);
                                         }
                                 }
                                 // binding.txtMileage.setText(String.valueOf(charges[i].ReservationSummaryDetailModels[1].Total));
                             }
                             if (charges[i].ReservationSummaryType==100){
-                                binding.txtTotalAmount.setText(DigitConvert.getDoubleDigit(charges[i].ReservationSummaryDetailModels[0].Total));
+                                binding.btm.textviewTotalAmount.setText(DigitConvert.getDoubleDigit(charges[i].ReservationSummaryDetailModels[0].Total));
                             }
                         }
                         JSONObject obj =  resultSet.getJSONObject("ReservationTimeModel");

@@ -94,6 +94,7 @@ public class OptionMenu {
         ImageView OpenbottomMenu = view.findViewById(R.id.optionmenu);
         Reservation reservation = new Reservation();
         reservation = (Reservation) bundle.getSerializable("reservation");
+        bundle.putSerializable("reservation",reservation);
         cancel2.setOnClickListener(v -> optionVisible(sucessfullRegi,false));
         cancel.setOnClickListener(v -> {
             optionVisible(sucessfullRegi,false);
@@ -135,7 +136,9 @@ public class OptionMenu {
 
             }
         });
-
+        bundle.putInt("reservationpmt", 1);
+        bundle.putString("netrate","1");
+        String  bodyParam = "?id=" + reservation.CustomerId + "&isActive=true"+"&"+"IsWithSummary=true";
         getText(view,R.id.changedate).setOnClickListener(v -> NavHostFragment.findNavController(fragment)
                 .navigate(R.id.action_SummaryOfChargesForAgreements_to_chnageAgeement,bundle));
 
@@ -145,6 +148,14 @@ public class OptionMenu {
         getText(view,R.id.extendagreement).setOnClickListener(v ->NavHostFragment.findNavController(fragment)
                 .navigate(R.id.action_SummaryOfChargesForAgreements_to_chnageAgeementextend,bundle) );
 
+        getText(view,R.id.tollcharge).setOnClickListener(v -> NavHostFragment.findNavController(fragment)
+                .navigate(R.id.action_summary_to_toll_charge,bundle));
+
+        getText(view,R.id.traffic_tic).setOnClickListener(v -> NavHostFragment.findNavController(fragment)
+                .navigate(R.id.action_summary_to_traffic_tic,bundle));
+
+        getText(view,R.id.cancelAgreement).setOnClickListener(v -> NavHostFragment.findNavController(fragment)
+                .navigate(R.id.action_summary_to_cancel_agreement,bundle));
 
         TextView printAgreement = view.findViewById(R.id.printAgreement);
         printAgreement.setOnClickListener(new View.OnClickListener() {
@@ -314,12 +325,12 @@ public class OptionMenu {
         pmt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bundle.putInt("reservationpmt", 1);
+
                /* if (UserData.customerProfile != null){
                     NavHostFragment.findNavController(fragment)
                             .navigate(R.id.action_Acceptance_signature_to_Agreements_to_payment,bundle);
                 } else {*/
-                    String  bodyParam = "?id=" + finalReservation1.CustomerId + "&isActive=true"+"&"+"IsWithSummary=true";
+
                     new ApiService(new OnResponseListener() {
                         @Override
                         public void onSuccess(String response, HashMap<String, String> headers) {
@@ -374,6 +385,16 @@ public class OptionMenu {
 
            /* }*/
         });
+
+        setText(getText(view,R.id.paymentprocess), UserData.loginResponse.CompanyLabel.Payment + " " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.deleteagreement),  "Delete " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.editAgreement),  "Edit " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.printAgreement),  "Print " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.email_agreement),  "Email " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.changevehicle),  "Change " +UserData.loginResponse.CompanyLabel.Vehicle);
+        setText(getText(view,R.id.extendagreement),  "Extend " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.tollcharge),  "Toll " +UserData.loginResponse.CompanyLabel.Charge);
+        setText(getText(view,R.id.cancelAgreement),  "Cancel " +UserData.loginResponse.CompanyLabel.Agreement);
     }
 
     /*public void optionmenulist(RelativeLayout sucessfullRegi, View view, Bundle bundle, Fragment fragment, DoHeader header, CommonParams params, View.OnClickListener clickListener){

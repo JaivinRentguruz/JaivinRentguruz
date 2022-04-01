@@ -6,10 +6,8 @@ import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,8 +15,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationManager;
@@ -120,7 +116,7 @@ public class Fragment_Vehicle_Image_1 extends Fragment
 
            fullProgressbar = new Dialog(getContext());
            fullProgressbar.setCancelable(false);
-           fullProgressbar.setContentView(R.layout.custom_progress);
+           fullProgressbar.setContentView(R.layout.custom_progresss);
 
            if (!CheckGpsStatus()) {
                Intent intent1 = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
@@ -129,7 +125,7 @@ public class Fragment_Vehicle_Image_1 extends Fragment
            }
            getCurrentLocation();
            fullProgressbar.hide();
-
+           bundle.putSerializable("reservation",getArguments().getSerializable("reservation"));
         bundle.putInt( "Id", getArguments().getInt("Id"));
         Log.e("TAG", "RID " + getArguments().getInt("Id"));
         screen = getArguments().getInt("length");
@@ -137,7 +133,7 @@ public class Fragment_Vehicle_Image_1 extends Fragment
         attachmentsModelList = (List<AttachmentsModel>) getArguments().getSerializable("image");
            Log.d("TAG", "onViewCreated: " + attachmentsModelList.size());
            txt_DateTime=view.findViewById(R.id.txt_DateTimeForPic);
-
+           bundle.putSerializable("resrvation",getArguments().getSerializable("resrvation"));
         Calendar c = Calendar.getInstance();
         SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy hh:mm aa");
         String datetime = dateformat.format(c.getTime());

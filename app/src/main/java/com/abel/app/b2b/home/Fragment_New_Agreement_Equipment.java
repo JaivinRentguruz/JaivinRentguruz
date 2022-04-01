@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.abel.app.b2b.R;
 import com.abel.app.b2b.adapters.DigitConvert;
+import com.abel.app.b2b.adapters.Helper;
 import com.abel.app.b2b.apicall.ApiService;
 import com.abel.app.b2b.apicall.ApiService2;
 import com.abel.app.b2b.apicall.OnResponseListener;
@@ -22,6 +23,7 @@ import com.abel.app.b2b.databinding.FragmentNewAgreementEquipmentBinding;
 import com.abel.app.b2b.databinding.RowEquipmentBinding;
 import com.abel.app.b2b.databinding.TaxDetailsListBinding;
 import com.abel.app.b2b.model.Customer;
+import com.abel.app.b2b.model.base.UserData;
 import com.abel.app.b2b.model.reservation.ReservationEquipment;
 import com.abel.app.b2b.model.response.LocationList;
 import com.abel.app.b2b.model.response.RIequipment;
@@ -119,6 +121,7 @@ public class Fragment_New_Agreement_Equipment extends BaseFragment {
                         JSONObject resultSet = responseJSON.getJSONObject("Data");
                         JSONArray array = resultSet.getJSONArray("Data");
                         equipment = loginRes.getModel(array.toString(), ReservationEquipment[].class);
+                        UserData.equipment = equipment;
                         Log.d(TAG, "onSuccess: " + resultSet);
                         for (int i = 0; i <equipment.length; i++) {
                             getSubview(i);

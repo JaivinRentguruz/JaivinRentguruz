@@ -7,6 +7,7 @@ import com.abel.app.b2b.model.companyModel;
 import com.abel.app.b2b.model.CreditCardModel;
 import com.abel.app.b2b.model.InsuranceCompanyDetailsModel;
 import com.abel.app.b2b.model.InsuranceModel;
+import com.abel.app.b2b.model.reservation.ReservationEquipment;
 import com.abel.app.b2b.model.response.CustomerProfile;
 import com.abel.app.b2b.model.response.LoginResponse;
 import com.abel.app.b2b.model.response.UpdateDL;
@@ -25,4 +26,5 @@ public class UserData {
     public static ReservationCheckout reservationCheckout = new ReservationCheckout();
     public static ReservationBusinessSource reservationBusinessSource = new ReservationBusinessSource();
     public static String billingdetail;
+    public static ReservationEquipment[] equipment;
 }

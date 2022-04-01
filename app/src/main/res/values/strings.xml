@@ -64,7 +64,7 @@
     <string name="rate">Rate</string>
     <string name="fix">Fix</string>
     <string name="offer">Offer</string>
-
+    <string name="plate">Plate</string>
     <string name="dollar2">(US$ \u0020</string>
     <string-array name="items_class_countary">
         <item>Select Country</item>
@@ -179,7 +179,7 @@
     <string name="driver">Driver</string>
     <string name="custome">Custome</string>
     <string name="creditcardupdate">Update Credit card</string>
-
+    <string name="ticket">Ticket</string>
     <string name="guest">Guest</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
@@ -193,6 +193,12 @@
     <string name="back">back</string>
     <string name="discard">Discard</string>
     <string name="done">Done</string>
+    <string name="paid">Paid</string>
+    <string name="made">Made</string>
+    <string name="refund">Refund</string>
+    <string name="date">Date</string>
+    <string name="amount">Amount</string>
+    <string name="creditcard">Credit Card</string>
     <string name="create_your_profile">Create Your Profile</string>
 
     <string name="basic_details">Basic Details</string>
@@ -251,6 +257,7 @@
     <string name="enter_license_number">Enter License Number</string>
     <string name="enter_cvv_code">Enter CVV Code</string>
     <string name="mm_dd_yyyy">MM/DD/YYYY</string>
+    <string name="mm_dd_yyyyt">MM/DD/YYYY HH:MM</string>
     <string name="username">Username</string>
     <string name="full_name">Full Name</string>
     <string name="save_amp_continue"><![CDATA[Save & Continue]]></string>
@@ -331,16 +338,18 @@
     <string name="change_dates">Change Dates</string>
     <string name="change_vehicle">Change Vehicle</string>
     <string name="extend_agreement">Extend Agreement</string>
-    <string name="tall_charges">Tall Charges</string>
+    <string name="tall_charges">Toll Charges</string>
     <string name="traffic_tick">Trafic Tickets</string>
     <string name="nodays">Total \nNo of Days</string>
     <string name="mileage_included">Mileage \nIncluded</string>
     <string name="total_amount">Total \nAmount</string>
     <string name="payment_made">Payment \nMade</string>
     <string name="deposit_paid">Deposit \nPaid</string>
-
+    <string name="transationdate">Transation Date</string>
     <string name="icon">icon</string>
     <string name="logo">logo</string>
+    <string name="splashimage">splashimage</string>
+    <string name="homescreenimage">HomeScreenImage</string>
     <string name="update">Update</string>
     <string name="submit">Submit</string>
     <string name="scompany">scompany</string>

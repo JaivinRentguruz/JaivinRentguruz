@@ -90,7 +90,7 @@ public class Fragment_Home_Tab extends BaseFragment
         loc1=view.findViewById(R.id.loc1);
         loc2=view.findViewById(R.id.loc2);
         loc3=view.findViewById(R.id.loc3);
-        image = view.findViewById(R.id.image);
+        image = view.findViewById(R.id.homeImage);
       //  getview.getCompanyLabel(view, companyLabel);
         try {
             Log.e("TAG", "onViewCreated: " + UserData.loginResponse.LogedInCustomer.FullName);
@@ -327,7 +327,9 @@ public class Fragment_Home_Tab extends BaseFragment
                             JSONObject resultSet = responseJSON.getJSONObject("Data");
                             homeScreen =    loginRes.getModel(resultSet.toString(), HomeScreen.class);
                             //ImageView image =
+                            loginRes.storedata(getResources().getString(R.string.homescreenimage), homeScreen.AttachmentsModels.get(0).AttachmentPath);
                               CustomBindingAdapter.loadImage(image,homeScreen.AttachmentsModels.get(0).AttachmentPath);
+
                         }
 
                     } catch (Exception e){

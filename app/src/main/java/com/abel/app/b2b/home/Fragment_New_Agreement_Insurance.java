@@ -1,6 +1,8 @@
 package com.abel.app.b2b.home;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -43,6 +45,8 @@ import com.abel.app.b2b.model.response.ReservationOriginDataModels;
 import com.abel.app.b2b.model.response.ReservationSummarry;
 import com.abel.app.b2b.model.response.ReservationTimeModel;
 import com.abel.app.b2b.model.response.VehicleModel;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -116,6 +120,21 @@ public class Fragment_New_Agreement_Insurance extends BaseFragment {
                 params.getInsuranceCover(vm.VehicleTypeId, reservationTimeModel.TotalDays,pickuploc.Id));*/
       //  getInsurance();
 
+        try {
+           /* Helper.AllowCustomerInsurance = true;
+            if (Helper.AllowCustomerInsurance){
+                binding.lblInsurancePolicy.setVisibility(View.GONE);
+                binding.insuranceline.setVisibility(View.GONE);
+            }*/
+
+            if (UserData.companyModel.CompanyPreference.AllowCustomerInsurance){
+                binding.insurnaceData.setVisibility(View.VISIBLE);
+            } else {
+                binding.insurnaceData.setVisibility(View.GONE);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         binding.insuranceDecline.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -204,7 +223,7 @@ public class Fragment_New_Agreement_Insurance extends BaseFragment {
                             detailInsuranceBinding.getRoot().setLayoutParams(subparams);
                             detailInsuranceBinding.setInsurance(reservationInsurances[i]);
 
-
+                            //Integer.toString(reservationInsurances[i].ColorCode)
 
                             int finalI = i;
                             detailInsuranceBinding.getRoot().setOnClickListener(v -> {
@@ -396,6 +415,13 @@ public class Fragment_New_Agreement_Insurance extends BaseFragment {
                 Drawable wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable);
                 DrawableCompat.setTint(wrappedDrawable, Color.parseColor(reservationInsurances[i].ColorCode));*/
 
+                //Color.parseColor(reservationInsurances[i].ColorCode);
+
+                Drawable circleDrawable = getResources().getDrawable(R.drawable.aquamarine_blue_bg);
+                circleDrawable.setTint(Color.parseColor(reservationInsurances[i].ColorCode));
+                //BitmapDescriptor markerIcon = getMarkerIconFromDrawable(circleDrawable);
+                detailInsuranceBinding.call.setBackground(circleDrawable);
+               // detailInsuranceBinding.call.setBackgroundColor(Color.parseColor(reservationInsurances[i].ColorCode));
 
 
                 try {
@@ -513,5 +539,14 @@ public class Fragment_New_Agreement_Insurance extends BaseFragment {
         }*/
 
         binding.rlInsurancePolicyList.addView(listCustomerInsuranceBinding.getRoot());
+    }
+
+    private BitmapDescriptor getMarkerIconFromDrawable(Drawable drawable) {
+        Canvas canvas = new Canvas();
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        canvas.setBitmap(bitmap);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        drawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
 }

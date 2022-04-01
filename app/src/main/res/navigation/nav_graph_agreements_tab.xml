@@ -66,8 +66,7 @@
 
         <action
             android:id="@+id/action_SummaryOfChargesForAgreements_to_Self_check_In"
-            app:destination="@+id/Self_check_In"
-            />
+            app:destination="@+id/Self_check_In" />
 
         <action android:id="@+id/action_SummaryOfChargesForAgreements_to_chnageAgeement"
             app:destination="@+id/chnageAgeement"/>
@@ -84,6 +83,15 @@
         <action android:id="@+id/action_Acceptance_signature_to_Agreements_to_payment"
             app:destination="@+id/Payment"/>
 
+        <action android:id="@+id/action_summary_to_toll_charge"
+            app:destination="@+id/toll_charge"/>
+
+        <action android:id="@+id/action_summary_to_traffic_tic"
+            app:destination="@+id/traffic_tic"/>
+
+        <action android:id="@+id/action_summary_to_cancel_agreement"
+            app:destination="@+id/cancel_agreement"/>
+
     </fragment>
 
     <fragment
@@ -94,6 +102,32 @@
 
     </fragment>
 
+
+
+    <fragment
+        android:id="@+id/traffic_tic"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Agreement_Traffic_Ticket"
+        android:label="Toll Charge"
+        tools:layout="@layout/fragment_traffic_charge">
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/cancel_agreement"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Agreement_Cancel"
+        android:label="Cancel Agreement"
+        tools:layout="@layout/fragment_agreement_cancel">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/toll_charge"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Agreement_Toll_Charge"
+        android:label="Toll Charge"
+        tools:layout="@layout/fragment_toll_charge">
+
+    </fragment>
 
     <fragment
         android:id="@+id/Self_check_Out"
@@ -170,6 +204,10 @@
         <action
             android:id="@+id/action_Acceptance_signature_to_Location_And_Key"
             app:destination="@id/Location_And_Key" />
+
+        <action
+            android:id="@+id/action_Signature_to_Termscondition"
+            app:destination="@+id/Term_and_Condtion"/>
     </fragment>
 
 
@@ -268,8 +306,20 @@
         <action
             android:id="@+id/action_Signature_to_Self_check_In"
             app:destination="@id/Self_check_In" />
+
+        <action
+            android:id="@+id/action_Signature_to_Termscondition"
+            app:destination="@+id/Term_and_Condtion"/>
     </fragment>
 
+    <fragment
+        android:id="@+id/Term_and_Condtion"
+        android:name="com.abel.app.b2b.flexiicar.commonfragment.Fragment_Term_And_Condition"
+        android:label="Term_and_Condtion"
+        tools:layout="@layout/fragment_terms_and_conditions">
+
+
+    </fragment>
 
     <fragment
         android:id="@+id/Self_check_In"
@@ -282,6 +332,9 @@
         <action
             android:id="@+id/action_Self_check_In_to_SummaryOfChargeForSelfCheckIn"
             app:destination="@id/SummaryOfChargeForSelfCheckIn" />
+        <action
+            android:id="@+id/action_Self_check_In_to_Payment"
+            app:destination="@+id/Payment"/>
     </fragment>
 
 

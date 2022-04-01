@@ -195,6 +195,11 @@ public class Fragment_Summary_Of_Charges_For_Agreements extends BaseFragment
             reservations = (Reservation) getArguments().getSerializable("reservation");
             bundle.putSerializable("reservation",reservations);
             txt_vehicletype.setText(reservations.VehicleName);
+            txt_vehName.setText(reservations.VehicleTypeName);
+            txt_Seats.setText(String.valueOf(reservations.NoOfSeats));
+            txt_Bags.setText(String.valueOf(reservations.NoOfBags));
+            txt_Automatic.setText(String.valueOf(reservations.TransmissionDesc));
+            txt_Doors.setText(String.valueOf(reservations.NoOfDoors));
             CustomBindingAdapter.loadImage(binding.VehicleImg,reservations.VehicleImagePath);
            /* binding.txtVehicleTypeName.setText(model.VehicleCategory);
             reservations.Vehi*/

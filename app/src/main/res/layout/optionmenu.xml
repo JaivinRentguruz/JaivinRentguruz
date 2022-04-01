@@ -187,6 +187,7 @@
                 android:background="@color/textColorHint" />
 
             <TextView
+                android:id="@+id/tollcharge"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/optionmenuheight"
                 android:gravity="center_vertical|center_horizontal"
@@ -202,6 +203,7 @@
                 android:background="@color/textColorHint" />
 
             <TextView
+                android:id="@+id/traffic_tic"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/optionmenuheight"
                 android:gravity="center_vertical|center_horizontal"
@@ -217,6 +219,7 @@
                 android:background="@color/textColorHint" />
 
             <TextView
+                android:id="@+id/cancelAgreement"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/optionmenuheight"
                 android:gravity="center_vertical|center_horizontal"

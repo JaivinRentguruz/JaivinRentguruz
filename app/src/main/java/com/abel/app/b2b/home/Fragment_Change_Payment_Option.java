@@ -52,6 +52,7 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
     CustomeDialog dialog;
     ReservationSummarry reservationSummarry;
     CustomerProfile customerProfile;
+    Customer customer;
     List<ReservationPMT> pmtList = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,35 +64,64 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        binding.PaymentAccept.setOnClickListener(this);
-        binding.chequeDate.setOnClickListener(this);
-        customerProfile = new CustomerProfile();
-        dialog = new CustomeDialog(getContext());
-        bundle.putSerializable("reservationSum", (ReservationSummarry) getArguments().getSerializable("reservationSum"));
-        bundle.putSerializable("Model", (VehicleModel) getArguments().getSerializable("Model"));
-        bundle.putSerializable("models", (LocationList) getArguments().getSerializable("models"));
-        bundle.putSerializable("model", (LocationList) getArguments().getSerializable("model"));
-        bundle.putSerializable("timemodel", (ReservationTimeModel) getArguments().getSerializable("timemodel"));
-        bundle.putSerializable("customer", (Customer) getArguments().getSerializable("customer"));
-        bundle.putString("pickupdate", getArguments().getString("pickupdate"));
-        bundle.putString("dropdate", getArguments().getString("dropdate"));
-        bundle.putString("droptime", getArguments().getString("droptime"));
-        bundle.putString("pickuptime", getArguments().getString("pickuptime"));
-        bundle.putString("netrate", getArguments().getString("netrate"));
-
         reservationPMT = new ReservationPMT();
         reservationSummarry = new ReservationSummarry();
-        reservationSummarry = (ReservationSummarry) getArguments().getSerializable("reservationSum");
+        binding.PaymentAccept.setOnClickListener(this);
+        binding.chequeDate.setOnClickListener(this);
+        binding.header.screenHeader.setText(companyLabel.Agreement +" "+companyLabel.Payment);
+        binding.header.discard.setOnClickListener(this);
+        binding.header.back.setOnClickListener(this);
+        customerProfile = new CustomerProfile();
+        customer = new Customer();
+        dialog = new CustomeDialog(getContext());
 
-        binding.agreement.setText(reservationSummarry.ReservationNo);
-        binding.invoicenumber.setText(String.valueOf(reservationSummarry.Id));
+        try {
+            bundle.putSerializable("reservationSum", (ReservationSummarry) getArguments().getSerializable("reservationSum"));
+            bundle.putSerializable("Model", (VehicleModel) getArguments().getSerializable("Model"));
+            bundle.putSerializable("models", (LocationList) getArguments().getSerializable("models"));
+            bundle.putSerializable("model", (LocationList) getArguments().getSerializable("model"));
+            bundle.putSerializable("timemodel", (ReservationTimeModel) getArguments().getSerializable("timemodel"));
+            bundle.putSerializable("customer", (Customer) getArguments().getSerializable("customer"));
+            bundle.putString("pickupdate", getArguments().getString("pickupdate"));
+            bundle.putString("dropdate", getArguments().getString("dropdate"));
+            bundle.putString("droptime", getArguments().getString("droptime"));
+            bundle.putString("pickuptime", getArguments().getString("pickuptime"));
+            bundle.putString("netrate", getArguments().getString("netrate"));
+            bundle.putSerializable("reservationSum", (ReservationSummarry) getArguments().getSerializable("reservationSum"));
+            bundle.putSerializable("Model", (VehicleModel) getArguments().getSerializable("Model"));
+            bundle.putSerializable("models", (LocationList) getArguments().getSerializable("models"));
+            bundle.putSerializable("model", (LocationList) getArguments().getSerializable("model"));
+            bundle.putSerializable("timemodel", (ReservationTimeModel) getArguments().getSerializable("timemodel"));
+            bundle.putSerializable("customer", (Customer) getArguments().getSerializable("customer"));
+            bundle.putString("pickupdate", getArguments().getString("pickupdate"));
+            bundle.putString("dropdate", getArguments().getString("dropdate"));
+            bundle.putString("droptime", getArguments().getString("droptime"));
+            bundle.putString("pickuptime", getArguments().getString("pickuptime"));
+            bundle.putString("transactionId",getArguments().getString("transactionId"));
+            bundle.putString("netrate", getArguments().getString("netrate"));
+            bundle.putSerializable("customerDetail",(CustomerProfile) getArguments().getSerializable("customerDetail"));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
-        binding.amount.setText(getArguments().getString("netrate"));
 
-        customerProfile = (CustomerProfile) getArguments().getSerializable("customerDetail");
+        try {
+            reservationSummarry = (ReservationSummarry) getArguments().getSerializable("reservationSum");
+
+            binding.agreement.setText(reservationSummarry.ReservationNo);
+            binding.invoicenumber.setText(String.valueOf(reservationSummarry.Id));
+
+            binding.amount.setText(getArguments().getString("netrate"));
+            binding.amountPayable.setText(getArguments().getString("netrate"));
+            customerProfile = (CustomerProfile) getArguments().getSerializable("customerDetail");
+            customer =(Customer)  getArguments().getSerializable("customer");
+            customer.Id = customerProfile.Id;
+            reservationPMT.BillToInfoJSON = loginRes.modeltostring(TAG,customerProfile);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
 
-        reservationPMT.BillToInfoJSON = loginRes.modeltostring(TAG,customerProfile);
 
    /*     binding.paymentOption.setVisibility(View.GONE);
         binding.cashpmtdetail.setVisibility(View.GONE);
@@ -156,22 +186,31 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
                     case R.id.splitpercentage:
                         binding.currency.setText("  %  ");
                         if  (!binding.amount.getText().toString().trim().isEmpty()) {
-                            Double amt = Double.valueOf(binding.amount.getText().toString());
-                            int valuee = Integer.valueOf(binding.lessamount.getText().toString());
-                            Double rate = Double.valueOf(amt * valuee / 100);
-                            binding.amountPayable.setText(Helper.getAmtount(rate));
-                            reservationPMT.SplitAmountType = SplitAmountType.Percentage.inte;
+                            try {
+                                Double amt = Double.valueOf(binding.amount.getText().toString());
+                                int valuee = Integer.valueOf(binding.lessamount.getText().toString());
+                                Double rate = Double.valueOf(amt * valuee / 100);
+                                binding.amountPayable.setText(Helper.getAmtount(rate));
+                                reservationPMT.SplitAmountType = SplitAmountType.Percentage.inte;
+                            } catch (Exception e){
+                                e.printStackTrace();
+                            }
                         }
                         break;
 
                     case R.id.splitfixamount:
-                        binding.currency.setText("USD $");
+                        binding.currency.setText(Helper.displaycurrency);
                         if  (!binding.amount.getText().toString().trim().isEmpty()) {
-                            Double amt = Double.valueOf(binding.amount.getText().toString());
-                            int valuee = Integer.valueOf(binding.lessamount.getText().toString());
-                            Double rate = Double.valueOf(amt - valuee);
-                            binding.amountPayable.setText(Helper.getAmtount(rate));
-                            reservationPMT.SplitAmountType = SplitAmountType.Amount.inte;
+                            try {
+                                Double amt = Double.valueOf(binding.amount.getText().toString());
+                                int valuee = Integer.valueOf(binding.lessamount.getText().toString());
+                                Double rate = Double.valueOf(amt - valuee);
+                                binding.amountPayable.setText(Helper.getAmtount(rate));
+                                reservationPMT.SplitAmountType = SplitAmountType.Amount.inte;
+                            } catch (Exception e){
+                                e.printStackTrace();
+                            }
+
                         }
                         break;
                 }
@@ -209,15 +248,20 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
             @Override
             public void afterTextChanged(Editable s) {
                 if (!s.equals("")) {
-                    Double amt = Double.valueOf(binding.amount.getText().toString());
-                    int valuee = Integer.valueOf(String.valueOf(s));
-                    if (binding.splitpercentage.isChecked()) {
-                        Double rate = Double.valueOf(amt * valuee / 100);
-                        binding.amountPayable.setText(Helper.getAmtount(rate));
-                    } else {
-                        Double rate = Double.valueOf(amt - valuee);
-                        binding.amountPayable.setText(Helper.getAmtount(rate));
+                    try {
+                        Double amt = Double.valueOf(binding.amount.getText().toString());
+                        int valuee = Integer.valueOf(String.valueOf(s));
+                        if (binding.splitpercentage.isChecked()) {
+                            Double rate = Double.valueOf(amt * valuee / 100);
+                            binding.amountPayable.setText(Helper.getAmtount(rate));
+                        } else {
+                            Double rate = Double.valueOf(amt - valuee);
+                            binding.amountPayable.setText(Helper.getAmtount(rate));
+                        }
+                    } catch (Exception e){
+                        e.printStackTrace();
                     }
+
                     /*if (binding.splitAmount.isChecked()) {
                         Double rate = Double.valueOf(amt - valuee);
                         binding.amountPayable.setText(rate.toString());
@@ -240,6 +284,12 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
             //reservationPMT.SplitAmountType =
             reservationPMT.PaymentMode = PaymentMode.Cash.inte;
         }
+
+        reservationPMT.PaymentProcessMode =  PaymentProcessMode.Offline.inte;
+        reservationPMT.PaymentTransactionType = PaymentTransactionType.Deposit.inte;
+        reservationPMT.PaymentProcess = PaymentProcess.Charge.inte;
+        //reservationPMT.SplitAmountType =
+        reservationPMT.PaymentMode = PaymentMode.Cash.inte;
     }
 
     @Override
@@ -251,36 +301,68 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.PaymentAccept:
+                try {
                 getModel();
+                reservationPMT.SplitAmount =0;
+                //reservationPMT.SplitAmountType = 0;
+                reservationPMT.TransactionType = 1;
+                reservationPMT.IsSplit = false;
+                reservationPMT.PaymentForId = 13;
+                reservationPMT.PaymentProcess = 1;
+//        int i =  PaymentProcessMode.Offline.inte;
+                reservationPMT.PaymentProcessMode =  PaymentProcessMode.Offline.inte;
+                reservationPMT.PaymentTransactionType = PaymentTransactionType.Deposit.inte;
+                reservationPMT.PaymentProcess = PaymentProcess.Charge.inte;
+                //reservationPMT.SplitAmountType =
+                reservationPMT.PaymentMode = PaymentMode.Cash.inte;
+                reservationPMT.CustomerId = customer.Id;
+                reservationPMT.InvoiceAmount = reservationPMT.Amount;
+                reservationPMT.ReservationId = reservationSummarry.Id;
                 pmtList.add(reservationPMT);
                 //new ApiService2<List<ReservationPMT>>(processPayment, RequestType.POST, RESERVATIONPMT, BASE_URL_LOGIN,header ,pmtList);
                 bundle.putSerializable("pmtmodel", reservationPMT);
                 bundle.putString("netrate",binding.amountPayable.getText().toString() );
                 Helper.pmt = true;
-                if (getArguments().getBoolean("pmt")){
+             /*   if (getArguments().getBoolean("pmt")){
                     NavHostFragment.findNavController(Fragment_Change_Payment_Option.this).navigate(R.id.paymentChangeOption_to_Payment,bundle);
                 } else {
                     NavHostFragment.findNavController(Fragment_Change_Payment_Option.this).navigate(R.id.paymentChangeOption_to_PaymentOffline,bundle);
-                }
+                }*/
 
+                new ApiService2<List<ReservationPMT>>(processPayment, RequestType.POST,
+                        RESERVATIONPMT, BASE_URL_LOGIN,header ,pmtList);
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
             break;
 
             case R.id.chequeDate:
                 dialog.getFullDate(dialog.getToday(), "", string -> binding.chequeDate.setText(string));
+                break;
+
+            case R.id.back:
+            case R.id.discard:
+                NavHostFragment.findNavController(Fragment_Change_Payment_Option.this).popBackStack();
                 break;
         }
 
     }
 
     private void getModel(){
-      reservationPMT.IsSplit = binding.splitAmount.isChecked();
-      reservationPMT.Amount = Double.valueOf(binding.amountPayable.getText().toString());
-      reservationPMT.AgreementNumber = reservationSummarry.ReservationNo;
-      reservationPMT.BillToInfoJSON = loginRes.modeltostring(TAG,customerProfile);
-      reservationPMT.BillTo = 1;
-      reservationPMT.CustomerId = customerProfile.Id;
-      reservationPMT.InvoiceAmount = reservationPMT.Amount;
-      reservationPMT.ReservationId = reservationSummarry.Id;
+        try {
+            reservationPMT.IsSplit = binding.splitAmount.isChecked();
+            reservationPMT.Amount = Double.valueOf(binding.amountPayable.getText().toString());
+            reservationPMT.AgreementNumber = reservationSummarry.ReservationNo;
+            reservationPMT.BillToInfoJSON = loginRes.modeltostring(TAG,customerProfile);
+            reservationPMT.BillTo = 1;
+            reservationPMT.CustomerId = customerProfile.Id;
+            reservationPMT.InvoiceAmount = reservationPMT.Amount;
+            reservationPMT.ReservationId = reservationSummarry.Id;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 
     OnResponseListener processPayment = new OnResponseListener()
@@ -306,6 +388,7 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
                             String message = responseJSON.getString("Message");
                             CustomToast.showToast(getActivity(),message,0);
                            // NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).navigate(R.id.payment_to_paymentsucess,bundle);
+                            NavHostFragment.findNavController(Fragment_Change_Payment_Option.this).navigate(R.id.paymentChangeOption_to_paymentsuccess,bundle);
 
                         }
                         catch (Exception e)

@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.abel.app.b2b.adapters.CustomBindingAdapter;
+import com.abel.app.b2b.model.display.HomeScreen;
 import com.abel.app.b2b.model.display.MobileBasicDetails;
 import com.abel.app.b2b.model.parameter.CommonParams;
 import com.androidnetworking.AndroidNetworking;
@@ -90,7 +91,7 @@ public class SplashScreen extends AppCompatActivity
     private CustomPreference preference;
     public CommonParams params;
     String  path;
-    ImageView icon;
+    ImageView icon,image;
     public static com.abel.app.b2b.model.display.SplashScreen splashScreen;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -138,6 +139,8 @@ public class SplashScreen extends AppCompatActivity
         data = new ResponseBase<>();
         icon = findViewById(R.id.logo);
         CustomBindingAdapter.loadImage(icon,loginRes.getData(getResources().getString(R.string.logo)));
+        image = findViewById(R.id.splash);
+        CustomBindingAdapter.loadImage(image,loginRes.getData(getResources().getString(R.string.splashimage)));
   /*      Log.d("Mungara", "onCreate: " + com.abel.app.b2b.model.parameter.TableType.Addresses.anInt);
         Log.d("Mungara", "onCreate: " + com.abel.app.b2b.model.parameter.TableType.TimelineDescriptionTypes.Created.inte);*/
 
@@ -294,6 +297,39 @@ public class SplashScreen extends AppCompatActivity
                                 }
                             }, RequestType.POST, SPLASH, BASE_URL_LOGIN, header, params.getBasicDetail(getResources().getString(R.string.MobileBasicDetails)));
 
+                            new ApiService(new OnResponseListener() {
+                                @Override
+                                public void onSuccess(String response, HashMap<String, String> headers) {
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                Log.e("TAG", "onSuccess: "+  response);
+                                                Log.e("TAG", "onSuccess: "+  response);
+                                                HomeScreen homeScreen = new HomeScreen();
+                                                JSONObject responseJSON = new JSONObject(response);
+                                                Boolean status = responseJSON.getBoolean("Status");
+                                                ImageView image = findViewById(R.id.splash);
+                                                if (status){
+                                                    JSONObject resultSet = responseJSON.getJSONObject("Data");
+                                                    homeScreen =    loginRes.getModel(resultSet.toString(), HomeScreen.class);
+                                                    //ImageView image =
+                                                    loginRes.storedata(getResources().getString(R.string.splashimage), homeScreen.AttachmentsModels.get(0).AttachmentPath);
+                                                    CustomBindingAdapter.loadImage(image,homeScreen.AttachmentsModels.get(0).AttachmentPath);
+                                                }
+
+                                            } catch (Exception e){
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+                                }
+
+                                @Override
+                                public void onError(String error) {
+
+                                }
+                            }, RequestType.POST, SPLASH, BASE_URL_LOGIN, header, params.getBasicDetail(getResources().getString(R.string.HomePageScreen)));
 
                             try {
                                 UserData.companyModel = cm;

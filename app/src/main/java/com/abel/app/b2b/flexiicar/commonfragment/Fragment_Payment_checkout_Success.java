@@ -17,13 +17,14 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.abel.app.b2b.R;
 import com.abel.app.b2b.adapters.Helper;
+import com.abel.app.b2b.base.BaseFragment;
 import com.abel.app.b2b.model.response.ReservationSummarry;
 
 import java.util.Locale;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class Fragment_Payment_checkout_Success extends Fragment
+public class Fragment_Payment_checkout_Success extends BaseFragment
 {
     LinearLayout lblPaymentSuceess;
     public static Context context;
@@ -34,7 +35,7 @@ public class Fragment_Payment_checkout_Success extends Fragment
     Boolean locationType, initialSelect;
 
     ReservationSummarry reserversationSummary = new ReservationSummarry();
-    Bundle bundle = new Bundle();
+   // Bundle bundle = new Bundle();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {// Inflate the layout for this fragment
@@ -186,4 +187,13 @@ public class Fragment_Payment_checkout_Success extends Fragment
         }
     }
 
+    @Override
+    protected int getFragmentLayout() {
+        return R.layout.fragment_payment_checkout_success;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
 }

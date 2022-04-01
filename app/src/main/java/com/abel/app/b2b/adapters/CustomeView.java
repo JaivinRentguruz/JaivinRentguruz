@@ -1,8 +1,10 @@
 package com.abel.app.b2b.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -211,6 +213,12 @@ public class CustomeView {
             setText(getText(v,R.id.coa),companyLabel.CheckOut + " Available");
             setText(getText(v,R.id.cia),companyLabel.CheckIn + " Available");
             setText(getText(v,R.id.equi),companyLabel.Equipment );
+
+            setText(getText(v,R.id.fcurrency),Helper.displaycurrency);
+           // setText(getText(v,R.id.fcurrency1),Helper.displaycurrency);
+            setText(getText(v,R.id.fcurrency2),Helper.displaycurrency);
+            setText(getText(v,R.id.kmmm), "Unlimited "+ Helper.fueltype  + " Included");
+            setText(getText(v,R.id.fueltype),Helper.fueltype);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -230,4 +238,27 @@ public class CustomeView {
         return v.findViewById(id);
     }
 
+
+    public void uploadImage(View view, LoginRes loginRes, Activity activity){
+        try {
+            ImageView icon = view.findViewById(R.id.icon);
+            CustomBindingAdapter.loadImage(icon,loginRes.getData(activity.getResources().getString(R.string.icon)));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            ImageView logo = view.findViewById(R.id.logo);
+            CustomBindingAdapter.loadImage(logo,loginRes.getData(activity.getResources().getString(R.string.logo)));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            ImageView homeImage = view.findViewById(R.id.homeImage);
+            CustomBindingAdapter.loadImage(homeImage,loginRes.getData(activity.getResources().getString(R.string.homescreenimage)));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
 }

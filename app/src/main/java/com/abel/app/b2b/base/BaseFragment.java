@@ -1,9 +1,6 @@
 package com.abel.app.b2b.base;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,17 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-import androidx.annotation.Nullable;
-import androidx.databinding.Observable;
 import androidx.fragment.app.Fragment;
 
+import com.abel.app.b2b.adapters.CustomBindingAdapter;
 import com.abel.app.b2b.adapters.CustomeView;
 import com.abel.app.b2b.adapters.Helper;
-import com.abel.app.b2b.model.base.BaseModel;
 import com.abel.app.b2b.model.base.UserData;
 import com.abel.app.b2b.model.companyModel;
 import com.abel.app.b2b.model.response.CompanyLabel;
@@ -36,7 +31,6 @@ import com.abel.app.b2b.R;
 import com.abel.app.b2b.adapters.CustomPreference;
 import com.abel.app.b2b.adapters.LoginRes;
 import com.abel.app.b2b.apicall.ApiService;
-import com.abel.app.b2b.databinding.ListCustomerInsuranceBinding;
 import com.abel.app.b2b.model.DoHeader;
 import com.abel.app.b2b.model.parameter.CommonParams;
 
@@ -68,6 +62,7 @@ abstract public class BaseFragment extends Fragment implements View.OnClickListe
 
     public void onViewCreated(View view, final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         context = this.getContext();
         bundle = new Bundle();
         TAG = getClass().getSimpleName();
@@ -85,17 +80,20 @@ abstract public class BaseFragment extends Fragment implements View.OnClickListe
         this.context = getActivity();
         handler = new Handler(Looper.getMainLooper());
         fullProgressbar = new Dialog(context);
-        fullProgressbar.setCancelable(false);
+        fullProgressbar.setCancelable(true);
         fullProgressbar.requestWindowFeature(Window.FEATURE_NO_TITLE);
         fullProgressbar.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         fullProgressbar.getWindow().setGravity(Gravity.CENTER);
-        fullProgressbar.setContentView(R.layout.custom_progress);
-        Window window = fullProgressbar.getWindow();
+        fullProgressbar.setContentView(R.layout.custom_progresss);
+        fullProgressbar.hide();
+       /* Window window = fullProgressbar.getWindow();
         window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;
         int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-        window.getDecorView().setSystemUiVisibility(uiOptions);
+        window.getDecorView().setSystemUiVisibility(uiOptions);*/
+        fullProgressbar.dismiss();
+        fullProgressbar.cancel();
         //BaseModel.CompanyId = Integer.valueOf(loginRes.getData("CompanyId"));
         if (Helper.di == 0){
             Helper.di = Integer.valueOf(loginRes.getData("CompanyId"));
@@ -123,6 +121,18 @@ abstract public class BaseFragment extends Fragment implements View.OnClickListe
         } catch (Exception e){
             e.printStackTrace();
         }
+
+        try {
+            getview.uploadImage(view,loginRes,getActivity());
+            ImageView icon = view.findViewById(R.id.icon);
+            CustomBindingAdapter.loadImage(icon,loginRes.getData(getResources().getString(R.string.icon)));
+            ImageView logo = view.findViewById(R.id.logo);
+            CustomBindingAdapter.loadImage(logo,loginRes.getData(getResources().getString(R.string.logo)));
+            ImageView homeImage = view.findViewById(R.id.homeImage);
+            CustomBindingAdapter.loadImage(homeImage,loginRes.getData(getResources().getString(R.string.homescreenimage)));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -131,6 +141,9 @@ abstract public class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        fullProgressbar.hide();
+        fullProgressbar.cancel();
+        fullProgressbar.dismiss();
     }
 
     public void getSubview(int i){

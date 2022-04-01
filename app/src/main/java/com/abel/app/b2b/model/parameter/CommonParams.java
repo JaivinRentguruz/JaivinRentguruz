@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.abel.app.b2b.apicall.ApiEndPoint.TableType;
+import static com.abel.app.b2b.apicall.ApiEndPoint.VEHICLECLASS;
 
 public class CommonParams {
     private static int companyid = Helper.di;
@@ -208,6 +209,7 @@ public class CommonParams {
             filter.accumulate("GetForReservation", true);
             filter.accumulate("IsGetStandaredImage", true);
             filter.accumulate("APIRequestType",4);
+            filter.accumulate("TableType",VEHICLECLASS);
             filter.accumulate("fIds",fIds);
             reservationModel.accumulate("CheckOutDate", checkout);
             reservationModel.accumulate("CheckInDate", checkindate);

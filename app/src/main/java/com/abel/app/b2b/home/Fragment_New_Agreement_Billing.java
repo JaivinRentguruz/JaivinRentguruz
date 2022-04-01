@@ -93,7 +93,7 @@ public class Fragment_New_Agreement_Billing extends BaseFragment {
         binding.email.setText(customerProfile.Email);
         //binding.address.setText(Html.fromHtml(customer.));
 
-        binding.edit.setOnClickListener(this);
+        //binding.edit.setOnClickListener(this);
 
 
         List<String> entitylist = new ArrayList<>();

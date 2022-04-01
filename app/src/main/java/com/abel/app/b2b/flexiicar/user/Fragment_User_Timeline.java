@@ -411,6 +411,8 @@ public class Fragment_User_Timeline extends Fragment
                 final JSONObject date = (JSONObject) getActivityTimeLine.get(i);
                 if ( alltimeline.get(i).Datetime.equals(Udate)){
                     for (int j = 0; j <alltimeline.get(i).items.size(); j++){
+                        final LinearLayout rl_color = getActivity().findViewById(R.id.rl_color);
+                        rl_color.setVisibility(View.GONE);
                         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                         lp.addRule(RelativeLayout.BELOW, (200 + j - 1));
                         lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);

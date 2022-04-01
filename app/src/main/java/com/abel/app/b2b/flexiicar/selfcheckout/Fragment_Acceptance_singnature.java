@@ -114,7 +114,10 @@ public class Fragment_Acceptance_singnature extends BaseFragment {
             getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
             bundle.putInt("Id", getArguments().getInt("Id"));
             Log.e("TAG", "RID " + getArguments().getInt("Id"));
-
+            bundle.putSerializable("resrvation",getArguments().getSerializable("resrvation"));
+            //bundle.putSerializable( "reservation",getArguments().getSerializable("resrvation"));
+            bundle.putSerializable("reservation",getArguments().getSerializable("reservation"));
+            bundle.putSerializable("signature",1);
             Calendar c = Calendar.getInstance();
             SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy hh:mm aa");
             String datetime = dateformat.format(c.getTime());
@@ -126,6 +129,7 @@ public class Fragment_Acceptance_singnature extends BaseFragment {
             binding.lblbackAcceptanceSign.setOnClickListener(this);
             binding.txtClearsign.setOnClickListener(this);
             binding.txtSavesign.setOnClickListener(this);
+            binding.termsconditions.setOnClickListener(this);
 
          /*   CheckGpsStatus();
 
@@ -531,7 +535,10 @@ public class Fragment_Acceptance_singnature extends BaseFragment {
                 case R.id.txt_clearsign:
                     binding.signaturePad.clear();
                     break;
-
+                case R.id.termsconditions://     binding.termsconditions.setOnClickListener(this);
+                    NavHostFragment.findNavController(Fragment_Acceptance_singnature.this)
+                            .navigate(R.id.action_Signature_to_Termscondition,bundle);
+                    break;
             }
 
         } catch (Exception e){

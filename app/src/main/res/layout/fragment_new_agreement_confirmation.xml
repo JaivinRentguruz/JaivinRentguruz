@@ -1046,14 +1046,12 @@
         <LinearLayout
             android:id="@+id/layout_2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/bottommenuheight"
             android:layout_alignParentBottom="true">
 
             <include
                 android:id="@+id/btmcharges"
-                layout="@layout/btm_charges"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                layout="@layout/btm_charges" />
         </LinearLayout>
         <!--<LinearLayout
             android:layout_width="@dimen/_113sdp"

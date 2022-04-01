@@ -14,6 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/test"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -236,7 +237,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/editCreditCard"
-                android:layout_marginBottom="48dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/curve_box"
                 android:paddingTop="9dp">
@@ -524,7 +524,7 @@
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="25dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="20dp"
                         android:orientation="vertical">
 
                         <TextView android:theme="@style/texttheme"
@@ -609,24 +609,25 @@
         </LinearLayout>-->
 
         <LinearLayout
+            android:id="@+id/test"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/bottommenuheight"
             android:layout_alignParentBottom="true"
             android:layout_weight="10"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:background="@color/bottommenucolor"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/offlinepayment"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="6"
-                android:background="@drawable/curved_box_darkblue_4dp">
+                android:layout_weight="6">
+                <TextView
+                    style="@style/shortbtn"
+                    android:text="Offline Payment"/>
 
-                <TextView android:theme="@style/texttheme"
+                <!--<TextView android:theme="@style/texttheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -634,7 +635,7 @@
                     android:text="Offline Payment"
                     android:textAllCaps="true"
                     style="@style/btntext"
-                    android:textSize="@dimen/twenty" />
+                    android:textSize="@dimen/twenty" />-->
 
             </LinearLayout>
 
@@ -644,10 +645,13 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:layout_weight="4"
-                android:background="@drawable/curved_box_lightblue_4dp">
+                android:layout_weight="4">
 
-                <TextView android:theme="@style/texttheme"
+                <TextView
+                    style="@style/shortbtn"
+                    android:text="Process"/>
+
+                <!--<TextView android:theme="@style/texttheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -656,7 +660,7 @@
                     android:textColor="@color/btntext"
                     android:textAllCaps="true"
                     style="@style/btntext"
-                    android:textSize="@dimen/twenty" />
+                    android:textSize="@dimen/twenty" />-->
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

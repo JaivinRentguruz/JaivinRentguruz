@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/next"
+            android:layout_above="@+id/test"
             android:orientation="vertical">
             <include
                 android:id="@+id/header"
@@ -134,7 +134,7 @@
                     android:orientation="horizontal">
 
                     <Spinner
-                        android:id="@+id/Sp_Country"
+                        android:id="@+id/vehicletype"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         style="@style/spinner"
@@ -150,7 +150,7 @@
                         />
 
                     <Spinner
-                        android:id="@+id/Sp_State"
+                        android:id="@+id/vehiclelist"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         style="@style/spinner"
@@ -187,12 +187,49 @@
                         layout="@layout/list_change_agreement"/>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_weight="9.5"
+                        android:layout_marginHorizontal="@dimen/startmargin"
+                        android:text="Send Notification to Customer"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:textAllCaps="false"
+                        android:textColor="@color/textlightcolor"
+                        android:textSize="@dimen/thirteen" />
+
+                    <ToggleButton
+                        android:layout_gravity="end"
+                        android:gravity="end"
+                        android:id="@+id/customerinform"
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/toggle_selector_green"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn="" />
+
+                </LinearLayout>
+
                 <TextView
                     android:theme="@style/texttheme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/startmargin"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:text="Notes "
                     android:textAllCaps="false"
                     android:textColor="@color/textlightcolor"
@@ -216,15 +253,57 @@
 
 
             <LinearLayout
-                android:id="@+id/next"
+                android:id="@+id/test"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true">
+                android:layout_height="@dimen/bottommenuheight"
+                android:background="@color/bottommenucolor"
+                android:layout_alignParentBottom="true"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/startmargin">
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/next"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal">
+                    <TextView
+                        style="@style/shortbtn"
+                        android:text="@string/save"/>
+                    <!-- <TextView
+                         android:theme="@style/texttheme"
+                         android:id="@+id/text"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:layout_gravity="center_vertical"
+                         android:gravity="center"
+                         android:text="@string/save"
+                         android:textColor="@color/btntext"
+                         style="@style/btntext"
+                         android:textSize="@dimen/twenty" />-->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/pmt"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:gravity="center_vertical"
+                    android:layout_weight="5">
+                    <TextView
+                        style="@style/shortbtn"
+                        android:text="Payment"/>
+
+                </LinearLayout>
+              <!--  <TextView
                     android:id="@+id/text"
                     style="@style/fullbtn"
-                    android:text="@string/save"/>
+                    android:text="@string/save"/>-->
 
             </LinearLayout>
 

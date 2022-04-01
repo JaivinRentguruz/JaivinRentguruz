@@ -136,7 +136,7 @@ public class Fragment_Reservation_Summarry  extends BaseFragment {
             //binding.btmcharges.txtMileage.setText("Unlimited");
             binding.btmcharges.txtMileage.setText(getArguments().getString("miles"));
             binding.btmcharges.textviewTotalAmount.setText(getArguments().getString("netrate"));
-            binding.btmcharges.currency.setText(Helper.currencySymbol);
+//            binding.btmcharges.currency.setText(Helper.currencySymbol);
 
             LocationList pickuplocation = new LocationList();
             LocationList droplocation = new LocationList();
@@ -161,7 +161,7 @@ public class Fragment_Reservation_Summarry  extends BaseFragment {
             binding.textViewBags1.setText(String.valueOf(model.NoOfBags));
             binding.txtDoor1.setText(String.valueOf(model.NoOfDoors));
             binding.txtAuto.setText(model.TransmissionDesc);
-
+            binding.btmcharges.fueltype.setText(Helper.fueltype);
 
             binding.reservationDetail.textVDriverName.setText(UserData.loginResponse.LogedInCustomer.FullName);
             binding.reservationDetail.TextVDriverEmail.setText(UserData.loginResponse.LogedInCustomer.Email);

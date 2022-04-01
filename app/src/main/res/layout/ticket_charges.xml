@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="label"
+            type="com.abel.app.b2b.model.response.CompanyLabel" />
+    </data>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+       android:text="@{@string/ticket + @string/space + label.Charge}"
+       android:textStyle="bold"
+       android:textSize="16dp"
+       style="@style/edittextheaderfull"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="15"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_marginEnd="5dp"
+            android:text="@{@string/ticket + @string/space + label.Charge}"
+            style="@style/edittextheadershort"/>
+
+        <TextView
+            android:layout_marginEnd="5dp"
+            android:text="Surcharge"
+            style="@style/edittextheadershort"/>
+
+        <TextView
+            android:text="Total Payable"
+            style="@style/edittextheadershort"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="15"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:background="@drawable/curve_white33"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:layout_marginEnd="5dp">
+
+            <EditText
+                android:id="@+id/amount"
+                android:theme="@style/texttheme"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="60"
+                android:gravity="center"
+                android:text=""
+                android:inputType="numberDecimal"
+                android:background="@null"
+                android:textColor="@color/textlightcolor"
+                android:textSize="@dimen/fourteen" />
+
+            <TextView
+                android:id="@+id/fcurrency"
+                android:theme="@style/texttheme"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="40"
+                android:background="@drawable/curve_white22l"
+                android:backgroundTint="@color/green"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="USD $"
+                android:textColor="@color/btntext"
+                style="@style/btntext"
+                android:textSize="@dimen/twelve" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:background="@drawable/curve_white33"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:layout_marginEnd="5dp">
+
+            <EditText
+                android:id="@+id/surcharge"
+                android:theme="@style/texttheme"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="60"
+                android:gravity="center"
+                android:text=""
+                android:inputType="numberDecimal"
+                android:background="@null"
+                android:textColor="@color/textlightcolor"
+                android:textSize="@dimen/fourteen" />
+
+            <TextView
+                android:id="@+id/percent"
+                android:theme="@style/texttheme"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="40"
+                android:background="@drawable/curve_white22l"
+                android:backgroundTint="@color/green"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="%"
+                android:textColor="@color/btntext"
+                style="@style/btntext"
+                android:textSize="@dimen/twelve" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:background="@drawable/curve_white33"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:theme="@style/texttheme"
+                android:id="@+id/netvalue"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="60"
+                android:gravity="center"
+                android:text=""
+                android:inputType="numberDecimal"
+                android:background="@null"
+                android:textColor="@color/textlightcolor"
+                android:textSize="@dimen/fourteen" />
+
+            <TextView
+                android:id="@+id/fcurrency2"
+                android:theme="@style/texttheme"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="40"
+                android:background="@drawable/curve_white22l"
+                android:backgroundTint="@color/green"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="USD $"
+                android:textColor="@color/btntext"
+                style="@style/btntext"
+                android:textSize="@dimen/twelve" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:theme="@style/texttheme"
+        android:layout_marginTop="15dp"
+        android:text="Notes "
+        style="@style/edittextheaderfull" />
+
+
+    <EditText
+        android:id="@+id/note"
+        style="@style/edittextfull"
+        android:background="@drawable/ic_rectangle_for_note"
+        android:maxLines="3"
+        android:minLines="3"
+        android:imeOptions="actionDone"/>
+
+</LinearLayout>
+</layout>

@@ -22,6 +22,7 @@
         android:layout_gravity="end"
         android:orientation="vertical"
         android:background="@color/lightgreen"
+        android:layout_above="@id/apply"
         android:gravity="end">
 
             <LinearLayout
@@ -50,40 +51,15 @@
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp">
+                android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="1dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="vertical" >
-
-
-                <TextView
-                    android:theme="@style/texttheme"
-                    android:id="@+id/editRate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(@string/fix)+String.valueOf(@string/space) +  label.Rate}"
-                    android:layout_marginEnd="10dp"
-                    android:textColor="@color/txtBlack"
-                    android:textSize="@dimen/twenty_two" />
-
-                <ToggleButton
-                    android:layout_marginTop="5dp"
-                    android:layout_width="40dp"
-                    android:clickable="true"
-                    android:layout_height="25dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/toggle_selector_green"
-                    android:text=""
-                    android:textOff=""
-                    android:textOn="" />
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -128,6 +104,106 @@
                 </LinearLayout>
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:weightSum="10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:layout_width="0dp"
+                        android:layout_weight="9.5"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(@string/custome)+String.valueOf(@string/space)+label.Rate }"
+                        android:textColor="@color/txtBlack"
+                        android:textSize="@dimen/twenty" />
+
+                    <ToggleButton
+                        android:id="@+id/customeRate"
+                        android:theme="@style/texttheme"
+                        android:layout_width="40dp"
+                        android:clickable="true"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/toggle_selector_green"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn="" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:weightSum="10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:layout_width="0dp"
+                        android:layout_weight="9.5"
+                        android:layout_height="wrap_content"
+                        android:text="Promo Code"
+                        android:textColor="@color/txtBlack"
+                        android:textSize="@dimen/twenty" />
+
+                    <ToggleButton
+                        android:id="@+id/promocode"
+                        android:theme="@style/texttheme"
+                        android:layout_width="40dp"
+                        android:clickable="true"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/toggle_selector_green"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn="" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/customeRateview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <TextView
+                    android:theme="@style/texttheme"
+                    android:id="@+id/editRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(@string/fix)+String.valueOf(@string/space) +  label.Rate}"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/txtBlack"
+                    android:textSize="@dimen/twenty" />
+
+                <ToggleButton
+                    android:id="@+id/fixrate"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="40dp"
+                    android:clickable="true"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/toggle_selector_green"
+                    android:text=""
+                    android:textOff=""
+                    android:textOn="" />
+
+
+
+
+
                 <TextView
                     android:theme="@style/texttheme"
                     android:layout_width="match_parent"
@@ -136,7 +212,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:textColor="@color/txtBlack"
-                    android:textSize="@dimen/twenty_two" />
+                    android:textSize="@dimen/twenty"/>
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -145,7 +221,6 @@
                 <RadioButton
 
                     android:id="@+id/daily"
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/MyRadioButton"
@@ -155,9 +230,7 @@
                     android:textColor="@color/txtBlack" />
 
                 <RadioButton
-
                     android:id="@+id/weekly"
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/MyRadioButton"
@@ -167,9 +240,7 @@
                     android:textColor="@color/txtBlack"/>
 
                 <RadioButton
-
                     android:id="@+id/monthly"
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/MyRadioButton"
@@ -179,7 +250,6 @@
                     android:textColor="@color/txtBlack"/>
 
                 </RadioGroup>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -232,7 +302,7 @@
                     android:text="Mileage Allowance"
                     android:layout_marginEnd="10dp"
                     android:textColor="@color/txtBlack"
-                    android:textSize="@dimen/twenty_two" />
+                    android:textSize="@dimen/twenty" />
 
                 <TextView
                     android:id="@+id/mileagess"
@@ -243,7 +313,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="2dp"
                     android:textColor="@color/txtBlack"
-                    android:textSize="13dp" />
+                    android:textSize="12dp" />
 
                 <ToggleButton
                     android:theme="@style/texttheme"
@@ -261,6 +331,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/unlimitedMilesdetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -311,6 +382,7 @@
                     android:text="Deposits"
                     android:layout_marginEnd="10dp"
                     android:textColor="@color/txtBlack"
+                    android:visibility="gone"
                     android:textSize="@dimen/twenty" />
 
 
@@ -318,6 +390,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     android:layout_marginTop="5dp">
 
 
@@ -367,7 +440,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="2dp"
                     android:textColor="@color/txtBlack"
-                    android:textSize="13dp" />
+                    android:visibility="gone"
+                    android:textSize="12dp" />
 
                 <ToggleButton
                     android:theme="@style/texttheme"
@@ -380,10 +454,11 @@
                     android:background="@drawable/toggle_selector_green"
                     android:text=""
                     android:textOff=""
-                    android:textOn="" />
+                    android:textOn=""
+                    android:visibility="gone"/>
 
 
-                <TextView
+              <!--  <TextView
                     android:theme="@style/texttheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -391,18 +466,20 @@
                     android:paddingEnd="20dp"
 
                     android:textColor="@color/txtBlack"
-                    android:textSize="@dimen/twenty_two" />
+                    android:textSize="@dimen/twenty" />-->
 
-                <LinearLayout
+                </LinearLayout>
+
+                <!--<LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_gravity="center_vertical"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="40dp">
+                    android:layout_marginTop="5dp">
 
                     <ToggleButton
+                        android:id="@+id/promocode"
                         android:theme="@style/texttheme"
                         android:layout_width="40dp"
                         android:clickable="true"
@@ -414,47 +491,54 @@
                         android:textOff=""
                         android:textOn="" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+
+                </LinearLayout>-->
+                <LinearLayout
+                    android:id="@+id/promocodedetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:weightSum="2">
+
+
+                    <TextView
+                        android:theme="@style/texttheme"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_weight="1"
+                        android:background="@drawable/curve_white2"
+                        android:backgroundTint="@color/background"
+                        android:text="Promo Code"
+                        android:singleLine="true"
+                        android:textAllCaps="false"
+                        android:gravity="center"
+                        android:paddingEnd="5dp"
+                        android:paddingVertical="4dp"
+                        android:textSize="15dp"
+                        android:textColor="@color/white"/>
 
 
-                        <TextView
-                            android:theme="@style/texttheme"
-                            android:layout_width="80dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/curve_white2"
-                            android:backgroundTint="@color/background"
-                            android:text="CODE"
-                            android:paddingHorizontal="15dp"
-                            android:paddingVertical="4dp"
-                            android:textSize="15dp"
-                            android:layout_marginStart="10dp"
-                            android:textColor="@color/white"/>
+                    <EditText
+                        android:theme="@style/texttheme"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/curve_white2"
+                        android:text="RGHVH"
+                        android:layout_weight="1"
+                        android:inputType="text"
+                        android:gravity="end"
+                        android:layout_gravity="center"
+                        android:textSize="15dp"
+                        android:paddingStart="30dp"
+                        android:layout_marginStart="-5dp"
+                        android:layout_marginEnd="10dp"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="4dp"
+                        android:textColor="@color/background"
+                        android:singleLine="true"
+                        android:imeOptions="actionDone"/>
 
-
-                        <EditText
-                            android:theme="@style/texttheme"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/curve_white2"
-                            android:text="RGHVH"
-                            android:inputType="text"
-                            android:gravity="end"
-                            android:layout_gravity="center"
-                            android:textSize="15dp"
-                            android:paddingStart="30dp"
-                            android:layout_marginStart="-5dp"
-                            android:layout_marginEnd="10dp"
-                            android:paddingHorizontal="15dp"
-                            android:paddingVertical="4dp"
-                            android:textColor="@color/background"
-                            android:singleLine="true"
-                            android:imeOptions="actionDone"/>
-
-
-                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -477,6 +561,7 @@
                         android:textColor="@color/white"/>
                 </LinearLayout>-->
 
+
             </LinearLayout>
             </androidx.core.widget.NestedScrollView>
 
@@ -489,7 +574,7 @@
     <LinearLayout
         android:id="@+id/apply"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/bottommenuheight"
         android:layout_alignParentBottom="true"
         android:background="@color/green">
 

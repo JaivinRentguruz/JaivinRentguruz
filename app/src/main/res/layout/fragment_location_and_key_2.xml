@@ -216,8 +216,7 @@
                         android:layout_marginVertical="@dimen/_15sdp"
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_above="@+id/test"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/onboard_icon" />
+                        android:adjustViewBounds="true"/>
 
                     <LinearLayout
                         android:id="@+id/test"

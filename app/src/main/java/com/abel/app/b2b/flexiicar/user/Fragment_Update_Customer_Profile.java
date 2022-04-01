@@ -511,7 +511,7 @@ public class Fragment_Update_Customer_Profile extends BaseFragment
         }
 
 
-        if (requestCode == REQUEST_PLACE_ADDRESS && resultCode == Activity.RESULT_OK)
+        if (requestCode == REQUEST_PLACE_ADDRESS && resultCode == Activity.RESULT_OK && null != data)
         {
             Place place = Autocomplete.getPlaceFromIntent(data);
             // Log.i(TAG, "Place city and postal code: " + place.getAddress().subSequence(place.getName().length(),place.getAddress().length()));

@@ -393,7 +393,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="6dp"
                         android:hint="$ 34.00/ Day"
-                        android:textSize="@dimen/_10ssp"
+                        android:textSize="@dimen/_9ssp"
                         android:theme="@style/texttheme"
                         android:textColor="@color/btntext"
                         android:textColorHint="@color/btntext"
@@ -408,22 +408,24 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="6dp"
                         android:hint="$ 1200.00/ Deposit"
-                        android:textSize="@dimen/_10ssp"
+                        android:textSize="@dimen/_9ssp"
                         android:theme="@style/texttheme"
                         android:textColor="@color/btntext"
                         android:textColorHint="@color/btntext"
+                        android:singleLine="true"
                         app:_Diposits="@{Double.valueOf(Vehicle.SecurityDeposit)}" />
                 </LinearLayout>
 
 
                 <TextView
+                    android:id="@+id/kmmm"
                     style="@style/btntext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
                     android:layout_weight="1"
                     android:text="Unlimited KMS Included"
-                    android:textSize="@dimen/_8ssp"
+                    android:textSize="@dimen/_9ssp"
                     android:textColor="@color/btntext"
                     android:theme="@style/texttheme" />
 
@@ -492,7 +494,7 @@
                         android:gravity="center"
                         android:text="Total"
                         android:textColor="@color/TitleTextColor"
-                        android:textSize="@dimen/_12ssp"
+                        android:textSize="@dimen/_11ssp"
                         android:textStyle="bold"
                         android:theme="@style/texttheme" />
 
@@ -520,7 +522,7 @@
                         android:text="$ 400.00"
                         android:textStyle="bold"
                         android:textColor="@color/TitleTextColor"
-                        android:textSize="@dimen/_12ssp"
+                        android:textSize="@dimen/_11ssp"
                         android:theme="@style/texttheme"
                         app:_value="@{Vehicle.TotalAmount}"/>
                 </LinearLayout>

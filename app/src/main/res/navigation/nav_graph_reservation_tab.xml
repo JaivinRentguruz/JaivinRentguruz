@@ -508,6 +508,16 @@
     </fragment>
 
 
+    <fragment
+        android:id="@+id/UpdateCreditCard"
+        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Update_CreditCard_For_user"
+        android:label="EditCreditCard"
+        tools:layout="@layout/fragment_update_creditcard">
+        <action
+            android:id="@+id/action_UpdateCreditCard_to_CardsOnAccount"
+            app:destination="@id/CardsOnAccount" />
+    </fragment>
+
     <fragment android:id="@+id/PaymentOffline"
         android:name="com.abel.app.b2b.home.Fragment_Payment_Offline"
         android:label="Payment Success"
@@ -563,7 +573,22 @@
     <fragment android:id="@+id/Reservation_Summarry"
         android:name="com.abel.app.b2b.home.Fragment_Resevation_Summarry"
         android:label="Reservation Summarry"
-        tools:layout="@layout/fragment_vehicle_current_rental"/>
+        tools:layout="@layout/fragment_vehicle_current_rental">
 
+        <action
+            android:id="@+id/action_Finalize_your_rental_to_Term_and_Condtion"
+            app:destination="@id/Term_and_Condtion" />
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/Term_and_Condtion"
+        android:name="com.abel.app.b2b.flexiicar.commonfragment.Fragment_Term_And_Condition"
+        android:label="Term_and_Condtion"
+        tools:layout="@layout/fragment_terms_and_conditions">
+
+        <action
+            android:id="@+id/action_Term_and_Condtion_to_Summary_Of_Charges"
+            app:destination="@id/Summary_Of_Charges" />
+    </fragment>
 </navigation>

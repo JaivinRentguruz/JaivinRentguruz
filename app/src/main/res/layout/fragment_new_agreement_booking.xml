@@ -759,7 +759,10 @@
             android:orientation="horizontal"
             android:weightSum="100">
 
-            <LinearLayout
+            <include
+                android:id="@+id/btm"
+                layout="@layout/btm_charges"/>
+           <!-- <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_13sdp"
@@ -779,7 +782,7 @@
                     android:orientation="horizontal"
                     android:layout_height="match_parent">
                     <TextView
-                        android:id="@+id/currency"
+                        android:id="@+id/fcurrency"
                         android:layout_width="wrap_content"
                         android:text="$ "
                         android:textColor="@color/themebackgroundtext"
@@ -855,7 +858,7 @@
                         android:theme="@style/texttheme"
                         android:textSize="@dimen/_16ssp"/>
                 </LinearLayout>
-            </LinearLayout>
+            </LinearLayout>-->
         </LinearLayout>
 
     </RelativeLayout>

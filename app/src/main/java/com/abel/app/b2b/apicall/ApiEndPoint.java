@@ -15,6 +15,8 @@ public class ApiEndPoint {
     public static final String BASE_URL_CHECKOUT = "https://" + demo + "rentguruz.online/api/";
     public static final String BASE_URL_CHECKIN = "https://" + demo + "rentguruz.online/api/";
 
+
+
     public static final String BASE_URL_HUFKEY = "https://" + demo + "rentguruz.online/api/HUFKeyAccessLog/";
 
     /*public static final String BASE_URL_LOGIN = "https://api.rentguruz.online/";
@@ -91,6 +93,8 @@ public class ApiEndPoint {
     //location
     public static final String AVAILABLELOCATION = "Location/GetAll";
 
+    public static final String TOLLCHARGE  = "TollCharge/Insert";
+    public static final String TRAFFICE = "TrafficTicket/Insert";
     //vehicle
     public static final String AVAILABLEVICHICLE = "Vehicle/GetAll";
     public static final String AVAILABLEVEHICLETYPE = "VehicleType/GetAll";
@@ -245,6 +249,8 @@ public class ApiEndPoint {
     public static final int INSURANCECOMPANY = 6;
     public static final int VENDOR = 76;
 
+    public static final int VEHICLELIST = 29;
+    public static final int CANCELAUTORISEDBY = 1;
 
     public static Bitmap firstImage = null;
     public static Bitmap secondImage = null;

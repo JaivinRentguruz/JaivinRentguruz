@@ -67,10 +67,11 @@
                     android:theme="@style/texttheme" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/icon"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/regular_logo"/>
+                    android:layout_marginBottom="10dp"/>
             </LinearLayout>
 
 

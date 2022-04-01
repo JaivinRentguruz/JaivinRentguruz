@@ -66,6 +66,7 @@
             android:background="@drawable/curve_box"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/test"
             android:paddingTop="10dp">
 
             <LinearLayout
@@ -178,7 +179,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Year"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"
                                 android:textSize="@dimen/txt_font_size" />
@@ -190,8 +191,8 @@
                                 android:layout_weight="1"
                                  style="@style/textfont"
                                 android:gravity="left"
-                                android:text="MAKE"
-                                android:textAllCaps="true"
+                                android:text="Make"
+                          
                                 android:textColor="@color/textlightcolor"
                                 android:textSize="@dimen/txt_font_size" />
 
@@ -228,7 +229,7 @@
                                 android:inputType="number"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size" />
 -->
                           <!--  <EditText
@@ -242,7 +243,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size" />-->
 
                             <Spinner
@@ -272,7 +273,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Model"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
 
@@ -283,7 +284,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Class"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
                         </LinearLayout>
@@ -319,7 +320,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size" />-->
 
                             <!--<EditText
@@ -333,7 +334,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size" />-->
 
                               <Spinner
@@ -362,7 +363,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Transmission"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
 
@@ -373,7 +374,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Engine"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
                         </LinearLayout>
@@ -409,7 +410,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size" />-->
 
 
@@ -436,7 +437,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size" />-->
                         </LinearLayout>
 
@@ -453,7 +454,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Manufacturer"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
 
@@ -464,7 +465,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Key Code"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
                         </LinearLayout>
@@ -489,7 +490,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size"
                                 android:imeOptions="actionDone"/>
 
@@ -505,7 +506,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size"
                                 android:imeOptions="actionDone"/>
                         </LinearLayout>
@@ -523,7 +524,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Licence Number"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
 
@@ -534,7 +535,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Vehicle Number"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
                         </LinearLayout>
@@ -559,7 +560,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size"
                                 android:imeOptions="actionDone"/>
 
@@ -575,7 +576,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size"
                                 android:imeOptions="actionDone"/>
                         </LinearLayout>
@@ -593,7 +594,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="License Plate"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
 
@@ -604,7 +605,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Fuel type"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
                         </LinearLayout>
@@ -628,7 +629,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size"
                                 android:imeOptions="actionDone"/>
 
@@ -643,7 +644,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size" />-->
 
                             <Spinner
@@ -672,7 +673,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Vehicles Status"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
 
@@ -683,7 +684,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="No of Doors"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
                         </LinearLayout>
@@ -730,7 +731,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size" />-->
                         </LinearLayout>
 
@@ -747,7 +748,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Gas Tank Capacity"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
 
@@ -758,7 +759,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="No of seats"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
                         </LinearLayout>
@@ -783,7 +784,7 @@
                                 android:inputType="number"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size"
                                 android:imeOptions="actionDone"/>
 
@@ -810,7 +811,7 @@
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
-                                android:textColorHint="@color/txtBlack"
+                              
                                 android:textSize="@dimen/edt_font_size" />-->
                         </LinearLayout>
 
@@ -828,7 +829,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Parked Location"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
 
@@ -839,7 +840,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Fleet Category"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
                         </LinearLayout>
@@ -886,7 +887,7 @@
                                        android:inputType="text"
                                        android:padding="14dp"
                                        android:textColor="@color/txtBlack"
-                                       android:textColorHint="@color/txtBlack"
+                                     
                                        android:textSize="@dimen/edt_font_size" />-->
                         </LinearLayout>
 
@@ -903,7 +904,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="Owning Location"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
 
@@ -914,7 +915,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:text="No. of Bags"
-                                android:textAllCaps="true"
+                          
                                  style="@style/textfont"
                                 android:textColor="@color/textlightcolor"                        android:textSize="@dimen/txt_font_size" />
                         </LinearLayout>
@@ -961,7 +962,7 @@
                                        android:inputType="text"
                                        android:padding="14dp"
                                        android:textColor="@color/txtBlack"
-                                       android:textColorHint="@color/txtBlack"
+                                     
                                        android:textSize="@dimen/edt_font_size" />-->
                         </LinearLayout>
                     </LinearLayout>
@@ -1390,6 +1391,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -1689,6 +1691,7 @@
         </androidx.core.widget.NestedScrollView>
 
         <LinearLayout
+            android:id="@+id/test"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -1698,7 +1701,8 @@
             <LinearLayout
                 android:id="@+id/lblNextToRentalRate"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_alignParentBottom="true"
+                android:layout_height="@dimen/bottommenuheight">
 
                 <TextView
                     style="@style/fullbtn"

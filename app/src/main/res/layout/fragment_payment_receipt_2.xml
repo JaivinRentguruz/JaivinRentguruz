@@ -41,7 +41,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/topcolor"
-                        android:text="Payment receipt"
+                        android:text="Payment Receipt"
                         android:theme="@style/texttheme"
                         android:textAllCaps="false"
                         android:textSize="17dp" />
@@ -73,8 +73,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
-
-                        android:text="Payment receipt"
+                        android:theme="@style/texttheme"
+                        android:text="Payment Receipt"
                         android:gravity="left"
                         android:textAllCaps="false"
                         android:textColor="#707070"
@@ -84,7 +84,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="16dp"
-
+                        android:theme="@style/texttheme"
                         android:textAllCaps="false"
                         android:gravity="right"
                         android:textSize="17dp" />

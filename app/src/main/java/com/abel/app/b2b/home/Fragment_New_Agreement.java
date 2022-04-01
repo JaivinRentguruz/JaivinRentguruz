@@ -105,7 +105,7 @@ public class Fragment_New_Agreement extends BaseFragment {
         data = new ArrayList<>();
         binding.test.header.screenHeader.setText(companyLabel.Reservation);
         binding.test.editRate.setOnClickListener(this);
-        binding.test.lblConfirm2.setOnClickListener(this);
+        binding.test.btm.layoutPayment.setOnClickListener(this);
         binding.test.header.back.setOnClickListener(this);
         binding.test.header.discard.setOnClickListener(this);
         binding.leftscreen.apply.setOnClickListener(this);
@@ -113,7 +113,7 @@ public class Fragment_New_Agreement extends BaseFragment {
         binding.slider.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         binding.slider.closeDrawer(GravityCompat.END);
-        binding.test.fueltype.setText(Helper.fueltype);
+        //binding.test.fueltype.setText(Helper.fueltype);
         bundle.putSerializable("reservationSum", (ReservationSummarry) getArguments().getSerializable("reservationSum"));
         bundle.putSerializable("Model", (VehicleModel) getArguments().getSerializable("Model"));
         bundle.putString("pickupdate", getArguments().getString("pickupdate"));
@@ -234,7 +234,7 @@ public class Fragment_New_Agreement extends BaseFragment {
             binding.test.currency5.setText(Helper.displaycurrency);
             binding.test.currency6.setText(Helper.displaycurrency);
             binding.test.currency7.setText(Helper.displaycurrency);
-            binding.test.currency.setText(Helper.currencySymbol);
+            //binding.test.currency.setText(Helper.currencySymbol);
             binding.leftscreen.currency8.setText(Helper.displaycurrency);
             binding.leftscreen.currency9.setText(Helper.displaycurrency);
 
@@ -243,11 +243,65 @@ public class Fragment_New_Agreement extends BaseFragment {
             binding.leftscreen.mileagess.setText("Unlimited "+Helper.fueel);
             binding.leftscreen.dep.setText(UserData.loginResponse.CompanyLabel.Deposit);
             binding.leftscreen.dep1.setText("Waive "+UserData.loginResponse.CompanyLabel.Deposit);
-
+            binding.test.btm.text.setText(getResources().getString(R.string.next));
         } catch (Exception e){
             e.printStackTrace();
         }
 
+        binding.leftscreen.fixrate.setChecked(true);
+        binding.leftscreen.fixrate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                getChecked();
+                /*if (isChecked){
+                    binding.leftscreen.fixratedetail.setVisibility(View.GONE);
+                } else {
+                    binding.leftscreen.fixratedetail.setVisibility(View.VISIBLE);
+                }*/
+            }
+        });
+        binding.leftscreen.unlimitedMiles.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                getChecked();
+               /* if (isChecked){
+                    binding.leftscreen.unlimitedMilesdetail.setVisibility(View.GONE);
+                } else {
+                    binding.leftscreen.unlimitedMilesdetail.setVisibility(View.VISIBLE);
+                }*/
+            }
+        });
+        binding.leftscreen.promocode.setChecked(true);
+        binding.leftscreen.promocode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    getChecked();
+                }else {
+                    binding.leftscreen.customeRate.setChecked(true);
+                    getCustomeRate();
+                }
+               /* if (isChecked){
+                    binding.leftscreen.promocodedetail.setVisibility(View.GONE);
+                } else {
+                    binding.leftscreen.promocodedetail.setVisibility(View.VISIBLE);
+                }*/
+            }
+        });
+
+        binding.leftscreen.customeRate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    getCustomeRate();
+                } else {
+                    binding.leftscreen.promocode.setChecked(true);
+                    getChecked();
+                }
+            }
+        });
+
+        getChecked();
     }
 
     @Override
@@ -338,6 +392,7 @@ public class Fragment_New_Agreement extends BaseFragment {
                 break;
 
             case R.id.lbl_confirm_2:
+            case R.id.layout_payment:
                 //NavHostFragment.findNavController(Fragment_New_Agreement.this).navigate(R.id.newAgreemnent_to_booking);
                 NavHostFragment.findNavController(Fragment_New_Agreement.this).navigate(R.id.newAgreemnent_to_customerlist,bundle);
                 break;
@@ -345,10 +400,10 @@ public class Fragment_New_Agreement extends BaseFragment {
             case R.id.back:
                 if (UserData.companyModel.CompanyPreference.DefaultBookingOnVehicleType){
                     NavHostFragment.findNavController(Fragment_New_Agreement.this)
-                            .navigate(R.id.newAgreemnent_to_vehicle, bundle);
+                            .navigate(R.id.newAgreemnent_to_vehiclestype_available, bundle);
                 } else {
                     NavHostFragment.findNavController(Fragment_New_Agreement.this)
-                            .navigate(R.id.newAgreemnent_to_vehiclestype_available, bundle);
+                            .navigate(R.id.newAgreemnent_to_vehicle, bundle);
                 }
                 break;
             case R.id.discard:
@@ -358,6 +413,47 @@ public class Fragment_New_Agreement extends BaseFragment {
         }
     }
 
+    public void getChecked(){
+        try {
+            if (binding.leftscreen.promocode.isChecked()){
+                binding.leftscreen.customeRate.setChecked(false);
+                getCustomeRate();
+                binding.leftscreen.promocodedetail.setVisibility(View.VISIBLE);
+            } else {
+                binding.leftscreen.promocodedetail.setVisibility(View.GONE);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+      /*  if (  binding.leftscreen.unlimitedMiles.isChecked()){
+            binding.leftscreen.unlimitedMilesdetail.setVisibility(View.VISIBLE);
+        } else {
+            binding.leftscreen.unlimitedMilesdetail.setVisibility(View.GONE);
+        }*/
+
+        /*if ( binding.leftscreen.fixrate.isChecked()){
+            binding.leftscreen.fixratedetail.setVisibility(View.VISIBLE);
+        } else {
+            binding.leftscreen.fixratedetail.setVisibility(View.GONE);
+        }*/
+    }
+
+    public void getCustomeRate() {
+        try {
+            if(binding.leftscreen.customeRate.isChecked()){
+                binding.leftscreen.promocode.setChecked(false);
+                getChecked();
+                binding.leftscreen.customeRateview.setVisibility(View.VISIBLE);
+            } else {
+                binding.leftscreen.customeRateview.setVisibility(View.GONE);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
 
 
@@ -541,17 +637,17 @@ public class Fragment_New_Agreement extends BaseFragment {
                                             Log.e(TAG, "run: " + charges[i].ReservationSummaryDetailModels[j].Total );
                                             Log.e(TAG, "run: " + charges[i].ReservationSummaryDetailModels[j].Description );
                                             if (charges[i].ReservationSummaryDetailModels[j].Total == 0) {
-                                                binding.test.txtMileage.setText(charges[i].ReservationSummaryDetailModels[j].Description.trim());
+                                                binding.test.btm.txtMileage.setText(charges[i].ReservationSummaryDetailModels[j].Description.trim());
                                                 //binding.test.txtMileage.setTextSize(15);
                                             } else{
-                                                binding.test.txtMileage.setText(Helper.getDistance(charges[i].ReservationSummaryDetailModels[j].Total));
+                                                binding.test.btm.txtMileage.setText(Helper.getDistance(charges[i].ReservationSummaryDetailModels[j].Total));
                                                 //binding.test.txtMileage.setTextSize(30);
                                             }
                                     }
                                     // binding.txtMileage.setText(String.valueOf(charges[i].ReservationSummaryDetailModels[1].Total));
                                 }
                                 if (charges[i].ReservationSummaryType==100){
-                                    binding.test.txtTotalAmount.setText(DigitConvert.getDoubleDigit(charges[i].ReservationSummaryDetailModels[0].Total));
+                                    binding.test.btm.textviewTotalAmount.setText(DigitConvert.getDoubleDigit(charges[i].ReservationSummaryDetailModels[0].Total));
                                 }
                             }
                             JSONObject obj =  resultSet.getJSONObject("ReservationTimeModel");

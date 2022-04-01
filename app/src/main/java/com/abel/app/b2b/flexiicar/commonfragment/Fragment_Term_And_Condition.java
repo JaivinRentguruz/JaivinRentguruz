@@ -24,6 +24,7 @@ import com.abel.app.b2b.apicall.RequestType;
 import com.abel.app.b2b.base.BaseFragment;
 import com.abel.app.b2b.databinding.FragmentTermsAndConditionsBinding;
 import com.abel.app.b2b.model.response.LocationList;
+import com.abel.app.b2b.model.response.Reservation;
 import com.abel.app.b2b.model.response.ReservationSummarry;
 
 import org.json.JSONArray;
@@ -37,7 +38,7 @@ import static com.abel.app.b2b.apicall.ApiEndPoint.TERMSCONDITION;
 
 public class Fragment_Term_And_Condition extends BaseFragment
 {
-    Handler handler = new Handler();
+   // Handler handler = new Handler();
     public static Context context;
     public String id = "";
     TextView txt_TCName,txt_TCDesc,txt_Cancel;
@@ -48,7 +49,7 @@ public class Fragment_Term_And_Condition extends BaseFragment
 
     FragmentTermsAndConditionsBinding binding;
     public static Boolean popbackstack = false;
-
+    private int documnetType = 4;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -338,7 +339,7 @@ public class Fragment_Term_And_Condition extends BaseFragment
                 public void onError(String error) {
 
                 }
-            }, RequestType.POST, TERMSCONDITION, BASE_URL_LOGIN, header, params.gettermscondition(pickuplocation.Id, 2, 4));
+            }, RequestType.POST, TERMSCONDITION, BASE_URL_LOGIN, header, params.gettermscondition(pickuplocation.Id, 2, documnetType));
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -379,12 +380,53 @@ public class Fragment_Term_And_Condition extends BaseFragment
                 public void onError(String error) {
 
                 }
-            }, RequestType.POST, TERMSCONDITION, BASE_URL_LOGIN, header, params.gettermscondition(reservationSummarry.PickUpLocation, 2, 4));
+            }, RequestType.POST, TERMSCONDITION, BASE_URL_LOGIN, header, params.gettermscondition(reservationSummarry.PickUpLocation, 2, documnetType));
             popbackstack = true;
         } catch (Exception e){
             e.printStackTrace();
         }
 
+        try {
+            Reservation reservation = new Reservation();
+            reservation = (Reservation) getArguments().getSerializable("reservation");
+            documnetType = 3;
+            new ApiService(new OnResponseListener() {
+                @Override
+                public void onSuccess(String response, HashMap<String, String> headers) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Log.d("TAG", "onSuccess: " + response);
+                                JSONObject responseJSON = new JSONObject(response);
+                                Boolean status = responseJSON.getBoolean("Status");
+                                if (status)
+                                {
+                                    try
+                                    {
+                                        JSONObject data = responseJSON.getJSONObject("Data");
+                                        String  Description = data.getString("Description");
+                                        binding.txtTermCondDesc.setText(Html.fromHtml(Description));
+                                    } catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                }
+                            } catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+
+                @Override
+                public void onError(String error) {
+
+                }
+            }, RequestType.POST, TERMSCONDITION, BASE_URL_LOGIN, header, params.gettermscondition(reservation.PickUpLocation, 2, documnetType));
+            popbackstack = true;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
     OnResponseListener GetTermsCondition = new OnResponseListener()
     {

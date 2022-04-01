@@ -148,8 +148,16 @@ public class Fragment_Customer_Profile extends BaseFragment
         customResponse.UserLogin(context,default_Email,default_Password);*/
 
         try {
-            Helper.AllowCustomerInsurance = true;
+           /* Helper.AllowCustomerInsurance = true;
             if (Helper.AllowCustomerInsurance){
+                binding.lblInsurancePolicy.setVisibility(View.GONE);
+                binding.insuranceline.setVisibility(View.GONE);
+            }*/
+
+            if (UserData.companyModel.CompanyPreference.AllowCustomerInsurance){
+                binding.lblInsurancePolicy.setVisibility(View.VISIBLE);
+                binding.insuranceline.setVisibility(View.VISIBLE);
+            } else {
                 binding.lblInsurancePolicy.setVisibility(View.GONE);
                 binding.insuranceline.setVisibility(View.GONE);
             }

@@ -34,7 +34,7 @@ public class Helper {
     public static Boolean B2BRESERVATION = false;
     public static Boolean RegistrationD = false;
 
-    public static Boolean AllowCustomerInsurance = false;
+    //public static Boolean AllowCustomerInsurance = false;
 
 
     /*public static final String currencySymbol =  UserData.companyModel.CurrencySymbol;
@@ -58,7 +58,7 @@ public class Helper {
     public static final int screenid =1;
     public static int dateformat=1;
     public static String displayDate = getDisplayDateFormat(dateformat);
-    public static String displayTime = getDisplayTimeFormat(dateformat);
+    public static String displayTime = getDisplayTimeFormat(2);
     public static String postDate = "yyyy-MM-dd";
     //public static final String fueltype = getfuel(fuel);
     public static String fueltype;
@@ -70,7 +70,8 @@ public class Helper {
         if (symbol){
             value = displaycurrency + " " + amt2;
         } else {
-            value = currencySymbol + " " + amt2;
+           // value = currencySymbol + " " + amt2;
+            value = displaycurrency + " " + amt2;
         }
         return value;
     }

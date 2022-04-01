@@ -257,8 +257,10 @@ public class Fragment_VehiclesType_Available extends BaseFragment
                   // vehicleModelList = (List<VehicleModel>) loginRes.getModelList(VehicleList.toString(), VehicleModel.class);
                         int len;
                         len = reservationVehicleType.length;
-                        for (int j = 0; j < len; j++)
-                        {
+                        int iid = -1;
+                        for (int j = 0; j < len; j++) {
+                            Log.e(TAG, "onSuccess:1 " + j );
+                            if (reservationVehicleType[j].TotalAvailableVehicle != 0) {
                             getSubview(j);
                             vehicleAvailableListBinding = VehicletypeAvailableListBinding.inflate(subinflater,
                                     getActivity().findViewById(android.R.id.content), false);
@@ -266,7 +268,8 @@ public class Fragment_VehiclesType_Available extends BaseFragment
                             vehicleAvailableListBinding.getRoot().setId(200 + j);
                             vehicleAvailableListBinding.getRoot().setLayoutParams(subparams);
                             int finalJ = j;
-
+                                iid +=1;
+                            Log.e(TAG, "onSuccess:2 " + j );
                             vehicleAvailableListBinding.available.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -274,20 +277,19 @@ public class Fragment_VehiclesType_Available extends BaseFragment
                                     vm.VehicleTypeId = reservationVehicleType[finalJ].Id;
                                     vm.VehicleShortName = reservationVehicleType[finalJ].Name;
                                     bundle.putSerializable("Model", vm);
-                                    NavHostFragment.findNavController(Fragment_VehiclesType_Available.this).navigate(R.id.vehiclestype_available_to_vehicles_available,bundle);
+                                    NavHostFragment.findNavController(Fragment_VehiclesType_Available.this).navigate(R.id.vehiclestype_available_to_vehicles_available, bundle);
                                   /*  new ApiService(getVehicleList, RequestType.POST, AVAILABLEVICHICLE, BASE_URL_LOGIN, header,
                                          //   params.getVechicleList(pickuploc.Id,getArguments().getString("pickupdate"),getArguments().getString("dropdate"),vehicleModel[finalJ].VehicleTypeId));
                                             params.getVechicleList(pickuploc.Id,reserversationSummary.CheckInDate,reserversationSummary.CheckOutDate,vehicleModel[finalJ].VehicleTypeId));*/
                                 }
                             });
 
-                            vehicleAvailableListBinding.getRoot().setOnClickListener(new View.OnClickListener()
-                            {
+                                int finalIid = iid;
+                                vehicleAvailableListBinding.getRoot().setOnClickListener(new View.OnClickListener() {
                                 @Override
-                                public void onClick(View arg0)
-                                {
-                                    binding.relativeVehicleAvailable.getChildAt(finalJ).setBackground(getResources().getDrawable(R.drawable.curve_box_dark_gray));
-                                    vm.VehicleTypeId =  reservationVehicleType[finalJ].Id;
+                                public void onClick(View arg0) {
+                                    binding.relativeVehicleAvailable.getChildAt(finalIid).setBackground(getResources().getDrawable(R.drawable.curve_box_dark_gray));
+                                    vm.VehicleTypeId = reservationVehicleType[finalJ].Id;
                                     vm.DefaultImagePath = reservationVehicleType[finalJ].VehicleClassStandaredImagePath;
                                     vm.NoOfBags = reservationVehicleType[finalJ].NoOfBags;
                                     vm.NoOfDoors = reservationVehicleType[finalJ].NoOfDoors;
@@ -318,7 +320,9 @@ public class Fragment_VehiclesType_Available extends BaseFragment
                                             .navigate(R.id.vehiclestype_available_to_new_agreemnent, bundle);
                                 }
                             });
+
                             binding.relativeVehicleAvailable.addView(vehicleAvailableListBinding.getRoot());
+                         }
                         }
                         fullProgressbar.hide();
                     }

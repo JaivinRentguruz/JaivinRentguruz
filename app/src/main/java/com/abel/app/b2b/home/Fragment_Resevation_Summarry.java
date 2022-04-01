@@ -142,7 +142,7 @@ public class Fragment_Resevation_Summarry  extends BaseFragment  {
             pickupdrop.droploc = returnlocation.Name;
 
             binding.scan.txtConformationNo.setText(reserversationSummary.ReservationNo);
-
+            binding.btmcharges.fueltype.setText(Helper.fueltype);
             model = (VehicleModel) getArguments().getSerializable("Model");
             Glide.with(context).load(model.DefaultImagePath).into(binding.carimage);
             binding.VehicleTypeName.setText(model.VehicleName);
@@ -372,7 +372,7 @@ public class Fragment_Resevation_Summarry  extends BaseFragment  {
                         JSONArray summarry = resultSet.getJSONArray("ReservationSummaryModels");
                         charges = loginRes.getModel(summarry.toString(), ReservationSummaryModels[].class);
                         summaryDisplay.getB2BSummarry(bundle,charges,binding.reservationDetail.rlSummaryofcharge);
-                        binding.btmcharges.currency.setVisibility(View.GONE);
+                       // binding.btmcharges.currency.setVisibility(View.GONE);
                         binding.btmcharges.txtMileage.setText(summaryDisplay.getMileage(charges));
                         binding.btmcharges.textviewTotalAmount.setText(Helper.getAmtount(Double.valueOf(summaryDisplay.getDatafrom(charges, 100)), false));
                     }

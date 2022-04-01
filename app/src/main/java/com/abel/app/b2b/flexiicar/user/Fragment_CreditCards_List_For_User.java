@@ -17,14 +17,20 @@ import com.abel.app.b2b.base.BaseFragment;
 import com.abel.app.b2b.databinding.FragmentCreditcardsListBinding;
 import com.abel.app.b2b.databinding.ListCreditCardBinding;
 import com.abel.app.b2b.flexiicar.login.Fragment_Driver_Profile_3;
+import com.abel.app.b2b.model.Customer;
 import com.abel.app.b2b.model.base.UserData;
 import com.abel.app.b2b.model.CreditCardModel;
+import com.abel.app.b2b.model.response.CustomerProfile;
+import com.abel.app.b2b.model.response.LocationList;
 import com.abel.app.b2b.model.response.LoginResponse;
 import com.abel.app.b2b.R;
 import com.abel.app.b2b.adapters.CustomToast;
 import com.abel.app.b2b.apicall.ApiService;
 import com.abel.app.b2b.apicall.OnResponseListener;
 import com.abel.app.b2b.apicall.RequestType;
+import com.abel.app.b2b.model.response.ReservationSummarry;
+import com.abel.app.b2b.model.response.ReservationTimeModel;
+import com.abel.app.b2b.model.response.VehicleModel;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -110,6 +116,28 @@ public class Fragment_CreditCards_List_For_User extends BaseFragment
         }
 
         loginResponse.User.UserFor =  UserData.loginResponse.User.UserFor;
+
+        try {
+            bundle.putSerializable("reservationSum", (ReservationSummarry) getArguments().getSerializable("reservationSum"));
+            bundle.putSerializable("Model", (VehicleModel) getArguments().getSerializable("Model"));
+            bundle.putSerializable("models", (LocationList) getArguments().getSerializable("models"));
+            bundle.putSerializable("model", (LocationList) getArguments().getSerializable("model"));
+            bundle.putSerializable("timemodel", (ReservationTimeModel) getArguments().getSerializable("timemodel"));
+            bundle.putSerializable("customer", (Customer) getArguments().getSerializable("customer"));
+            bundle.putString("pickupdate", getArguments().getString("pickupdate"));
+            bundle.putString("dropdate", getArguments().getString("dropdate"));
+            bundle.putString("droptime", getArguments().getString("droptime"));
+            bundle.putString("pickuptime", getArguments().getString("pickuptime"));
+            bundle.putString("transactionId",getArguments().getString("transactionId"));
+            bundle.putString("netrate", getArguments().getString("netrate"));
+            bundle.putSerializable("customerDetail",(CustomerProfile) getArguments().getSerializable("customerDetail"));
+            Customer customer = new Customer();
+            customer = (Customer) getArguments().getSerializable("customer");
+            loginResponse.User.UserFor = customer.Id;
+            bundle.putInt("frag",2);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         apiService = new ApiService(GetCreditcardList, RequestType.POST,
                 GETALLCARD, BASE_URL_LOGIN, header, params.getCreditCardList(loginResponse.User.UserFor));

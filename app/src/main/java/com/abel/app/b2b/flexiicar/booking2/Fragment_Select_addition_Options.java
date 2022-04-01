@@ -165,10 +165,16 @@ public class Fragment_Select_addition_Options extends BaseFragment
       //      getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
             try {
-                Helper.AllowCustomerInsurance = true;
+              /*  Helper.AllowCustomerInsurance = true;
                 if (Helper.AllowCustomerInsurance){
                     binding.difins.setVisibility(View.INVISIBLE);
-                }
+                }*/
+               if (UserData.companyModel.CompanyPreference.AllowCustomerInsurance){
+                   binding.difins.setVisibility(View.VISIBLE);
+               } else {
+                   binding.difins.setVisibility(View.GONE);
+               }
+
             } catch (Exception e){
                 e.printStackTrace();
             }

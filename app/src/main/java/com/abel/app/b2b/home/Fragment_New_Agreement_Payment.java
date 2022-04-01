@@ -88,7 +88,8 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
         bundle.putString("transactionId",transactionId);
         bundle.putString("netrate", getArguments().getString("netrate"));
         bundle.putSerializable("customerDetail",(CustomerProfile) getArguments().getSerializable("customerDetail"));
-
+        bundle.putInt("frag",2);
+        
         reserversationSummary = (ReservationSummarry) getArguments().getSerializable("reservationSum");
         customer = (Customer) getArguments().getSerializable("customer");
         customerProfile = (CustomerProfile) getArguments().getSerializable("customerDetail");
@@ -152,11 +153,13 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
             Glide.with(context).load(reservation.VehicleImagePath).into(binding.carimage);
             binding.textVVehicleModelName.setText(reservation.VehicleName);
             //binding.textVVehicleTypeVName.setText(vehicleModel.VehicleCategory);
+            binding.txtAmtPayable.setText(Helper.getAmtount(Double.valueOf(getArguments().getString("netrate").trim()),false));
+            bundle.putString("netrate",getArguments().getString("netrate"));
             UserData.loginResponse.User.UserFor = reservation.CustomerId;
             reservationPMT.BillToInfoJSON = loginRes.modeltostring(TAG,UserData.customerProfile);
 
         } else {
-         bodyParam ="?id="+ customer.Id+"&isActive=true";
+            bodyParam ="?id="+ customer.Id+"&isActive=true";
             reservationPMT.CustomerId = customer.Id;
             reservationPMT.ReservationId = reserversationSummary.Id;
             reservationPMT.AgreementNumber = reserversationSummary.ReservationNo;
@@ -212,7 +215,14 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
                 break;
 
             case R.id.offlinepayment:
-                NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).navigate(R.id.payment_to_paymentoffline,bundle);
+               // NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).navigate(R.id.payment_to_paymentoffline,bundle);
+                reservationPMT.CreditCardId = UserData.UpdateCreditCard.Id;
+
+                reservationPMT.InvoiceAmount = reservationPMT.Amount;
+
+                pmtList.add(reservationPMT);
+                bundle.putBoolean("pmt", true);
+                NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).navigate(R.id.payment_to_optionpayment,bundle);
                 break;
 
             case R.id.payment:

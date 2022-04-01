@@ -25,6 +25,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.abel.app.b2b.R;
 import com.abel.app.b2b.adapters.CustomToast;
+import com.abel.app.b2b.base.BaseFragment;
 import com.github.gcacace.signaturepad.views.SignaturePad;
 
 import org.json.JSONArray;
@@ -38,7 +39,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Fragment_Acceptance_singnature extends Fragment
+public class Fragment_Acceptance_singnature extends BaseFragment
 {
     LinearLayout lblNext;
     ImageView imgback;
@@ -72,6 +73,7 @@ public class Fragment_Acceptance_singnature extends Fragment
         txt_Savesign = view.findViewById(R.id.txt_Savesign);
         txt_date = view.findViewById(R.id.txt_date);
         bundle.putSerializable( "reservation",getArguments().getSerializable("reservation"));
+        bundle.putSerializable("signature",1);
         txtclear.setEnabled(false);
 
         Calendar c = Calendar.getInstance();
@@ -172,10 +174,25 @@ public class Fragment_Acceptance_singnature extends Fragment
                     signaturePad.clear();
                 }
             });
+
+            TextView  termsconditions = view.findViewById(R.id.termsconditions);
+            termsconditions.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NavHostFragment.findNavController(Fragment_Acceptance_singnature.this)
+                            .navigate(R.id.action_Signature_to_Termscondition,bundle);
+                }
+            });
+
         }catch (Exception e)
         {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected int getFragmentLayout() {
+        return R.layout.fragment_acceptance_signature;
     }
 
     public String saveImage(Bitmap myBitmap)
@@ -214,5 +231,10 @@ public class Fragment_Acceptance_singnature extends Fragment
             e1.printStackTrace();
         }
         return "";
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

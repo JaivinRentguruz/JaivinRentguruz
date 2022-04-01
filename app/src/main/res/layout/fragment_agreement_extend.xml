@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/next"
+            android:layout_above="@id/test"
             android:orientation="vertical">
             <include
                 android:id="@+id/header"
@@ -356,9 +356,62 @@
             </androidx.core.widget.NestedScrollView>
         </LinearLayout>
 
-
+        <LinearLayout
+            android:id="@+id/test"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottommenuheight"
+            android:background="@color/bottommenucolor"
+            android:layout_alignParentBottom="true"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/startmargin">
 
             <LinearLayout
+                android:id="@+id/next"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/shortbtn"
+                    android:text="@string/save"/>
+                <!-- <TextView
+                     android:theme="@style/texttheme"
+                     android:id="@+id/text"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:layout_gravity="center_vertical"
+                     android:gravity="center"
+                     android:text="@string/save"
+                     android:textColor="@color/btntext"
+                     style="@style/btntext"
+                     android:textSize="@dimen/twenty" />-->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pmt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:gravity="center_vertical"
+                android:layout_weight="5">
+                <TextView
+                    style="@style/shortbtn"
+                    android:text="Payment"/>
+
+            </LinearLayout>
+            <!--  <TextView
+                  android:id="@+id/text"
+                  style="@style/fullbtn"
+                  android:text="@string/save"/>-->
+
+        </LinearLayout>
+
+            <!--<LinearLayout
                 android:id="@+id/next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -369,7 +422,7 @@
                     style="@style/fullbtn"
                     android:text="@string/save"/>
 
-            </LinearLayout>
+            </LinearLayout>-->
 
     </RelativeLayout>
 

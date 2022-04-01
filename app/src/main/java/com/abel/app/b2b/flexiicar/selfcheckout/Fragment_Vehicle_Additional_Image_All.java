@@ -57,6 +57,8 @@ public class Fragment_Vehicle_Additional_Image_All extends Fragment
            super.onViewCreated(view, savedInstanceState);
            bundle.putInt( "Id", getArguments().getInt("Id"));
            Log.e("TAG", "RID " + getArguments().getInt("Id"));
+           bundle.putSerializable("resrvation",getArguments().getSerializable("resrvation"));
+           bundle.putSerializable("reservation",getArguments().getSerializable("reservation"));
            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
            txt_DateTime = view.findViewById(R.id.text_DateTime12);
 

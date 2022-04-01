@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -23,7 +24,7 @@
             android:paddingRight="2dp"
             android:paddingBottom="25dp">
 
-           <!-- <TextView
+           &lt;!&ndash; <TextView
                 android:id="@+id/txt_Activityname"
                 android:visibility="gone"
                 android:layout_width="match_parent"
@@ -34,7 +35,7 @@
 
                 android:textSize="@dimen/txt_font_size"
                 android:theme="@style/texttheme" />
--->
+&ndash;&gt;
             <TextView
                 android:id="@+id/ActivityTime"
                 android:layout_width="match_parent"
@@ -154,12 +155,12 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!--  <View
+                    &lt;!&ndash;  <View
                           android:layout_width="match_parent"
                           android:layout_height="@dimen/_2sdp"
                           android:layout_marginTop="@dimen/_2sdp"
                           android:layout_marginStart="-20dp"
-                          android:background="@color/selected_dot" />-->
+                          android:background="@color/selected_dot" />&ndash;&gt;
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -195,14 +196,168 @@
 
             </LinearLayout>
 
-          <!--  <View
+          &lt;!&ndash;  <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginStart="11dp"
-                android:background="@color/textColorHint" />-->
+                android:background="@color/textColorHint" />&ndash;&gt;
 
         </LinearLayout>
 
 
+    </LinearLayout>
+</LinearLayout>-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="6dp"
+            android:layout_weight="20"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingRight="2dp"
+            android:paddingBottom="34dp">
+
+            <TextView
+                android:id="@+id/txt_Activityname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Reminder"
+                android:textColor="@color/black"
+
+                android:textSize="@dimen/txt_font_size"
+                android:theme="@style/texttheme" />
+
+            <TextView
+                android:id="@+id/ActivityTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="right"
+                android:text="08:30 AM"
+                android:textColor="@color/black"
+
+                android:textSize="@dimen/txt_font_size"
+                android:theme="@style/texttheme" />
+
+            <TextView
+                android:id="@+id/ActivityDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="right"
+                android:text="Jan 20, 2020"
+                android:textColor="@color/black"
+
+                android:textSize="@dimen/textsize_ten"
+                android:theme="@style/texttheme" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="0.8dp"
+                android:layout_height="10dp"
+                android:background="@color/selected_dot" />
+
+            <RelativeLayout
+                android:layout_width="15.9dp"
+                android:layout_height="15.9dp"
+                android:background="@drawable/circle_bg"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/circle_bg"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/circle_bg" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0.8dp"
+                android:layout_height="match_parent"
+                android:background="@color/selected_dot" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/post_on_timeline"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="74"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:id="@+id/LinearLayoutActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_curve_bg">
+
+                    <TextView
+                        android:id="@+id/Activity_Desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray"
+                        android:padding="7dp"
+
+                        android:text="This is a my sample text, read? This is a my sample text, read? This is a my"
+                        android:textColor="@color/screen_bg_color"
+                        android:textSize="@dimen/txt_font_size"
+                        android:theme="@style/texttheme" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_dark_gray_bottom_curve"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="7dp"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/ActivityTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:text="Neeraj Kaneria "
+
+                    android:textColor="@color/screen_bg_color"
+                    android:textSize="@dimen/txt_font_size"
+                    android:theme="@style/texttheme" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_chat_icon"
+                    android:visibility="invisible"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -9,16 +9,9 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Shader;
-import android.graphics.drawable.ShapeDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationManager;
@@ -37,11 +30,9 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -57,9 +48,6 @@ import com.abel.app.b2b.adapters.LoginRes;
 import com.abel.app.b2b.apicall.ApiService;
 import com.abel.app.b2b.apicall.OnResponseListener;
 import com.abel.app.b2b.model.AttachmentsModel;
-import com.abel.app.b2b.model.base.UserData;
-import com.abel.app.b2b.model.response.User;
-import com.abel.app.b2b.model.response.UserDetail;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -117,7 +105,7 @@ public class Fragment_Vehicle_Image_1 extends Fragment
         try {
             fullProgressbar = new Dialog(getContext());
             fullProgressbar.setCancelable(false);
-            fullProgressbar.setContentView(R.layout.custom_progress);
+            fullProgressbar.setContentView(R.layout.custom_progresss);
 
             if (!CheckGpsStatus()) {
                 Intent intent1 = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);

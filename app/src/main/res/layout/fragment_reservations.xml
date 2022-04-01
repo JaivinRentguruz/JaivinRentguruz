@@ -124,15 +124,18 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_5sdp"
                 android:descendantFocusability="blocksDescendants">
 
                 <RelativeLayout
                     android:id="@+id/rl_agreement"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+
                 </RelativeLayout>
 
-        <!--        <include layout="@layout/row_reservation"/>
+              <!--  <include layout="@layout/row_reservation"/>
                 <include layout="@layout/row_reservation"/>
                 <include layout="@layout/row_reservation"/>
                 <include layout="@layout/row_reservation"/>-->

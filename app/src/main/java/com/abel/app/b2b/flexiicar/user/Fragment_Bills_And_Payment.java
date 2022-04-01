@@ -518,7 +518,7 @@ public class Fragment_Bills_And_Payment extends BaseFragment
                                     Name.setText("Payment");
                                 else
                                 Name.setText("Deposits");*/
-                                currency.setText(Helper.currencyName + " " +Helper.currencySymbol+ " ");
+                                currency.setText(Helper.currencyName + " ");
                                 txt_TotalAmount.setText(((String.format(Locale.US, "%.2f", amount))));
                                 txtinvoiceNo.setText(billNumber);
                                 txtOneTimeCharge.setText(description);

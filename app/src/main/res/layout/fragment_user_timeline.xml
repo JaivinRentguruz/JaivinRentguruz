@@ -427,7 +427,7 @@
                                 android:orientation="vertical"
                                 android:layout_weight="6"
                                 android:weightSum="100"
-                                android:layout_marginStart="16dp"
+                                android:layout_marginStart="@dimen/_15sdp"
                                 android:layout_height="match_parent">
 
                                 <RelativeLayout
@@ -437,7 +437,7 @@
                                     <View
                                         android:layout_width="0.8dp"
                                         android:layout_height="@dimen/_450sdp"
-                                        android:background="@color/MGrey"/>
+                                        android:background="@color/red"/>
                                 </RelativeLayout>
                             </LinearLayout>
 

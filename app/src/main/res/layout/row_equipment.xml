@@ -239,7 +239,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="22"
                     android:gravity="right"
-                    android:layout_marginRight="7dp"
+                    android:layout_marginRight="10dp"
                     android:layout_gravity="center_vertical"
                     android:layout_height="wrap_content">
                     <LinearLayout
@@ -248,15 +248,29 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:layout_height="17dp">
+
+                        <TextView
+                            android:id="@+id/txt_availableqty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dp"
+                            android:text="@{String.valueOf(Equipment.Quantity)}"
+                            android:textAlignment="gravity"
+                            android:textAllCaps="false"
+                            android:textColor="@color/btntext"
+                            android:textSize="@dimen/textsize_ten"
+                            android:theme="@style/texttheme" />
+
                         <TextView
                             android:theme="@style/texttheme"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Available"
                             android:textSize="@dimen/textsize_ten"
+                            android:textAlignment="gravity"
+                            android:layout_marginStart="5dp"
                             android:gravity="right"
-                            android:textColor="@color/btntext"
-                            android:layout_marginRight="10dp">
+                            android:textColor="@color/btntext">
                         </TextView>
                     </LinearLayout>
                 </LinearLayout>
@@ -279,8 +293,8 @@
                         android:src="@drawable/gps_nav_system"/>-->
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_60sdp"
                         android:scaleType="fitXY"
                         android:src="@drawable/desktop_img"
                         app:_imageUrl="@{Equipment.AttachmentsModel.AttachmentPath}"
@@ -291,8 +305,8 @@
                     android:theme="@style/texttheme"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="70"
+                    android:layout_weight="80"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:hint="This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. This is a details of Equipment Extra Add on Options. "
                     android:text="@{Equipment.Description}"
                     android:textColor="@color/txtBlack"
@@ -306,7 +320,7 @@
                 android:layout_height="match_parent"
                 android:weightSum="100"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="8dp"
                 android:orientation="horizontal">
                 <LinearLayout
@@ -324,14 +338,14 @@
                         android:text="Per Day"
                         android:textSize="@dimen/textsize_ten"
                         android:textColor="@color/footerButtonBC"/>
-                    <TextView
+                    <!--<TextView
                         android:theme="@style/texttheme"
                         android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="US$7.85 + 6% Tax (Max US$50)"
                         android:textSize="@dimen/textsize_ten"
-                        android:textColor="@color/registerTextColor"/>
+                        android:textColor="@color/registerTextColor"/>-->
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
