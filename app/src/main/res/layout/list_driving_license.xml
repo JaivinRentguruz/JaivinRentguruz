@@ -6,7 +6,7 @@
 
         <variable
             name="Driver"
-            type="com.abel.app.b2b.model.response.UpdateDL" />
+            type="com.rentguruz.app.model.response.UpdateDL" />
     </data>
 
     <LinearLayout

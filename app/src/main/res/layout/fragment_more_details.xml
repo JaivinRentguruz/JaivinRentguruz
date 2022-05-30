@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@color/backgroundColor"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -10,12 +20,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:id="@+id/selectlocation"
             android:layout_alignParentTop="true"
             android:orientation="vertical">
-
-            <RelativeLayout
+            <include
+                android:id="@+id/header"
+                app:UiColor="@{UiColor}"
+                layout="@layout/row_header"/>
+          <!--  <RelativeLayout
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content"
@@ -45,7 +58,7 @@
                          style="@style/textfont"/>
                 </LinearLayout>
 
-               <!-- <LinearLayout
+               &lt;!&ndash; <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_height="wrap_content"
@@ -66,11 +79,12 @@
 
                     </RelativeLayout>
 
-                </LinearLayout>-->
-            </RelativeLayout>
+                </LinearLayout>&ndash;&gt;
+            </RelativeLayout>-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:background="@color/black">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,11 +103,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:gravity="center">
+                        android:gravity="start|center_vertical">
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:src="@drawable/onboard_icon"
-                            android:layout_height="match_parent">
+                            android:id="@+id/icon"
+                            android:layout_width="@dimen/icon"
+                            android:layout_height="@dimen/icon">
                         </ImageView>
                     </RelativeLayout>
 
@@ -279,6 +293,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/black"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:layout_below="@id/selectlocation">
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -306,10 +321,18 @@
                         android:layout_width="0dp"
                         android:layout_weight="12"
                         android:layout_height="match_parent">
-                        <ImageView
+                       <!-- <ImageView
+                            android:id="@+id/man"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_customer_icon"/>
+                            />-->
+                        <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                            android:id="@+id/man"
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:vector_src="@drawable/ic_customer_icon" />
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="0dp"
@@ -347,10 +370,17 @@
                         android:layout_width="0dp"
                         android:layout_weight="12"
                         android:layout_height="match_parent">
-                        <ImageView
+                        <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                            android:id="@+id/car"
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:vector_src="@drawable/ic_vehicles_icon" />
+                        <!--<ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_vehicles_icon"/>
+                            android:src="@drawable/ic_vehicles_icon"/>-->
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="0dp"
@@ -388,10 +418,18 @@
                         android:layout_width="0dp"
                         android:layout_weight="12"
                         android:layout_height="match_parent">
-                        <ImageView
+                       <!-- <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_reservation_icon"/>
+                            android:src="@drawable/ic_reservation_icon"/>-->
+
+                        <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                            android:id="@+id/reservationicon"
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:vector_src="@drawable/ic_reservation_icon" />
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="0dp"
@@ -418,6 +456,7 @@
                     android:layout_height="1dp"/>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lblAgreemet"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -452,6 +491,7 @@
                 </LinearLayout>
 
                 <View
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:background="@color/viewcolor"
                     android:layout_marginLeft="15dp"
@@ -469,10 +509,19 @@
                         android:layout_width="0dp"
                         android:layout_weight="12"
                         android:layout_height="match_parent">
-                        <ImageView
+                     <!--   <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_check_in_icon"/>
+                            android:src="@drawable/ic_check_in_icon"/>-->
+
+                        <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                            android:id="@+id/map"
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:vector_src="@drawable/ic_check_in_icon" />
+
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="0dp"
@@ -508,10 +557,18 @@
                         android:layout_width="0dp"
                         android:layout_weight="12"
                         android:layout_height="match_parent">
-                        <ImageView
+                       <!-- <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_inspection_icon"/>
+                            android:src="@drawable/ic_inspection_icon"/>-->
+
+                        <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                            android:id="@+id/inspection"
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:vector_src="@drawable/ic_inspection_icon" />
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="0dp"
@@ -547,10 +604,18 @@
                         android:layout_width="0dp"
                         android:layout_weight="12"
                         android:layout_height="match_parent">
-                        <ImageView
+                        <!--<ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_organizer"/>
+                            android:src="@drawable/ic_organizer" />-->
+
+                        <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                            android:id="@+id/maninspection"
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:vector_src="@drawable/ic_organizer" />
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="0dp"
@@ -586,10 +651,18 @@
                         android:layout_width="0dp"
                         android:layout_weight="12"
                         android:layout_height="match_parent">
-                        <ImageView
+                       <!-- <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_vehicles_icon"/>
+                            android:src="@drawable/ic_vehicles_icon"/>-->
+
+                        <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                            android:id="@+id/car2"
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:vector_src="@drawable/ic_vehicles_icon" />
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="0dp"
@@ -626,10 +699,18 @@
                         android:layout_width="0dp"
                         android:layout_weight="12"
                         android:layout_height="match_parent">
-                        <ImageView
+                       <!-- <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_report_icon"/>
+                            android:src="@drawable/ic_report_icon"/>-->
+
+                        <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                            android:id="@+id/reports"
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:vector_src="@drawable/ic_report_icon" />
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="0dp"
@@ -667,10 +748,19 @@
                         android:layout_width="0dp"
                         android:layout_weight="12"
                         android:layout_height="match_parent">
-                        <ImageView
+                       <!-- <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_report_icon"/>
+                            android:src="@drawable/ic_report_icon"/>-->
+
+                        <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                            android:id="@+id/reportss"
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:vector_src="@drawable/ic_report_icon" />
+
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="0dp"
@@ -693,3 +783,4 @@
         </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

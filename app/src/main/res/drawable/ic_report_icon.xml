@@ -4,18 +4,23 @@
     android:viewportWidth="18.4"
     android:viewportHeight="24">
   <path
+      android:name="1"
       android:pathData="M16.8,3.034 L13.765,0L0,0L0,22.8L16.8,22.8ZM14,1.366 L15.434,2.8L14,2.8ZM0.8,22L0.8,0.8L13.2,0.8L13.2,3.6L16,3.6L16,22ZM0.8,22"
       android:fillColor="@color/manucolor"/>
   <path
+      android:name="2"
       android:pathData="M16,0.8v0.8h1.6L17.6,23.2L1.2,23.2v0.8L18.4,24L18.4,0.8ZM16,0.8"
       android:fillColor="@color/manucolor"/>
   <path
+      android:name="3"
       android:pathData="M2.4,8.4L14.4,8.4L14.4,4L2.4,4ZM3.2,4.8L13.6,4.8v2.8L3.2,7.6ZM3.2,4.8"
       android:fillColor="@color/manucolor"/>
   <path
+      android:name="4"
       android:pathData="M2.4,9.6L14.4,9.6v0.8L2.4,10.4ZM2.4,9.6"
       android:fillColor="@color/manucolor"/>
   <path
+      android:name="5"
       android:pathData="M8.8,18.4h5.6L14.4,11.6L8.8,11.6ZM9.6,12.4h4L13.6,17.6h-4ZM9.6,12.4"
       android:fillColor="@color/manucolor"/>
   <path

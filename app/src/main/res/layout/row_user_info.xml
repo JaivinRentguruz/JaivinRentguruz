@@ -5,7 +5,7 @@
     <data>
         <variable
             name="Customer"
-            type="com.abel.app.b2b.model.Customer" />
+            type="com.rentguruz.app.model.Customer" />
     </data>
 
     <LinearLayout
@@ -107,10 +107,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_minus5sdp"
-                                    android:ellipsize="marquee"
                                     android:hint="Neeraj Kaneria"
                                     android:inputType="textCapWords"
-                                    android:marqueeRepeatLimit="@integer/material_motion_duration_short_1"
                                     android:text="@={Customer.FullName}"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_16ssp"

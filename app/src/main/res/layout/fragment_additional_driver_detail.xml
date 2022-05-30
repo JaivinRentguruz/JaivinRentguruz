@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
+        <variable
+        name="Driver"
+        type="com.rentguruz.app.model.response.UpdateDL" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundColor">
+        android:background="@color/backgroundColor"
+        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,6 +31,7 @@
 
             <include
                 android:id="@+id/header"
+                app:UiColor="@{UiColor}"
                 layout="@layout/row_header" />
 
             <androidx.core.widget.NestedScrollView
@@ -213,12 +229,13 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginEnd="10dp"
-                                android:background="@drawable/ic_full_curve_box"
-                                android:backgroundTint="@color/lightgreen"
                                 android:orientation="horizontal"
                                 android:padding="1dp">
 
-                                <LinearLayout
+                                <include layout="@layout/list_additional_driver_data"
+                                    app:UiColor="@{UiColor}"
+                                    app:Driver="@{Driver}"/>
+                                <!--<LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:weightSum="20">
@@ -273,7 +290,7 @@
 
                                         </RelativeLayout>
 
-                                      <!--  <RelativeLayout
+                                      &lt;!&ndash;  <RelativeLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent">
 
@@ -281,7 +298,7 @@
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:src="@drawable/user_icon" />
-                                        </RelativeLayout>-->
+                                        </RelativeLayout>&ndash;&gt;
                                     </LinearLayout>
 
                                     <LinearLayout
@@ -302,8 +319,8 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:hint="Name"
-                                                android:textColorHint="@color/green"
-                                                android:textColor="@color/green"
+                                                android:textColorHint="@color/black"
+                                                android:textColor="@color/black"
                                                 android:textSize="15dp" />
 
                                             <TextView
@@ -394,7 +411,7 @@
                                                 android:textSize="@dimen/txt_font_size" />
                                         </LinearLayout>
                                     </LinearLayout>
-                                    <!--
+                                    &lt;!&ndash;
                                                     <LinearLayout
                                                         android:layout_width="0dp"
                                                         android:layout_weight="1"
@@ -411,9 +428,9 @@
                                                                 android:src="@drawable/ic_arrow_icon"
                                                                 app:tint="@color/white"/>
                                                         </RelativeLayout>
-                                                    </LinearLayout>-->
+                                                    </LinearLayout>&ndash;&gt;
 
-                                </LinearLayout>
+                                </LinearLayout>-->
 
                             </LinearLayout>
                         </LinearLayout>
@@ -470,18 +487,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/bottommenuheight"
             android:layout_alignParentBottom="true"
             android:gravity="right"
-            android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:paddingBottom="5dp">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/save"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
                 android:background="@drawable/curved_box_lightblue_4dp">
 
                 <TextView
@@ -501,3 +515,4 @@
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

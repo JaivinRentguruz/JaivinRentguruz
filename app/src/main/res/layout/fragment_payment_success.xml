@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@color/backgroundColor"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -44,6 +54,7 @@
         <include
             android:visibility="gone"
             android:id="@+id/header"
+            app:UiColor="@{UiColor}"
             layout="@layout/row_header" />
 
         <LinearLayout
@@ -135,7 +146,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/curve_box_yellow"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                 android:layout_width="match_parent"
                 android:weightSum="10"
                 android:layout_height="58dp">
@@ -178,6 +189,7 @@
 
                 <TextView
                     android:id="@+id/txtprocess"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     style="@style/fullbtn"/>
             <!--    <TextView
                     android:id="@+id/nexttext"
@@ -198,3 +210,4 @@
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

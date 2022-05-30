@@ -6,7 +6,7 @@
     <data>
         <variable
             name="Vehicle"
-            type="com.abel.app.b2b.model.response.VehicleModel" />
+            type="com.rentguruz.app.model.response.VehicleModel" />
     </data>
 
 <LinearLayout

@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:background="@color/selected_dot">
 
     <RelativeLayout
@@ -203,6 +214,8 @@
                         android:text="Save Password"
                         android:textColor="@color/textlightcolor"
                         android:theme="@style/loginedit"
+                        android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                        android:checked="true"
                         android:textSize="14dp"/>
 
                     <TextView
@@ -318,6 +331,7 @@
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:background="@color/bottommenucolor"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -330,6 +344,7 @@
                     android:layout_gravity="center"
                     android:gravity="center_vertical|center_horizontal"
                     android:text="@string/login"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     android:textColor="@color/themebackgroundtext"
                     android:textSize="20dp" />
 
@@ -340,7 +355,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:indeterminateTint="@color/white"
+                    android:indeterminateTint="@{Color.parseColor(UiColor.secondary)}"
                     android:visibility="gone" />
             </LinearLayout>
 
@@ -348,3 +363,4 @@
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

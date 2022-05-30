@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+   <data>
+      <import type="android.graphics.Color"/>
+      <import type="androidx.core.content.ContextCompat" />
+
+      <variable
+          name="UiColor"
+          type="com.rentguruz.app.model.display.ThemeColors" />
+
+   </data>
+
+<ProgressBar
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:indeterminateBehavior="repeat"
-    android:indeterminateTint="@color/green"
+    android:indeterminateTint="@{Color.parseColor(UiColor.primary)}"
     android:indeterminateDrawable="@anim/loader">
 
    <!-- <ProgressBar
@@ -20,3 +33,4 @@
         android:indeterminateDrawable="@anim/loader"
         android:visibility="visible" />-->
 </ProgressBar>
+</layout>

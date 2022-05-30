@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/selected_dot"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -20,6 +29,7 @@
 
             <include
                 android:id="@+id/header"
+                app:UiColor="@{UiColor}"
                 layout="@layout/row_header"/>
 
 
@@ -62,6 +72,7 @@
 
                 <TextView
                     android:theme="@style/texttheme"
+                    android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -141,3 +152,4 @@
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

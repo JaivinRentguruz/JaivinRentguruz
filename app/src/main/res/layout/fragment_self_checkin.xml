@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:background="@color/selected_dot">
 
     <RelativeLayout
@@ -18,6 +29,7 @@
 
             <include
                 android:id="@+id/header"
+                app:UiColor="@{UiColor}"
                 layout="@layout/row_header"/>
            <!-- <RelativeLayout
                 android:layout_width="match_parent"
@@ -75,7 +87,7 @@
             android:layout_above="@+id/test"
             android:layout_below="@id/selectedlocation"
             android:background="@drawable/curve_box_light_green_bg"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:paddingTop="14dp">
 
             <LinearLayout
@@ -101,7 +113,7 @@
                             android:layout_marginLeft="12dp"
                             android:layout_marginRight="10dp"
                             android:background="@drawable/top_curve_black"
-                            android:backgroundTint="@color/red">
+                            android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
                             <TextView
                                 android:id="@+id/txtVehicleNumber"
@@ -123,6 +135,7 @@
                             android:layout_alignParentStart="true"
                             android:layout_marginStart="0dp"
                             android:background="@drawable/light_gray_box2"
+                            android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
                             android:orientation="vertical">
 
                             <LinearLayout
@@ -155,7 +168,7 @@
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginRight="10dp"
                                 android:background="@drawable/ic_top_curve_blue_12"
-                                android:backgroundTint="@color/red">
+                                android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -176,20 +189,28 @@
                             android:layout_marginRight="12dp"
                             android:layout_marginBottom="5dp"
                             android:layout_toRightOf="@+id/llvhg"
-                            android:background="@drawable/curve_box_white"
-                            android:padding="5dp">
+                            android:background="@drawable/curve_box_white">
 
                             <RelativeLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
-                                <ImageView
+                         <!--       <ImageView
                                     android:id="@+id/VehImage"
                                     android:layout_width="match_parent"
                                     android:layout_height="100dp"
                                     android:layout_alignParentEnd="true"
                                     android:layout_alignParentBottom="true"
-                                    android:src="@drawable/car_icon" />
+                                    android:src="@drawable/car_icon" />-->
+
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:id="@+id/vehicle_Image"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:adjustViewBounds="true"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/car_icon"
+                                    app:shapeAppearance="@style/roundedImageViewRounded22" />
                             </RelativeLayout>
                         </LinearLayout>
 
@@ -458,6 +479,7 @@
                                     android:layout_marginRight="12dp"
                                     android:layout_marginBottom="10dp"
                                     android:background="@drawable/black_curve"
+                                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                     android:orientation="horizontal"
                                     android:padding="5dp"
                                     android:weightSum="10">
@@ -484,9 +506,11 @@
                                         android:layout_weight="6"
                                         android:gravity="right"
                                         android:background="@drawable/black_curve"
-                                        android:backgroundTint="@color/red"
-                                        android:text=""
+                                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                                        android:text="00"
+                                        android:maxLength="7"
                                         android:inputType="number"
+                                        android:imeOptions="actionDone"
                                         android:textColor="@color/white"
                                         android:textSize="40dp"
                                         android:theme="@style/texttheme" />
@@ -559,14 +583,16 @@
                                         android:layout_gravity="center"
                                         android:layout_marginTop="0dp"
                                         android:layout_weight="5"
-                                        android:background="@drawable/curve_white"
-                                        android:backgroundTint="@color/red"
+                                        android:background="@drawable/black_curve"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                         android:gravity="right|center_vertical"
                                         android:inputType="number"
                                         android:singleLine="true"
-                                        android:text="00"
-                                        android:textColor="#FFFF0D"
-                                        android:textSize="20dp"/>
+                                        android:text="000000"
+                                        android:maxLength="6"
+                                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                                        android:textSize="20dp"
+                                        android:theme="@style/texttheme"/>
 
                                     <EditText
                                         android:id="@+id/totalMilesAllowed"
@@ -1317,6 +1343,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottommenuheight"
             android:background="@color/bottommenucolor"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:layout_alignParentBottom="true"
             android:layout_weight="10"
             android:paddingHorizontal="12dp"
@@ -1331,6 +1358,7 @@
 
                 <TextView
                     style="@style/shortbtn"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:text="Calculate"/>
                 <!--<TextView
                     android:layout_width="match_parent"
@@ -1354,6 +1382,7 @@
 
                 <TextView
                     style="@style/shortbtn"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:text="@string/accept"/>
 
                 <!--<TextView
@@ -1371,3 +1400,4 @@
         </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@color/backgroundColor"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,8 +24,12 @@
             android:id="@+id/selectedlocation"
             android:layout_alignParentTop="true"
             android:orientation="vertical">
+            <include
+                android:id="@+id/header"
+                app:UiColor="@{UiColor}"
+                layout="@layout/row_header" />
 
-            <RelativeLayout
+          <!--  <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -46,7 +60,7 @@
 
                 </LinearLayout>
 
-              <!--  <TextView
+              &lt;!&ndash;  <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                      style="@style/textfont"
@@ -55,9 +69,9 @@
                     android:textSize="14dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"/>-->
+                    android:layout_marginRight="10dp"/>&ndash;&gt;
 
-            </RelativeLayout>
+            </RelativeLayout>-->
 
         </LinearLayout>
 
@@ -66,8 +80,7 @@
             android:background="@drawable/curve_box"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/test"
-            android:paddingTop="10dp">
+            android:layout_above="@id/test">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -83,6 +96,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
+                        android:layout_marginTop="3dp"
                          style="@style/textfont"
                         android:text="@string/basic_details"
                         android:textColor="@color/textlightcolor"
@@ -138,12 +152,14 @@
                             android:weightSum="10">
 
                             <TextView
+                                android:id="@+id/searchVehicle"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_weight="5"
                                 android:background="@drawable/rectangle_curve_yellow"
+                                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                  style="@style/textfont"
                                 android:textColor="@color/topcolor"
                                 android:gravity="center"
@@ -158,6 +174,7 @@
                                 android:layout_marginTop="10dp"
                                 android:layout_weight="5"
                                 android:background="@drawable/rectangle_curve_blue"
+                                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                  style="@style/textfont"
                                 android:textColor="@color/topcolor"
                                 android:gravity="center"
@@ -486,7 +503,7 @@
                                 android:background="@drawable/ic_rectangle_box_2152"
                                  style="@style/textfont"
                                 android:gravity="left"
-                                android:hint="CDFR6278"
+                                android:hint="Manufacturer"
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
@@ -502,7 +519,7 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/ic_rectangle_box_2152"
                                  style="@style/textfont"
-                                android:hint="KEY"
+                                android:hint="Key Code"
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
@@ -556,7 +573,7 @@
                                 android:background="@drawable/ic_rectangle_box_2152"
                                  style="@style/textfont"
                                 android:gravity="left"
-                                android:hint="CDFR6278"
+                                android:hint="Licence Number"
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
@@ -572,7 +589,7 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/ic_rectangle_box_2152"
                                  style="@style/textfont"
-                                android:hint="CDFR6278"
+                                android:hint="Vehicle Number"
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
@@ -618,6 +635,7 @@
                             android:weightSum="2">
 
                             <EditText
+                                android:id="@+id/licplate"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="5dp"
@@ -625,7 +643,7 @@
                                 android:background="@drawable/ic_rectangle_box_2152"
                                  style="@style/textfont"
                                 android:gravity="left"
-                                android:hint="CDFR6278"
+                                android:hint="License Plate"
                                 android:inputType="text"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
@@ -780,7 +798,7 @@
                                 android:background="@drawable/ic_rectangle_box_2152"
                                  style="@style/textfont"
                                 android:gravity="left"
-                                android:hint="Enter Unit"
+                                android:hint="Gas Tank Capacity"
                                 android:inputType="number"
                                 android:padding="14dp"
                                 android:textColor="@color/txtBlack"
@@ -1009,7 +1027,7 @@
 
                     <androidx.core.widget.NestedScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="200dp">
+                        android:layout_height="wrap_content">
 
 
                     <LinearLayout
@@ -1019,6 +1037,7 @@
                         android:background="@drawable/bottom_curve_light_blue10"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
+                        android:maxHeight="200dp"
                         android:layout_height="match_parent">
 
                         <RelativeLayout
@@ -1352,13 +1371,16 @@
                         android:layout_marginTop="10dp"
                         android:layout_height="match_parent">
 
-                        <EditText
+                        <com.rentguruz.app.base.ActionEditText
                             android:id="@+id/veh_description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/ic_rectangle_for_desc"
-                             style="@style/textfont"
-                            android:inputType="textMultiLine"
+                            style="@style/textfont"
+                            android:imeOptions="actionDone"
+                            android:inputType="textAutoCorrect|textCapSentences|textMultiLine"
+                            android:singleLine="false"
+                            android:justificationMode="inter_word"
                             android:padding="8dp"
                             android:gravity="top"
                             android:textColor="@color/textlightcolor"
@@ -1391,7 +1413,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -1403,48 +1425,26 @@
                         android:weightSum="2">
 
                         <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="105dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/ic_rectangle_bg_camera">
+                            android:id="@+id/imgg1"
+                            style="@style/relativeImageshort"
+                            android:layout_marginRight="5dp">
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="center"
-                                android:src="@drawable/pluse_img"/>
-
-                            <ImageView
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/car_image_1"
-                                android:layout_width="match_parent"
-                                android:layout_margin="1dp"
-                                android:scaleType="fitXY"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true" />
+                                style="@style/shapeImage" />
 
 
 
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="105dp"
+                            android:id="@+id/imgg2"
                             android:layout_marginLeft="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/ic_rectangle_bg_camera">
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="center"
-                                android:src="@drawable/pluse_img"/>
-                            <ImageView
+                            style="@style/relativeImageshort">
+
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/car_image_2"
-                                android:layout_margin="1dp"
-                                android:scaleType="fitXY"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true" />
+                                style="@style/shapeImage" />
 
                         </RelativeLayout>
 
@@ -1459,44 +1459,24 @@
                         android:weightSum="2">
 
                         <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="105dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/ic_rectangle_bg_camera">
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="center"
-                                android:src="@drawable/pluse_img"/>
-                            <ImageView
+                            android:id="@+id/imgg3"
+                            style="@style/relativeImageshort"
+                            android:layout_marginRight="5dp" >
+
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/car_image_3"
-                                android:layout_margin="1dp"
-                                android:scaleType="fitXY"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true" />
+                               style="@style/shapeImage"/>
 
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="105dp"
+                            android:id="@+id/imgg4"
                             android:layout_marginLeft="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/ic_rectangle_bg_camera">
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="center"
-                                android:src="@drawable/pluse_img"/>
-                            <ImageView
+                            style="@style/relativeImageshort">
+
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/car_image_4"
-                                android:layout_margin="1dp"
-                                android:scaleType="fitXY"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true" />
+                                style="@style/shapeImage" />
 
                         </RelativeLayout>
 
@@ -1511,44 +1491,24 @@
                         android:weightSum="2">
 
                         <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="105dp"
+                            android:id="@+id/imgg5"
                             android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/ic_rectangle_bg_camera">
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="center"
-                                android:src="@drawable/pluse_img"/>
-                            <ImageView
+                            style="@style/relativeImageshort">
+
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/car_image_5"
-                                android:layout_margin="1dp"
-                                android:scaleType="fitXY"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true" />
+                                style="@style/shapeImage" />
 
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="105dp"
+                            android:id="@+id/imgg6"
                             android:layout_marginLeft="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/ic_rectangle_bg_camera">
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="center"
-                                android:src="@drawable/pluse_img"/>
-                            <ImageView
+                            style="@style/relativeImageshort">
+
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/car_image_6"
-                                android:layout_margin="1dp"
-                                android:scaleType="fitXY"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true" />
+                                style="@style/shapeImage" />
 
                         </RelativeLayout>
 
@@ -1563,44 +1523,24 @@
                         android:weightSum="2">
 
                         <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="105dp"
+                            android:id="@+id/imgg7"
                             android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/ic_rectangle_bg_camera">
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="center"
-                                android:src="@drawable/pluse_img"/>
-                            <ImageView
+                            style="@style/relativeImageshort">
+
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/car_image_7"
-                                android:layout_margin="1dp"
-                                android:scaleType="fitXY"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true" />
+                                style="@style/shapeImage" />
 
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="105dp"
+                            android:id="@+id/imgg8"
                             android:layout_marginLeft="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/ic_rectangle_bg_camera">
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="center"
-                                android:src="@drawable/pluse_img"/>
-                            <ImageView
+                            style="@style/relativeImageshort">
+
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/car_image_8"
-                                android:layout_margin="1dp"
-                                android:scaleType="fitXY"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true" />
+                                style="@style/shapeImage" />
 
                         </RelativeLayout>
 
@@ -1615,44 +1555,24 @@
                         android:weightSum="2">
 
                         <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="105dp"
+                            android:id="@+id/imgg9"
                             android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/ic_rectangle_bg_camera">
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="center"
-                                android:src="@drawable/pluse_img"/>
-                            <ImageView
+                            style="@style/relativeImageshort">
+
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/car_image_9"
-                                android:scaleType="fitXY"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true"
-                                android:layout_margin="1dp" />
+                                style="@style/shapeImage" />
 
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="105dp"
+                            android:id="@+id/imgg10"
                             android:layout_marginLeft="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/ic_rectangle_bg_camera">
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="center"
-                                android:src="@drawable/pluse_img"/>
-                            <ImageView
+                            style="@style/relativeImageshort">
+
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/car_image_10"
-                                android:layout_margin="1dp"
-                                android:scaleType="fitXY"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true" />
+                                style="@style/shapeImage" />
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -1706,6 +1626,7 @@
 
                 <TextView
                     style="@style/fullbtn"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     android:text="@string/save"/>
                 <!-- <TextView
                      android:layout_width="match_parent"
@@ -1720,5 +1641,30 @@
                      android:layout_height="wrap_content"/>-->
             </LinearLayout>
         </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/sucessfull_regi"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/successful_bg"
+            android:animateLayoutChanges="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/option"
+                    app:UiColor="@{UiColor}"
+                    layout="@layout/imageoption"/>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

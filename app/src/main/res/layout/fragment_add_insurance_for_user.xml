@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/selected_dot">
+    android:background="@color/selected_dot"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +27,12 @@
             android:layout_alignParentTop="true"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <include
+                android:id="@+id/header"
+                app:UiColor="@{UiColor}"
+                layout="@layout/row_header"/>
+
+           <!-- <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -61,7 +77,7 @@
                     android:textAllCaps="false"
                     android:textSize="14dp"
                     android:theme="@style/texttheme" />
-            </RelativeLayout>
+            </RelativeLayout>-->
         </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -331,7 +347,7 @@
                     android:textSize="@dimen/heading1_font_size"
                     android:theme="@style/texttheme" />
 
-                <LinearLayout
+               <!-- <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -351,9 +367,60 @@
                         android:scaleType="fitXY"
                         android:src="@drawable/ic_main_camera"
                         app:tint="@color/green" />
-                </LinearLayout>
+                </LinearLayout>-->
+
+                <RelativeLayout
+                    android:id="@+id/test"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/custome_cam_select">
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="center"/>
+
+                    <!--   <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                           android:id="@+id/test"
+                           android:layout_width="match_parent"
+                           android:layout_height="180dp"
+                           android:scaleX="1"
+                           android:scaleY="1"
+                           app:vector_src="@drawable/custome_cam_select"/>-->
+
+
+
+                </RelativeLayout>
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:id="@+id/sucessfull_regi"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/successful_bg"
+            android:animateLayoutChanges="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/option"
+                    app:UiColor="@{UiColor}"
+                    layout="@layout/imageoption"/>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

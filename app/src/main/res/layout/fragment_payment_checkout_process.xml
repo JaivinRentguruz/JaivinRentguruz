@@ -236,6 +236,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
                     android:orientation="horizontal"
                     android:visibility="visible">
 
@@ -266,12 +267,16 @@
                     </LinearLayout>
                 </LinearLayout>
 
+                <include
+                    android:id="@+id/pickups"
+                    layout="@layout/pickup_drop" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="95dp"
                     android:layout_marginTop="6dp"
                     android:background="@color/lightgreen"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"

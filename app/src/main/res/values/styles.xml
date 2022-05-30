@@ -1,5 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto">
 <!--    &lt;!&ndash; Base application theme. &ndash;&gt;
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
@@ -307,14 +306,42 @@
         <item name="cornerSize">10%</item>
     </style>
 
+
+    <style name="roundedImageViewRounded1">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5%</item>
+    </style>
+
     <style name="roundedImageViewRounded2">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">30%</item>
         <item name="android:background">@color/green</item>
     </style>
 
+    <style name="roundedImageViewRounded11">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5%</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="roundedImageViewRounded4">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">30%</item>
+    </style>
+
+    <style name="roundedImageViewRounded22">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="roundedImageViewRoundedleft">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/_10sdp</item>
+        <item name="cornerSizeBottomLeft">@dimen/_10sdp</item>
+    </style>
+
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
-        <item name="colorAccent">@color/green</item>
+        <item name="colorAccent">@color/theme_color_blue</item>
     </style>
 
     <style name="dlg_datePicker" parent="Theme.AppCompat.Light.Dialog">
@@ -325,6 +352,11 @@
     <style name="datePicker_style" parent="android:Widget.Material.Light.DatePicker">
         <item name="android:datePickerMode">spinner</item>
         <item name="colorAccent">@color/green</item>
+    </style>
+
+    <style name="MyDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:headerBackground">@color/black</item>
+        <item name="android:itemBackground">@color/black</item>
     </style>
 
     <style name="progress" parent="Widget.AppCompat.ProgressBar">
@@ -385,7 +417,7 @@
     </style>
 
     <style name="MyRadioButton" parent="Theme.AppCompat.Light">
-        <item name="colorControlNormal">@color/red</item>
+        <item name="colorControlNormal">@color/black</item>
         <item name="colorControlActivated">@color/black</item>
     </style>
 
@@ -663,4 +695,94 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textStyle">normal</item>
     </style>
+
+    <style name="relativeImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:background">@drawable/custome_cam_select</item>
+    </style>
+
+    <style name="relativeImageshort">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">105dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/custome_cam_select</item>
+    </style>
+
+    <style name="shapeImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="shapeAppearance">@style/roundedImageViewRounded1</item>
+        <!--<item name="android:src">@drawable/car_img_bc</item>-->
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+
+
+    <style name="Theme.AppCompat.Transparent.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+ <!--   <style name="Theme.AppCompat.Translucent">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>-->
+
+
+    <!-- Base application theme. -->
+    <style name="Theme.TransparentActivity" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/transparent</item>
+        <item name="colorPrimaryVariant">@color/transparent</item>
+        <item name="colorOnPrimary">@color/transparent</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/transparent</item>
+        <item name="colorSecondaryVariant">@color/transparent</item>
+        <item name="colorOnSecondary">@color/transparent</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!--add below code in themes.xml file-->
+    <!--below is the style for transparent activity and here we are using no action bar.-->
+    <style name="Theme.AppCompat.Translucent" parent="Theme.AppCompat.NoActionBar">
+        <!--on below line we are setting background as transparent color-->
+        <item name="android:background">@android:color/transparent</item>
+        <!--on below line we are displaying the windowNotitle as true as we are not displaying our status bar-->
+        <item name="android:windowNoTitle">true</item>
+        <!--on below line we are setting our window background as transparent color-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--on below line we are setting color background cache hint as null-->
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <!--on below line we are adding a window translucent as true-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--on below line we are adding a window animationstyle-->
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
+
+    <style name="myDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+<!--        <item name="android:width">@dimen/_300sdp</item>
+        <item name="android:height">@dimen/_400sdp</item>-->
+
+    </style>
+
+
 </resources>

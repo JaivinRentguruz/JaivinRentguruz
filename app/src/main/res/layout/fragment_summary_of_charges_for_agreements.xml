@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:background="@color/selected_dot">
 
     <RelativeLayout
@@ -18,7 +29,12 @@
             android:layout_alignParentTop="true"
             android:orientation="vertical">
 
-            <RelativeLayout
+                   <include
+                android:id="@+id/header"
+                app:UiColor="@{UiColor}"
+                layout="@layout/row_header"/>
+
+            <!--<RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -73,13 +89,14 @@
                         android:padding="@dimen/_3sdp"
                         android:src="@drawable/ic_baseline_more_vert_24"/>
                 </LinearLayout>
-            </RelativeLayout>
+            </RelativeLayout>-->
         </LinearLayout>
 
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_4sdp"
             android:layout_below="@id/editCreditCard">
 
             <LinearLayout
@@ -97,14 +114,14 @@
                     android:background="@drawable/curve_box_white_2"
                     android:gravity="center">
 
-                    <ImageView
+                    <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/Vehicle_Img"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="7dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         android:orientation="horizontal"
-                        android:padding="10dp" />
+                        android:scaleType="fitXY"
+                        app:shapeAppearance="@style/roundedImageViewRounded22"/>
                 </RelativeLayout>
 
                 <LinearLayout
@@ -134,10 +151,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="15dp"
                                 android:text="ECONOMY CAR"
-                                android:visibility="visible"
                                 android:textColor="@color/fontwhitebackground"
                                 android:textSize="@dimen/edt_font_size"
-                                android:theme="@style/texttheme" />
+                                android:theme="@style/texttheme"
+                                android:visibility="visible" />
 
                             <TextView
                                 android:id="@+id/VehicleType_name"
@@ -388,6 +405,7 @@
                     </LinearLayout>
                     <include
                         android:id="@+id/pickup"
+                        app:UiColor="@{UiColor}"
                         layout="@layout/pickup_drop"/>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -863,6 +881,7 @@
                         android:weightSum="15">
 
                         <TextView
+                            android:id="@+id/txt_charges"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="left"
@@ -898,7 +917,7 @@
                         android:id="@+id/rlSummaryofcharge"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="14dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginBottom="8dp"
                         android:visibility="gone"/>
 
@@ -909,6 +928,7 @@
 
                     <LinearLayout
                         android:id="@+id/additionalDrivers"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
@@ -1292,6 +1312,7 @@
 
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -1473,6 +1494,7 @@
 
 
                     <View
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/textColorHint" />
@@ -1536,6 +1558,7 @@
 
             <include
                 android:id="@+id/option"
+                app:UiColor="@{UiColor}"
                 layout="@layout/optionmenu"/>
 
 
@@ -1543,3 +1566,4 @@
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

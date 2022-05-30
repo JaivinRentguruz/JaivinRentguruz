@@ -5,26 +5,40 @@
     android:viewportWidth="40"
     android:viewportHeight="50">
 
-    <group android:translateY="-134" android:translateX="-213">
-    <group android:translateY="134" android:translateX="213">
-    <path android:fillColor="#8F9BB3" android:pathData="M15 0A15 15 0 0 1 30 15c0 8.284 -14.584 25.322 -14.584 25.322S0 23.284 0 15A15 15 0 0 1 15 0Z"/>
-</group>
+    <group
+        android:translateX="-213"
+        android:translateY="-134">
+        <group
+            android:translateX="213"
+            android:translateY="134">
+            <path
+                android:fillColor="#8F9BB3"
+                android:pathData="M15 0A15 15 0 0 1 30 15c0 8.284 -14.584 25.322 -14.584 25.322S0 23.284 0 15A15 15 0 0 1 15 0Z" />
+        </group>
 
-    <group android:translateY="140" android:translateX="219">
-    <path android:fillColor="#FFFFFF" android:pathData="M18 9A9 9 0 0 1 0 9A9 9 0 0 1 18 9Z"/>
-</group>
+        <group
+            android:translateX="219"
+            android:translateY="140">
+            <path
+                android:fillColor="#FFFFFF"
+                android:pathData="M18 9A9 9 0 0 1 0 9A9 9 0 0 1 18 9Z" />
+        </group>
 
-    <group android:translateY="139.322" android:translateX="223.171">
-    <group android:translateY="5.707">
-    <group android:translateY="-5.707">
-    <path android:fillColor="@color/themeIcon" android:pathData="M9.942 7.9a0.257 0.257 0 0 0 -0.2 -0.094H8.771a3.318 3.318 0 0 0 -0.909 -1.488 7.05 7.05 0 0 0 -5.724 0A3.334 3.334 0 0 0 1.229 7.8H0.256a0.256 0.256 0 0 0 -0.251 0.308l0.144 0.7a0.256 0.256 0 0 0 0.251 0.2H0.688a1.729 1.729 0 0 0 -0.415 1.13 1.693 1.693 0 0 0 0.535 1.271l0.011 0.009V12.4a0.384 0.384 0 0 0 0.384 0.384h0.9a0.384 0.384 0 0 0 0.384 -0.384v-0.393H7.514V12.4a0.384 0.384 0 0 0 0.384 0.384h0.9A0.385 0.385 0 0 0 9.18 12.4v-0.958a1.757 1.757 0 0 0 0.112 -2.43H9.6a0.255 0.255 0 0 0 0.251 -0.2l0.144 -0.7A0.258 0.258 0 0 0 9.942 7.9ZM2.56 6.956a6.39 6.39 0 0 1 4.879 0A3.166 3.166 0 0 1 8.1 8.2H1.9A3.167 3.167 0 0 1 2.56 6.956ZM1.411 10.239A0.756 0.756 0 1 1 2.167 11 0.755 0.755 0 0 1 1.411 10.239ZM7.843 11a0.755 0.755 0 1 1 0.756 -0.756A0.756 0.756 0 0 1 7.843 11Z"/>
+        <group
+            android:translateX="223.171"
+            android:translateY="139.322">
+            <group android:translateY="5.707">
+                <group android:translateY="-5.707">
+                    <path
+                        android:fillColor="@color/themeIcon"
+                        android:pathData="M9.942 7.9a0.257 0.257 0 0 0 -0.2 -0.094H8.771a3.318 3.318 0 0 0 -0.909 -1.488 7.05 7.05 0 0 0 -5.724 0A3.334 3.334 0 0 0 1.229 7.8H0.256a0.256 0.256 0 0 0 -0.251 0.308l0.144 0.7a0.256 0.256 0 0 0 0.251 0.2H0.688a1.729 1.729 0 0 0 -0.415 1.13 1.693 1.693 0 0 0 0.535 1.271l0.011 0.009V12.4a0.384 0.384 0 0 0 0.384 0.384h0.9a0.384 0.384 0 0 0 0.384 -0.384v-0.393H7.514V12.4a0.384 0.384 0 0 0 0.384 0.384h0.9A0.385 0.385 0 0 0 9.18 12.4v-0.958a1.757 1.757 0 0 0 0.112 -2.43H9.6a0.255 0.255 0 0 0 0.251 -0.2l0.144 -0.7A0.258 0.258 0 0 0 9.942 7.9ZM2.56 6.956a6.39 6.39 0 0 1 4.879 0A3.166 3.166 0 0 1 8.1 8.2H1.9A3.167 3.167 0 0 1 2.56 6.956ZM1.411 10.239A0.756 0.756 0 1 1 2.167 11 0.755 0.755 0 0 1 1.411 10.239ZM7.843 11a0.755 0.755 0 1 1 0.756 -0.756A0.756 0.756 0 0 1 7.843 11Z" />
 
-</group>
+                </group>
 
-</group>
+            </group>
 
-</group>
+        </group>
 
-</group>
+    </group>
 
 </vector>

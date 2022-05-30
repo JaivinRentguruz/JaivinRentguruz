@@ -2,15 +2,22 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
         <variable
             name="label"
-            type="com.abel.app.b2b.model.response.CompanyLabel" />
+            type="com.rentguruz.app.model.response.CompanyLabel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:background="@color/selected_dot">
 
     <RelativeLayout
@@ -24,7 +31,12 @@
             android:layout_alignParentTop="true"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <include
+                android:id="@+id/header"
+                app:UiColor="@{UiColor}"
+                layout="@layout/row_header"/>
+
+            <!--<RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/headertopmargin"
@@ -70,7 +82,7 @@
                     android:textSize="@dimen/_15ssp"
                     android:theme="@style/texttheme" />
 
-            </RelativeLayout>
+            </RelativeLayout>-->
         </LinearLayout>
 
 
@@ -154,6 +166,7 @@
                             android:layout_marginBottom="6dp"
                             android:layout_marginEnd="8dp"
                             android:background="@drawable/curve_single_text"
+                            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                             android:gravity="center"
                             android:orientation="horizontal"
                             android:weightSum="2">
@@ -318,6 +331,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.7dp"
                 android:layout_marginTop="@dimen/_8sdp"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:background="@color/MGrey" />
 
             <LinearLayout
@@ -432,7 +446,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/half_curve_green"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="10dp"
@@ -1093,6 +1107,7 @@
             android:layout_height="@dimen/bottommenuheight"
             android:gravity="center_vertical"
             android:background="@color/bottommenucolor"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:layout_alignParentBottom="true">
 
             <LinearLayout
@@ -1109,7 +1124,7 @@
                     android:layout_margin="@dimen/_2sdp"
                     android:layout_weight="5"
                     android:background="@drawable/rectangle_curve_yellow"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -1143,7 +1158,7 @@
                     android:layout_margin="2dp"
                     android:layout_weight="5"
                     android:background="@drawable/rectangle_curve_pink1"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -1178,7 +1193,7 @@
                     android:layout_margin="2dp"
                     android:layout_weight="5"
                     android:background="@drawable/ic_rectangle_darkblue"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -1213,7 +1228,7 @@
                     android:layout_margin="2dp"
                     android:layout_weight="5"
                     android:background="@drawable/ic_rectangle_darkblue"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:orientation="horizontal">
 
                     <LinearLayout

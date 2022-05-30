@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,7 +19,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundColor">
+        android:background="@color/backgroundColor"
+        android:backgroundTint="@{Color.parseColor(UiColor.primary)}">
 
         <!--        <com.google.android.material.imageview.ShapeableImageView
                     android:layout_width="wrap_content"
@@ -18,6 +30,7 @@
                     android:scaleType="centerCrop"
                     />-->
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -25,7 +38,9 @@
             android:orientation="vertical">
 
             <include
+                android:id="@+id/details"
                 layout="@layout/test"
+                app:UiColor="@{UiColor}"
                 android:layout_width="match_parent"
                 android:layout_height="450dp" />
 
@@ -224,13 +239,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/selectedlocation"
-                android:background="@color/lightgreen2">
+                android:background="@color/lightgreen2"
+                android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
                 <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/top_curvebox_blue"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     android:paddingTop="14dp">
 
                     <LinearLayout
@@ -684,7 +700,7 @@
                                     android:inputType="textCapWords"
                                     android:text="Partly Cloudy"
                                     android:textAllCaps="true"
-                                    android:textColor="@color/green"
+                                    android:textColor="@{Color.parseColor(UiColor.primary)}"
                                     android:textSize="@dimen/eighteen" />
 
                                 <LinearLayout
@@ -773,7 +789,8 @@
                                     <ImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:src="@drawable/ic_contact_map_pin" />
+                                        android:background="@drawable/ic_contact_map_pin"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}" />
                                 </RelativeLayout>
 
                                 <TextView
@@ -798,3 +815,4 @@
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/lock_unlock_background">
@@ -19,6 +29,7 @@
 
             <include
                 android:id="@+id/header"
+                app:UiColor="@{UiColor}"
                 layout="@layout/row_header"/>
 
             <LinearLayout
@@ -46,11 +57,13 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1">
 
-                            <ImageView
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/carimage"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/bmw_car_bg" />
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/bmw_car_bg"
+                                app:shapeAppearance="@style/roundedImageViewRoundedleft"/>
 
                             <TextView  android:theme="@style/texttheme"
                                 android:layout_width="wrap_content"
@@ -216,6 +229,7 @@
                         android:layout_marginVertical="@dimen/_15sdp"
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_above="@+id/test"
+                        android:scaleType="fitXY"
                         android:adjustViewBounds="true"/>
 
                     <LinearLayout
@@ -309,3 +323,4 @@
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

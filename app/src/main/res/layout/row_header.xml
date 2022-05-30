@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="false"
-    android:background="@color/selected_dot">
+    android:id="@+id/headerlayout"
+    android:background="@color/selected_dot"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,8 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/headertopmargin"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:baselineAligned="false">
+                android:layout_marginBottom="@dimen/_10sdp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -32,7 +44,7 @@
                     <ImageView
                         android:id="@+id/back"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/_5sdp"
                         android:paddingLeft="@dimen/_5sdp"
                         android:paddingRight="@dimen/_5sdp"
@@ -50,7 +62,7 @@
                         android:layout_weight="10"
                         android:text=""
                         android:textAllCaps="false"
-                        android:textColor="@color/topcolor"
+                        android:textColor="@{Color.parseColor(UiColor.primaryfont)}"
                         android:textSize="@dimen/_15ssp"
                         android:theme="@style/texttheme" />
 
@@ -66,7 +78,7 @@
                         android:gravity="center_vertical"
                         android:text="@string/discard"
                         android:textAllCaps="false"
-                        android:textColor="@color/topcolor"
+                        android:textColor="@{Color.parseColor(UiColor.primaryfont)}"
                         android:textSize="@dimen/_15ssp"
                         android:theme="@style/texttheme" />
 
@@ -88,3 +100,4 @@
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

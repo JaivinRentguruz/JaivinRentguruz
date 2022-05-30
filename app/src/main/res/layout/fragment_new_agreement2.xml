@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
+        <variable
+            name="label"
+            type="com.rentguruz.app.model.response.CompanyLabel" />
+    </data>
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:fitsSystemWindows="false">
 
     <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:background="@color/backgroundColor">
+       android:background="@color/backgroundColor"
+        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
        <LinearLayout
            android:layout_width="match_parent"
@@ -18,6 +33,7 @@
 
            <include
                android:id="@+id/header"
+               app:UiColor="@{UiColor}"
                layout="@layout/row_header" />
 
            <androidx.core.widget.NestedScrollView
@@ -25,7 +41,7 @@
                android:layout_height="match_parent"
                android:layout_above="@+id/process"
                android:background="@drawable/curve_box_light_green_bg"
-               android:backgroundTint="@color/b2bheadercurve"
+               android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                android:paddingTop="@dimen/_14sdp">
 
                <LinearLayout
@@ -43,6 +59,7 @@
 
                        <include
                            android:id="@+id/carimage"
+                           app:UiColor="@{UiColor}"
                            layout="@layout/do_carimg" />
 
                        <!--<RelativeLayout
@@ -318,6 +335,125 @@
                                    android:layout_height="match_parent"/>
 
                            </LinearLayout>
+
+                           <LinearLayout
+                               android:id="@+id/lease"
+                               android:visibility="gone"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:orientation="vertical"
+                               android:layout_marginTop="@dimen/_5sdp"
+                               android:weightSum="4">
+
+                               <LinearLayout
+                                   android:layout_width="match_parent"
+                                   android:layout_height="@dimen/_25sdp"
+                                   android:orientation="horizontal"
+                                   android:weightSum="4">
+
+                               <Spinner
+                                   android:id="@+id/billingcycle"
+                                   style="@style/spinner"
+                                   android:layout_width="0dp"
+                                   android:layout_height="match_parent"
+                                   android:layout_marginLeft="10dp"
+                                   android:layout_marginTop="0dp"
+                                   android:layout_weight="2"
+                                   android:theme="@style/loginedit"
+                                   android:focusableInTouchMode="true"
+                                   android:clickable="true"
+                                   android:focusable="true"
+                                   android:windowSoftInputMode="stateHidden"/>
+
+                               <EditText
+                                   android:id="@+id/duration"
+                                   android:theme="@style/texttheme"
+                                   android:layout_width="0dp"
+                                   android:layout_weight="1"
+                                   android:background="@drawable/curve_white"
+                                   android:text="Duration"
+                                   android:inputType="number"
+                                   android:gravity="start"
+                                   android:imeOptions="actionDone"
+                                   android:layout_gravity="center"
+                                   android:layout_marginRight="10dp"
+                                   android:layout_marginLeft="6dp"
+                                   android:textSize="@dimen/_10sdp"
+                                   android:textColor="@color/background"
+                                   android:singleLine="true"
+                                   android:padding="8dp"
+                                   android:layout_height="match_parent"/>
+
+
+                               <ToggleButton
+                                   android:id="@+id/returntype"
+                                   android:theme="@style/texttheme"
+                                   android:layout_width="40dp"
+                                   android:layout_height="match_parent"
+                                   android:clickable="true"
+                                   android:layout_marginTop="@dimen/_2sdp"
+                                   android:layout_gravity="center_vertical"
+                                   android:gravity="center_vertical"
+                                   android:background="@drawable/toggle_selector_green"
+                                   android:text=""
+                                   android:textOff=""
+                                   android:textOn="" />
+
+                               <TextView
+                                   android:theme="@style/texttheme"
+                                   android:layout_width="0dp"
+                                   android:layout_weight="1"
+                                   android:layout_height="match_parent"
+                                   android:gravity="start|center_vertical"
+                                   android:text="No Fixed Return Date"
+                                   android:layout_marginStart="@dimen/_5sdp"
+                                   android:layout_marginEnd="10dp"
+                                   android:textColor="@color/black"
+                                   android:textAllCaps="false"
+                                   android:textSize="@dimen/_8ssp" />
+
+                               </LinearLayout>
+
+                               <LinearLayout
+                                   android:id="@+id/billingdate"
+                                   android:visibility="visible"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="match_parent"
+                                   android:layout_marginTop="5dp"
+                                   android:layout_marginHorizontal="10dp"
+                                   android:orientation="horizontal"
+                                   android:weightSum="2">
+
+                                   <TextView
+                                       android:theme="@style/texttheme"
+                                       android:layout_width="0dp"
+                                       android:layout_weight="0.4"
+                                       android:text="End Date"
+                                       android:gravity="start|center_vertical"
+                                       android:layout_gravity="center"
+                                       android:layout_marginEnd="5dp"
+                                       android:singleLine="true"
+                                       android:textSize="15dp"
+                                       android:layout_height="match_parent"/>
+
+                               <TextView
+                                   android:id="@+id/date"
+                                   android:theme="@style/texttheme"
+                                   android:layout_width="0dp"
+                                   android:layout_weight="1.6"
+                                   android:background="@drawable/curve_white"
+                                   android:text="Date"
+                                   android:gravity="start"
+                                   android:layout_gravity="center"
+                                   android:textSize="@dimen/_10ssp"
+                                   android:textColor="@color/background"
+                                   android:singleLine="true"
+                                   android:padding="8dp"
+                                   android:layout_height="match_parent"/>
+
+                               </LinearLayout>
+                           </LinearLayout>
+
 
                            <LinearLayout
                                android:layout_width="match_parent"
@@ -804,7 +940,7 @@
                            android:layout_width="match_parent"
                            android:orientation="vertical"
                            android:background="@drawable/top_curve_box1"
-                           android:backgroundTint="@color/lightgreen"
+                           android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
                            android:layout_marginTop="@dimen/_minus17sdp"
                            android:paddingTop="@dimen/_10sdp"
                            android:paddingBottom="@dimen/_45sdp"
@@ -832,7 +968,7 @@
                                    android:layout_width="70dp"
                                    android:layout_height="wrap_content"
                                    android:background="@drawable/curve_white2"
-                                   android:backgroundTint="@color/green"
+                                   android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                    android:text=" Time "
                                    android:gravity="center"
                                    android:paddingHorizontal="15dp"
@@ -884,7 +1020,7 @@
                                    android:layout_width="70dp"
                                    android:layout_height="wrap_content"
                                    android:background="@drawable/curve_white2"
-                                   android:backgroundTint="@color/green"
+                                   android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                    android:text="USD $"
                                    android:singleLine="true"
                                    android:textColor="@color/themebackgroundtext"
@@ -938,7 +1074,7 @@
                                    android:layout_width="70dp"
                                    android:layout_height="wrap_content"
                                    android:background="@drawable/curve_white2"
-                                   android:backgroundTint="@color/green"
+                                   android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                    android:text="USD $"
                                    android:singleLine="true"
                                    android:textColor="@color/themebackgroundtext"
@@ -990,7 +1126,7 @@
                                    android:layout_width="70dp"
                                    android:layout_height="wrap_content"
                                    android:background="@drawable/curve_white2"
-                                   android:backgroundTint="@color/green"
+                                   android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                    android:text="USD $"
                                    android:singleLine="true"
                                    android:textColor="@color/themebackgroundtext"
@@ -1048,6 +1184,7 @@
 
             <include
                 android:id="@+id/btm"
+                app:UiColor="@{UiColor}"
                 layout="@layout/btm_charges"/>
        <!--    <include
                android:id="@+id/btm"
@@ -2027,3 +2164,4 @@
     </RelativeLayout>-->
 
 </RelativeLayout>
+</layout>

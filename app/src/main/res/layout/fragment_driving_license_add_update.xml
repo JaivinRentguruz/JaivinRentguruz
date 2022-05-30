@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
 
         <variable
             name="Driver"
-            type="com.abel.app.b2b.model.response.UpdateDL" />
+            type="com.rentguruz.app.model.response.UpdateDL" />
     </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/selected_dot">
+        android:background="@color/selected_dot"
+        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,7 +33,12 @@
                 android:layout_alignParentTop="true"
                 android:orientation="vertical">
 
-                <RelativeLayout
+                <include
+                    android:id="@+id/header"
+                    app:UiColor="@{UiColor}"
+                    layout="@layout/row_header"/>
+
+              <!--  <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
@@ -71,7 +84,7 @@
                             android:textSize="17dp"
                             android:theme="@style/texttheme" />
                     </LinearLayout>
-                </RelativeLayout>
+                </RelativeLayout>-->
             </LinearLayout>
 
             <androidx.core.widget.NestedScrollView
@@ -552,24 +565,43 @@
 
                             android:theme="@style/texttheme" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
+                     <!--   <RelativeLayout
+                            style="@style/relativeImage"
                             android:layout_marginTop="10dp"
-                            android:layout_marginBottom="5dp"
-                            android:background="@drawable/ic_car_img_bg"
-                            android:gravity="center">
+                            android:layout_marginBottom="5dp">
 
                             <ImageView
                                 android:id="@+id/img_DLFronside"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:layout_gravity="center"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/ic_main_camera" />
-                        </LinearLayout>
+                                android:scaleType="fitXY" />
+
+                            <androidx.camera.view.PreviewView
+                                android:id="@+id/camera"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+                        </RelativeLayout>-->
+
+                        <RelativeLayout
+                            android:id="@+id/test"
+                            style="@style/relativeImage"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp">
+
+                        <ImageView
+                            android:id="@+id/img_DLFronside"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="center"/>
+
+                            <androidx.camera.view.PreviewView
+                                android:id="@+id/camera"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+                        </RelativeLayout>
 
                         <TextView
                             android:layout_width="match_parent"
@@ -582,29 +614,58 @@
 
                             android:theme="@style/texttheme" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
+                        <!--<RelativeLayout
+                            style="@style/relativeImage"
                             android:layout_marginTop="10dp"
-                            android:layout_marginBottom="5dp"
-                            android:background="@drawable/ic_car_img_bg"
-                            android:gravity="center">
+                            android:layout_marginBottom="5dp">
 
                             <ImageView
                                 android:id="@+id/img_DLBackside"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:layout_gravity="center"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/ic_main_camera" />
-                        </LinearLayout>
+                                android:scaleType="fitXY" />
+                        </RelativeLayout>-->
+
+                        <RelativeLayout
+                            android:id="@+id/test2"
+                            style="@style/relativeImage"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp">
+
+                        <ImageView
+                            android:id="@+id/img_DLBackside"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="center"/>
+                        </RelativeLayout>
                     </LinearLayout>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+            <RelativeLayout
+                android:id="@+id/sucessfull_regi"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/successful_bg"
+                android:animateLayoutChanges="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/option"
+                        app:UiColor="@{UiColor}"
+                        layout="@layout/imageoption"/>
 
 
                 </LinearLayout>
-            </androidx.core.widget.NestedScrollView>
+
+            </RelativeLayout>
         </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

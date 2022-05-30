@@ -2,9 +2,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
         <variable
             name="label"
-            type="com.abel.app.b2b.model.response.CompanyLabel" />
+            type="com.rentguruz.app.model.response.CompanyLabel" />
     </data>
 
 <RelativeLayout
@@ -22,6 +29,7 @@
         android:layout_gravity="end"
         android:orientation="vertical"
         android:background="@color/lightgreen"
+        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
         android:layout_above="@id/apply"
         android:gravity="end">
 
@@ -30,7 +38,8 @@
                 android:layout_height="100dp"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:background="@color/green">
+                android:background="@color/green"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}">
 
                 <ImageView
                     android:layout_width="80dp"
@@ -135,6 +144,19 @@
                         android:textOff=""
                         android:textOn="" />
 
+
+                  <!--  <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/sw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:buttonTint="@color/black"
+                        android:thumb="@drawable/toggle_green_icon"
+                        app:thumbTint="@color/black"
+                        app:trackTint="@color/red"
+                        />-->
+
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -164,6 +186,8 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/toggle_selector_green"
+                        android:backgroundTint="@color/white"
+                        android:backgroundTintMode="multiply"
                         android:text=""
                         android:textOff=""
                         android:textOn="" />
@@ -187,18 +211,18 @@
                     android:textColor="@color/txtBlack"
                     android:textSize="@dimen/twenty" />
 
-                <ToggleButton
-                    android:id="@+id/fixrate"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="40dp"
-                    android:clickable="true"
-                    android:layout_height="25dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/toggle_selector_green"
-                    android:text=""
-                    android:textOff=""
-                    android:textOn="" />
+                    <ToggleButton
+                        android:id="@+id/fixrate"
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/toggle_selector_green"
+                        android:clickable="true"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn="" />
 
 
 
@@ -576,7 +600,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottommenuheight"
         android:layout_alignParentBottom="true"
-        android:background="@color/green">
+        android:background="@color/green"
+        android:backgroundTint="@{Color.parseColor(UiColor.primary)}">
 
         <TextView
             android:theme="@style/texttheme"

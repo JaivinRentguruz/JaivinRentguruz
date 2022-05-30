@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/Agreement"
-        android:name="com.abel.app.b2b.home.agreement.Fragment_Agreement"
+        android:name="com.rentguruz.app.home.agreement.Fragment_Agreement"
         android:label="Agreement"
         tools:layout="@layout/fragment_agreement">
 
@@ -45,7 +45,7 @@
 
     <fragment
         android:id="@+id/SummaryOfChargesForAgreements"
-        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Summary_Of_Charges_For_Agreements"
+        android:name="com.rentguruz.app.flexiicar.user.Fragment_Summary_Of_Charges_For_Agreements"
         android:label="SummaryOfChargesForAgreements"
         tools:layout="@layout/fragment_summary_of_charges_for_agreements">
         <action
@@ -96,7 +96,7 @@
 
     <fragment
         android:id="@+id/TermAndCondition"
-        android:name="com.abel.app.b2b.flexiicar.commonfragment.Fragment_Term_And_Condition"
+        android:name="com.rentguruz.app.flexiicar.commonfragment.Fragment_Term_And_Condition"
         android:label="TermAndCondition"
         tools:layout="@layout/fragment_terms_and_conditions">
 
@@ -106,7 +106,7 @@
 
     <fragment
         android:id="@+id/traffic_tic"
-        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Agreement_Traffic_Ticket"
+        android:name="com.rentguruz.app.flexiicar.user.Fragment_Agreement_Traffic_Ticket"
         android:label="Toll Charge"
         tools:layout="@layout/fragment_traffic_charge">
 
@@ -115,7 +115,7 @@
 
     <fragment
         android:id="@+id/cancel_agreement"
-        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Agreement_Cancel"
+        android:name="com.rentguruz.app.flexiicar.user.Fragment_Agreement_Cancel"
         android:label="Cancel Agreement"
         tools:layout="@layout/fragment_agreement_cancel">
 
@@ -123,15 +123,25 @@
 
     <fragment
         android:id="@+id/toll_charge"
-        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Agreement_Toll_Charge"
+        android:name="com.rentguruz.app.flexiicar.user.Fragment_Agreement_Toll_Charge"
         android:label="Toll Charge"
         tools:layout="@layout/fragment_toll_charge">
 
     </fragment>
 
+    <fragment android:id="@+id/checklist"
+        android:name="com.rentguruz.app.flexiicar.selfcheckin.Fragment_Check_in"
+        android:label="Check List"
+        tools:layout="@layout/fragment_self_chekout">
+
+        <action android:id="@+id/payment_sucess_to_vehicleimage"
+            app:destination="@+id/VehImage_SelfCheckIn_1"/>
+
+    </fragment>
+
     <fragment
         android:id="@+id/Self_check_Out"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckout.Fragment_Self_Check_out"
+        android:name="com.rentguruz.app.flexiicar.selfcheckout.Fragment_Self_Check_out"
         android:label="Self_check_Out"
         tools:layout="@layout/fragment_self_chekout">
         <action
@@ -148,7 +158,7 @@
 
     <fragment
         android:id="@+id/Vehicle_Image_1"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckout.Fragment_Vehicle_Image_1"
+        android:name="com.rentguruz.app.flexiicar.selfcheckout.Fragment_Vehicle_Image_1"
         android:label="Vehicle_Image_1"
         tools:layout="@layout/fragment_vehicle_images_1">
         <action
@@ -170,7 +180,7 @@
 
     <fragment
         android:id="@+id/Vehicle_Additional_image"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckout.Fragment_Vehicle_Additional_Image_All"
+        android:name="com.rentguruz.app.flexiicar.selfcheckout.Fragment_Vehicle_Additional_Image_All"
         android:label="Vehicle_Additional_image"
         tools:layout="@layout/fragment_vehicle_images_additional_all">
         <action
@@ -188,7 +198,7 @@
 
     <fragment
         android:id="@+id/Acceptance_signature"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckout.Fragment_Acceptance_singnature"
+        android:name="com.rentguruz.app.flexiicar.selfcheckout.Fragment_Acceptance_singnature"
         android:label="Acceptance_signature"
         tools:layout="@layout/fragment_acceptance_signature">
         <action
@@ -213,7 +223,7 @@
 
     <fragment
         android:id="@+id/Waiver_Signature"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckout.Fragment_Waiver_Signature"
+        android:name="com.rentguruz.app.flexiicar.selfcheckout.Fragment_Waiver_Signature"
         android:label="Waiver_Signature"
         tools:layout="@layout/fragment_waiver_signature">
         <action
@@ -228,7 +238,7 @@
     </fragment>
     <fragment
         android:id="@+id/Location_And_Key"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckout.Fragment_Location_And_Key"
+        android:name="com.rentguruz.app.flexiicar.selfcheckout.Fragment_Location_And_Key"
         android:label="Location_And_Key"
         tools:layout="@layout/fragment_location_and_key_2">
         <action
@@ -243,7 +253,7 @@
 
     <fragment
         android:id="@+id/LocationKey_ForSelfCheckOut"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Location_And_Key"
+        android:name="com.rentguruz.app.flexiicar.selfcheckin.Fragment_Location_And_Key"
         android:label="Location_And_Key"
         tools:layout="@layout/fragment_location_and_key_2">
         <action
@@ -252,11 +262,14 @@
         <action
             android:id="@+id/action_Location_And_Key_to_VehImage_SelfCheckIn_1"
             app:destination="@id/VehImage_SelfCheckIn_1" />
+
+        <action android:id="@+id/action_Location_And_Key_to_checklist"
+            app:destination="@+id/checklist"/>
     </fragment>
 
     <fragment
         android:id="@+id/VehImage_SelfCheckIn_1"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Vehicle_Image_1"
+        android:name="com.rentguruz.app.flexiicar.selfcheckin.Fragment_Vehicle_Image_1"
         android:label="Vehicle_Image1_SelfCheckIn"
         tools:layout="@layout/fragment_vehicle_images_1">
         <action
@@ -281,7 +294,7 @@
 
     <fragment
         android:id="@+id/Vehicle_All_image_SelfCheckIn"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Vehicle_Additional_Image_All"
+        android:name="com.rentguruz.app.flexiicar.selfcheckin.Fragment_Vehicle_Additional_Image_All"
         android:label="Vehicle_Additional_image"
         tools:layout="@layout/fragment_vehicle_images_additional_all">
         <action
@@ -297,7 +310,7 @@
 
     <fragment
         android:id="@+id/Signature"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Acceptance_singnature"
+        android:name="com.rentguruz.app.flexiicar.selfcheckin.Fragment_Acceptance_singnature"
         android:label="Signature"
         tools:layout="@layout/fragment_acceptance_signature">
         <action
@@ -310,11 +323,19 @@
         <action
             android:id="@+id/action_Signature_to_Termscondition"
             app:destination="@+id/Term_and_Condtion"/>
+
+        <action
+            android:id="@+id/locationkey"
+            app:destination="@+id/LocationKey_ForSelfCheckOut"/>
+
+        <action android:id="@+id/action_Signature_to_summary"
+            app:destination="@+id/SummaryOfChargesForAgreements"/>
+
     </fragment>
 
     <fragment
         android:id="@+id/Term_and_Condtion"
-        android:name="com.abel.app.b2b.flexiicar.commonfragment.Fragment_Term_And_Condition"
+        android:name="com.rentguruz.app.flexiicar.commonfragment.Fragment_Term_And_Condition"
         android:label="Term_and_Condtion"
         tools:layout="@layout/fragment_terms_and_conditions">
 
@@ -323,7 +344,7 @@
 
     <fragment
         android:id="@+id/Self_check_In"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Self_Check_In"
+        android:name="com.rentguruz.app.flexiicar.selfcheckin.Fragment_Self_Check_In"
         android:label="Self_check_In"
         tools:layout="@layout/fragment_self_checkin">
         <action
@@ -335,12 +356,14 @@
         <action
             android:id="@+id/action_Self_check_In_to_Payment"
             app:destination="@+id/Payment"/>
+
+
     </fragment>
 
 
     <fragment
         android:id="@+id/SummaryOfChargeForSelfCheckIn"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Summary_Of_Charges_For_SelfCheckIn"
+        android:name="com.rentguruz.app.flexiicar.selfcheckin.Fragment_Summary_Of_Charges_For_SelfCheckIn"
         android:label="SummaryOfChargeForSelfCheckIn"
         tools:layout="@layout/fragment_summary_of_charges_for_selfcheckin">
         <action
@@ -362,7 +385,7 @@
 
     <fragment
         android:id="@+id/PaymentCheckOutSelfCheckIn"
-        android:name="com.abel.app.b2b.flexiicar.selfcheckin.Fragment_Payment_CheckOut_For_User_SelfCheckIn"
+        android:name="com.rentguruz.app.flexiicar.selfcheckin.Fragment_Payment_CheckOut_For_User_SelfCheckIn"
         android:label="PaymentCheckOutSelfCheckIn"
         tools:layout="@layout/fragment_payment_checkout_process">
         <action
@@ -378,7 +401,7 @@
 
     <fragment
         android:id="@+id/Payment_Success"
-        android:name="com.abel.app.b2b.flexiicar.commonfragment.Fragment_Payment_checkout_Success"
+        android:name="com.rentguruz.app.flexiicar.commonfragment.Fragment_Payment_checkout_Success"
         android:label="Payment_Success"
         tools:layout="@layout/fragment_payment_checkout_success">
         <action
@@ -394,7 +417,7 @@
 
     <fragment
         android:id="@+id/chnageAgeement"
-        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Agreement_DateChange"
+        android:name="com.rentguruz.app.flexiicar.user.Fragment_Agreement_DateChange"
         android:label="Change Date"
         tools:layout="@layout/fragment_agreement_datechange">
 
@@ -406,7 +429,7 @@
 
     <fragment
         android:id="@+id/chnageAgeementVehicle"
-        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Agreement_VehicleChange"
+        android:name="com.rentguruz.app.flexiicar.user.Fragment_Agreement_VehicleChange"
         android:label="Change Vehicle"
         tools:layout="@layout/fragment_agreement_vehiclechange">
         <action android:id="@+id/test"
@@ -416,7 +439,7 @@
 
     <fragment
         android:id="@+id/chnageAgeementextend"
-        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Agreement_Extend"
+        android:name="com.rentguruz.app.flexiicar.user.Fragment_Agreement_Extend"
         android:label="Agreement Extend"
         tools:layout="@layout/fragment_agreement_extend">
 
@@ -425,7 +448,7 @@
 
 
     <fragment android:id="@+id/Printpreview"
-        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Print_Preview"
+        android:name="com.rentguruz.app.flexiicar.user.Fragment_Print_Preview"
         android:label="Print Preview"
         tools:layout="@layout/fragment_print_preview">
 
@@ -433,7 +456,7 @@
     </fragment>
 
     <fragment android:id="@+id/Payment"
-        android:name="com.abel.app.b2b.home.Fragment_New_Agreement_Payment"
+        android:name="com.rentguruz.app.home.Fragment_New_Agreement_Payment"
         android:label="Agreement Payment"
         tools:layout="@layout/fragment_new_agreement_payment">
 
@@ -456,7 +479,7 @@
 
     <fragment
         android:id="@+id/CardsOnAccount"
-        android:name="com.abel.app.b2b.flexiicar.user.Fragment_CreditCards_List_For_User"
+        android:name="com.rentguruz.app.flexiicar.user.Fragment_CreditCards_List_For_User"
         android:label="CardsOnAccount"
         tools:layout="@layout/fragment_creditcards_list">
         <action
@@ -469,7 +492,7 @@
 
 
     <fragment android:id="@+id/PaymentOffline"
-        android:name="com.abel.app.b2b.home.Fragment_Payment_Offline"
+        android:name="com.rentguruz.app.home.Fragment_Payment_Offline"
         android:label="Payment Success"
         tools:layout="@layout/fragment_payment_offline">
 
@@ -485,7 +508,7 @@
 
     <fragment
         android:id="@+id/UpdateCreditCard"
-        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Update_CreditCard_For_user"
+        android:name="com.rentguruz.app.flexiicar.user.Fragment_Update_CreditCard_For_user"
         android:label="EditCreditCard"
         tools:layout="@layout/fragment_update_creditcard">
         <action
@@ -495,7 +518,7 @@
 
     <fragment
         android:id="@+id/AddCreditCard"
-        android:name="com.abel.app.b2b.flexiicar.user.Fragment_Add_credit_card_For_User"
+        android:name="com.rentguruz.app.flexiicar.user.Fragment_Add_credit_card_For_User"
         android:label="AddCreditCard"
         tools:layout="@layout/fragment_add_creditcard">
         <action
@@ -504,7 +527,7 @@
     </fragment>
 
     <fragment android:id="@+id/PaymentChangeOption"
-        android:name="com.abel.app.b2b.home.Fragment_Change_Payment_Option"
+        android:name="com.rentguruz.app.home.Fragment_Change_Payment_Option"
         android:label="Payment Change Option"
         tools:layout="@layout/fragment_change_payment_option">
 
@@ -520,18 +543,29 @@
     </fragment>
 
     <fragment android:id="@+id/PaymentSuccess"
-        android:name="com.abel.app.b2b.home.Fragment_Payment_Success"
+        android:name="com.rentguruz.app.home.Fragment_Payment_Success"
         android:label="Payment Success"
         tools:layout="@layout/fragment_payment_success">
 
         <action android:id="@+id/payment_sucess_to_reservation_summarry"
             app:destination="@+id/Reservation_Summarry"/>
 
+        <action android:id="@+id/payment_sucess_to_vehicleimage"
+            app:destination="@+id/VehImage_SelfCheckIn_1"/>
+
+        <action android:id="@+id/payment_sucess_to_checklist"
+            app:destination="@+id/checklist"/>
+
+        <action
+            android:id="@+id/payment_sucess_to_locationkey"
+            app:destination="@+id/LocationKey_ForSelfCheckOut"/>
     </fragment>
 
     <fragment android:id="@+id/Reservation_Summarry"
-        android:name="com.abel.app.b2b.home.Fragment_Resevation_Summarry"
+        android:name="com.rentguruz.app.home.Fragment_Resevation_Summarry"
         android:label="Reservation Summarry"
-        tools:layout="@layout/fragment_vehicle_current_rental"/>
+        tools:layout="@layout/fragment_vehicle_current_rental">
+
+    </fragment>
 
 </navigation>

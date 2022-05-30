@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/backgroundColor"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,22 +25,27 @@
             android:layout_alignParentTop="true"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <include
+                android:id="@+id/header"
+                app:UiColor="@{UiColor}"
+                layout="@layout/row_header"/>
+
+          <!--  <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/headertopmargin">
 
-                <LinearLayout
+               &lt;!&ndash; <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-              <!--      <ImageView
+              &lt;!&ndash;      <ImageView
                         android:id="@+id/back"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:src="@drawable/ic_chevron_left"/>-->
+                        android:src="@drawable/ic_chevron_left"/>&ndash;&gt;
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -43,9 +57,9 @@
                         android:textAllCaps="false"
                          style="@style/textfont"/>
 
-                </LinearLayout>
+                </LinearLayout>&ndash;&gt;
 
-                <TextView
+               &lt;!&ndash; <TextView
                     android:id="@+id/txtAddVehicle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -55,9 +69,55 @@
                     android:textSize="17dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="20dp"/>
+                    android:layout_marginRight="20dp"/>&ndash;&gt;
 
-            </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    &lt;!&ndash; <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="20dp"
+                         android:src="@drawable/ic_chevron_left"/>&ndash;&gt;
+
+                    <TextView
+                        android:id="@+id/screenHeader"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="17dp"
+                        android:textColor="@color/topcolor"
+                        android:text="@string/vehicles"
+                        style="@style/textfont"/>
+
+                    <TextView
+                        android:id="@+id/txtAddVehicle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/textfont"
+                        android:text="@string/add"
+                        android:textColor="@color/topcolor"
+                        android:textSize="17dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"/>
+
+                    <ImageView
+                        android:id="@+id/optionmenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/_3sdp"
+                        android:src="@drawable/ic_baseline_more_vert_24"/>
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -83,6 +143,8 @@
                     android:padding="14dp"
                     android:textColor="@color/graytextcolor"
                     android:textColorHint="@color/graytextcolor"
+                    android:singleLine="true"
+                    android:inputType="text"
                     android:textSize="15dp"
                     android:imeOptions="actionDone"/>
 
@@ -119,8 +181,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/selectlocation"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
             android:background="@drawable/curve_box">
 
             <!--<RelativeLayout
@@ -133,6 +193,7 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_5sdp"
                 android:descendantFocusability="blocksDescendants">
 
                 <RelativeLayout
@@ -652,5 +713,31 @@
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:id="@+id/sucessfull_regi"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/successful_bg"
+            android:animateLayoutChanges="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/option"
+                    app:UiColor="@{UiColor}"
+                    layout="@layout/vehiclefiltermenu"/>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -191,11 +191,15 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
+                    <include
+                        android:id="@+id/pickup"
+                        layout="@layout/pickup_drop" />
+                   <!-- <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         android:background="@color/lightgreen"
+                        android:visibility="gone"
                         android:padding="4dp">
 
                         <LinearLayout
@@ -394,7 +398,7 @@
                             </LinearLayout>
 
                         </LinearLayout>
-                    </LinearLayout>
+                    </LinearLayout>-->
 
                     <LinearLayout
                         android:visibility="gone"
@@ -535,10 +539,11 @@
                             android:id="@+id/difins"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="6"
+                            android:layout_weight="5"
                             android:orientation="horizontal"
                             android:layout_gravity="end"
-                            android:weightSum="3">
+                            android:weightSum="3"
+                            android:visibility="visible">
 
                             <TextView
                                 android:id="@+id/defaultIns"
@@ -578,16 +583,17 @@
                             android:visibility="gone"
                             android:src="@drawable/ic_arrow_icon" />
 
+
                         <ImageView
                             android:id="@+id/SummaryofChargesArrowDown1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_gravity="right"
+                            android:layout_gravity="end"
                             android:layout_marginRight="3dp"
                             android:layout_weight="0.8"
                             android:gravity="right"
                             android:src="@drawable/ic_down_arrow"
-                            android:visibility="gone" />
+                            android:visibility="visible" />
 
                     </LinearLayout>
 
@@ -1045,11 +1051,16 @@
             android:background="@color/bottommenucolor"
             android:weightSum="100">
 
-            <LinearLayout
+            <include
+                android:id="@+id/btm"
+                layout="@layout/btm_charges"/>
+
+        <!--    <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
                 android:layout_weight="30"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <TextView
@@ -1141,7 +1152,7 @@
                         android:textSize="@dimen/appbar_padding"
                         android:theme="@style/texttheme" />
                 </LinearLayout>
-            </LinearLayout>
+            </LinearLayout>-->
         </LinearLayout>
     </RelativeLayout>
 

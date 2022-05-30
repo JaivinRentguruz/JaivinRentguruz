@@ -8,7 +8,7 @@
 
         <variable
             name="CreditCard"
-            type="com.abel.app.b2b.model.CreditCardModel" />
+            type="com.rentguruz.app.model.CreditCardModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

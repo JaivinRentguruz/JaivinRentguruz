@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/Vehicles"
-        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicles"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicles"
         android:label="Vehicles"
         tools:layout="@layout/fragment_vehicles">
 
@@ -20,10 +20,13 @@
         <action android:id="@+id/action_Vehicles_to_Vehicle_Master"
             app:destination="@+id/vehicle_master"/>
 
+        <action android:id="@+id/same"
+            app:destination="@+id/Vehicles"/>
+
     </fragment>
 
     <fragment android:id="@+id/insert_vehicle"
-        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicles_Basic_Details"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicles_Basic_Details"
         android:label="Insert Vehicle"
         tools:layout="@layout/fragment_vehicle_basic_details">
 
@@ -34,7 +37,7 @@
 
 
     <fragment android:id="@+id/update_vehicle"
-        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicles_Edit_Basic_Details"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicles_Edit_Basic_Details"
         android:label="Update Vehicle"
         tools:layout="@layout/fragment_vehicle_basic_details">
 
@@ -42,7 +45,7 @@
     </fragment>
 
     <fragment android:id="@+id/vehicle_master"
-        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_master"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_master"
         android:label="Update Vehicle"
         tools:layout="@layout/fragment_vehicle_master">
 
@@ -68,18 +71,93 @@
         <action android:id="@+id/action_vehicle_master_to_vehicle_owner"
             app:destination="@+id/vehicle_owner"/>
 
+        <action android:id="@+id/action_vehicle_master_to_vehicles"
+            app:destination="@+id/Vehicles"/>
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_master_timeline"
+            app:destination="@+id/vehicle_master_timeline"/>
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_master_statment"
+            app:destination="@+id/vehicle_master_statment"/>
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_licence_certificate"
+            app:destination="@+id/vehicle_licence_certificate"/>
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_inspection"
+            app:destination="@+id/vehicle_inspection"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_inspection"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_Inspection"
+        android:label="vehicle inspection"
+        tools:layout="@layout/fragment_vehicle_inspection">
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_inspection_basic"
+            app:destination="@+id/vehicle_inspection_basic"/>
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_inspection_detail"
+            app:destination="@+id/vehicle_inspection_detail"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_inspection_basic"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_Inspection_Basic"
+        android:label="vehicle inspection"
+        tools:layout="@layout/fragment_vehicle_inspection_basic">
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_inspection_detail"
+            app:destination="@+id/vehicle_inspection_detail"/>
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_inspection"
+            app:destination="@+id/vehicle_inspection"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_inspection_detail"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_Inspection_Detail"
+        android:label="vehicle inspection"
+        tools:layout="@layout/fragment_vehicle_inspection_detailed">
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_inspection_basic"
+            app:destination="@+id/vehicle_inspection_basic"/>
+
+        <action android:id="@+id/action_vehicle_master_to_vehicle_inspection"
+            app:destination="@+id/vehicle_inspection"/>
+
+    </fragment>
+
+
+    <fragment  android:id="@+id/vehicle_licence_certificate"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_License_And_Certificate"
+        android:label="Vehicle Certificate"
+        tools:layout="@layout/fragment_vehicle_license_and_certifications">
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_master_timeline"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_Timeline"
+        android:label="Vehicle Timeline"
+        tools:layout="@layout/fragment_user_timeline">
+
+    </fragment>
+
+    <fragment android:id="@+id/vehicle_master_statment"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_Bills_And_Payment"
+        android:label="Vehicle Statement"
+        tools:layout="@layout/fragment_bills_and_payments">
 
     </fragment>
 
     <fragment android:id="@+id/vehicle_master_reservation"
-        android:name="com.abel.app.b2b.home.vehicles.Vehicle_Master_Reservation"
+        android:name="com.rentguruz.app.home.vehicles.Vehicle_Master_Reservation"
         android:label="Update Vehicle"
         tools:layout="@layout/vehicle_common_list">
 
     </fragment>
 
     <fragment android:id="@+id/vehicle_master_agreement"
-        android:name="com.abel.app.b2b.home.vehicles.Vehicle_Master_Agreement"
+        android:name="com.rentguruz.app.home.vehicles.Vehicle_Master_Agreement"
         android:label="Update Vehicle"
         tools:layout="@layout/vehicle_common_list">
 
@@ -89,7 +167,7 @@
     </fragment>
 
     <fragment android:id="@+id/vehicle_current_rental"
-        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Current_Rental"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_Current_Rental"
         android:label="Current Rantal"
         tools:layout="@layout/fragment_vehicle_current_rental">
 
@@ -97,7 +175,7 @@
     </fragment>
 
     <fragment android:id="@+id/vehicle_specification"
-        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Master_Specification"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_Master_Specification"
         android:label="@string/specification"
         tools:layout="@layout/fragment_vehicle_master_specification">
 
@@ -116,7 +194,7 @@
     </fragment>
 
     <fragment android:id="@+id/vehicle_master_image"
-        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Master_Specification_Image"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_Master_Specification_Image"
         android:label="Specification Image"
         tools:layout="@layout/fragment_vehicle_master_specification_image">
         <action android:id="@+id/vehicle_specification_to_vehicle_additional"
@@ -137,7 +215,7 @@
 
 
     <fragment android:id="@+id/vehicle_additional_info"
-        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Master_Specification_Additional_Info"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_Master_Specification_Additional_Info"
         android:label="@string/specification"
         tools:layout="@layout/fragment_vehicle_master_specification2">
 
@@ -156,7 +234,7 @@
     </fragment>
 
     <fragment android:id="@+id/vehicle_rate_info"
-        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Master_Specification_Rate_Info"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_Master_Specification_Rate_Info"
         android:label="@string/specification"
         tools:layout="@layout/fragment_vehicle_master_specification3">
 
@@ -178,7 +256,7 @@
     </fragment>
 
     <fragment android:id="@+id/vehicle_images"
-        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Master_Images"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_Master_Images"
         android:label="@string/specification"
         tools:layout="@layout/fragment_vehicle_master_uploadimage">
 
@@ -188,7 +266,7 @@
 
 
     <fragment android:id="@+id/vehicle_owner"
-        android:name="com.abel.app.b2b.home.vehicles.Fragment_Vehicle_Master_Ownership"
+        android:name="com.rentguruz.app.home.vehicles.Fragment_Vehicle_Master_Ownership"
         android:label="Vehicle Master"
         tools:layout="@layout/fragment_vehicle_master_ownership"/>
 

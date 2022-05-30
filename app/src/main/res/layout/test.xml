@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -35,8 +44,8 @@
                 android:layout_marginTop="-290dp"
                 android:layout_marginEnd="-5dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_path_test"
-                app:tint="@color/lightgreen2" />
+                android:background="@drawable/ic_path_test"
+                android:backgroundTint="@{Color.parseColor(UiColor.secondary)}" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -73,12 +82,13 @@
                                     android:orientation="horizontal">
 
                                     <ImageView
+                                        android:id="@+id/loc0"
                                         android:layout_width="32dp"
                                         android:layout_height="32dp"
                                         android:layout_marginTop="2dp"
                                         android:layout_gravity="center_horizontal|center_vertical"
-                                        android:src="@drawable/ic_location_white_icon"
-                                        app:tint="@color/black" />
+                                        android:background="@drawable/ic_location_white_icon"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}" />
 
                                     <LinearLayout
                                         android:layout_width="wrap_content"
@@ -102,7 +112,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                              style="@style/textfont"
-                                            android:text="03/12/2019"
+                                            android:text=""
                                             android:textAllCaps="false"
                                             android:textColor="@color/black"
                                             android:textSize="11dp" />
@@ -125,7 +135,7 @@
                                 <RelativeLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="13dp"
+                                    android:layout_marginRight="10dp"
                                     android:layout_alignParentRight="true"
                                     android:layout_centerVertical="true">
 
@@ -166,12 +176,13 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:background="@drawable/curve_single_text"
-                                    android:backgroundTint="@color/black"
+                                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                     android:gravity="center"
                                     android:orientation="horizontal"
                                     android:weightSum="2">
 
                                     <TextView
+                                        android:id="@+id/f"
                                         style="@style/textfont"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
@@ -179,10 +190,11 @@
                                         android:layout_weight="1"
                                         android:gravity="end|center"
                                         android:text="A"
-                                        android:textColor="@color/green"
+                                        android:textColor="@{Color.parseColor(UiColor.secondaryfont)}"
                                         android:textSize="@dimen/_20ssp"/>
 
                                     <TextView
+                                        android:id="@+id/l"
                                         style="@style/textfont"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
@@ -190,7 +202,7 @@
                                         android:layout_weight="1"
                                         android:gravity="start|center"
                                         android:text="B"
-                                        android:textColor="@color/green"
+                                        android:textColor="@{Color.parseColor(UiColor.secondaryfont)}"
                                         android:textSize="@dimen/_20ssp" />
 
                                     <!-- <TextView
@@ -216,8 +228,8 @@
                                 android:layout_marginTop="8dp"
                                  style="@style/textfont"
                                 android:text="Welcome!"
-                                android:textColor="@color/white"
-                                android:textSize="17dp" />
+                                android:textColor="@{Color.parseColor(UiColor.primaryfont)}"
+                                android:textSize="@dimen/_15ssp" />
 
                             <TextView
                                 android:id="@+id/name"
@@ -225,22 +237,24 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
                                  style="@style/textfont"
-                                android:text="Neeraj"
-                                android:textColor="@color/white"
-                                android:textSize="34dp" />
+                                android:text="Neeraj Kaneria"
+                                android:textColor="@{Color.parseColor(UiColor.primaryfont)}"
+                                android:textSize="@dimen/_20ssp" />
                         </LinearLayout>
 
                         <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="0dp"
+                            android:layout_width="@dimen/_150sdp"
+                            android:layout_height="@dimen/_75sdp"
+                            android:layout_marginRight="10dp"
                             android:layout_alignParentRight="true"
+                            android:gravity="end"
                             android:layout_marginTop="50dp">
 
                             <ImageView
                                 android:id="@+id/logo"
-                                android:layout_width="@dimen/logow"
-                                android:layout_height="@dimen/logoh"
+                                android:src="@drawable/car_img_bc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:adjustViewBounds="true" />
 
                         </RelativeLayout>
@@ -253,3 +267,4 @@
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

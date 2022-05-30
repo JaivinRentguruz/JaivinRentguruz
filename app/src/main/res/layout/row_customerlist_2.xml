@@ -4,9 +4,16 @@
 
     <data>
 
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
         <variable
             name="Customer"
-            type="com.abel.app.b2b.model.Customer" />
+            type="com.rentguruz.app.model.Customer" />
     </data>
 
     <LinearLayout
@@ -50,6 +57,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/curve_single_text"
+                                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:weightSum="2">
@@ -62,7 +70,7 @@
                                     android:layout_weight="1"
                                     android:gravity="end|center"
                                     android:text="F"
-                                    android:textColor="@color/white"
+                                    android:textColor="@{Color.parseColor(UiColor.secondaryfont)}"
                                     android:textSize="@dimen/_20ssp"
                                     app:_cap="@{Customer.Fname}" />
 
@@ -74,7 +82,7 @@
                                     android:layout_weight="1"
                                     android:gravity="start|center"
                                     android:text="L"
-                                    android:textColor="@color/white"
+                                    android:textColor="@{Color.parseColor(UiColor.secondaryfont)}"
                                     android:textSize="@dimen/_20ssp"
                                     app:_cap="@{Customer.Lname}" />
 
@@ -119,10 +127,7 @@
                                     android:layout_width="@dimen/_170sdp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_minus5sdp"
-                                    android:ellipsize="marquee"
                                     android:hint="Neeraj Kaneria"
-                                    android:inputType="textCapWords"
-                                    android:marqueeRepeatLimit="@integer/material_motion_duration_short_1"
                                     android:text="@={Customer.FullName}"
                                     android:textColor="@color/registerTextColor"
                                     android:textSize="@dimen/_15ssp"
@@ -149,6 +154,7 @@
                                         android:layout_height="match_parent"
                                         android:layout_margin="@dimen/_3sdp"
                                         android:layout_weight="0.5"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                         android:background="@drawable/curve_single_text222">
 
                                         <androidx.appcompat.widget.AppCompatTextView
@@ -199,6 +205,7 @@
                                         android:layout_height="match_parent"
                                         android:layout_margin="@dimen/_3sdp"
                                         android:layout_weight="0.5"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                         android:background="@drawable/curve_single_text222">
 
                                         <androidx.appcompat.widget.AppCompatTextView
@@ -274,7 +281,7 @@
                                     android:gravity="right"
                                     android:hint="Head Office"
                                     android:text="@={Customer.CustomerTypeName}"
-                                    android:textColor="@color/green"
+                                    android:textColor="@{Color.parseColor(UiColor.primary)}"
                                     android:textSize="@dimen/_10ssp" />
 
                                 <!--          <TextView

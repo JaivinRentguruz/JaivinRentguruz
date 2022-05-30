@@ -5,7 +5,7 @@
 
         <variable
             name="Location"
-            type="com.abel.app.b2b.model.response.LocationList" />
+            type="com.rentguruz.app.model.response.LocationList" />
     </data>
 
     <LinearLayout

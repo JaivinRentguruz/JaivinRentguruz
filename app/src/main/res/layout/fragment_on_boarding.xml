@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/activity_horizontal_margin"
+    android:id="@+id/background"
     tools:context=".flexiicar.login.OnBoarding$PlaceholderFragment">
 
 
@@ -24,12 +25,15 @@
                     android:layout_width="@dimen/icon"
                     android:layout_height="@dimen/icon"
                     android:visibility="visible"
-                    android:adjustViewBounds="true"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_150sdp"
+                    android:adjustViewBounds="true" />
 
                 <LinearLayout
+                    android:layout_marginTop="@dimen/_25sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_30sdp"
                     android:layout_below="@id/section_img"
                     android:textAlignment="center"
                     android:gravity="center"
@@ -49,6 +53,7 @@
                         android:textSize="@dimen/_14ssp"/>
 
                     <TextView
+                        android:paddingTop="@dimen/_5sdp"
                         android:theme="@style/texttheme"
                         android:id="@+id/section_label"
                         style="@style/TextAppearance.AppCompat.Headline"

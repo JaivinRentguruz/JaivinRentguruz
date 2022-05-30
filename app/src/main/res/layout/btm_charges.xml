@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+
+<LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/bottommenucolor"
+    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
     android:layout_height="@dimen/bottommenuheight">
 
     <!--  <LinearLayout
@@ -115,8 +127,7 @@
     <LinearLayout
         android:id="@+id/process"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -228,7 +239,7 @@
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:background="@drawable/curved_box_bg"
-                android:backgroundTint="@color/rentalselectbtn"
+                android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                 android:gravity="center"
                 android:visibility="visible">
 
@@ -266,3 +277,4 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+</layout>

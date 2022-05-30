@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item  android:id="@+id/sdnjnskjsndkjs">
+        <shape android:shape="rectangle" android:innerRadius="25dp" >
+            <corners android:radius="7dp"/>
+            <size android:height="100dp" android:width="100dp"/>
+            <stroke android:color="#E5E8EA" android:width="0.8dp"/>
+        </shape>
+    </item>
+
+    <item android:width="40dp" android:height="40dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:id="@+id/sample"
+        android:drawable="@drawable/ic_main_camera">
+
+     <!--   <inset
+            android:drawable="@drawable/ic_main_camera"/>-->
+
+       <!-- <bitmap android:src="@drawable/ic_main_camera" />-->
+    </item>
+
+</layer-list>

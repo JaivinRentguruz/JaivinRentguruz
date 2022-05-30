@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:layout_marginVertical="5dp"
+    android:weightSum="100">
+
+    <CheckBox
+        android:id="@+id/chk_red"
+        android:layout_width="0dp"
+        android:layout_weight="7"
+        android:layout_height="wrap_content"
+        android:button="@drawable/sharp_checkbox_drawable"
+        android:buttonTint="@{Color.parseColor(UiColor.primary)}"/>
+
+    <TextView
+        android:id="@+id/chkOptionName"
+        android:layout_width="0dp"
+        android:layout_weight="65"
+        android:layout_height="match_parent"
+        android:text="Snow Brush"
+        android:textColor="@color/txtBlack"
+        android:textSize="@dimen/_11ssp"
+        android:theme="@style/texttheme" />
+
+</LinearLayout>
+</layout>

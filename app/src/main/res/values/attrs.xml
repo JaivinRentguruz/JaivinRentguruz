@@ -9,4 +9,9 @@
         <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
 
+    <color name="jvm">@android:color/background_dark</color>
+
+    <color name="testsampleee" format="reference"  />
+
+    <attr name="theme_color" format="reference" />
 </resources>

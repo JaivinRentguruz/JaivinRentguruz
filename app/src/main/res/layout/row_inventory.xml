@@ -6,7 +6,7 @@
 
         <variable
             name="Inventory"
-            type="com.abel.app.b2b.model.reservation.ReservationInventory" />
+            type="com.rentguruz.app.model.reservation.ReservationInventory" />
     </data>
 
     <LinearLayout

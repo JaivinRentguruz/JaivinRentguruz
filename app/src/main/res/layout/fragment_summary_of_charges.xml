@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+
+
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/selected_dot"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/editCreditCard"
             android:layout_width="match_parent"
@@ -18,12 +27,17 @@
             android:layout_alignParentTop="true"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <include
+                android:id="@+id/header"
+                app:UiColor="@{UiColor}"
+                layout="@layout/row_header"/>
+
+           <!-- <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="50dp">
-                <!--  <LinearLayout
+                &lt;!&ndash;  <LinearLayout
                       android:id="@+id/llHome"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -44,7 +58,7 @@
                           android:textColor="@color/TitleTextColor"
                           android:textSize="14dp" />
 
-                  </LinearLayout>-->
+                  </LinearLayout>&ndash;&gt;
 
                 <LinearLayout
                     android:id="@+id/llTitle"
@@ -90,7 +104,7 @@
                         android:padding="@dimen/_3sdp"
                         android:src="@drawable/ic_baseline_more_vert_24"/>
                 </LinearLayout>
-            </RelativeLayout>
+            </RelativeLayout>-->
         </LinearLayout>
 
    <!--     <LinearLayout
@@ -170,7 +184,7 @@
             android:layout_below="@id/editCreditCard">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -195,8 +209,8 @@
             <LinearLayout
                 android:background="@drawable/curve_box"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/_10sdp"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/_100sdp"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -286,13 +300,17 @@
                     </LinearLayout>
                 </LinearLayout>
 
+                <include
+                    android:id="@+id/pickup"
+                    layout="@layout/pickup_drop"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="4dp"
                     android:layout_marginTop="10dp"
                     android:background="@color/lightgreen"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -343,7 +361,7 @@
                                     android:orientation="vertical"
                                     android:layout_height="wrap_content">
                                     <TextView
-                                        android:id="@+id/pickup"
+                                        android:id="@+id/pickupss"
                                 android:theme="@style/texttheme"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -492,13 +510,15 @@
 
                     </LinearLayout>
                 </LinearLayout>
-
+                <include
+                    android:id="@+id/scan"
+                    layout="@layout/qrscan" />
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                            <LinearLayout
+                    android:layout_height="wrap_content">
+                    <!--        <LinearLayout
                                 android:layout_marginTop="8dp"
                                 android:orientation="horizontal"
                                 android:weightSum="15"
@@ -527,12 +547,12 @@
 
                                 </LinearLayout>
 
-                        <!--        <ImageView
+                        &lt;!&ndash;        <ImageView
                                     android:id="@+id/QR_Image"
                                     android:layout_width="0dp"
                                     android:layout_height="80dp"
                                     android:src="@drawable/qr_icon"
-                                    android:layout_weight="4"/>-->
+                                    android:layout_weight="4"/>&ndash;&gt;
                                 <LinearLayout
                                     android:layout_marginTop="1dp"
                                     android:orientation="vertical"
@@ -596,7 +616,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="3dp"
-                        android:background="@color/textColorHint" />
+                        android:background="@color/textColorHint" />-->
                     <LinearLayout
                         android:visibility="gone"
                         android:layout_marginTop="7dp"
@@ -722,12 +742,17 @@
 
                 </LinearLayout>
                 <View
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="10dp"
                     android:background="@color/textColorHint" />
-            <LinearLayout
+
+                <include
+                    android:id="@+id/specific"
+                    layout="@layout/specification"/>
+
+
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -920,7 +945,7 @@
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1054,7 +1079,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
@@ -1095,7 +1120,7 @@
                 <RelativeLayout
                     android:visibility="gone"
                     android:id="@+id/rl_Summaryofcharge"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -1108,6 +1133,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -1376,12 +1402,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:visibility="gone"
                 android:background="@color/textColorHint" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -1580,12 +1608,12 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:visibility="gone"
                     android:background="@color/textColorHint" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp">
+                    android:layout_height="match_parent">
 
                     <LinearLayout
                         android:id="@+id/term_condition"
@@ -1620,6 +1648,12 @@
                     </LinearLayout>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:visibility="visible"
+                    android:background="@color/textColorHint" />
+
             </LinearLayout>
             </LinearLayout>
             </androidx.core.widget.NestedScrollView>
@@ -1639,6 +1673,7 @@
 
                 <include
                     android:id="@+id/option"
+                    app:UiColor="@{UiColor}"
                     layout="@layout/optionmenu"/>
 
 
@@ -1647,3 +1682,5 @@
         </RelativeLayout>
       </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

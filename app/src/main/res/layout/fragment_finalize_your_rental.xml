@@ -188,8 +188,11 @@
                                </LinearLayout>-->
                         </LinearLayout>
                     </LinearLayout>
+                    <include
+                        android:id="@+id/pickups"
+                        layout="@layout/pickup_drop" />
 
-                    <LinearLayout
+                   <!-- <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
@@ -393,7 +396,7 @@
                             </LinearLayout>
 
                         </LinearLayout>
-                    </LinearLayout>
+                    </LinearLayout>-->
 
 
                     <LinearLayout
@@ -1537,11 +1540,16 @@
             android:orientation="horizontal"
             android:weightSum="100">
 
-            <LinearLayout
+            <include
+                android:id="@+id/btm"
+                layout="@layout/btm_charges"/>
+
+          <!--  <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
                 android:layout_weight="30"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <TextView
@@ -1611,23 +1619,23 @@
                         android:textSize="@dimen/_14ssp"
                         android:theme="@style/texttheme" />
 
-                    <!--       <TextView
+                    &lt;!&ndash;       <TextView
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
 
                                android:text="Unlimited"
                                android:textColor="@color/themebackgroundtext"
-                               android:textSize="@dimen/twenty_two"/>-->
+                               android:textSize="@dimen/twenty_two"/>&ndash;&gt;
                 </LinearLayout>
 
-                <!--    <TextView
+                &lt;!&ndash;    <TextView
                         android:id="@+id/txtMileage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
                         android:text="0kms"
                         android:textColor="@color/themebackgroundtext"
-                        android:textSize="@dimen/twenty_two"/>-->
+                        android:textSize="@dimen/twenty_two"/>&ndash;&gt;
             </LinearLayout>
 
             <LinearLayout
@@ -1679,7 +1687,7 @@
                 </LinearLayout>
 
 
-            </LinearLayout>
+            </LinearLayout>-->
         </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

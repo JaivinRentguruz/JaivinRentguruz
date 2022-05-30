@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
+        <variable
+            name="label"
+            type="com.rentguruz.app.model.response.CompanyLabel" />
+    </data>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Amount Monthly"
+                style="@style/edittextheader" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_weight="1"
+                android:text="Annual Kms Allowed"
+                style="@style/edittextheader"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/curve_white333"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+
+                <EditText
+
+                    android:id="@+id/monthlypaid"
+                    android:layout_width="0dp"
+                    style="@style/edittext"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="60"
+                    android:hint="Amount Monthly"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:focusableInTouchMode="true"
+                    android:background="@null"
+                    android:focusable="true"
+                    android:imeOptions="actionNext"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="40"
+                    android:gravity="end">
+
+                    <TextView
+                        android:id="@+id/fcurrency5"
+                        style="@style/btntext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_weight="40"
+                        android:background="@drawable/curve_white222"
+                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:paddingHorizontal="5dp"
+                        android:text="USD $"
+                        android:textColor="@color/btntext"
+                        android:textSize="@dimen/twenty"
+                        android:theme="@style/texttheme" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/curve_white333"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+
+
+                <EditText
+                    android:id="@+id/kmsallowed"
+                    android:layout_width="0dp"
+                    style="@style/edittext"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="60"
+                    android:hint="Annual Kms Allowed"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:focusableInTouchMode="true"
+                    android:background="@null"
+                    android:focusable="true"
+                    android:imeOptions="actionNext" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="40"
+                    android:gravity="end">
+
+                    <TextView
+                        android:id="@+id/fueltype"
+                        style="@style/btntext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_weight="40"
+                        android:background="@drawable/curve_white222"
+                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:paddingHorizontal="5dp"
+                        android:text="Kms"
+                        android:textColor="@color/btntext"
+                        android:textSize="@dimen/twenty"
+                        android:theme="@style/texttheme" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Down Payment"
+                style="@style/edittextheader" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_weight="1"
+                android:text="Tax Amount"
+                style="@style/edittextheader"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/curve_white333"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+
+
+                <EditText
+                    android:id="@+id/downpayment"
+                    android:layout_width="0dp"
+                    style="@style/edittext"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="60"
+                    android:hint="Down Payment"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:focusableInTouchMode="true"
+                    android:background="@null"
+                    android:focusable="true"
+                    android:imeOptions="actionNext"
+
+                    />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="40"
+                    android:gravity="end">
+
+                    <TextView
+                        android:id="@+id/fcurrency6"
+                        style="@style/btntext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_weight="40"
+                        android:background="@drawable/curve_white222"
+                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:paddingHorizontal="5dp"
+                        android:text="USD $"
+                        android:textColor="@color/btntext"
+                        android:textSize="@dimen/twenty"
+                        android:theme="@style/texttheme" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/curve_white333"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <!--<TextView
+                    android:id="@+id/amountPayable"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="60"
+                    android:background="@null"
+                    android:gravity="center|start"
+                    android:hint="123"
+                    android:inputType="numberDecimal"
+                    android:padding="2dp"
+                    android:layout_marginStart="5dp"
+                    android:singleLine="true"
+                    android:textColor="@color/textlightcolor"
+                    android:textSize="@dimen/fifteen"
+                    android:theme="@style/texttheme" />-->
+
+                <EditText
+                    android:id="@+id/taxamt"
+                    android:layout_width="0dp"
+                    style="@style/edittext"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="60"
+                    android:hint="Tax Amount"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:focusableInTouchMode="true"
+                    android:background="@null"
+                    android:focusable="true"
+                    android:imeOptions="actionNext"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="40"
+                    android:gravity="end">
+
+                    <TextView
+                        android:id="@+id/fcurrency7"
+                        style="@style/btntext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_weight="40"
+                        android:background="@drawable/curve_white222"
+                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:paddingHorizontal="5dp"
+                        android:text="USD $"
+                        android:textColor="@color/btntext"
+                        android:textSize="@dimen/twenty"
+                        android:theme="@style/texttheme" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Payment Frequency"
+                style="@style/edittextheader" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_weight="1"
+                android:text="Bank Name"
+                style="@style/edittextheader"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Spinner
+                android:id="@+id/frequencypmt"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                style="@style/spinner"
+                android:theme="@style/loginedit"
+                android:background="@drawable/ic_small_dropdown"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:windowSoftInputMode="stateHidden"
+                />
+
+
+
+
+            <EditText
+                android:id="@+id/bankname"
+                android:layout_width="0dp"
+                style="@style/edittext"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:hint="Bank Name"
+                android:gravity="center_vertical"
+                android:textAlignment="gravity"
+                android:background="@drawable/ic_rectangle_box_2152"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:imeOptions="actionDone"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Car Price Before Tax"
+                style="@style/edittextheader" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_weight="1"
+                android:text="Date Of Payment"
+                style="@style/edittextheader"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/curve_white333"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+
+                <EditText
+                    android:id="@+id/beforetax"
+                    android:layout_width="0dp"
+                    style="@style/edittext"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="60"
+                    android:hint="Car Price Before Tax"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:focusableInTouchMode="true"
+                    android:background="@null"
+                    android:focusable="true"
+                    android:imeOptions="actionNext"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="40"
+                    android:gravity="end">
+
+                    <TextView
+                        android:id="@+id/fcurrency8"
+                        style="@style/btntext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_weight="40"
+                        android:background="@drawable/curve_white222"
+                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:paddingHorizontal="5dp"
+                        android:text="USD $"
+                        android:textColor="@color/btntext"
+                        android:textSize="@dimen/twenty"
+                        android:theme="@style/texttheme" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/pmtdate"
+                android:layout_width="0dp"
+                style="@style/datetext"
+                android:background="@drawable/ic_rectangle_box_2152"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:hint="@string/mm_dd_yyyy" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Lease Terms (Month)"
+                style="@style/edittextheader" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_weight="1"
+                android:text="Approved By"
+                style="@style/edittextheader"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <EditText
+                android:id="@+id/leaseterms"
+                android:layout_width="0dp"
+                style="@style/edittext"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:hint="Lease Terms"
+                android:gravity="center_vertical"
+                android:textAlignment="gravity"
+                android:background="@drawable/ic_rectangle_box_2152"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:imeOptions="actionDone"/>
+
+            <Spinner
+                android:layout_marginLeft="10dp"
+                android:id="@+id/authorised"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                style="@style/spinner"
+                android:background="@drawable/ic_small_dropdown"
+                android:theme="@style/loginedit"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:windowSoftInputMode="stateHidden" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_weight="9"
+                android:text="Reminder"
+                style="@style/edittextheader"/>
+
+            <ToggleButton
+                android:id="@+id/reminder"
+                android:layout_gravity="end|center_vertical"
+                android:gravity="end|center_vertical"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/toggle_selector_green"
+                android:text=""
+                android:textOff=""
+                android:textOn="" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+</layout>

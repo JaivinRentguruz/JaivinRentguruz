@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/selected_dot">
+    android:background="@color/selected_dot"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,6 +28,7 @@
 
             <include
                 android:id="@+id/header"
+                app:UiColor="@{UiColor}"
                 layout="@layout/row_header" />
 
             <LinearLayout
@@ -28,13 +40,15 @@
                     android:layout_width="40dp"
                     android:layout_height="6dp"
                     android:layout_marginLeft="15dp"
-                    android:src="@drawable/progress_rectangle_selected" />
+                    android:src="@drawable/progress_rectangle_selected"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"/>
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="6dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/progress_rectangle_default" />
+                    android:src="@drawable/progress_rectangle_default"
+                    />
 
                 <ImageView
                     android:layout_width="40dp"
@@ -72,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/createprofile"
-            android:layout_marginBottom="50dp"
+            android:layout_above="@+id/lblnext11"
             android:background="@drawable/curve_box"
             android:paddingBottom="10dp"
             android:scrollbars="vertical"
@@ -255,11 +269,13 @@
             android:layout_height="@dimen/bottommenuheight"
             android:layout_alignParentBottom="true"
             android:background="@color/bottommenucolor"
+            android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtnext"
                 style="@style/btntext"
+                android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -271,3 +287,4 @@
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -4,9 +4,17 @@
 
     <data>
 
+        <import type="android.graphics.Color" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
         <variable
             name="Reservation"
-            type="com.abel.app.b2b.model.response.Reservation" />
+            type="com.rentguruz.app.model.response.Reservation" />
     </data>
 
     <LinearLayout
@@ -48,6 +56,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/curve_single_text"
+                                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:weightSum="2">
@@ -60,7 +69,7 @@
                                     android:layout_weight="2"
                                     android:gravity="center"
                                     android:text="FL"
-                                    android:textColor="@color/white"
+                                    android:textColor="@{Color.parseColor(UiColor.secondaryfont)}"
                                     android:textSize="@dimen/_20ssp"
                                     app:_capss="@{Reservation.CustomerName}" />
 
@@ -97,24 +106,24 @@
                                 app:_camelcase="@{Reservation.CustomerName}" />
                         </LinearLayout>
 
-                  <!--      <TextView
-                            android:id="@+id/txt_CustEmail"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="@={Reservation.Email}"
-                            android:textColor="@color/TitleTextColor"
-                            android:textSize="@dimen/eleven"
-                            android:theme="@style/texttheme" />
+                        <!--      <TextView
+                                  android:id="@+id/txt_CustEmail"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginTop="4dp"
+                                  android:text="@={Reservation.Email}"
+                                  android:textColor="@color/TitleTextColor"
+                                  android:textSize="@dimen/eleven"
+                                  android:theme="@style/texttheme" />
 
-                        <TextView
-                            android:id="@+id/txt_PhoneNo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@={Reservation.MobileNo}"
-                            android:textColor="@color/TitleTextColor"
-                            android:textSize="@dimen/eleven"
-                            android:theme="@style/texttheme" />-->
+                              <TextView
+                                  android:id="@+id/txt_PhoneNo"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:text="@={Reservation.MobileNo}"
+                                  android:textColor="@color/TitleTextColor"
+                                  android:textSize="@dimen/eleven"
+                                  android:theme="@style/texttheme" />-->
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -134,7 +143,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.8"
-                                android:background="@drawable/curve_single_text222">
+                                android:background="@drawable/curve_single_text222"
+                                android:backgroundTint="@{Color.parseColor(UiColor.primary)}">
 
                                 <androidx.appcompat.widget.AppCompatTextView
                                     style="@style/textfont"
@@ -143,9 +153,9 @@
                                     android:layout_marginTop="@dimen/_minus2sdp"
                                     android:gravity="center_horizontal|center_vertical"
                                     android:text="E"
-                                    android:textStyle="bold"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/textsize_nine" />
+                                    android:textSize="@dimen/textsize_nine"
+                                    android:textStyle="bold" />
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -154,14 +164,14 @@
                                 android:id="@+id/txt_CustEmail"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="9.5"
                                 android:layout_marginStart="@dimen/_4sdp"
-                                android:text="@={Reservation.Email}"
+                                android:layout_weight="9.5"
                                 android:gravity="center_vertical"
+                                android:singleLine="true"
+                                android:text="@={Reservation.Email}"
+                                android:textAllCaps="false"
                                 android:textColor="@color/TitleTextColor"
                                 android:textSize="@dimen/eleven"
-                                android:textAllCaps="false"
-                                android:singleLine="true"
                                 android:theme="@style/texttheme" />
                         </LinearLayout>
 
@@ -183,18 +193,19 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.8"
-                                android:background="@drawable/curve_single_text222">
+                                android:background="@drawable/curve_single_text222"
+                                android:backgroundTint="@{Color.parseColor(UiColor.primary)}">
 
                                 <androidx.appcompat.widget.AppCompatTextView
                                     style="@style/textfont"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:gravity="center_horizontal|center_vertical"
                                     android:layout_marginTop="@dimen/_minus2sdp"
+                                    android:gravity="center_horizontal|center_vertical"
                                     android:text="T"
-                                    android:textStyle="bold"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/textsize_nine" />
+                                    android:textSize="@dimen/textsize_nine"
+                                    android:textStyle="bold" />
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -202,11 +213,11 @@
                                 android:id="@+id/txt_PhoneNo"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="9.5"
-                                android:text="@={Reservation.MobileNo}"
                                 android:layout_marginStart="@dimen/_4sdp"
+                                android:layout_weight="9.5"
                                 android:gravity="center_vertical"
                                 android:singleLine="true"
+                                android:text="@={Reservation.MobileNo}"
                                 android:textColor="@color/TitleTextColor"
                                 android:textSize="@dimen/eleven"
                                 android:theme="@style/texttheme" />
@@ -320,6 +331,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="115dp"
                 android:background="@drawable/green_bottom_curve2"
+                android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
                 android:orientation="horizontal"
                 android:weightSum="100">
 
@@ -344,10 +356,17 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <ImageView
+                            <androidx.cardview.widget.CardView
                                 android:layout_width="15dp"
                                 android:layout_height="15dp"
-                                android:src="@drawable/ic_pickup_location_circle" />
+                                app:cardCornerRadius="15dp" >
+                            <LinearLayout
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_return_location_circle"
+                                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                                android:backgroundTintMode="add" />
+                            </androidx.cardview.widget.CardView>
 
                             <View
                                 android:layout_width="1dp"
@@ -356,10 +375,36 @@
                                 android:layout_marginBottom="4dp"
                                 android:background="@color/black" />
 
-                            <ImageView
+                       <!--     <LinearLayout
                                 android:layout_width="15dp"
                                 android:layout_height="15dp"
-                                android:src="@drawable/ic_return_location_circle" />
+                                android:background="@drawable/ic_return_location_circle"
+                                android:backgroundTint="@color/red"
+                                android:backgroundTintMode="add" />-->
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                app:cardCornerRadius="15dp" >
+
+                                <LinearLayout
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:background="@drawable/ic_return_location_circle"
+                                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
+                                    android:backgroundTintMode="add" />
+
+                            </androidx.cardview.widget.CardView>
+
+                           <!-- <com.google.android.material.imageview.ShapeableImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_return_location_circle"
+                                android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
+                                android:backgroundTintMode="add"
+                                app:shapeAppearance="@style/roundedImageViewRounded11" />-->
+
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -380,7 +425,7 @@
                                     android:layout_height="wrap_content"
                                     android:hint=""
                                     android:text="@={Reservation.PickUpLocationName}"
-                                    android:textColor="@color/txtGrey"
+                                    android:textColor="@{Color.parseColor(UiColor.secondary)}"
                                     android:textSize="@dimen/heading1_font_size"
                                     android:theme="@style/texttheme" />
 
@@ -410,7 +455,7 @@
                                     android:layout_marginTop="15dp"
                                     android:hint=""
                                     android:text="@={Reservation.DropLocationName}"
-                                    android:textColor="@color/txtGrey"
+                                    android:textColor="@{Color.parseColor(UiColor.secondary)}"
                                     android:textSize="@dimen/heading1_font_size"
                                     android:theme="@style/texttheme" />
 
@@ -460,8 +505,21 @@
                             android:singleLine="true"
                             android:text="@={Reservation.VehicleName}"
                             android:textColor="@color/registerTextColor"
-                            android:textSize="10dp"
+                            android:textSize="@dimen/_10ssp"
                             android:theme="@style/texttheme" />
+
+
+                        <!-- <TextView
+                             android:id="@+id/txt_VehicleFullname"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginStart="5dp"
+                             android:hint="2011 Mitsubishi Mirage LX"
+                             android:singleLine="true"
+                             android:text="@={Reservation.VehicleName}"
+                             android:textColor="@color/registerTextColor"
+                             android:textSize="10dp"
+                             android:theme="@style/texttheme" />-->
                     </LinearLayout>
 
                     <LinearLayout
@@ -475,6 +533,9 @@
                             android:layout_height="match_parent"
                             android:layout_gravity="start|center"
                             android:gravity="center">
+
+
+
                             <!--<ImageView
                                 android:id="@+id/car_imgview"
                                 app:_imageUrl="@{Vehicle.DefaultImagePath}"
@@ -485,12 +546,14 @@
 
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/vehicle_Image"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY"
                                 android:src="@drawable/car_icon"
                                 app:_imageUrl="@{Reservation.VehicleImagePath}"
-                                android:adjustViewBounds="true"
                                 app:shapeAppearance="@style/roundedImageViewRounded" />
+
 
                         </RelativeLayout>
 

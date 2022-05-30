@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.abel.app.b2b">
+    package="com.rentguruz.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -23,6 +23,12 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
+
     <meta-data
         android:name="com.google.android.gms.vision.DEPENDENCIES"
         android:value="barcode,face"
@@ -40,7 +46,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
 
         <activity android:name=".flexiicar.Reservation.Reservation_Activity" />
         <activity android:name=".flexiicar.TimeLine.Timeline_MainActivity" />
@@ -56,8 +63,8 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".home.reservation.Activity_Reservation"
-            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".home.agreement.Activity_Agreements"
@@ -88,7 +95,9 @@
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ScanDrivingLicense" />
+        <activity android:name=".ScanDrivingLicense">
+        </activity>
+
         <activity android:name=".ClassificationFailureActivity" />
         <activity android:name=".ConfirmationActivity" />
 
@@ -118,6 +127,7 @@
             android:name=".flexiicar.booking2.Customer_Booking_Activity"
             android:label="Search"
             android:theme="@style/AppTheme"
+
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"/>
 

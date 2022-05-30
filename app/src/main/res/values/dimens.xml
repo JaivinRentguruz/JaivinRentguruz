@@ -19,7 +19,7 @@
     <dimen name="margin_top_in_header">20dp</dimen>
     <dimen name="eleven">11dp</dimen>
 
-
+    <dimen name="tetext">@dimen/_7ssp</dimen>
     <dimen name="eight">8dp</dimen>
     <dimen name="nine">9dp</dimen>
     <dimen name="twelve">12dp</dimen>

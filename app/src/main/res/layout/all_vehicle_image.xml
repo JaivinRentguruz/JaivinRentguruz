@@ -6,7 +6,7 @@
 
         <variable
             name="Vehicle"
-            type="com.abel.app.b2b.model.response.VehicleModel" />
+            type="com.rentguruz.app.model.response.VehicleModel" />
     </data>
 <LinearLayout
     android:orientation="vertical"
@@ -14,6 +14,176 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:id="@+id/imgg1"
+                style="@style/relativeImageshort"
+                android:layout_marginRight="5dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/car_image_1"
+                    style="@style/shapeImage"/>
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/imgg2"
+                android:layout_marginLeft="5dp"
+                style="@style/relativeImageshort">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/car_image_2"
+                    style="@style/shapeImage" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:id="@+id/imgg3"
+                style="@style/relativeImageshort"
+                android:layout_marginRight="5dp" >
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/car_image_3"
+                    style="@style/shapeImage"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/imgg4"
+                android:layout_marginLeft="5dp"
+                style="@style/relativeImageshort">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/car_image_4"
+                    style="@style/shapeImage" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:id="@+id/imgg5"
+                android:layout_marginRight="5dp"
+                style="@style/relativeImageshort">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/car_image_5"
+                    style="@style/shapeImage" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/imgg6"
+                android:layout_marginLeft="5dp"
+                style="@style/relativeImageshort">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/car_image_6"
+                    style="@style/shapeImage" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:id="@+id/imgg7"
+                android:layout_marginRight="5dp"
+                style="@style/relativeImageshort">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/car_image_7"
+                    style="@style/shapeImage" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/imgg8"
+                android:layout_marginLeft="5dp"
+                style="@style/relativeImageshort">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/car_image_8"
+                    style="@style/shapeImage" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:id="@+id/imgg9"
+                android:layout_marginRight="5dp"
+                style="@style/relativeImageshort">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/car_image_9"
+                    style="@style/shapeImage" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/imgg10"
+                android:layout_marginLeft="5dp"
+                style="@style/relativeImageshort">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/car_image_10"
+                    style="@style/shapeImage" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+  <!--  <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -245,7 +415,7 @@
         </LinearLayout>
 
 
-    </LinearLayout>
+    </LinearLayout>-->
 
 </LinearLayout>
 </layout>

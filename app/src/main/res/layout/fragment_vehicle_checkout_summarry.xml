@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/curve_box_light_green_bg"
-            android:backgroundTint="@color/red"
+            android:backgroundTint="@color/black"
             android:paddingTop="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_20sdp">
             <LinearLayout

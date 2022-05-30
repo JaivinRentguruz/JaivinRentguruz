@@ -867,7 +867,7 @@
                     android:layout_margin="5dp"
                     android:layout_height="match_parent">
                     <TextView android:theme="@style/texttheme"
-                        android:textColor="@color/footerButtonBC"
+                        android:textColor="@color/black"
                         android:text="Select Drop Time"
                         android:gravity="left"
                         android:textSize="15dp"
@@ -876,7 +876,7 @@
                         android:layout_height="match_parent"/>
                     <TextView android:theme="@style/texttheme"
                         android:id="@+id/droptime_cancel"
-                        android:textColor="@color/footerButtonBC"
+                        android:textColor="@color/black"
                         android:text="Cancel"
 
                         android:gravity="right"

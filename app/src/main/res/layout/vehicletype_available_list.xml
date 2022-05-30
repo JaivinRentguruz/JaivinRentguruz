@@ -3,10 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
 
         <variable
             name="Vehicle"
-            type="com.abel.app.b2b.model.reservation.ReservationVehicleType" />
+            type="com.rentguruz.app.model.reservation.ReservationVehicleType" />
     </data>
 
     <LinearLayout
@@ -60,6 +66,7 @@
                         android:layout_height="@dimen/_17sdp"
                         android:layout_gravity="center"
                         android:background="@drawable/ic_rectangle_box1_light_12"
+                        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                         android:gravity="center">
 
                         <TextView
@@ -390,6 +397,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2.5"
                 android:background="@drawable/green_bottom_curve"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -421,9 +429,6 @@
                         android:layout_marginLeft="6dp"
                         android:hint=""
                         android:textSize="@dimen/_9ssp"
-                        android:ellipsize="marquee"
-                        android:fadingEdge="horizontal"
-                        android:marqueeRepeatLimit="marquee_forever"
                         android:textColor="@color/white"
                         android:theme="@style/texttheme"
                         android:singleLine="true"
@@ -494,6 +499,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
                 android:background="@drawable/black_bottom_curve"
+                android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                 android:orientation="horizontal">
 
                 <LinearLayout

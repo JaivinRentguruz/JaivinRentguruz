@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <data>
-
+        <import type="android.graphics.Color" />
+        <import type="androidx.core.content.ContextCompat" />
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
         <variable
             name="CreditCard"
-            type="com.abel.app.b2b.model.CreditCardModel" />
+            type="com.rentguruz.app.model.CreditCardModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/selected_dot">
+        android:background="@color/selected_dot"
+        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,7 +29,12 @@
                 android:layout_alignParentTop="true"
                 android:orientation="vertical">
 
-                <RelativeLayout
+                <include
+                    android:id="@+id/header"
+                    app:UiColor="@{UiColor}"
+                    layout="@layout/row_header"/>
+
+           <!--     <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
@@ -56,8 +65,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:text="Add Credit Card"
-                            android:textColor="@color/topcolor"
                             android:textAllCaps="false"
+                            android:textColor="@color/topcolor"
                             android:textSize="17dp"
                             android:theme="@style/texttheme" />
 
@@ -68,113 +77,116 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:textColor="@color/topcolor"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="15dp"
                         android:text="Discard"
                         android:textAllCaps="false"
+                        android:textColor="@color/topcolor"
                         android:textSize="14dp"
                         android:theme="@style/texttheme" />
 
-                </RelativeLayout>
+                </RelativeLayout>-->
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_marginTop="-15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-15dp">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        app:layout_constraintDimensionRatio="H,16:9"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         android:layout_margin="15dp"
                         android:background="@drawable/curve_box_white_2"
                         android:gravity="bottom"
-                        android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/onlinepayment"
-                        android:gravity="bottom"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        app:layout_constraintDimensionRatio="H,16:9"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="20dp"
-                            android:gravity="center"
-                            android:orientation="horizontal">
+                            android:layout_height="match_parent"
+                            android:background="@drawable/onlinepayment"
+                            android:gravity="bottom"
+                            android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/txt_CardNumberAdd"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@={CreditCard.Number}"
-                                android:textColor="@color/screen_bg_color"
-                                android:textSize="26dp"
-                                android:theme="@style/texttheme" />
+                                android:layout_marginBottom="20dp"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txt_CardNumberAdd"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@={CreditCard.Number}"
+                                    android:textColor="@color/screen_bg_color"
+                                    android:textSize="26dp"
+                                    android:theme="@style/texttheme" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:id="@+id/txt_CardholderNameAdd"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_weight="7"
+                                    android:text="@={CreditCard.NameOn}"
+                                    android:textColor="@color/screen_bg_color"
+                                    android:textSize="23dp"
+                                    android:theme="@style/texttheme" />
+
+                                <TextView
+                                    android:id="@+id/txt_cardExpiryDateAdd"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_weight="3"
+                                    android:gravity="right"
+                                    android:text=""
+
+                                    android:textColor="@color/screen_bg_color"
+                                    android:textSize="23dp"
+                                    android:theme="@style/texttheme" />
+                            </LinearLayout>
                         </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:orientation="horizontal"
-                            android:weightSum="10">
-
-                            <TextView
-                                android:id="@+id/txt_CardholderNameAdd"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="15dp"
-                                android:layout_weight="7"
-                                android:text="@={CreditCard.NameOn}"
-                                android:textColor="@color/screen_bg_color"
-                                android:textSize="23dp"
-                                android:theme="@style/texttheme" />
-
-                            <TextView
-                                android:id="@+id/txt_cardExpiryDateAdd"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:layout_weight="3"
-                                android:gravity="right"
-                                android:text=""
-
-                                android:textColor="@color/screen_bg_color"
-                                android:textSize="23dp"
-                                android:theme="@style/texttheme" />
-                        </LinearLayout>
-                    </LinearLayout>
                     </LinearLayout>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
+                        android:layout_height="match_parent">
+
                         <ImageView
                             android:id="@+id/cardImage"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/visa"
-
                             android:layout_alignParentEnd="true"
+
+                            android:layout_marginTop="@dimen/_20sdp"
                             android:layout_marginEnd="@dimen/_20sdp"
-                            android:layout_marginTop="@dimen/_20sdp"/>
+                            android:src="@drawable/visa" />
                     </RelativeLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
+
+
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/editCreditCard"
-                android:layout_marginBottom="48dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="48dp"
                 android:background="@drawable/curve_box"
                 android:paddingTop="2dp">
 
@@ -182,6 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
 
                     <LinearLayout
                         android:id="@+id/layout1"
@@ -220,9 +233,9 @@
                                 android:hint="@string/enter_card_number"
                                 android:imeOptions="actionDone"
                                 android:inputType="phone"
+                                android:maxLength="19"
                                 android:padding="5dp"
                                 android:singleLine="true"
-                                android:maxLength="19"
                                 android:text="@={CreditCard.Number}"
                                 android:textColor="@color/registerTextColor"
                                 android:textSize="@dimen/edt_font_size" />
@@ -231,8 +244,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
-                                android:visibility="gone"
-                                android:gravity="right">
+                                android:gravity="right"
+                                android:visibility="gone">
 
                                 <ImageView
                                     android:id="@+id/scanCreditcard"
@@ -293,8 +306,8 @@
                                 android:gravity="center_vertical"
                                 android:hint="MM/YY"
                                 android:padding="5dp"
-                                android:paddingRight="7dp"
                                 android:paddingStart="@dimen/_10sdp"
+                                android:paddingRight="7dp"
                                 android:textColor="@color/registerTextColor"
                                 android:textColorHint="@color/textColorHint"
                                 android:textSize="@dimen/edt_font_size"
@@ -517,13 +530,13 @@
 
                         <Spinner
                             android:id="@+id/spinner_CountryList"
+                            style="@style/spinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            style="@style/spinner"
-                            android:theme="@style/loginedit"
+                            android:background="@drawable/ic_spinner_bg_light"
                             android:entries="@array/items_class_countary"
-                            android:background="@drawable/ic_spinner_bg_light"/>
+                            android:theme="@style/loginedit" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -539,13 +552,13 @@
 
                         <Spinner
                             android:id="@+id/Spinner_Statelist"
+                            style="@style/spinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            style="@style/spinner"
-                            android:theme="@style/loginedit"
+                            android:background="@drawable/ic_spinner_bg_light"
                             android:entries="@array/items_class"
-                            android:background="@drawable/ic_spinner_bg_light" />
+                            android:theme="@style/loginedit" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -588,20 +601,21 @@
                 android:layout_height="@dimen/bottommenuheight"
                 android:layout_alignParentBottom="true"
                 android:background="@color/bottommenucolor"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     android:gravity="center"
                     android:paddingTop="10dp"
                     android:paddingBottom="14dp"
                     android:text="@string/save_amp_continue"
                     android:textAllCaps="false"
                     android:textColor="@color/themebackgroundtext"
-
                     android:textSize="20dp"
                     android:theme="@style/texttheme" />
             </LinearLayout>

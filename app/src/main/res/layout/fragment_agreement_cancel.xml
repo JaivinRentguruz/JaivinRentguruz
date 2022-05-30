@@ -2,14 +2,22 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
         <variable
             name="label"
-            type="com.abel.app.b2b.model.response.CompanyLabel" />
+            type="com.rentguruz.app.model.response.CompanyLabel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:background="@color/backgroundColor">
 
     <RelativeLayout
@@ -24,6 +32,7 @@
 
         <include
             android:id="@+id/header"
+            app:UiColor="@{UiColor}"
             layout="@layout/row_header"/>
 
         <androidx.core.widget.NestedScrollView
@@ -365,7 +374,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="40"
                             android:background="@drawable/curve_white22l"
-                            android:backgroundTint="@color/green"
+                            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                             android:gravity="center"
                             android:singleLine="true"
                             android:text="%"
@@ -404,7 +413,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="40"
                             android:background="@drawable/curve_white22l"
-                            android:backgroundTint="@color/green"
+                            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                             android:gravity="center"
                             android:singleLine="true"
                             android:text="USD $"
@@ -723,11 +732,13 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottommenuheight"
             android:background="@color/bottommenucolor"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/text"
                 style="@style/fullbtn"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:text="@string/save"/>
         </LinearLayout>
     </RelativeLayout>

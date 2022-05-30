@@ -6,7 +6,7 @@
 
   <!--  <fragment
         android:id="@+id/MoreInfo"
-        android:name="com.abel.app.b2b.home.more.Fragment_More"
+        android:name="com.rentguruz.app.home.more.Fragment_More"
         android:label="More_Info"
         tools:layout="@layout/fragment_more_details">
 
@@ -18,7 +18,7 @@
 
    <fragment
         android:id="@+id/CustomerList"
-        android:name="com.abel.app.b2b.home.more.Fragment_CustomerList"
+        android:name="com.rentguruz.app.home.more.Fragment_CustomerList"
         android:label="CustomerList"
         tools:layout="@layout/fragment_customer_list">
 

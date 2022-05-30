@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/com.rentguruz.app">
+
     <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
         <variable
             name="label"
-            type="com.abel.app.b2b.model.response.CompanyLabel" />
+            type="com.rentguruz.app.model.response.CompanyLabel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:background="@color/selected_dot"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -25,7 +33,12 @@
             android:layout_alignParentTop="true"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <include
+                android:id="@+id/header"
+                app:UiColor="@{UiColor}"
+                layout="@layout/row_header" />
+
+           <!-- <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/headertopmargin"
@@ -73,7 +86,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15dp"/>
 
-            </RelativeLayout>
+            </RelativeLayout>-->
 
         </LinearLayout>
         <androidx.core.widget.NestedScrollView
@@ -165,6 +178,7 @@
                     android:weightSum="100">
                     <include
                         android:id="@+id/pickuploc"
+                        app:UiColor="@{UiColor}"
                         layout="@layout/location_available_list"/>
                  <!--   <LinearLayout
                         android:layout_width="0dp"
@@ -301,6 +315,7 @@
 
                     <include
                         android:id="@+id/droploc"
+                        app:UiColor="@{UiColor}"
                         layout="@layout/location_available_list"/>
 
                  <!--   <LinearLayout
@@ -396,7 +411,8 @@
                             android:layout_height="30dp"
                             android:layout_weight="1"
                             android:layout_marginRight="10dp"
-                            android:background="@drawable/half_curve_green">
+                            android:background="@drawable/half_curve_green"
+                            android:backgroundTint="@{Color.parseColor(UiColor.primary)}">
 
                             <TextView
                                 android:theme="@style/texttheme"
@@ -415,7 +431,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:layout_gravity="center_vertical"
-                            android:backgroundTint="@color/yellow"
+                            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                             android:background="@drawable/half_curve_black">
 
                             <TextView
@@ -447,7 +463,8 @@
                             android:gravity="center"
                             android:layout_gravity="center"
                             android:orientation="vertical"
-                            android:background="@drawable/half_curve_lightgray">
+                            android:background="@drawable/half_curve_lightgray"
+                            android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:orientation="horizontal"
@@ -508,6 +525,7 @@
                             android:layout_width="0dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
+                            android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                             android:background="@drawable/half_curve_lightgray2">
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -704,12 +722,14 @@
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:background="@color/bottommenucolor"
+
             android:layout_height="@dimen/bottommenuheight"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtcontinue"
                 style="@style/fullbtn"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:text="@string/continuee"/>
 
         <!--    <TextView
@@ -877,7 +897,7 @@
                     android:layout_height="match_parent">
                     <TextView
                         android:theme="@style/texttheme"
-                        android:textColor="@color/footerButtonBC"
+                        android:textColor="@color/black"
                         android:text="Select Drop Time"
                         android:gravity="left"
                         android:textSize="15dp"
@@ -886,7 +906,7 @@
                         android:layout_height="match_parent"/>
                     <TextView
                         android:id="@+id/droptime_cancel"
-                        android:textColor="@color/footerButtonBC"
+                        android:textColor="@color/black"
                         android:text="Cancel"
                         android:theme="@style/texttheme"
                         android:gravity="right"

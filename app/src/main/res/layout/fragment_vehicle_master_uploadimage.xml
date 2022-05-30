@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/backgroundColor">
+        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
+        android:background="@color/backgroundColor">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,6 +28,7 @@
 
             <include
                 android:id="@+id/header"
+                app:UiColor="@{UiColor}"
                 layout="@layout/row_header"/>
 
         <androidx.core.widget.NestedScrollView
@@ -77,7 +90,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/ic_rectangle_bg_camera">
+                        android:background="@drawable/custome_cam_select">
 
                        <!-- <ImageView
                             android:id="@+id/carimage"
@@ -91,7 +104,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="center"
-                            android:src="@drawable/pluse_img"
                             app:shapeAppearance="@style/roundedImageViewRounded"/>
 
                     </RelativeLayout>
@@ -137,12 +149,11 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginRight="5dp"
                                 android:layout_weight="5"
-                                android:background="@drawable/black_curve"
+                                android:background="@null"
                                 android:gravity="center_vertical"
                                 android:singleLine="true"
-                                android:text="000000"
+                                android:text=" 000000"
                                 android:textColor="#FFFF0D"
                                 android:textSize="@dimen/_15ssp" />
                         </LinearLayout>
@@ -155,6 +166,7 @@
                             android:layout_gravity="center_vertical"
                             android:orientation="horizontal">
                         <ToggleButton
+                            android:id="@+id/isOnline"
                             android:layout_width="40dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
@@ -181,6 +193,7 @@
                             android:layout_gravity="center_vertical"
                             android:orientation="horizontal">
                         <ToggleButton
+                            android:id="@+id/isActive"
                             android:layout_width="40dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
@@ -193,7 +206,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Available Online"
+                                android:text="Make Active"
                                 android:theme="@style/texttheme"
                                 android:layout_marginStart="10dp"/>
 
@@ -207,6 +220,7 @@
                             android:layout_gravity="center_vertical"
                             android:orientation="horizontal">
                         <ToggleButton
+                            android:id="@+id/isTemSuspend"
                             android:layout_width="40dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
@@ -219,7 +233,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Available Online"
+                                android:text="Temporary Suspend"
                                 android:theme="@style/texttheme"
                                 android:layout_marginStart="10dp"/>
 
@@ -262,17 +276,27 @@
                 style="@style/edittextheader"/>
 
             <RelativeLayout
+                android:id="@+id/test"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="10dp"
-                android:background="@drawable/ic_rectangle_bg_camera">
+                android:background="@drawable/custome_cam_select">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="center"
-                    android:src="@drawable/pluse_img"/>
+                    android:scaleType="center"/>
+
+             <!--   <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                    android:id="@+id/test"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleX="1"
+                    android:scaleY="1"
+                    app:vector_src="@drawable/custome_cam_select"/>-->
+
+
 
             </RelativeLayout>
 
@@ -292,6 +316,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     style="@style/fullbtn"/>
 
                 <!--   <TextView
@@ -308,3 +333,4 @@
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

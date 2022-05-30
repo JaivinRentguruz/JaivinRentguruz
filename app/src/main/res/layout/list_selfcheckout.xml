@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:button="@drawable/sharp_checkbox_drawable"
-            android:buttonTint="@color/cheeckRed"/>
+            android:buttonTint="@color/checkYellow"/>
 
         <CheckBox
             android:id="@+id/chk_yellow"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:button="@drawable/sharp_checkbox_drawable"
-            android:buttonTint="@color/checkYellow"/>
+            android:buttonTint="@color/cheeckRed"/>
     </LinearLayout>
 
     <LinearLayout

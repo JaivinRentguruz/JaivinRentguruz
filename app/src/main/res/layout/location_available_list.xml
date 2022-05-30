@@ -3,9 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
         <variable
             name="Location"
-            type="com.abel.app.b2b.model.response.LocationList" />
+            type="com.rentguruz.app.model.response.LocationList" />
     </data>
 
     <LinearLayout
@@ -37,7 +45,8 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:layout_margin="@dimen/_5sdp"
-                    android:background="@drawable/curve_single_text">
+                    android:background="@drawable/curve_single_text"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}">
 
                     <ImageView
                         android:id="@+id/plane_img"
@@ -63,7 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:theme="@style/texttheme"
-                    android:hint="TORONTO AIRPORT"
+                    android:hint=""
                     android:text="@{Location.Name}"
                     android:layout_marginTop="@dimen/_minus3sdp"
                     android:textColorHint="@color/fontwhitebackground"
@@ -80,8 +89,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:theme="@style/texttheme"
-                        android:hint="street"
-                        android:text="asd \nasds \ndad "
+                        android:hint=""
+                        android:text=""
                         app:_html="@{Location.AddressesModel.PreviewAddress}"
                         android:textColorHint="@color/regtcolor"
                         android:textColor="@color/regtcolor"
@@ -101,6 +110,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="5dp"
                 android:background="@drawable/curved_box_bg"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:gravity="center">
 
                 <TextView

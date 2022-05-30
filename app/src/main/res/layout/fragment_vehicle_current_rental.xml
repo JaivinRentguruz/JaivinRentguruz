@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:background="@color/selected_dot">
 
     <RelativeLayout
@@ -16,6 +28,7 @@
 
             <include
                 android:id="@+id/header"
+                app:UiColor="@{UiColor}"
                 layout="@layout/row_header" />
 
 
@@ -160,6 +173,7 @@
 
                         <include
                             android:id="@+id/pickup"
+                            app:UiColor="@{UiColor}"
                             layout="@layout/pickup_drop" />
 
 
@@ -1028,14 +1042,13 @@
         <LinearLayout
             android:id="@+id/layout_2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/bottommenuheight"
             android:layout_alignParentBottom="true">
 
             <include
                 android:id="@+id/btmcharges"
-                layout="@layout/btm_charges"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                app:UiColor="@{UiColor}"
+                layout="@layout/btm_charges"/>
         </LinearLayout>
     </RelativeLayout>
 
@@ -1055,6 +1068,7 @@
 
             <include
                 android:id="@+id/option"
+                app:UiColor="@{UiColor}"
                 layout="@layout/optionmenu"/>
 
 
@@ -1062,3 +1076,4 @@
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

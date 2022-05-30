@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+ <!--   <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/datePicker_style"
+        android:textColor="@color/red"
+        android:headerBackground="@color/black"
+        android:calendarTextColor="@color/red"
+        android:calendarSelectedTextColor="@color/black"
+        style="@style/MyDatePickerStyle"
+        />-->
+
+  <!--  <DatePicker
+        android:theme="@style/datePicker_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:calendarTextColor="@color/red"
+        android:calendarSelectedTextColor="@color/black"
+        android:headerBackground="@color/black"
+        android:dayOfWeekBackground="@color/black"
+        style="@style/MyDatePickerStyle"
+       />-->
+
+
+    <DatePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:calendarTextColor="#A64242"
+        android:datePickerMode="calendar"
+        android:calendarViewShown="true"
+        android:dayOfWeekBackground="#C85757"
+        android:headerBackground="@drawable/aquamarine_bc"
+
+        android:layerType="hardware"
+        android:outlineProvider="paddedBounds"
+        android:yearListSelectorColor="#7E6D6D" />
+
+</LinearLayout>
+</layout>

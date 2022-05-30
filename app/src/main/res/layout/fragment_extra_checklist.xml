@@ -1,64 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/selected_dot">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
 
-    <RelativeLayout
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/selected_dot"
+        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <include
-                android:id="@+id/header"
-                layout="@layout/row_header" />
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/curve_box"
-                android:backgroundTint="@color/white"
+                android:layout_above="@id/bottom"
                 android:orientation="vertical">
+
+                <include
+                    android:id="@+id/header"
+                    app:UiColor="@{UiColor}"
+                    layout="@layout/row_header" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginHorizontal="@dimen/startmargin"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/equi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="@string/equipment_extras"
-                        android:textSize="@dimen/fab_margin"
-                        android:theme="@style/texttheme" />
-
-
-
-
-                </LinearLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginHorizontal="@dimen/startmargin">
+                    android:background="@drawable/curve_box"
+                    android:backgroundTint="@color/white"
+                    android:orientation="vertical">
 
-                    <include layout="@layout/list_check_equipment"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginHorizontal="@dimen/startmargin"
+                        android:orientation="horizontal">
 
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/equi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="@string/equipment_extras"
+                            android:textSize="@dimen/fab_margin"
+                            android:theme="@style/texttheme" />
+
+
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/linne" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <androidx.core.widget.NestedScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/curve_box">
+                    <RelativeLayout
+                        android:id="@+id/equipment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginHorizontal="@dimen/startmargin"
+                        android:layout_marginVertical="@dimen/_4sdp">
+                        <!-- <include layout="@layout/list_check_equipment"/>-->
+
+                    </RelativeLayout>
+                        </androidx.core.widget.NestedScrollView>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/linne" />
+
+                        <androidx.core.widget.NestedScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/curve_box">
+                    <RelativeLayout
+                        android:id="@+id/extrachecklist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginVertical="@dimen/_4sdp"
+                        android:layout_marginHorizontal="@dimen/startmargin">
+
+                        <!-- <include layout="@layout/chk_header"/>-->
+
+                    </RelativeLayout>
+                        </androidx.core.widget.NestedScrollView>
+                    </LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/bottom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottommenuheight"
+                android:background="@color/bottommenucolor"
+                android:layout_alignParentBottom="true"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/text"
+                    style="@style/fullbtn"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                    android:text="@string/next"/>
+            </LinearLayout>
 
+        </RelativeLayout>
 
-    </RelativeLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

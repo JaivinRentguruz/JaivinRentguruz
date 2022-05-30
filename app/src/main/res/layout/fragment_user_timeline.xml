@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
     android:background="@color/selected_dot"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,8 +26,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="vertical">
-
-        <RelativeLayout
+        <include
+            android:id="@+id/header"
+            app:UiColor="@{UiColor}"
+            layout="@layout/row_header" />
+       <!-- <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -42,13 +57,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
 
-                    android:text="User timeline"
+                    android:text="User Timeline"
                     android:textAllCaps="false"
                     android:textColor="@color/topcolor"
                     android:textSize="17dp" />
 
             </LinearLayout>
-        </RelativeLayout>
+        </RelativeLayout>-->
     </LinearLayout>
         <LinearLayout
             android:visibility="gone"
@@ -269,7 +284,7 @@
             android:layout_below="@+id/selectedlocation"
             android:orientation="horizontal"
             android:background="@drawable/curve_box_green"
-            android:backgroundTint="@color/MGrey"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:layout_width="match_parent"
             android:visibility="visible"
             android:layout_height="match_parent">
@@ -291,8 +306,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/calendar_View"
                 app:textColorSelected="@color/white"
-                android:background="@color/MGrey"
-                app:selectedDateBackground="@drawable/black_curve2" />
+                android:fontFamily="@font/quicksand_medium"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                app:selectedDateBackground="@drawable/black_curve2"/>
               </LinearLayout>
             </LinearLayout>
         <LinearLayout
@@ -360,6 +376,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ic_rectangle_greenbox"
+                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                         android:layout_gravity="center">
 
                         <ImageView
@@ -437,7 +454,8 @@
                                     <View
                                         android:layout_width="0.8dp"
                                         android:layout_height="@dimen/_450sdp"
-                                        android:background="@color/red"/>
+                                        android:background="@color/red"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"/>
                                 </RelativeLayout>
                             </LinearLayout>
 
@@ -484,9 +502,12 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:indeterminateTint="@color/progressbar"
+            android:indeterminateBehavior="repeat"
+            android:indeterminateTint="@{Color.parseColor(UiColor.primary)}"
+            android:indeterminateDrawable="@anim/loader"
             android:visibility="gone" />
     </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

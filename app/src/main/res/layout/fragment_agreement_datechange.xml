@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/com.rentguruz.app"
+    tools:context=".flexiicar.user.Fragment_Agreement_DateChange">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:background="@color/backgroundColor"
-    tools:context=".flexiicar.user.Fragment_Agreement_DateChange">
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,6 +29,7 @@
             android:orientation="vertical">
             <include
                 android:id="@+id/header"
+                app:UiColor="@{UiColor}"
                 layout="@layout/row_header"/>
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
@@ -32,6 +44,7 @@
 
                 <include
                     android:id="@+id/reservation"
+                    app:UiColor="@{UiColor}"
                     layout="@layout/reservation_list"/>
 
                 <LinearLayout
@@ -41,6 +54,7 @@
                     android:orientation="vertical">
                 <include
                     android:id="@+id/first"
+                    app:UiColor="@{UiColor}"
                     layout="@layout/list_change_agreement"/>
                 </LinearLayout>
 
@@ -71,7 +85,8 @@
                             android:layout_height="30dp"
                             android:layout_weight="1"
                             android:layout_marginRight="10dp"
-                            android:background="@drawable/half_curve_green">
+                            android:background="@drawable/half_curve_green"
+                            android:backgroundTint="@{Color.parseColor(UiColor.primary)}">
 
                             <TextView
                                 android:id="@+id/pickup"
@@ -91,7 +106,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:layout_gravity="center_vertical"
-                            android:backgroundTint="@color/yellow"
+                            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                             android:background="@drawable/half_curve_black">
 
                             <TextView
@@ -248,6 +263,7 @@
                     android:orientation="vertical">
                     <include
                         android:id="@+id/second"
+                        app:UiColor="@{UiColor}"
                         layout="@layout/list_change_agreement"/>
                 </LinearLayout>
 
@@ -320,7 +336,7 @@
             android:layout_height="@dimen/bottommenuheight"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
-
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:background="@color/footerButtonBC"
             android:paddingHorizontal="@dimen/startmargin"
             android:weightSum="10">
@@ -337,6 +353,7 @@
                 <TextView
                     android:id="@+id/text"
                     style="@style/shortbtn"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:text="@string/save"/>
                <!-- <TextView
                     android:theme="@style/texttheme"
@@ -361,6 +378,7 @@
                 android:layout_weight="5">
                 <TextView
                     style="@style/shortbtn"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:text="Payment"/>
 
             </LinearLayout>
@@ -589,3 +607,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
+        <variable
+            name="label"
+            type="com.rentguruz.app.model.response.CompanyLabel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
+    android:background="@color/backgroundColor">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,6 +34,7 @@
 
             <include
                 android:id="@+id/header"
+                app:UiColor="@{UiColor}"
                 layout="@layout/row_header"/>
 
             <RelativeLayout
@@ -31,12 +48,14 @@
                 android:background="@drawable/curve_box_white_2"
                 android:gravity="center">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/car_imgview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/car_icon"
-                    app:shapeAppearance="@style/roundedImageViewRounded" />
+                    android:adjustViewBounds="true"
+                    android:orientation="horizontal"
+                    android:scaleType="fitXY"
+                    app:shapeAppearance="@style/roundedImageViewRounded22"/>
 
                <!-- <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/car_imgview"
@@ -107,7 +126,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:gravity="center"
-                            android:text="Open \n Reservations"
+                            android:text="@{String.valueOf(@string/opens) +String.valueOf(@string/line) + label.Reservation}"
                             android:textColor="@color/white"
                             android:textSize="@dimen/twelve" />
                     </LinearLayout>
@@ -140,7 +159,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:gravity="center"
-                            android:text="Open \n Reservations"
+                            android:text="@{String.valueOf(@string/opens) +String.valueOf(@string/line) + label.Agreement}"
                             android:textColor="@color/white"
                             android:textSize="@dimen/twelve" />
                     </LinearLayout>
@@ -173,7 +192,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:gravity="center"
-                            android:text="Open \n Reservations"
+                            android:text="Traffic\nTickets"
                             android:textColor="@color/white"
                             android:textSize="@dimen/twelve" />
                     </LinearLayout>
@@ -205,7 +224,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:gravity="center"
-                            android:text="Open \n Reservations"
+                            android:text="Traffic\nTickets"
                             android:textColor="@color/white"
                             android:textSize="@dimen/twelve" />
                     </LinearLayout>
@@ -215,7 +234,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/curve_box_grey"
-                    android:backgroundTint="@color/green"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     android:paddingLeft="7dp"
                     android:paddingTop="9dp"
                     android:paddingRight="7dp">
@@ -231,7 +250,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/curve_box_grey"
-                            android:backgroundTint="@color/green"
+                            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                             android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -293,7 +312,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_margin="2dp"
                                             android:gravity="center"
-                                            android:text="@string/agreements"
+                                            android:text="@{label.Agreement}"
                                             android:textAllCaps="false"
                                             android:textColor="@color/regtcolor"
                                             android:textSize="@dimen/eleven"
@@ -320,7 +339,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_margin="2dp"
                                             android:gravity="center"
-                                            android:text="@string/reservations"
+                                            android:text="@{label.Reservation}"
                                             android:textAllCaps="false"
                                             android:textColor="@color/regtcolor"
                                             android:textSize="@dimen/eleven"
@@ -515,11 +534,71 @@
                                         android:layout_weight="16">
 
                                         <TextView
+                                            android:id="@+id/vehicleLicence"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_marginLeft="4dp"
                                             android:gravity="center_vertical"
-                                            android:text="Current Rental"
+                                            android:text=""
+
+                                            android:textSize="@dimen/fab_margin"
+
+                                            android:theme="@style/texttheme" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="2"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/seperatorcolor" />
+
+                                <LinearLayout
+                                    android:id="@+id/inspection"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:padding="4dp"
+                                    android:weightSum="20">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:gravity="center_horizontal">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:padding="2dp"
+                                            android:src="@drawable/ic_layout_picture_right" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="16">
+
+                                        <TextView
+                                            android:id="@+id/vehicleInspection"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginLeft="4dp"
+                                            android:gravity="center_vertical"
+                                            android:text=""
+
                                             android:textSize="@dimen/fab_margin"
 
                                             android:theme="@style/texttheme" />
@@ -832,6 +911,7 @@
             android:layout_height="@dimen/bottommenuheight"
             android:gravity="center_vertical"
             android:background="@color/bottommenucolor"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:layout_alignParentBottom="true">
 
             <LinearLayout
@@ -848,7 +928,7 @@
                     android:layout_margin="@dimen/_2sdp"
                     android:layout_weight="5"
                     android:background="@drawable/rectangle_curve_yellow"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -882,7 +962,7 @@
                     android:layout_margin="2dp"
                     android:layout_weight="5"
                     android:background="@drawable/rectangle_curve_pink1"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -917,7 +997,7 @@
                     android:layout_margin="2dp"
                     android:layout_weight="5"
                     android:background="@drawable/ic_rectangle_darkblue"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -952,7 +1032,7 @@
                     android:layout_margin="2dp"
                     android:layout_weight="5"
                     android:background="@drawable/ic_rectangle_darkblue"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -1142,3 +1222,4 @@
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundColor">
+        android:background="@color/backgroundColor"
+        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,6 +28,7 @@
 
             <include
                 android:id="@+id/header"
+                app:UiColor="@{UiColor}"
                 layout="@layout/row_header" />
 
             <androidx.core.widget.NestedScrollView
@@ -64,7 +77,8 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/green" />
+                        android:background="@color/green"
+                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -152,7 +166,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
                             android:background="@drawable/ic_full_curve_box"
-                            android:backgroundTint="@color/lightgreen"
+                            android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
                             android:padding="6dp"
@@ -335,9 +349,11 @@
                 <TextView
                     android:id="@+id/text"
                     style="@style/fullbtn"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     android:text="Add Billing Detail"/>
 
             </LinearLayout>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

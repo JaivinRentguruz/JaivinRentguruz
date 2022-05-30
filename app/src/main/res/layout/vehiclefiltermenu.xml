@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/_5sdp"
+    android:animateLayoutChanges="true"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="@dimen/_60sdp"
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/optionmenuheight"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingVertical="@dimen/_5sdp"
+        android:text="Select Option"
+        android:textColor="@color/white"
+        android:background="@drawable/curve_box_white"
+        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:textSize="@dimen/_14ssp"
+        android:theme="@style/texttheme"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/cancel2"
+        android:layout_below="@id/cancel">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/curve_box_white"
+        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/all"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="All Vehicle"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/available"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Available"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/unavailable"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Unavailable"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/accident"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Accident"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+        <TextView
+            android:id="@+id/maintenance"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Maintenance"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/onrent"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="On Rent"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/licexpiry"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Certificate and License Expire"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/onhold"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="OnHold"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/sell"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Sell"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/suspend"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Suspend"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <TextView
+            android:id="@+id/last10days"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Last 10 Days"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+
+        <TextView
+            android:id="@+id/underchecking"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/optionmenuheight"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="Under Checkin"
+            android:textColor="@color/themebackgroundtext"
+            android:textSize="@dimen/_14ssp"
+            android:theme="@style/texttheme" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorHint" />
+
+        <RelativeLayout
+            android:id="@+id/addtional"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+       <!-- <include
+            android:id="@+id/category"
+            layout="@layout/vehiclecatagorylist"/>-->
+
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <TextView
+        android:id="@+id/cancel2"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/optionmenuheight"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/curve_box_white"
+        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingVertical="@dimen/_3sdp"
+        android:text="Cancel"
+        android:textColor="@color/themebackgroundtext"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        android:theme="@style/texttheme" />
+</RelativeLayout>
+</layout>

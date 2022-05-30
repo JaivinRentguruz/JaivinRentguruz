@@ -3,10 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
 
         <variable
             name="Insurance"
-            type="com.abel.app.b2b.model.reservation.ReservationInsurance" />
+            type="com.rentguruz.app.model.reservation.ReservationInsurance" />
     </data>
 
     <LinearLayout
@@ -23,7 +30,6 @@
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/round_image1"
-
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -33,6 +39,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/aquamarine_blue_bg"
+                android:backgroundTint="@{Color.parseColor(Insurance.ColorCode)}"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="5dp">
 
@@ -134,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:background="@drawable/aquamarine_blue_bg"
-                    android:backgroundTint="@color/bottommenucolor"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     android:orientation="vertical"
                     android:paddingHorizontal="30dp"
                     android:paddingVertical="10dp">

@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/selected_dot">
+    android:background="@color/selected_dot"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,8 +25,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:orientation="vertical">
-
-            <RelativeLayout
+            <include
+                android:id="@+id/header"
+                app:UiColor="@{UiColor}"
+                layout="@layout/row_header"/>
+           <!-- <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -62,7 +76,7 @@
                     android:textAllCaps="false"
                     android:textSize="14dp"
                     android:theme="@style/texttheme" />
-            </RelativeLayout>
+            </RelativeLayout>-->
         </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -156,7 +170,9 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center"
-                        android:indeterminateTint="@color/progressbar"
+                        android:indeterminateBehavior="repeat"
+                        android:indeterminateTint="@{Color.parseColor(UiColor.primary)}"
+                        android:indeterminateDrawable="@anim/loader"
                         android:visibility="gone" />
 
                 </RelativeLayout>
@@ -165,3 +181,5 @@
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -10,13 +10,18 @@
         android:id="@+id/splash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY"
+        />
 
     <FrameLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/headertopmargin">
 
+        <TextView
+            android:id="@+id/jvm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
         <RelativeLayout
@@ -24,7 +29,7 @@
             style="?metaButtonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="bottom|center_horizontal"
+            android:layout_gravity="center"
             android:paddingStart="@dimen/_20sdp"
             android:visibility="visible"
             tools:ignore="UselessParent">
@@ -52,6 +57,14 @@
                 android:layout_height="@dimen/logoh"
                 android:layout_alignParentTop="true"
                 android:adjustViewBounds="true" />
+
+           <!-- <ImageView
+                android:id="@+id/logo"
+                android:layout_centerInParent="true"
+                android:layout_width="@dimen/_85sdp"
+                android:layout_height="@dimen/_85sdp"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true" />-->
 
             <ImageView
                 android:layout_width="wrap_content"

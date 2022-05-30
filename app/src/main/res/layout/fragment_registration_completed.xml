@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -31,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_shuttle"/>
+                    android:background="@drawable/ic_shuttle"/>
 
 
             </RelativeLayout>
@@ -112,6 +123,7 @@
             <TextView
                 android:id="@+id/txtprocess"
                 style="@style/fullbtn"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:text="Explore"/>
 
         <!--    <TextView
@@ -192,6 +204,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtlayout"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                     android:background="@color/MGrey"
                     android:orientation="vertical">
 
@@ -201,6 +214,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                         android:paddingVertical="@dimen/_10sdp"
                         android:theme="@style/texttheme"
                         android:text="Not Now"
@@ -218,7 +232,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtlayout"
                     android:background="@drawable/ic_rectangle_blackbox"
-                    android:backgroundTint="@color/yellow"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     android:orientation="vertical">
 
                     <TextView
@@ -227,6 +241,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                         android:theme="@style/texttheme"
                         android:text="Allow Access"
                         android:paddingVertical="@dimen/_10sdp"
@@ -243,3 +258,4 @@
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

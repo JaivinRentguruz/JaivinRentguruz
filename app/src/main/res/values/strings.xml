@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ABEL</string>
+    <string name="app_name">RentGuruz</string>
 
     <string name="title_activity_splash_screen">@string/app_name</string>
     <string name="dummy_button">Dummy Button</string>
@@ -168,6 +168,7 @@
 
     <string name="acceptterms">Please Accept Term &amp; Condition</string>
     <string name="select">Select</string>
+    <string name="rid">rid</string>
     <string name="available">Available</string>
     <string name="confirmation">Confirmation</string>
     <string name="open">Open</string>
@@ -183,7 +184,7 @@
     <string name="guest">Guest</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
-
+    <string name="bundle">MainBundle</string>
     <string name="selectcountry">Select A Country</string>
     <string name="selectstate">Select State or Province</string>
     <string name="next">Next</string>
@@ -325,8 +326,11 @@
     <string name="vehiclechange">Vehicle Change</string>
     <string name="extendagreement">Extend Agreement</string>
     <string name="MobileBasicDetails">MobileBasicDetails</string>
+    <string name="Appcolor">AppColor</string>
     <string name="HomePageScreen">HomePageScreen</string>
     <string name="SplashScreens">SplashScreens</string>
+    <string name="cmshome">CMS Mobile Home</string>
+    <string name="cmsdash">CMS Mobile Dashboard</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

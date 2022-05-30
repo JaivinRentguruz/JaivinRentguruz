@@ -1,250 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/selected_dot">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
 
-
-    <RelativeLayout
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
+        android:background="@color/selected_dot">
 
 
-        <LinearLayout
-            android:id="@+id/selectedlocation"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="20dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/backimg_frontside"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:src="@drawable/ic_chevron_left" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="@string/vehicle_images"
-                        android:textAllCaps="false"
-                        android:textColor="@color/topcolor"
-                        android:textSize="17dp"
-
-                        android:theme="@style/texttheme" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/DiscardVeh1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="15dp"
-                    android:text="@string/discard"
-                    android:textColor="@color/topcolor"
-                    android:textSize="14dp"
-                    android:theme="@style/texttheme" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/selectedlocationlayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/selectedlocation"
-            android:background="@drawable/curve_box"
-            android:orientation="vertical"
-            android:paddingTop="10dp">
 
             <LinearLayout
+                android:id="@+id/selectedlocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <include
+                    android:id="@+id/header"
+                    app:UiColor="@{UiColor}"
+                    layout="@layout/row_header" />
+
+                <!--<RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="20dp">
 
-                    <TextView
-                        android:id="@+id/carImageType"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginLeft="15dp"
-                        android:text="Front Side"
-                        android:textColor="@color/fontwhitebackground"
-                        android:textAllCaps="false"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                        android:textSize="17dp"
-                        android:theme="@style/texttheme" />
+                        <ImageView
+                            android:id="@+id/backimg_frontside"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:src="@drawable/ic_chevron_left" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/vehicle_images"
+                            android:textAllCaps="false"
+                            android:textColor="@color/topcolor"
+                            android:textSize="17dp"
+
+                            android:theme="@style/texttheme" />
+
+                    </LinearLayout>
 
                     <TextView
-                        android:id="@+id/txt_DateTimeForPic"
-                        android:layout_width="match_parent"
+                        android:id="@+id/DiscardVeh1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="15dp"
-                        android:gravity="right"
-                        android:text="01/01/2020 09:00 am"
-                        android:textColor="@color/fontwhitebackground"
-                        android:textAllCaps="false"
 
-                        android:textSize="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:text="@string/discard"
+                        android:textColor="@color/topcolor"
+                        android:textSize="14dp"
                         android:theme="@style/texttheme" />
-                </LinearLayout>
+
+                </RelativeLayout>-->
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/textColorHint" />
 
-            <androidx.core.widget.NestedScrollView
+            <LinearLayout
+                android:id="@+id/selectedlocationlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/selectedlocationlayout"
-                android:background="@drawable/curve_box">
+                android:layout_below="@id/selectedlocation"
+                android:background="@drawable/curve_box"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/FrontImageView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/car_image_1" />
-
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15dp">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:id="@+id/carImageType"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
-                            android:gravity="center_horizontal"
-                            android:text="@string/sample_image"
-
-                            android:textAllCaps="false"
+                            android:layout_marginLeft="15dp"
+                            android:text="Front Side"
                             android:textColor="@color/fontwhitebackground"
+                            android:textAllCaps="false"
+
                             android:textSize="17dp"
+                            android:theme="@style/texttheme" />
+
+                        <TextView
+                            android:id="@+id/txt_DateTimeForPic"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="15dp"
+                            android:gravity="right"
+                            android:text="01/01/2020 09:00 am"
+                            android:textColor="@color/fontwhitebackground"
+                            android:textAllCaps="false"
+
+                            android:textSize="12dp"
                             android:theme="@style/texttheme" />
                     </LinearLayout>
 
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/textColorHint" />
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/selectedlocationlayout"
+                    android:background="@drawable/curve_box">
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="20dp">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <RelativeLayout
+                        <ImageView
+                            android:id="@+id/FrontImageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/car_image_1" />
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/ic_car_img_bg">
+                            android:layout_marginTop="15dp">
 
-                            <ImageView
-                                android:id="@+id/FrontImage_Upload"
-                                android:layout_width="wrap_content"
+                            <TextView
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:layout_margin="1dp"
-                                android:padding="10dp"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/ic_main_camera" />
-                        </RelativeLayout>
+                                android:layout_alignParentLeft="true"
+                                android:gravity="center_horizontal"
+                                android:text="@string/sample_image"
+
+                                android:textAllCaps="false"
+                                android:textColor="@color/fontwhitebackground"
+                                android:textSize="17dp"
+                                android:theme="@style/texttheme" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="20dp">
+
+                            <RelativeLayout
+                                android:id="@+id/image"
+                                style="@style/relativeImage">
+
+                                <ImageView
+                                    android:id="@+id/FrontImage_Upload"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerInParent="true"
+                                    android:scaleType="fitXY" />
+                            </RelativeLayout>
+                        </LinearLayout>
+
+
                     </LinearLayout>
+
+                </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottommenuheight"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="10"
+                android:background="@color/footerButtonBC"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="5"
+                    >
+
+                    <TextView
+                        android:id="@+id/imagecount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:text="Image 1 of 10"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+
+                        android:theme="@style/texttheme" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lblback_forntside"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginVertical="7dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/curve_box_green"
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:text="@string/next"
+                        android:textAllCaps="false"
+                        android:textColor="@color/btntext"
+                        android:textSize="16dp"
+                        android:theme="@style/texttheme" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/sucessfull_regi"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/successful_bg"
+                android:animateLayoutChanges="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/option"
+                        app:UiColor="@{UiColor}"
+                        layout="@layout/imageoption"/>
 
 
                 </LinearLayout>
 
-            </androidx.core.widget.NestedScrollView>
-        </LinearLayout>
+            </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bottommenuheight"
-            android:layout_alignParentBottom="true"
-            android:layout_weight="10"
-            android:background="@color/footerButtonBC"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="5"
-                >
-
-                <TextView
-                    android:id="@+id/imagecount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:text="Image 1 of 10"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16dp"
-
-                    android:theme="@style/texttheme" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lblback_forntside"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginVertical="7dp"
-                android:layout_weight="5"
-                android:background="@drawable/curve_box_green"
-                android:backgroundTint="@color/black">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:text="@string/next"
-                    android:textAllCaps="false"
-                    android:textColor="@color/btntext"
-                    android:textSize="16dp"
-                    android:theme="@style/texttheme" />
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

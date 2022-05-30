@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
     android:background="@color/selected_dot">
 
 
@@ -17,7 +30,12 @@
             android:layout_alignParentTop="true"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <include
+                android:id="@+id/header"
+                app:UiColor="@{UiColor}"
+                layout="@layout/row_header"/>
+
+            <!--<RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -41,7 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="Terms &amp; conditions"
+                        android:text="@string/terms_amp_conditions"
                         android:textAllCaps="false"
                         android:textColor="@color/topcolor"
                         android:textSize="17dp"
@@ -63,7 +81,7 @@
                     android:textSize="14dp"
                     android:theme="@style/texttheme" />
 
-            </RelativeLayout>
+            </RelativeLayout>-->
 
         </LinearLayout>
 
@@ -92,7 +110,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="Terms &amp; conditions"
+                        android:text="@string/terms_amp_conditions"
 
                         android:textAllCaps="false"
                         android:textSize="17dp"
@@ -130,6 +148,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottommenuheight"
             android:background="@color/bottommenucolor"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -159,7 +178,7 @@
 
                         <RadioButton
                             android:id="@+id/btn_accept"
-                            android:text="Accept Terms &amp; conditions"
+                            android:text="Accept Terms &amp; Conditions"
                             android:theme="@style/texttheme"
                             android:textColor="@color/white"
                             android:textSize="14dp"
@@ -179,7 +198,7 @@
                     android:gravity="end|center_vertical"
                     android:layout_weight="30"
                     android:background="@drawable/curve_box_green"
-                    android:backgroundTint="@color/btn">
+                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
                     <TextView  android:theme="@style/texttheme"
                         android:layout_width="match_parent"
@@ -196,3 +215,4 @@
         </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
