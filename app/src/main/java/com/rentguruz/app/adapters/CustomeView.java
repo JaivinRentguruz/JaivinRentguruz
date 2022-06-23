@@ -152,7 +152,7 @@ public class CustomeView {
         TextView reservation = v.findViewById(R.id.txtreservation);
         reservation.setText(companyLabel.Reservation);
         TextView agreement = v.findViewById(R.id.txtagreement);
-        agreement.setText(companyLabel.Agreement);
+        agreement.setText(companyLabel.Reservation);
         TextView vehicle = v.findViewById(R.id.txtvehicle);
         vehicle.setText(companyLabel.Vehicle);
         //textView.setText(UserData.loginResponse.CompanyLabel.);
@@ -177,7 +177,7 @@ public class CustomeView {
       //  reservation.setText(companyLabel.Reservation);
         TextView agreement = v.findViewById(R.id.txtagreement);
         ///agreement.setText(companyLabel.Agreement);
-            setText(agreement,companyLabel.Agreement);
+            setText(agreement,companyLabel.Reservation);
         TextView vehicle = v.findViewById(R.id.txtvehicle);
         //vehicle.setText(companyLabel.Vehicle);
             setText(vehicle,companyLabel.Vehicle);
@@ -193,10 +193,10 @@ public class CustomeView {
             String open = "Open \n ";
 
             setText(getText(v,R.id.txtopnres),open + companyLabel.Reservation);
-            setText(getText(v,R.id.txtopnagr),open + companyLabel.Agreement);
+            setText(getText(v,R.id.txtopnagr),open + companyLabel.Reservation);
             setText(getText(v,R.id.opntxt), open + companyLabel.Reservation);
-            setText(getText(v,R.id.txt1agr), companyLabel.Agreement);
-            setText(getText(v,R.id.txt2agr),companyLabel.Agreement);
+            setText(getText(v,R.id.txt1agr), companyLabel.Reservation);
+            setText(getText(v,R.id.txt2agr),companyLabel.Reservation);
             setText(getText(v,R.id.txt2res),companyLabel.Reservation);
             setText(getText(v,R.id.txt1res), companyLabel.Reservation);
             setText(getText(v,R.id.pickup), companyLabel.PickUp);
@@ -278,8 +278,12 @@ public class CustomeView {
         } catch (Exception e){
             e.printStackTrace();
         }
-
-
+        try {
+            ImageView cardss = view.findViewById(R.id.cardss);
+            CustomBindingAdapter.loadImage(cardss,loginRes.getData(activity.getResources().getString(R.string.cardimg)));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

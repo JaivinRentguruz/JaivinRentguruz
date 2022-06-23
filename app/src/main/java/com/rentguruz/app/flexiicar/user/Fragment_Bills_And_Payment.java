@@ -194,7 +194,7 @@ public class Fragment_Bills_And_Payment extends BaseFragment
                     {
                         final JSONObject test = (JSONObject) getAccountstatementlist.get(j);
                         final String transacType = test.getString("TransactionType");
-
+                        String TransactionTypeDesc = test.getString("TransactionTypeDesc");
                         if (transacType.contains(charSequence))
                         {
                          /*   final int billID = test.getInt("billID");
@@ -274,6 +274,15 @@ public class Fragment_Bills_And_Payment extends BaseFragment
                             txt_TotalAmount.setText(((String.format(Locale.US, "%.2f", amount))));
                             txtinvoiceNo.setText(billNumber);
                             txtOneTimeCharge.setText(description);
+
+                            listAccountStatementBinding.txtMonth.setText(Monthstr);
+                            listAccountStatementBinding.txtDate.setText(datestr);
+                            listAccountStatementBinding.txtStatementName.setText(TransactionTypeDesc);
+                            listAccountStatementBinding.currency.setText(Helper.currencyName + " ");
+                            listAccountStatementBinding.textTotalAmount.setText(((String.format(Locale.US, "%.2f", amount))));
+                            listAccountStatementBinding.txtInvoiceNo.setText(billNumber);
+                            listAccountStatementBinding.txtOneTimeCharge.setText(description);
+
                             rlAccountStatement.addView(listAccountStatementBinding.getRoot());
 
                         }
@@ -361,6 +370,13 @@ public class Fragment_Bills_And_Payment extends BaseFragment
                                 final LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.list_account_statement, (ViewGroup) getActivity().findViewById(android.R.id.content), false);
                                 linearLayout.setId(200 + j);
                                 linearLayout.setLayoutParams(lp);
+
+                                getSubview(j);
+                                ListAccountStatementBinding listAccountStatementBinding = ListAccountStatementBinding.inflate(subinflater,
+                                        getActivity().findViewById(android.R.id.content), false);
+                                listAccountStatementBinding.getRoot().setId(200 + j);
+                                listAccountStatementBinding.getRoot().setLayoutParams(subparams);
+                                listAccountStatementBinding.setUiColor(UiColor);
 
                                 LinearLayout layout_invoice=linearLayout.findViewById(R.id.layout_invoice);
                                 LinearLayout Payment_Status_Layout=linearLayout.findViewById(R.id.Payment_Status_Layout);
@@ -528,7 +544,27 @@ public class Fragment_Bills_And_Payment extends BaseFragment
                                 txt_TotalAmount.setText(((String.format(Locale.US, "%.2f", amount))));
                                 txtinvoiceNo.setText(billNumber);
                                 txtOneTimeCharge.setText(description);
-                                rlAccountStatement.addView(linearLayout);
+                               // rlAccountStatement.addView(linearLayout);
+
+
+                                listAccountStatementBinding.txtMonth.setText(Monthstr);
+                                listAccountStatementBinding.txtDate.setText(datestr);
+                                listAccountStatementBinding.txtStatementName.setText(TransactionTypeDesc);
+                                listAccountStatementBinding.currency.setText(Helper.currencyName + " ");
+                                listAccountStatementBinding.textTotalAmount.setText(((String.format(Locale.US, "%.2f", amount))));
+                                listAccountStatementBinding.txtInvoiceNo.setText(billNumber);
+                                listAccountStatementBinding.txtOneTimeCharge.setText(description);
+
+                                listAccountStatementBinding.getRoot().setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        bundle.putInt("IId", Integer.parseInt(billNumber));
+                                        NavHostFragment.findNavController(Fragment_Bills_And_Payment.this)
+                                                .navigate(R.id.action_Bills_and_Payment_to_Payment_Reciept_2,bundle);
+                                    }
+                                });
+
+                                rlAccountStatement.addView(listAccountStatementBinding.getRoot());
                             }
 
 

@@ -178,8 +178,8 @@
                     android:padding="5dp"
                     android:fontFamily="@font/quicksand_medium"
                     android:text="Consent To Recieve Email"
+                    android:buttonTint="@{Color.parseColor(UiColor.primary)}"
                     android:textSize="@dimen/txt_font_size"
-
                     android:textColor="@color/MGrey"/>
 
                 <TextView
@@ -233,9 +233,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
                         android:layout_marginTop="10dp"
-
+                        android:fontFamily="@font/quicksand_medium"
                         android:text="@string/password_must"
-
                         android:textColor="@color/MGrey"
                         android:textSize="@dimen/txt_font_size"/>
                 </LinearLayout>
@@ -285,7 +284,7 @@
                         android:layout_marginTop="8dp"
                         android:padding="5dp"
                         android:text="I have read &amp; agreed to the"
-                        android:textSize="@dimen/txt_font_size"
+                        android:buttonTint="@{Color.parseColor(UiColor.primary)}"                        android:textSize="@dimen/txt_font_size"
                         android:textColor="@color/MGrey"/>
 
                     <TextView

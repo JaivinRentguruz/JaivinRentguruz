@@ -71,16 +71,13 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
         reservationSummarry = new ReservationSummarry();
         binding.PaymentAccept.setOnClickListener(this);
         binding.chequeDate.setOnClickListener(this);
-        binding.header.screenHeader.setText(companyLabel.Agreement +" "+companyLabel.Payment);
+        binding.header.screenHeader.setText(companyLabel.Reservation +" "+companyLabel.Payment);
         binding.header.discard.setOnClickListener(this);
         binding.header.back.setOnClickListener(this);
         customerProfile = new CustomerProfile();
         customer = new Customer();
         dialog = new CustomeDialog(getContext());
         binding.checkbtn.setChecked(true);
-
-
-
 
         try {
             if (getArguments().getInt("reservationpmt") != 1){
@@ -113,7 +110,6 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
             e.printStackTrace();
         }
 
-
         try {
             Log.e(TAG, "onViewCreated: " + "0t" );
             binding.amount.setText(Helper.getAmtount(Double.valueOf(getArguments().getString("netrate"))));
@@ -121,7 +117,15 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
             if (getArguments().getSerializable("reservationSum") != null){
                 Log.e(TAG, "onViewCreated:11 " + getArguments().getSerializable("reservationSum"));
                 reservationSummarry = (ReservationSummarry) getArguments().getSerializable("reservationSum");
-                Log.e(TAG, "onViewCreated:12 "  + reservationSummarry.CustomerEmail);
+                bundle.putSerializable("reservationSum", reservationSummarry);
+                if (getArguments().getInt("reservationpmt") == 1){
+                    bundle.putInt("reservationpmt",getArguments().getInt("reservationpmt"));
+                    String datasad = loginRes.modeltostring(reservationSummarry);
+                    Reservation reservation =  loginRes.stringtomodel(datasad,Reservation.class);
+                    reservation.Email = reservationSummarry.CustomerEmail;
+                    bundle.putSerializable("reservation", getArguments().getSerializable("reservation"));
+                    Log.e(TAG, "onViewCreated:12 "  + reservationSummarry.CustomerEmail);
+                }
             } else {
                 Reservation reservation =(Reservation) getArguments().getSerializable("reservation");
                 reservationSummarry.Id = reservation.Id;
@@ -144,7 +148,6 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
             reservationPMT.BillToInfoJSON = loginRes.modeltostring(TAG,customerProfile);
         } catch (Exception e){
             e.printStackTrace();
-
         }
 
         try {
@@ -164,12 +167,14 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
 
         userDraw.checkbtn(binding.splitfixamount);
         userDraw.checkbtn(binding.cash);
-        userDraw.checkbtn(binding.Payment);
+        userDraw.checkbtn(binding.online);
+        userDraw.checkbtn(binding.Deposit);
         binding.splitfixamount.setChecked(true);
         binding.cash.setChecked(true);
+        binding.online.setChecked(true);
         binding.chequeDetail.setVisibility(View.GONE);
         binding.splitAmount.setChecked(false);
-        binding.Payment.setChecked(true);
+        binding.Deposit.setChecked(true);
 
 
 
@@ -180,8 +185,11 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
         binding.splitheader.setVisibility(View.GONE);
         binding.splitdata.setVisibility(View.GONE);
         binding.transationDetail.setVisibility(View.GONE);
-
-
+        reservationPMT.PaymentProcessMode =  PaymentProcessMode.Online.inte;
+        //reservationPMT.PaymentTransactionType = PaymentTransactionType.Deposit.inte;
+        reservationPMT.TransactionType = PaymentTransactionType.Deposit.inte;
+        reservationPMT.PaymentProcess = PaymentProcess.Refund.inte;
+        reservationPMT.PaymentMode = PaymentMode.CreditCard.inte;
        // userDraw.enablechangeEdit(binding.amount, false);
         //binding.amount.setEnabled(false);
         binding.changeamt.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -202,14 +210,28 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
                     case R.id.Payment:
+                       // reservationPMT.PaymentTransactionType = PaymentTransactionType.Payment.inte;
+                        reservationPMT.TransactionType = PaymentTransactionType.Payment.inte;
+                        reservationPMT.PaymentProcess = PaymentProcess.Charge.inte;
+                        binding.amount.setText(Helper.getAmtount(Helper.reservationamt));
+                        binding.amountPayable.setText(Helper.getAmtount(Helper.reservationamt));
                         Log.e(TAG, "onCheckedChanged: " + "Payment" );
                         break;
 
                     case R.id.Deposit:
+                        //reservationPMT.PaymentTransactionType = PaymentTransactionType.Deposit.inte;
+                        reservationPMT.TransactionType = PaymentTransactionType.Deposit.inte;
+                        reservationPMT.PaymentProcess = PaymentProcess.Refund.inte;
+                        binding.amount.setText(Helper.getAmtount(reservationSummarry.ReservationRatesModel.RateFeaturesModel.SecurityDeposit));
+                        binding.amountPayable.setText(Helper.getAmtount(reservationSummarry.ReservationRatesModel.RateFeaturesModel.SecurityDeposit));
                         Log.e(TAG, "onCheckedChanged: " + "Deposit" );
                         break;
 
                     case R.id.preAuthorization:
+                        //reservationPMT.PaymentTransactionType = PaymentTransactionType.PreAuthorization.inte;
+                        reservationPMT.TransactionType = PaymentTransactionType.PreAuthorization.inte;
+                        binding.amount.setText(Helper.getAmtount(reservationSummarry.ReservationRatesModel.RateFeaturesModel.SecurityDeposit));
+                        binding.amountPayable.setText(Helper.getAmtount(reservationSummarry.ReservationRatesModel.RateFeaturesModel.SecurityDeposit));
                         Log.e(TAG, "onCheckedChanged: " + "Pre Authorization" );
                         break;
                 }
@@ -221,16 +243,22 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
                     case R.id.cash:
-                        binding.cashpmtdetail.setVisibility(View.VISIBLE);
-                        binding.chequeDetail.setVisibility(View.GONE);
+                        reservationPMT.PaymentMode = PaymentMode.Cash.inte;
+                       // binding.cashpmtdetail.setVisibility(View.VISIBLE);
+                       // binding.chequeDetail.setVisibility(View.GONE);
                         //binding.splitheader.setVisibility(View.VISIBLE);
                         //binding.splitdata.setVisibility(View.VISIBLE);
                         //binding.chequeDetail.setVisibility(View.GONE);
                         break;
 
+                    case R.id.debitcard:
+                        reservationPMT.PaymentMode = PaymentMode.DebitCard.inte;
+                        break;
+
                     case R.id.cheque:
-                        binding.cashpmtdetail.setVisibility(View.GONE);
-                        binding.chequeDetail.setVisibility(View.VISIBLE);
+                        reservationPMT.PaymentMode = PaymentMode.Cheque.inte;
+                        //binding.cashpmtdetail.setVisibility(View.GONE);
+                        //binding.chequeDetail.setVisibility(View.VISIBLE);
                       //  binding.splitheader.setVisibility(View.VISIBLE);
                        // binding.splitdata.setVisibility(View.VISIBLE);
                         break;
@@ -239,6 +267,24 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
         });
 
 
+        binding.selectPaymentCashCheque.setVisibility(View.GONE);
+        binding.paymentOptionOnlineOffline.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.online:
+                        reservationPMT.PaymentProcessMode =  PaymentProcessMode.Online.inte;
+                        binding.selectPaymentCashCheque.setVisibility(View.GONE);
+                        break;
+
+                    case R.id.offline:
+                        reservationPMT.PaymentProcessMode =  PaymentProcessMode.Offline.inte;
+                        binding.selectPaymentCashCheque.setVisibility(View.VISIBLE);
+                        break;
+                }
+
+            }
+        });
 
 
         binding.splitPercentageAmount.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -315,6 +361,9 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
        // binding.splitpercentage.setChecked(true);
        // binding.splitfixamount.setChecked(true);
 
+        binding.amount.setText(Helper.getAmtount(reservationSummarry.ReservationRatesModel.RateFeaturesModel.SecurityDeposit));
+        binding.amountPayable.setText(Helper.getAmtount(reservationSummarry.ReservationRatesModel.RateFeaturesModel.SecurityDeposit));
+
         binding.lessamount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -351,7 +400,7 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
             }
         });
 
-        if (getArguments().getBoolean("pmt")){
+       /* if (getArguments().getBoolean("pmt")){
             reservationPMT.PaymentProcessMode =  PaymentProcessMode.Online.inte;
             reservationPMT.PaymentTransactionType = PaymentTransactionType.Deposit.inte;
             reservationPMT.PaymentProcess = PaymentProcess.Charge.inte;
@@ -370,7 +419,7 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
         reservationPMT.PaymentTransactionType = PaymentTransactionType.Deposit.inte;
         reservationPMT.PaymentProcess = PaymentProcess.Charge.inte;
         //reservationPMT.SplitAmountType =
-        reservationPMT.PaymentMode = PaymentMode.Cash.inte;
+        reservationPMT.PaymentMode = PaymentMode.Cash.inte;*/
 
 
         try {
@@ -378,6 +427,8 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
         } catch (Exception e){
             e.printStackTrace();
         }
+
+
     }
 
     @Override
@@ -393,16 +444,16 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
                 getModel();
                 reservationPMT.SplitAmount =0;
                 //reservationPMT.SplitAmountType = 0;
-                reservationPMT.TransactionType = 1;
+                //reservationPMT.TransactionType = 1;
                 reservationPMT.IsSplit = false;
-                reservationPMT.PaymentForId = 13;
-                reservationPMT.PaymentProcess = 1;
+                //reservationPMT.PaymentForId = 13;
+                //reservationPMT.PaymentProcess = 1;
 //        int i =  PaymentProcessMode.Offline.inte;
-                reservationPMT.PaymentProcessMode =  PaymentProcessMode.Offline.inte;
-                reservationPMT.PaymentTransactionType = PaymentTransactionType.Deposit.inte;
-                reservationPMT.PaymentProcess = PaymentProcess.Charge.inte;
+
+
+
                 //reservationPMT.SplitAmountType =
-                reservationPMT.PaymentMode = PaymentMode.Cash.inte;
+
                 reservationPMT.CustomerId = customer.Id;
                 reservationPMT.InvoiceAmount = reservationPMT.Amount;
                 reservationPMT.ReservationId = reservationSummarry.Id;
@@ -410,15 +461,19 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
                 //new ApiService2<List<ReservationPMT>>(processPayment, RequestType.POST, RESERVATIONPMT, BASE_URL_LOGIN,header ,pmtList);
                 bundle.putSerializable("pmtmodel", reservationPMT);
                 bundle.putString("netrate",binding.amountPayable.getText().toString() );
+                bundle.putString("netrate",binding.amount.getText().toString() );
                 Helper.pmt = true;
              /*   if (getArguments().getBoolean("pmt")){
                     NavHostFragment.findNavController(Fragment_Change_Payment_Option.this).navigate(R.id.paymentChangeOption_to_Payment,bundle);
                 } else {
                     NavHostFragment.findNavController(Fragment_Change_Payment_Option.this).navigate(R.id.paymentChangeOption_to_PaymentOffline,bundle);
                 }*/
-
-                new ApiService2<List<ReservationPMT>>(processPayment, RequestType.POST,
-                        RESERVATIONPMT, BASE_URL_LOGIN,header ,pmtList);
+                if (binding.offline.isChecked()) {
+                    new ApiService2<List<ReservationPMT>>(processPayment, RequestType.POST,
+                            RESERVATIONPMT, BASE_URL_LOGIN, header, pmtList);
+                } else {
+                    NavHostFragment.findNavController(Fragment_Change_Payment_Option.this).navigate(R.id.paymentChangeOption_to_Payment,bundle);
+                }
                 } catch (Exception e){
                     e.printStackTrace();
                 }

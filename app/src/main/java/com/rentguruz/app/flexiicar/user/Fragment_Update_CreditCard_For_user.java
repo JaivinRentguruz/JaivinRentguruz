@@ -105,6 +105,9 @@ public class Fragment_Update_CreditCard_For_user extends BaseFragment
         }
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         binding.setUiColor(UiColor);
+        userDraw.checkbtn(binding.chkDefaultCard);
+        userDraw.checkbtn(binding.chkDeleteCard);
+        binding.chkDefaultCard.setChecked(true);
         backTo = getArguments().getInt("backTo");
         ids  = getArguments().getInt("Id");
         fors  = getArguments().getInt("FOR");

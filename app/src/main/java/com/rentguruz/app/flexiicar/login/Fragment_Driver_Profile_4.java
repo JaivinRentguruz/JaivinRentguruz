@@ -35,6 +35,7 @@ import com.rentguruz.app.adapters.Helper;
 import com.rentguruz.app.apicall.ApiService;
 import com.rentguruz.app.base.BaseFragment;
 import com.rentguruz.app.databinding.FragmentDriverProfile4Binding;
+import com.rentguruz.app.home.reservation.Activity_Reservation;
 import com.rentguruz.app.model.parameter.AttachmentType;
 import com.androidnetworking.AndroidNetworking;
 import com.rentguruz.app.model.CreditCardModel;
@@ -555,9 +556,13 @@ public class Fragment_Driver_Profile_4 extends BaseFragment
                             } catch (Exception e){
                                 e.printStackTrace();
                             }
-
-                            NavHostFragment.findNavController(Fragment_Driver_Profile_4.this)
-                                    .navigate(R.id.action_DriverProfile4_to_Complete_Register,Registration);
+                            if (Helper.rsvcustomerscan){
+                                Intent intent = new Intent(getActivity(), Activity_Reservation.class);
+                                startActivity(intent);
+                            } else {
+                                NavHostFragment.findNavController(Fragment_Driver_Profile_4.this)
+                                        .navigate(R.id.action_DriverProfile4_to_Complete_Register, Registration);
+                            }
                         }
                         else
                         {
@@ -744,7 +749,7 @@ public class Fragment_Driver_Profile_4 extends BaseFragment
         HashMap<String, String> header = new HashMap<>();
         header.put("FileUploadMasterId", String.valueOf(registration.DrivingLicenceModel.Id));
         header.put("Id", String.valueOf(registration.DrivingLicenceModel.Id));
-        header.put("IsActive","true");
+      //  header.put("IsActive","true");
         header.put("CompanyId", String.valueOf(Helper.id));
         if (value) {
             header.put("fileUploadType", String.valueOf(AttachmentType.DrivingLicenseFront));

@@ -83,7 +83,7 @@
 
 
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="15dp"
@@ -98,10 +98,16 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
+                    <ImageView
+                        android:id="@+id/cardss"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/onlinepayment"
+                        android:scaleType="fitXY"/>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/onlinepayment"
                         android:gravity="bottom"
                         android:orientation="vertical">
 
@@ -159,7 +165,7 @@
                                 android:theme="@style/texttheme" />
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
+                </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -591,7 +597,7 @@
                             android:layout_marginTop="4dp"
                             android:gravity="center"
 
-                            android:text=" Once the payment is processed successfully,\n you will get your payment reference \n number. Payment confirmation email will \n been sent to neerajkaneria@me.com.\n Please call customer service for any errors."
+                            android:text=" Once the payment is processed successfully,\n you will get your payment reference \n number. Payment confirmation email will \n been sent to .\n Please call customer service for any errors."
                             android:textColor="@color/fontwhitebackground"
                             android:textSize="14dp" />
                     </LinearLayout>
@@ -667,6 +673,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/offlinepayment"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -693,13 +700,12 @@
                 android:id="@+id/payment"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
                 android:layout_weight="4">
 
                 <TextView
+                    android:layout_height="match_parent"
                     style="@style/shortbtn"
-                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     android:text="Process"/>
 
                 <!--<TextView android:theme="@style/texttheme"

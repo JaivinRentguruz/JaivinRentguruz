@@ -82,7 +82,7 @@ public class Fragment_Agreements extends BaseFragment
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
        // ((User_Profile) getActivity()).BottomnavVisible();
         binding.setUiColor(UiColor);
-        binding.header.screenHeader.setText("List " + companyLabel.Agreement);
+        binding.header.screenHeader.setText("List " + companyLabel.Reservation);
         binding.header.discard.setVisibility(View.GONE);
         fullProgressbar.show();
 

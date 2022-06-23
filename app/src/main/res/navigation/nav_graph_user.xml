@@ -239,7 +239,7 @@
     </fragment>-->
     <fragment
         android:id="@+id/Payment_checkout"
-        android:name="com.rentguruz.app.flexiicar.booking.Fragment_Payment_checkout"
+        android:name="com.rentguruz.app.flexiicar.booking2.Fragment_Payment_checkout"
         android:label="Payment_checkout"
         tools:layout="@layout/fragment_payment_checkout_process">
 
@@ -622,6 +622,21 @@
 
         <action android:id="@+id/action_Acceptance_signature_to_Agreements_to_payment"
             app:destination="@+id/Payment"/>
+
+        <action android:id="@+id/action_SummaryOfChargesForAgreements_to_chnageAgeementVehicle"
+            app:destination="@+id/chnageAgeementVehicle"/>
+
+        <action android:id="@+id/action_SummaryOfChargesForAgreements_to_chnageAgeementextend"
+            app:destination="@+id/chnageAgeementextend"/>
+
+        <action android:id="@+id/action_summary_to_toll_charge"
+            app:destination="@+id/toll_charge"/>
+
+        <action android:id="@+id/action_summary_to_traffic_tic"
+            app:destination="@+id/traffic_tic"/>
+
+        <action android:id="@+id/action_summary_to_cancel_agreement"
+            app:destination="@+id/cancel_agreement"/>
 
     </fragment>
 

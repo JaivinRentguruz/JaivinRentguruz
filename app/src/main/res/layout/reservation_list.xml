@@ -35,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/gray_top_curve"
+                android:backgroundTint="@{Color.parseColor(UiColor.AddtionalSecondColour)}"
                 android:weightSum="22">
 
                 <LinearLayout

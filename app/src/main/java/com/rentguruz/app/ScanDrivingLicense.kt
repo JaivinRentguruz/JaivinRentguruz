@@ -26,6 +26,7 @@ import com.rentguruz.app.flexiicar.user.User_Profile
 import com.rentguruz.app.home.Activity_Home
 import com.rentguruz.app.model.base.UserData
 import com.acuant.acuantcamera.camera.AcuantCameraActivity
+import com.acuant.acuantcamera.camera.AcuantCameraOptions
 import com.acuant.acuantcamera.camera.AcuantCameraOptions.DocumentCameraOptionsBuilder
 import com.acuant.acuantcamera.constant.ACUANT_EXTRA_CAMERA_OPTIONS
 import com.acuant.acuantcamera.constant.ACUANT_EXTRA_IMAGE_URL
@@ -47,6 +48,9 @@ import com.acuant.acuantimagepreparation.background.EvaluateImageListener
 import com.acuant.acuantimagepreparation.initializer.ImageProcessorInitializer
 import com.acuant.acuantimagepreparation.model.AcuantImage
 import com.acuant.acuantimagepreparation.model.CroppingData
+import com.rentguruz.app.adapters.Helper
+import com.rentguruz.app.apicall.ApiEndPoint
+import com.rentguruz.app.home.reservation.Activity_Reservation
 import java.io.BufferedInputStream
 import java.io.File
 import java.io.FileInputStream
@@ -86,7 +90,7 @@ class ScanDrivingLicense : AppCompatActivity() {
     private var recentImage: AcuantImage? = null
     private lateinit var livenessSpinner : Spinner
     private lateinit var livenessArrayAdapter: ArrayAdapter<String>
-
+    private val TAG:String? = "SCAN"
     fun cleanUpTransaction() {
         capturedFrontImage?.destroy()
         capturedBackImage?.destroy()
@@ -119,6 +123,7 @@ class ScanDrivingLicense : AppCompatActivity() {
         //vehiclecategory pending from api
         binding.uiColor = UserData.UiColor
         //binding.uiColor(UserData.UiColor)
+        Log.e(TAG, "onCreate: " + "Start" )
         System.out.println("Initializing")
 
         afterScanBackTo = intent.getIntExtra("afterScanBackTo",0)
@@ -153,7 +158,50 @@ class ScanDrivingLicense : AppCompatActivity() {
             //}
         })
 
+       binding.BackToLogin.setOnClickListener {
+           onBackPressed()
+       }
 
+        binding.lblEnterDetails.setOnClickListener {
+            Helper.skipScan = true;
+
+            if (afterScanBackTo == 1) {
+                val driverProfile = Intent(
+                    this@ScanDrivingLicense,
+                    Driver_Profile::class.java
+                )
+                //  driverProfile.putStringArrayListExtra("scanData", scanData)
+                startActivity(driverProfile)
+            } else if (afterScanBackTo == 2) {
+                val driverProfile = Intent(
+                    this@ScanDrivingLicense,
+                    User_Profile::class.java
+                )
+                //driverProfile.putStringArrayListExtra("scanData", scanData)
+                startActivity(driverProfile)
+            } else if (afterScanBackTo == 3) {
+                val driverProfile = Intent(
+                    this@ScanDrivingLicense,
+                    Booking_Activity::class.java
+                )
+                //driverProfile.putStringArrayListExtra("scanData", scanData)
+                startActivity(driverProfile)
+            } else if (afterScanBackTo == 4) {
+                val additionaldriverProfile = Intent(
+                    this@ScanDrivingLicense,
+                    Activity_Home::class.java
+                )
+                //additionaldriverProfile.putStringArrayListExtra("scanData", scanData)
+                startActivity(additionaldriverProfile)
+            }else if (afterScanBackTo == 5) {
+                val additionaldriverProfile = Intent(
+                    this@ScanDrivingLicense,
+                    Activity_Reservation::class.java
+                )
+                //additionaldriverProfile.putStringArrayListExtra("scanData", scanData)
+                startActivity(additionaldriverProfile)
+            }
+        }
     }
 
     private fun initializeAcuantSdk(callback:IAcuantPackageCallback)
@@ -374,7 +422,7 @@ class ScanDrivingLicense : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
+        Log.e(TAG, "onActivityResult: " + requestCode + "  "  + resultCode)
         try {
             if (requestCode == Constants.REQUEST_CAMERA_PHOTO && resultCode == AcuantCameraActivity.RESULT_SUCCESS_CODE) {
 
@@ -487,10 +535,67 @@ class ScanDrivingLicense : AppCompatActivity() {
                     System.out.println("Confirmation 5")
                     showDocumentCaptureCamera()
                 }
-            } else if (requestCode == Constants.REQUEST_RETRY && resultCode == Constants.REQUEST_RETRY) {
+            }
+            else if (requestCode == Constants.REQUEST_RETRY && resultCode == Constants.REQUEST_RETRY) {
                 isRetrying = true
                 showDocumentCaptureCamera()
             }
+            else if (requestCode == 1 && resultCode == 123){
+                if (data!!.getBooleanExtra("Back", false)){
+                    onBackPressed()
+                }
+
+                if (data!!.getBooleanExtra("Manual", false)){
+                    Helper.skipScan = true;
+
+                    if(afterScanBackTo == 1)
+                    {
+                        val driverProfile = Intent(
+                            this@ScanDrivingLicense,
+                            Driver_Profile::class.java
+                        )
+                      //  driverProfile.putStringArrayListExtra("scanData", scanData)
+                        startActivity(driverProfile)
+                    }
+                    else if(afterScanBackTo == 2)
+                    {
+                        val driverProfile = Intent(
+                            this@ScanDrivingLicense,
+                            User_Profile::class.java
+                        )
+                        //driverProfile.putStringArrayListExtra("scanData", scanData)
+                        startActivity(driverProfile)
+                    }
+                    else if(afterScanBackTo == 3)
+                    {
+                        val driverProfile = Intent(
+                            this@ScanDrivingLicense,
+                            Booking_Activity::class.java
+                        )
+                        //driverProfile.putStringArrayListExtra("scanData", scanData)
+                        startActivity(driverProfile)
+                    }
+                    else if(afterScanBackTo == 4)
+                    {
+                        val additionaldriverProfile = Intent(
+                            this@ScanDrivingLicense,
+                            Activity_Home::class.java
+                        )
+                        //additionaldriverProfile.putStringArrayListExtra("scanData", scanData)
+                        startActivity(additionaldriverProfile)
+                    }else if (afterScanBackTo == 5) {
+                        val additionaldriverProfile = Intent(
+                            this@ScanDrivingLicense,
+                            Activity_Reservation::class.java
+                        )
+                        //additionaldriverProfile.putStringArrayListExtra("scanData", scanData)
+                        startActivity(additionaldriverProfile)
+                    }
+                    //onBackPressed()
+                }
+
+            }
+
         }
         catch (e: Exception){
             e.printStackTrace()
@@ -514,6 +619,7 @@ class ScanDrivingLicense : AppCompatActivity() {
 
     //Show Confirmation UI
     fun showConfirmation(isFrontImage: Boolean, isBarcode: Boolean) {
+        Log.e(TAG, "showConfirmation: " + isFrontImage )
         val confirmationIntent = Intent(
                 this@ScanDrivingLicense,
                 ConfirmationActivity::class.java
@@ -528,8 +634,28 @@ class ScanDrivingLicense : AppCompatActivity() {
             confirmationIntent.putExtra("barcode", capturedBarcodeString)
         }
         System.out.println("Confirmation 1")
+        Log.e(TAG, "onCreate: " + "Confirmation " )
+        //showDocumentCaptureCamera()
+       // startActivityForResult(confirmationIntent, Constants.REQUEST_CONFIRMATION)
 
-        startActivityForResult(confirmationIntent, Constants.REQUEST_CONFIRMATION)
+
+        if (ApiEndPoint.firstImage ==null) {
+            showDocumentCaptureCamera()
+            ApiEndPoint.firstImage = image!!
+            capturedFrontImage = recentImage
+            processFrontOfDocument()
+        } else{
+            ApiEndPoint.secondImage = image!!
+            capturedBackImage = recentImage
+            uploadBackImageOfDocument()
+        }
+
+       /* if(isBarcode){
+            capturedFrontImage = recentImage
+            processFrontOfDocument()
+        } else{
+            uploadBackImageOfDocument()
+        }*/
     }
 
     //Show Classification Error
@@ -621,7 +747,7 @@ class ScanDrivingLicense : AppCompatActivity() {
                     if (isBackSideRequired(classification)) {
                         //dialog.dismiss()
                         captureWaitTime = 2
-                        showDocumentCaptureCamera()
+                      //  showDocumentCaptureCamera()
                         /*this@ScanDrivingLicense.runOnUiThread {
                             showAcuDialog(R.string.scan_back_side_id, "Message", DialogInterface.OnClickListener { dialog, _ ->
                                 dialog.dismiss()
@@ -795,6 +921,13 @@ class ScanDrivingLicense : AppCompatActivity() {
                     )
                     additionaldriverProfile.putStringArrayListExtra("scanData", scanData)
                     startActivity(additionaldriverProfile)
+                }else if (afterScanBackTo == 5) {
+                    val driverProfile = Intent(
+                        this@ScanDrivingLicense,
+                        Driver_Profile::class.java
+                    )
+                    driverProfile.putStringArrayListExtra("scanData", scanData)
+                    startActivity(driverProfile)
                 }
                 thread {
                     val frontImage = loadAssureIDImage(frontImageUri, Credential.get())
@@ -927,26 +1060,31 @@ class ScanDrivingLicense : AppCompatActivity() {
                    var useGMS: Boolean = true,*/
 
 
-       /* cameraIntent.putExtra(ACUANT_EXTRA_CAMERA_OPTIONS,
+        cameraIntent.putExtra(ACUANT_EXTRA_CAMERA_OPTIONS,
             AcuantCameraOptions
                 .DocumentCameraOptionsBuilder()
                 .setAutoCapture(autoCaptureEnabled)
-                .build()*/
-
-        cameraIntent.putExtra(ACUANT_EXTRA_CAMERA_OPTIONS,
+                .build())
+        Log.e(TAG, "onCreate: " + "Open Camera" )
+       /* cameraIntent.putExtra(ACUANT_EXTRA_CAMERA_OPTIONS,
                 DocumentCameraOptionsBuilder()
                     .setAllowBox(true)
                         .setAutoCapture(autoCaptureEnabled)
-                    /*.setBracketLengthInHorizontal(75)
+                    *//*.setBracketLengthInHorizontal(75)
                     .setBracketLengthInVertical(125)
                     .setDefaultBracketMarginHeight(160)
                     .setDefaultBracketMarginWidth(160)
-                    .setUseGms(true)*/
+                    .setUseGms(true)*//*
                         .build()
-        )
-        cameraIntent.putExtra(CAMERA_SERVICE,true)
+        )*/
+        //cameraIntent.putExtra(CAMERA_SERVICE,true)
+
+        cameraIntent.putExtra("first",UserData.UiColor.primary)
+        cameraIntent.putExtra("second",UserData.UiColor.secondary)
+
         startActivityForResult(cameraIntent, Constants.REQUEST_CAMERA_PHOTO)
     }
 
 
 }
+

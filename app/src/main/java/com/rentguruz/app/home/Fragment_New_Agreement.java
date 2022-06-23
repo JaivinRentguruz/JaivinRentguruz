@@ -378,6 +378,11 @@ public class Fragment_New_Agreement extends BaseFragment {
                     } else if (binding.test.billingcycle.getSelectedItem().toString() == ThirtyDays.toString()){
                         binding.test.date.setText(getReturndate(reservationSummarry.CheckInDate,30));
                     }*/
+                    int value = 1;
+                    if (binding.test.duration.getText().toString().trim().length() > 0){
+                        value = Integer.parseInt(binding.test.duration.getText().toString());
+                    }
+
 
                     if (binding.test.billingcycle.getSelectedItemPosition() == 1){
                         binding.test.date.setText(getReturndate(reservationSummarry.CheckOutDate,1));
@@ -413,10 +418,33 @@ public class Fragment_New_Agreement extends BaseFragment {
                         bundle.putString("dropdate",DateConvert.DateConverter(DateType.yyyyMMddD, binding.test.date.getText().toString().split(",")[0],DateType.yyyyMMddD));
                         new ApiService2(SummaryCharge, RequestType.POST, SUMMARYCHARGE, BASE_URL_LOGIN, header, reservationSummarry);
 
-                        binding.test.date.setText(DateConvert.DateConverter(DateType.yyyyMMddD, binding.test.date.getText().toString().split(",")[0],DateType.ddMMyyyyS) + "," +Helper.getTimeDisplay(DateType.time,getArguments().getString("droptime")));
+                        binding.test.date.setText(DateConvert.DateConverter(DateType.yyyyMMddD, binding.test.date.getText().toString().split(",")[0],DateType.MMddyyyyS) + "," +Helper.getTimeDisplay(DateType.time,getArguments().getString("droptime")));
                     }
 
 
+                    if (binding.test.billingcycle.getSelectedItemPosition() == 1){
+                       String dd = DateConvert.DateConverter(DateType.yyyyMMddD, getReturndate(reservationSummarry.CheckOutDate, 1 * value).split(",")[0], DateType.MMddyyyyS);
+                      //  Helper.getTimeDisplay(DateType.time, getArguments().getString("droptime"));
+                        // binding.test.date.setText(getReturndate(reservationSummarry.CheckOutDate,1*value) +"," +Helper.getTimeDisplay(DateType.time,getArguments().getString("droptime")));
+                        binding.test.date.setText(dd+"," +Helper.getTimeDisplay(DateType.time,getArguments().getString("droptime")));
+                        //reservationSummarry.ReservationRecurringDetailModel.BillingCycle = 1;
+                    } else if (binding.test.billingcycle.getSelectedItemPosition() == 2){
+                        String dd = DateConvert.DateConverter(DateType.yyyyMMddD, getReturndate(reservationSummarry.CheckOutDate, 6 * value).split(",")[0], DateType.MMddyyyyS);
+                        binding.test.date.setText(dd+"," +Helper.getTimeDisplay(DateType.time,getArguments().getString("droptime")));
+                        //reservationSummarry.ReservationRecurringDetailModel.BillingCycle = 6;
+                    } else if (binding.test.billingcycle.getSelectedItemPosition() == 3){
+                        String dd = DateConvert.DateConverter(DateType.yyyyMMddD, getReturndate(reservationSummarry.CheckOutDate, 14 * value).split(",")[0], DateType.MMddyyyyS);
+                        binding.test.date.setText(dd+"," +Helper.getTimeDisplay(DateType.time,getArguments().getString("droptime")));
+                        //reservationSummarry.ReservationRecurringDetailModel.BillingCycle = 14;
+                    } else if (binding.test.billingcycle.getSelectedItemPosition() == 4){
+                        String dd = DateConvert.DateConverter(DateType.yyyyMMddD, getReturndate(reservationSummarry.CheckOutDate, 28 * value).split(",")[0], DateType.MMddyyyyS);
+                        binding.test.date.setText(dd+"," +Helper.getTimeDisplay(DateType.time,getArguments().getString("droptime")));
+                        //reservationSummarry.ReservationRecurringDetailModel.BillingCycle = 28;
+                    } else if (binding.test.billingcycle.getSelectedItemPosition() == 5){
+                        String dd = DateConvert.DateConverter(DateType.yyyyMMddD, getReturndate(reservationSummarry.CheckOutDate, 30 * value).split(",")[0], DateType.MMddyyyyS);
+                        binding.test.date.setText(dd+"," +Helper.getTimeDisplay(DateType.time,getArguments().getString("droptime")));
+                        //reservationSummarry.ReservationRecurringDetailModel.BillingCycle = 30;
+                    }
 
                 }
 
@@ -435,11 +463,12 @@ public class Fragment_New_Agreement extends BaseFragment {
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     if (binding.test.billingcycle.getSelectedItemPosition() >= 1) {
-                        reservationSummarry.SelectedRecurringRsvBillingCycle = String.valueOf(reservationSummarry.ReservationRecurringDetailModel.BillingCycle);
-                        reservationSummarry.ReservationRecurringDetailModel.Duration = Integer.parseInt(binding.test.duration.getText().toString());
-                        String dataa =getReturndate(reservationSummarry.CheckOutDate,  dayclaculate(Integer.valueOf(s.toString())));
-                        binding.test.date.setText(DateConvert.DateConverter(DateType.yyyyMMddD, dataa,DateType.ddMMyyyyS) + "," +Helper.getTimeDisplay(DateType.time,getArguments().getString("droptime")));
-
+                        if (binding.test.duration.getText().toString().length() != 0) {
+                            reservationSummarry.SelectedRecurringRsvBillingCycle = String.valueOf(reservationSummarry.ReservationRecurringDetailModel.BillingCycle);
+                            reservationSummarry.ReservationRecurringDetailModel.Duration = Integer.parseInt(binding.test.duration.getText().toString());
+                            String dataa = getReturndate(reservationSummarry.CheckOutDate, dayclaculate(Integer.valueOf(s.toString())));
+                            binding.test.date.setText(DateConvert.DateConverter(DateType.yyyyMMddD, dataa, DateType.MMddyyyyS) + "," + Helper.getTimeDisplay(DateType.time, getArguments().getString("droptime")));
+                        }
                         //dayclaculate(reservationSummarry.ReservationRecurringDetailModel.Duration);
                         //reservationSummarry.CheckInDate = DateConvert.DateConverter(DateType.datecalculate, binding.test.date.getText().toString().split(" ")[0],DateType.yyyyMMddD) + "T" +getArguments().getString("pickuptime");
                         //binding.test.carimage.checkInDateTime.setText(Helper.getDateDisplay(DateType.datecalculate,binding.test.date.getText().toString().split(" ")[0]) + " , " + Helper.getTimeDisplay(DateType.time,getArguments().getString("droptime")));
@@ -455,6 +484,11 @@ public class Fragment_New_Agreement extends BaseFragment {
                 }
             });
         }
+
+        userDraw.toggle(binding.leftscreen.customeRate, false);
+        userDraw.toggle(binding.leftscreen.fixrate, true);
+        userDraw.toggle(binding.leftscreen.promocode, true);
+        userDraw.toggle(binding.leftscreen.unlimitedMiles,false );
     }
 
     @Override

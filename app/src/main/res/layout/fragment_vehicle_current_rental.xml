@@ -99,7 +99,7 @@
                                         android:layout_marginLeft="15dp"
                                         android:text="ECONOMY CAR"
                                         android:visibility="visible"
-                                        android:textColor="@color/footerButtonBC"
+                                        android:textColor="@color/regtcolor"
                                         android:textSize="@dimen/edt_font_size"
                                         android:theme="@style/texttheme" />
 

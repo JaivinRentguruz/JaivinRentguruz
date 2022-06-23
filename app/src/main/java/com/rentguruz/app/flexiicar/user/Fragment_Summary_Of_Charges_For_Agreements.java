@@ -710,8 +710,7 @@ public class Fragment_Summary_Of_Charges_For_Agreements extends BaseFragment
         return binding.getRoot().getId();
     }
 
-    OnResponseListener getTaxtDetails = new OnResponseListener()
-    {
+    OnResponseListener getTaxtDetails = new OnResponseListener() {
         @Override
         public void onSuccess(final String response, HashMap<String, String> headers)
         {
@@ -732,6 +731,7 @@ public class Fragment_Summary_Of_Charges_For_Agreements extends BaseFragment
                                 JSONObject resultSet = responseJSON.getJSONObject("Data");
 
                                 reservationSummarry = (ReservationSummarry) loginRes.getModel(resultSet.toString(), ReservationSummarry.class);
+                                UserData.reserversationSummary = reservationSummarry;
                                 bundle.putSerializable("reservationsum",reservationSummarry);
                                 //bundle.putSerializable("reservationD",reservationSummarry);
                               //  binding.CheckInLocName.setText(reservationSummarry.PickUpLocationName);
@@ -1054,6 +1054,7 @@ public class Fragment_Summary_Of_Charges_For_Agreements extends BaseFragment
                         summaryDisplay.getB2BSummarry(bundle,charges, binding.rlSummaryofcharge);
                         pickupdrop.noDays = timeModel.TotalDays;
                         binding.pickup.setPickupdrop(pickupdrop);
+                        bundle.putSerializable("reservationSum", reservationSummarry);
                         OptionMenu optionMenu = new OptionMenu(getActivity());
                         optionMenu.optionmenulist(binding.sucessfullRegi,views,bundle,Fragment_Summary_Of_Charges_For_Agreements.this,header,params);
                         /*for (int i = 0; i <charges.length ; i++) {
@@ -1104,6 +1105,7 @@ public class Fragment_Summary_Of_Charges_For_Agreements extends BaseFragment
             Log.d(TAG, "onError: " + error);
         }
     };
+
     OnResponseListener GetSelfCheckOuts = new OnResponseListener() {
         @Override
         public void onSuccess(String response, HashMap<String, String> headers) {
@@ -1172,8 +1174,7 @@ public class Fragment_Summary_Of_Charges_For_Agreements extends BaseFragment
         }
     };
 
-    OnResponseListener DeleteReservation = new OnResponseListener()
-    {
+    OnResponseListener DeleteReservation = new OnResponseListener() {
         @Override
         public void onSuccess(final String response, HashMap<String, String> headers)
         {

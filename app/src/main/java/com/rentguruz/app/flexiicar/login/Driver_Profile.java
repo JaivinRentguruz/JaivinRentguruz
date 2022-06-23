@@ -85,6 +85,32 @@ public class Driver_Profile extends AppCompatActivity
             navController.setGraph(navGraph);
         }
 */
+        else {
+            if (scanData != null) {
+                preference.stroeScandata(scanData);
+                Log.d("Driver_Profile", "onCreate: " + scanData);
+
+                NavHostFragment hostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                NavController navController = hostFragment.getNavController();
+                NavGraph navGraph = navController.getNavInflater().inflate(R.navigation.nav_graph_driver_registration);
+                navGraph.setStartDestination(R.id.DriverProfile);
+                navController.setGraph(navGraph);
+            }
+        }
+
+        try{
+            if (Helper.skipScan){
+                NavHostFragment hostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                NavController navController = hostFragment.getNavController();
+                NavGraph navGraph = navController.getNavInflater().inflate(R.navigation.nav_graph_driver_registration);
+                navGraph.setStartDestination(R.id.DriverProfile);
+                navController.setGraph(navGraph);
+                Helper.skipScan= false;
+            }
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
 
         header = new DoHeader();
         header.token = "f00498bf-efe8-4e67-a3fa-2e4c5fc6aeea";

@@ -5,9 +5,17 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -15,7 +23,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 import com.rentguruz.app.R;
+
+import androidx.annotation.ColorInt;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.transition.Slide;
@@ -46,6 +58,13 @@ import com.rentguruz.app.model.response.Reservation;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_CUSTOMER;
@@ -430,8 +449,8 @@ public class OptionMenu {
                 }
                else if (finalReservation1.ReservationStatus != 5){
                     NavHostFragment.findNavController(fragments)
-                            //.navigate(R.id.action_SummaryOfChargesForAgreements_to_Self_check_Out,bundle);
-                    .navigate(R.id.action_SummaryOfChargesForAgreements_to_Location_And_Key,bundle);
+                            .navigate(R.id.action_SummaryOfChargesForAgreements_to_Self_check_Out,bundle);
+                   // .navigate(R.id.action_SummaryOfChargesForAgreements_to_Location_And_Key,bundle);
                 }
                 else {
                     NavHostFragment.findNavController(fragments)
@@ -586,7 +605,7 @@ public class OptionMenu {
            /* }*/
         });
 
-        setText(getText(view,R.id.paymentprocess), UserData.loginResponse.CompanyLabel.Payment + " " +UserData.loginResponse.CompanyLabel.Agreement);
+       /* setText(getText(view,R.id.paymentprocess), UserData.loginResponse.CompanyLabel.Payment + " " +UserData.loginResponse.CompanyLabel.Agreement);
         setText(getText(view,R.id.deleteagreement),  "Delete " +UserData.loginResponse.CompanyLabel.Agreement);
         setText(getText(view,R.id.editAgreement),  "Edit " +UserData.loginResponse.CompanyLabel.Agreement);
         setText(getText(view,R.id.printAgreement),  "Print " +UserData.loginResponse.CompanyLabel.Agreement);
@@ -594,7 +613,17 @@ public class OptionMenu {
         setText(getText(view,R.id.changevehicle),  "Change " +UserData.loginResponse.CompanyLabel.Vehicle);
         setText(getText(view,R.id.extendagreement),  "Extend " +UserData.loginResponse.CompanyLabel.Agreement);
         setText(getText(view,R.id.tollcharge),  "Toll " +UserData.loginResponse.CompanyLabel.Charge);
-        setText(getText(view,R.id.cancelAgreement),  "Cancel " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.cancelAgreement),  "Cancel " +UserData.loginResponse.CompanyLabel.Agreement);*/
+
+        setText(getText(view,R.id.paymentprocess), UserData.loginResponse.CompanyLabel.Payment );
+        setText(getText(view,R.id.deleteagreement),  "Delete");
+        setText(getText(view,R.id.editAgreement),  "Edit");
+        setText(getText(view,R.id.printAgreement),  "Print");
+        setText(getText(view,R.id.email_agreement),  "Email");
+        setText(getText(view,R.id.changevehicle),   "Change " +UserData.loginResponse.CompanyLabel.Vehicle);
+        setText(getText(view,R.id.extendagreement),  "Extend " + UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.tollcharge),  "Toll" +UserData.loginResponse.CompanyLabel.Charge);
+        setText(getText(view,R.id.cancelAgreement),  "Cancel");
 
         if (reservation.ReservationStatus == ReservationStatuss.Draft.inte || reservation.ReservationStatus == ReservationStatuss.Confirmed.inte){
             setText(getText(view,R.id.readycheckout), "Ready For " + UserData.loginResponse.CompanyLabel.CheckOut);
@@ -1352,6 +1381,7 @@ public class OptionMenu {
                             vehiclecatagorylistBinding.getRoot().setId(200 + i);
                             vehiclecatagorylistBinding.getRoot().setLayoutParams(subparams);
                             vehiclecatagorylistBinding.suspend.setText(reservationVehicleType[i].Name +  "(" + reservationVehicleType[i].TotalVehicle + ")");
+                            vehiclecatagorylistBinding.suspend.setTextColor(Color.parseColor(UserData.UiColor.secondary));
                             int finalI = i;
                             vehiclecatagorylistBinding.suspend.setOnClickListener(v -> {
                                 bundle.putInt("staus",0);
@@ -1450,5 +1480,192 @@ public class OptionMenu {
             NavHostFragment.findNavController(fragment).navigate(R.id.same,bundle);
         });
 
+    }
+
+
+
+    public void uploadImage(ImageView imageView, Bitmap bitmap){
+       /* Paint paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setStyle(Paint.Style.FILL);
+        Canvas canvas = new Canvas();
+        canvas.drawPaint(paint);
+
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(20);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        String currentDateandTime = sdf.format(new Date());
+        canvas.drawText(currentDateandTime , 10, 25, paint);*/
+
+        Bitmap changeimg = decodeFile(BitMapToString(bitmap));
+
+        imageView.setImageBitmap(changeimg);
+    }
+
+    public String BitMapToString(Bitmap bitmap){
+        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
+        byte [] b=baos.toByteArray();
+        String temp= Base64.encodeToString(b, Base64.DEFAULT);
+        return temp;
+    }
+
+    public Bitmap decodeFile(String part_image){
+        Bitmap bitmap =null;
+        BitmapFactory.Options op = new BitmapFactory.Options();
+        op.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        bitmap = BitmapFactory.decodeFile(part_image,op);
+        bitmap = bitmap.copy(op.inPreferredConfig, true);
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setTextSize(10);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(Color.RED);
+        canvas.drawText("17-06-2022",bitmap.getWidth()-200,30,paint);
+        // canvas.drawText("Rajkot", 10, bitmap.getWidth()-100, paint);
+
+        Canvas canvas2 = new Canvas(bitmap);
+        Paint paint2 = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint2.setTextSize(10);
+        paint2.setStyle(Paint.Style.FILL);
+        paint2.setColor(Color.RED);
+        canvas2.drawText("useraddress", 10, bitmap.getHeight()-30,paint2);
+
+
+        return bitmap;
+    }
+
+    public void storeImage(Bitmap image) {
+        File pictureFile = getOutputMediaFile();
+        if (pictureFile == null) {
+            Log.e("TAG",
+                    "Error creating media file, check storage permissions: ");// e.getMessage());
+            return;
+        }
+        try {
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            image.compress(Bitmap.CompressFormat.PNG, 90, fos);
+            fos.close();
+          //  imgUpload(pictureFile);
+        } catch (FileNotFoundException e) {
+            Log.e("TAG", "File not found: " + e.getMessage());
+        } catch (IOException e) {
+            Log.e("TAG", "Error accessing file: " + e.getMessage());
+        }
+    }
+
+    public   File getOutputMediaFile(){
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
+                +"/Android/data/"
+                + activity.getApplicationContext().getPackageName()
+                + "/Files");
+
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
+
+        // Create the storage directory if it does not exist
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                return null;
+            }
+        }
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
+        File mediaFile;
+        String mImageName="MI_"+ timeStamp  +".jpg";
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
+
+        return mediaFile;
+    }
+
+    public void imagedtails(ImageView imageView, Bitmap bitmap){
+        storeImage(bitmap, "myfile");
+        File pictureFile = getOutputMediaFile("myfile");
+       // Bitmap image = null;
+        try {
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.close();
+            BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+            Bitmap bitmaps = BitmapFactory.decodeFile(pictureFile.getAbsolutePath(),bmOptions);
+            bitmaps  = Bitmap.createScaledBitmap(bitmap,imageView.getWidth(),imageView.getHeight(),true);
+            storeImage(bitmaps, "myfile");
+            File pictureFile2 = getOutputMediaFile("myfile");
+            imageView.setImageBitmap(bitmaps);
+
+            BitmapFactory.Options op = new BitmapFactory.Options();
+            op.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            bitmaps = BitmapFactory.decodeFile(pictureFile2.getPath(),op);
+            bitmaps = bitmaps.copy(op.inPreferredConfig, true);
+            Canvas canvas = new Canvas(bitmaps);
+            Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            paint.setTextSize(40);
+            paint.setStyle(Paint.Style.FILL);
+            paint.setColor(Color.RED);
+            canvas.drawText("17-06-2022",bitmaps.getWidth()-200,50,paint);
+            // canvas.drawText("Rajkot", 10, bitmap.getWidth()-100, paint);
+
+            Canvas canvas2 = new Canvas(bitmaps);
+            Paint paint2 = new Paint(Paint.ANTI_ALIAS_FLAG);
+            paint2.setTextSize(40);
+            paint2.setStyle(Paint.Style.FILL);
+            paint2.setColor(Color.RED);
+            canvas2.drawText("useraddress", 10, bitmaps.getHeight()-30,paint2);
+            imageView.setImageBitmap(bitmaps);
+
+            //  imgUpload(pictureFile);
+        } catch (FileNotFoundException e) {
+            Log.e("TAG", "File not found: " + e.getMessage());
+        } catch (IOException e) {
+            Log.e("TAG", "Error accessing file: " + e.getMessage());
+        }
+    }
+
+    public void storeImage(Bitmap image, String filename) {
+        File pictureFile = getOutputMediaFile(filename);
+        if (pictureFile == null) {
+            Log.e("TAG",
+                    "Error creating media file, check storage permissions: ");// e.getMessage());
+            return;
+        }
+        try {
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            image.compress(Bitmap.CompressFormat.PNG, 90, fos);
+            fos.close();
+            //  imgUpload(pictureFile);
+        } catch (FileNotFoundException e) {
+            Log.e("TAG", "File not found: " + e.getMessage());
+        } catch (IOException e) {
+            Log.e("TAG", "Error accessing file: " + e.getMessage());
+        }
+    }
+
+    public   File getOutputMediaFile(String filename){
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
+                +"/Android/data/"
+                + activity.getApplicationContext().getPackageName()
+                + "/Files");
+
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
+
+        // Create the storage directory if it does not exist
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                return null;
+            }
+        }
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
+        File mediaFile;
+        String mImageName="MI_"+ timeStamp  +".jpg";
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator + filename);
+
+        return mediaFile;
     }
 }

@@ -17,13 +17,13 @@ import com.rentguruz.app.ScanDrivingLicense;
 import com.rentguruz.app.adapters.Helper;
 import com.rentguruz.app.base.BaseFragment;
 import com.rentguruz.app.databinding.FragmentCreateProfileBinding;
+import com.rentguruz.app.flexiicar.user.User_Profile;
 import com.rentguruz.app.home.more.Activity_MoreTab;
 import com.rentguruz.app.model.DoRegistration;
 import com.rentguruz.app.R;
 public class Fragment_Create_Profile  extends BaseFragment
 {
     public static DoRegistration registration;
-    String TAG = "JVM";
     FragmentCreateProfileBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -41,6 +41,22 @@ public class Fragment_Create_Profile  extends BaseFragment
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+        try {
+            ((Activity_MoreTab)getActivity()).BottomnavInVisible();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            if (Helper.skipScan){
+                NavHostFragment.findNavController(Fragment_Create_Profile.this)
+                        .navigate(R.id.action_CreateProfile_to_DriverProfile);
+            }
+           // Helper.skipScan = false;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         LinearLayout lbllogin = view.findViewById(R.id.lbl_enter_details);
 
         ImageView BackToLogin=view.findViewById(R.id.BackToLogin);
@@ -54,20 +70,22 @@ public class Fragment_Create_Profile  extends BaseFragment
             {
                /* Intent i = new Intent(getActivity(), Activity_MoreTab.class);
                 startActivity(i);*/
-
-                if (Helper.RegistrationD){
-                    Helper.RegistrationD = false;
-                    Intent i = new Intent(getActivity(), Login.class);
-                    startActivity(i);
-                    getActivity().finish();
+                if (Helper.rsvcustomerscan){
+                    NavHostFragment.findNavController(Fragment_Create_Profile.this).popBackStack();
                 } else {
-                    Helper.isRegistrationDone = true;
-                    Intent i = new Intent(getActivity(), Activity_MoreTab.class);
-                    startActivity(i);
-                    getActivity().finish();
 
+                    if (Helper.RegistrationD) {
+                        Helper.RegistrationD = false;
+                        Intent i = new Intent(getActivity(), Login.class);
+                        startActivity(i);
+                        getActivity().finish();
+                    } else {
+                        Helper.isRegistrationDone = true;
+                        Intent i = new Intent(getActivity(), Activity_MoreTab.class);
+                        startActivity(i);
+                        getActivity().finish();
+                    }
                 }
-
               //  NavHostFragment.findNavController(Fragment_Create_Profile.this).popBackStack();
             }
         });
@@ -138,7 +156,7 @@ public class Fragment_Create_Profile  extends BaseFragment
         scanimglayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                scanimglayout.setVisibility(View.GONE);
+                //scanimglayout.setVisibility(View.GONE);
                 //mrzRectangleView.setVisibility(View.VISIBLE);
                 //mrzRectangleView.setViewFromState(cameraState);
                /* Intent cameraIntent = new Intent(getActivity(), AcuantCameraActivity.class);
@@ -147,7 +165,11 @@ public class Fragment_Create_Profile  extends BaseFragment
                                 .build());*/
 
                 Intent i = new Intent(getActivity(), ScanDrivingLicense.class);
-                i.putExtra("afterScanBackTo", 1);
+                if (Helper.rsvcustomerscan){
+                    i.putExtra("afterScanBackTo", 5);
+                } else {
+                    i.putExtra("afterScanBackTo", 1);
+                }
                 startActivity(i);
 
              /*   val digitsToShow: Int = 2,

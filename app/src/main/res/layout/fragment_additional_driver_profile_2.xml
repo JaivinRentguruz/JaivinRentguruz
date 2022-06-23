@@ -45,7 +45,8 @@
                     android:layout_width="40dp"
                     android:layout_height="6dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/progress_rectangle_selected"/>
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                    android:background="@drawable/progress_rectangle_selected"/>
 
                 <ImageView
                     android:layout_width="40dp"
@@ -325,6 +326,7 @@
                     style="@style/header2"/>
 
                 <RelativeLayout
+                    android:id="@+id/test"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
                     style="@style/relativeImage">
@@ -339,6 +341,7 @@
                     android:text="@string/upload_image_back"
                     style="@style/header2"/>
                 <RelativeLayout
+                    android:id="@+id/test2"
                     style="@style/relativeImage"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
@@ -361,10 +364,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottommenuheight"
             android:background="@color/bottommenucolor"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtlogin"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:layout_gravity="center"
                 android:paddingTop="10dp"
                 android:paddingBottom="14dp"

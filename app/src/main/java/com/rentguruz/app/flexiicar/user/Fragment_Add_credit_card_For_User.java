@@ -126,10 +126,11 @@ public class Fragment_Add_credit_card_For_User extends BaseFragment
         creditCardModel.CreditCardFor=UserData.loginResponse.User.UserFor;
         creditCardModel.CreditCardType = 3;
         creditCardModel.IsDefault = true;
-        binding.DefaultCard.setChecked(true);
+
         creditCardModel.AddressesModel = UserData.loginResponse.LogedInCustomer.AddressesModel;
         creditCardModel.NameOn = UserData.loginResponse.LogedInCustomer.FullName;
-
+        userDraw.checkbtn(binding.DefaultCard);
+        binding.DefaultCard.setChecked(true);
       /*  try {
             if (UserData.loginResponse.User.UserFor == 0){
 

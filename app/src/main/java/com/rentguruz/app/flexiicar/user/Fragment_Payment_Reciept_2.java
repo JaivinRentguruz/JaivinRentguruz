@@ -22,6 +22,7 @@ import com.rentguruz.app.apicall.ApiService;
 import com.rentguruz.app.apicall.OnResponseListener;
 import com.rentguruz.app.apicall.RequestType;
 import com.rentguruz.app.base.BaseFragment;
+import com.rentguruz.app.databinding.FragmentPaymentReceipt2Binding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,17 +49,20 @@ public class Fragment_Payment_Reciept_2 extends BaseFragment
     PDFView web_view;
     public String id = "";
     TextView txt_CardNo,txt_CardExDate;
-    Handler handler = new Handler();
+    //Handler handler = new Handler();
     LinearLayout lblPay;
     JSONObject creditCardJSON;
     String transactionId;
     LinearLayout llForUnpaid,llforPaid;
+    FragmentPaymentReceipt2Binding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_payment_receipt_2, container, false);
+        //return inflater.inflate(R.layout.fragment_payment_receipt_2, container, false);
+        binding = FragmentPaymentReceipt2Binding.inflate(inflater,container,false);
+        return  binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState)
@@ -67,9 +71,9 @@ public class Fragment_Payment_Reciept_2 extends BaseFragment
             super.onViewCreated(view, savedInstanceState);
 
             getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
+            binding.setUiColor(UiColor);
             Payment_Total = view.findViewById(R.id.Payment_Total);
-            backarrow = view.findViewById(R.id.back_to_payment);
+            backarrow = view.findViewById(R.id.back);
             web_view = view.findViewById(R.id.webview);
             txt_CardNo = view.findViewById(R.id.txt_CardNo);
             txt_CardExDate = view.findViewById(R.id.txt_CardExDate);
@@ -80,7 +84,8 @@ public class Fragment_Payment_Reciept_2 extends BaseFragment
             SharedPreferences sp = getActivity().getSharedPreferences("FlexiiCar", MODE_PRIVATE);
             serverpath = sp.getString("serverPath", "");
             id = sp.getString(getString(R.string.id), "");
-
+            binding.header.screenHeader.setText("Payment Receipt");
+            binding.header.discard.setVisibility(View.GONE);
            /* PaymentBundle = getArguments().getBundle("PaymentBundle");
             System.out.println(PaymentBundle);
 

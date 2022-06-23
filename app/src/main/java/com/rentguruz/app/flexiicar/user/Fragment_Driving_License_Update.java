@@ -1,5 +1,6 @@
 package com.rentguruz.app.flexiicar.user;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -18,6 +20,10 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+
+import com.androidnetworking.AndroidNetworking;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.rentguruz.app.R;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -26,6 +32,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.rentguruz.app.adapters.Helper;
 import com.rentguruz.app.adapters.ImageOptionMenu;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -33,6 +40,7 @@ import com.rentguruz.app.ScanDrivingLicense;
 import com.rentguruz.app.adapters.CustomBindingAdapter;
 import com.rentguruz.app.adapters.CustomToast;
 import com.rentguruz.app.adapters.CustomeDialog;
+import com.rentguruz.app.adapters.OptionMenu;
 import com.rentguruz.app.apicall.ApiService;
 import com.rentguruz.app.apicall.ApiService2;
 import com.rentguruz.app.apicall.OnResponseListener;
@@ -40,6 +48,7 @@ import com.rentguruz.app.apicall.RequestType;
 import com.rentguruz.app.base.BaseFragment;
 import com.rentguruz.app.databinding.FragmentDrivingLicenseAddUpdateBinding;
 import com.rentguruz.app.model.DrivingLicenceModel;
+import com.rentguruz.app.model.parameter.AttachmentType;
 import com.rentguruz.app.model.response.UpdateDL;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -50,10 +59,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -63,6 +77,7 @@ import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_LOGIN;
 import static com.rentguruz.app.apicall.ApiEndPoint.GETSINGLELICENCE;
 import static com.rentguruz.app.apicall.ApiEndPoint.UPDATEDEFAULTDRIVER;
 import static com.rentguruz.app.apicall.ApiEndPoint.UPDATELICENCE;
+import static com.rentguruz.app.apicall.ApiEndPoint.UPLOADIMAGE;
 
 public class Fragment_Driving_License_Update extends BaseFragment
 {
@@ -87,6 +102,7 @@ public class Fragment_Driving_License_Update extends BaseFragment
     ImageOptionMenu optionMenu;
     ActivityResultLauncher<Intent> activityResultLauncher;
     ImageView img1, img2,img3,img4;
+    String storeimagepath;
     public static void initImageLoader(Context context)
     {
         // This configuration tuning is custom. You can tune every option, you may tune some of them,
@@ -188,6 +204,13 @@ public class Fragment_Driving_License_Update extends BaseFragment
                 binding.edtIssuedate.setText(dialog.dateFullFormattt(updateDL.DrivingLicenceModel.IssueDate));
                 binding.CusDateofBirth.setText(dialog.dateFullFormattt(updateDL.DrivingLicenceModel.DOB));
                 fullProgressbar.hide();
+                if (updateDL.DrivingLicenceModel.DrivingLicenseFront.AttachmentPath.length() != 0) {
+                    CustomBindingAdapter.loadImage(binding.imgDLFronside, updateDL.DrivingLicenceModel.DrivingLicenseFront.AttachmentPath);
+                }
+                if (updateDL.DrivingLicenceModel.DrivingLicenseBack.AttachmentPath.length() != 0) {
+                    CustomBindingAdapter.loadImage(binding.imgDLBackside, updateDL.DrivingLicenceModel.DrivingLicenseBack.AttachmentPath);
+                }
+
             } else {
 
                 JSONObject obj = new JSONObject();
@@ -299,6 +322,11 @@ public class Fragment_Driving_License_Update extends BaseFragment
                                     Glide.with(binding.imgDLFronside).clear(binding.imgDLFronside);
                                     binding.imgDLFronside.setImageBitmap(bitmap);
                                     Image1 = bitmap;
+                                   // String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Title", null);
+                                    OptionMenu menu = new OptionMenu(getActivity());
+                                    menu.imagedtails(binding.imgDLFronside,bitmap);
+
+                                   // menu.uploadImage(binding.imgDLFronside, bitmap);
                                 }
                                 if (imgId.equals("3")) {
                                     Glide.with(binding.imgDLBackside).clear(binding.imgDLBackside);
@@ -321,6 +349,7 @@ public class Fragment_Driving_License_Update extends BaseFragment
         binding.edtExDate.setOnClickListener(this);
         binding.header.discard.setOnClickListener(this);
         binding.CusDateofBirth.setOnClickListener(this);
+
     }
 
     @Override
@@ -347,6 +376,18 @@ public class Fragment_Driving_License_Update extends BaseFragment
                         /*NavHostFragment.findNavController(Fragment_Driving_License_Update.this)
                                 .navigate(R.id.action_DrivingLicense_Update_to_DrivingLicense_Details);*/
                         NavHostFragment.findNavController(Fragment_Driving_License_Update.this).popBackStack();
+
+                        try {
+                            storeImage(Image1, true);
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            storeImage(Image2, false);
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
                     }
 
                     else
@@ -594,6 +635,117 @@ public class Fragment_Driving_License_Update extends BaseFragment
         }
     }
 
+    private  File getOutputMediaFile(Boolean value){
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
+                + "/Android/data/"
+                + getContext().getPackageName()
+                + "/Files");
+
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
+
+        // Create the storage directory if it does not exist
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                return null;
+            }
+        }
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
+        File mediaFile;
+        String mImageName;
+        if (value) {
+            mImageName  = "MI_" + timeStamp + 1 + ".jpg";
+        } else {
+            mImageName  = "MI_" + timeStamp + 2 + ".jpg";
+        }
+        storeimagepath = mImageName;
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
+        return mediaFile;
+    }
+
+    private void storeImage(Bitmap image, Boolean value) {
+        File pictureFile = getOutputMediaFile(value);
+        if (pictureFile == null) {
+            Log.e("TAG",
+                    "Error creating media file, check storage permissions: ");// e.getMessage());
+            return;
+        }
+        try {
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            image.compress(Bitmap.CompressFormat.PNG, 90, fos);
+            fos.close();
+            imgUpload(pictureFile,value);
+        } catch (FileNotFoundException e) {
+            Log.e("TAG", "File not found: " + e.getMessage());
+        } catch (IOException e) {
+            Log.e("TAG", "Error accessing file: " + e.getMessage());
+        }
+    }
+
+    public void imgUpload(File file, Boolean value){
+        HashMap<String, String> headers = new HashMap<>();
+        headers.put("FileUploadMasterId", String.valueOf(updateDL.DrivingLicenceModel.Id));
+        Log.e(TAG, "imgUpload: " + updateDL.DrivingLicenceModel.Id );
+        headers.put("Id", String.valueOf(updateDL.DrivingLicenceModel.Id));
+        // header.put("IsActive","true");
+        headers.put("CompanyId", String.valueOf(Helper.id));
+        headers.put("exptime",header.exptime);
+        headers.put("islogin",header.islogin);
+        headers.put("token",header.token);
+        headers.put("mut",header.mut);
+        headers.put("ut",header.ut);
+        if (value) {
+            headers.put("fileUploadType", String.valueOf(AttachmentType.DrivingLicenseFront));
+        } else {
+            headers.put("fileUploadType", String.valueOf(AttachmentType.DrivingLicenseBack));
+        }
+        AndroidNetworking.initialize(getActivity());
+        ApiService apiService = new ApiService();
+        apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE,headers, file);
+    }
+
+    OnResponseListener uploadImage = new OnResponseListener() {
+        @Override
+        public void onSuccess(String response, HashMap<String, String> headers) {
+            Log.d("TAG", "onSuccess: " + response);
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        JSONObject responseJSON = new JSONObject(response);
+                        Boolean status = responseJSON.getBoolean("Status");
+
+                        if (status)
+                        {
+                            JSONArray data = responseJSON.getJSONArray("Data");
+
+                          /*  NavHostFragment.findNavController(Fragment_Driver_Profile_4.this)
+                                    .navigate(R.id.action_DriverProfile4_to_Complete_Register,Registration);*/
+
+
+                        }
+                        else
+                        {
+                            String msg = responseJSON.getString("Message");
+                            CustomToast.showToast(getActivity(),msg,1);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void onError(String error) {
+            Log.d("TAG", "onError: " + error);
+        }
+    };
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {

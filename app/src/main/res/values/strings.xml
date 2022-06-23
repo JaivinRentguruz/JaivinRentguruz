@@ -343,7 +343,7 @@
     <string name="change_vehicle">Change Vehicle</string>
     <string name="extend_agreement">Extend Agreement</string>
     <string name="tall_charges">Toll Charges</string>
-    <string name="traffic_tick">Trafic Tickets</string>
+    <string name="traffic_tick">Traffic Tickets</string>
     <string name="nodays">Total \nNo of Days</string>
     <string name="mileage_included">Mileage \nIncluded</string>
     <string name="total_amount">Total \nAmount</string>
@@ -352,6 +352,7 @@
     <string name="transationdate">Transation Date</string>
     <string name="icon">icon</string>
     <string name="logo">logo</string>
+    <string name="cardimg">cardimg</string>
     <string name="splashimage">splashimage</string>
     <string name="homescreenimage">HomeScreenImage</string>
     <string name="update">Update</string>

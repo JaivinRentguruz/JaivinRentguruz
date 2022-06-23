@@ -30,6 +30,7 @@ import com.rentguruz.app.model.base.UserData;
 import com.rentguruz.app.model.companyModel;
 import com.rentguruz.app.model.display.Appcolor;
 import com.rentguruz.app.model.display.ThemeColors;
+import com.rentguruz.app.model.parameter.AttachmentType;
 import com.rentguruz.app.model.response.CompanyLabel;
 import com.rentguruz.app.model.response.LoginResponse;
 import com.androidnetworking.AndroidNetworking;
@@ -40,6 +41,8 @@ import com.rentguruz.app.model.DoHeader;
 import com.rentguruz.app.model.parameter.CommonParams;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
 
 
 abstract public class BaseFragment extends Fragment implements View.OnClickListener {
@@ -96,6 +99,11 @@ abstract public class BaseFragment extends Fragment implements View.OnClickListe
         UiColor.additionalcolor = appcolor.AdditionalColor;
         UiColor.primaryfont = appcolor.ThirdColor;
         UiColor.secondaryfont = appcolor.SecondColor;
+        UiColor.AddtionalSecondColour = appcolor.AddtionalSecondColour;
+        UiColor.Squarebox1 = appcolor.Squarebox1;
+        UiColor.Squarebox2 = appcolor.Squarebox2;
+        UiColor.Squarebox3 = appcolor.Squarebox3;
+        UiColor.Squarebox4 = appcolor.Squarebox4;
 
         UserData.UiColor = UiColor;
         Log.e(TAG, "onViewCreated: " + appcolor.AdditionalColor );
@@ -167,6 +175,8 @@ abstract public class BaseFragment extends Fragment implements View.OnClickListe
             CustomBindingAdapter.loadImage(logo,loginRes.getData(getResources().getString(R.string.logo)));
             ImageView homeImage = view.findViewById(R.id.homeImage);
             CustomBindingAdapter.loadImage(homeImage,loginRes.getData(getResources().getString(R.string.homescreenimage)));
+            ImageView cardss = view.findViewById(R.id.cardss);
+            CustomBindingAdapter.loadImage(cardss,loginRes.getData(getResources().getString(R.string.cardimg)));
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -192,5 +202,20 @@ abstract public class BaseFragment extends Fragment implements View.OnClickListe
         subinflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    public HashMap<String, String> getHeaderModel(int id, int uploadtype){
+        HashMap<String, String> headers = new HashMap<>();
+        headers.put("FileUploadMasterId", String.valueOf(id));
+        headers.put("Id",  String.valueOf(id));
+        headers.put("IsFileExist", "true");
+        // header.put("IsActive","true");
+        headers.put("CompanyId", String.valueOf(Helper.id));
+        headers.put("exptime",header.exptime);
+        headers.put("islogin",header.islogin);
+        headers.put("token",header.token);
+        headers.put("mut",header.mut);
+        headers.put("ut",header.ut);
+        headers.put("fileUploadType", String.valueOf(uploadtype));
 
+        return headers;
+    }
 }

@@ -81,6 +81,8 @@ public class Fragment_Additional_Driver_Profile2 extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         binding.setUiColor(UiColor);
+        binding.test.setBackground(userDraw.getImageUpload());
+        binding.test2.setBackground(userDraw.getImageUpload());
         optionMenu = new ImageOptionMenu(getActivity());
         binding.lblnextscreen.setOnClickListener(this);
         binding.edtExpiryDateDL.setOnClickListener(this);

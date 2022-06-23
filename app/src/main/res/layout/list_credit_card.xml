@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/creditcard_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -30,10 +30,17 @@
             android:background="@drawable/curve_box_white_2"
             android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/cardss"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/onlinepayment"
+                android:scaleType="fitXY"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/onlinepayment"
+
                 android:orientation="vertical">
 
             <LinearLayout
@@ -149,6 +156,6 @@
             </LinearLayout>
 
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

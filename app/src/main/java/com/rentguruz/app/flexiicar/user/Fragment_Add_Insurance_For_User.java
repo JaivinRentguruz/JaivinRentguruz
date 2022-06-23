@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -17,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+
+import com.androidnetworking.AndroidNetworking;
 import com.rentguruz.app.R;
 
 import androidx.activity.result.ActivityResult;
@@ -41,20 +44,27 @@ import com.rentguruz.app.apicall.RequestType;
 import com.rentguruz.app.base.BaseFragment;
 import com.rentguruz.app.databinding.FragmentAddInsuranceForUserBinding;
 import com.rentguruz.app.model.InsuranceModel;
+import com.rentguruz.app.model.UpdateInsurance;
 import com.rentguruz.app.model.base.UserData;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 import static com.rentguruz.app.apicall.ApiEndPoint.ADDINSURANCEDETAIL;
 import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_LOGIN;
 import static com.rentguruz.app.apicall.ApiEndPoint.INSURANCECOMPANYLIST;
+import static com.rentguruz.app.apicall.ApiEndPoint.UPLOADIMAGE;
 
 public class Fragment_Add_Insurance_For_User extends BaseFragment {
 
@@ -76,7 +86,7 @@ public class Fragment_Add_Insurance_For_User extends BaseFragment {
     HashMap<String, Integer> getInsurance = new HashMap<>();
     CustomeDialog dialog;
     FragmentAddInsuranceForUserBinding binding;
-
+    Bitmap image;
     //private DoHeader header;
     private InsuranceModel insuranceModel;
     ImageOptionMenu optionMenu;
@@ -268,6 +278,7 @@ public class Fragment_Add_Insurance_For_User extends BaseFragment {
 
                                 binding.image.setImageBitmap(bitmap);
                                 // Image2 = bitmap;
+                                image = bitmap;
                             }
                         }
                     }
@@ -313,13 +324,13 @@ public class Fragment_Add_Insurance_For_User extends BaseFragment {
 
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 temp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-                byte[] image = stream.toByteArray();
-                String img_str_base64 = Base64.encodeToString(image, Base64.NO_WRAP);
+                byte[] images = stream.toByteArray();
+                String img_str_base64 = Base64.encodeToString(images, Base64.NO_WRAP);
 
                 ImgObj.put("fileBase64", img_str_base64);
                 ImgObj.put("Doc_For", 8);
                 binding.image.setImageBitmap(bitmap);
-
+                image = bitmap;
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -356,6 +367,76 @@ public class Fragment_Add_Insurance_For_User extends BaseFragment {
         }
         return inSampleSize;
     }
+
+    private void storeImage(Bitmap image) {
+        File pictureFile = getOutputMediaFile();
+        if (pictureFile == null) {
+            Log.e("TAG",
+                    "Error creating media file, check storage permissions: ");// e.getMessage());
+            return;
+        }
+        try {
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            image.compress(Bitmap.CompressFormat.PNG, 90, fos);
+            fos.close();
+            imgUpload(pictureFile);
+        } catch (FileNotFoundException e) {
+            Log.e("TAG", "File not found: " + e.getMessage());
+        } catch (IOException e) {
+            Log.e("TAG", "Error accessing file: " + e.getMessage());
+        }
+    }
+
+    /** Create a File for saving an image or video */
+    private  File getOutputMediaFile(){
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
+                + "/Android/data/"
+                + getContext().getPackageName()
+                + "/Files");
+
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
+
+        // Create the storage directory if it does not exist
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                return null;
+            }
+        }
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
+        File mediaFile;
+        String mImageName="MI_"+ timeStamp + "count" +".jpg";
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
+        return mediaFile;
+    }
+
+    public void imgUpload(File file){
+       /* HashMap<String, String> header = new HashMap<>();
+        header.put("FileUploadMasterId", String.valueOf(registration.DrivingLicenceModel.Id));
+        header.put("Id", String.valueOf(registration.DrivingLicenceModel.Id));
+        header.put("IsActive","true");
+        header.put("CompanyId", String.valueOf(Helper.id));*/
+
+        AndroidNetworking.initialize(getActivity());
+        ApiService apiService = new ApiService();
+        //apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE, header, file);
+        apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE, getHeaderModel(insuranceModel.Id,2), file);
+    }
+
+    OnResponseListener uploadImage = new OnResponseListener() {
+        @Override
+        public void onSuccess(String response, HashMap<String, String> headers) {
+            Log.d("TAG", "onSuccess: " + response);
+        }
+
+        @Override
+        public void onError(String error) {
+            Log.d("TAG", "onError: " + error);
+        }
+    };
 
     @Override
     public void onClick(View v) {
@@ -438,6 +519,10 @@ public class Fragment_Add_Insurance_For_User extends BaseFragment {
             CustomToast.showToast(getActivity(), "Please Enter Insurance Coverlimit", 1);
         else if(binding.edtDeduct.getText().toString().equals(""))
             CustomToast.showToast(getActivity(), "Please Enter Insurance Deductible", 1);
+        else if(Integer.valueOf(binding.edtCoverlimit.getText().toString()) == 0)
+            CustomToast.showToast(getActivity(), "Please Enter Insurance Coverlimit Greater Than 0", 1);
+        else if(Integer.valueOf(binding.edtDeduct.getText().toString()) == 0)
+            CustomToast.showToast(getActivity(), "Please Enter Insurance Deductible Greater Than 0", 1);
         else {
             value = true;
         }
@@ -504,6 +589,9 @@ public class Fragment_Add_Insurance_For_User extends BaseFragment {
                          /*   NavHostFragment.findNavController(Fragment_Add_Insurance_For_User.this)
                                     .navigate(R.id.action_AddInsurancePolicy_to_InsurancePolicyList);*/
                             NavHostFragment.findNavController(Fragment_Add_Insurance_For_User.this).popBackStack();
+                            JSONObject resultSet = responseJSON.getJSONObject("Data");
+                            insuranceModel = loginRes.getModel(resultSet.toString(), InsuranceModel.class);
+                            storeImage(image);
                         } else {
                             CustomToast.showToast(getActivity(), responseJSON.getString("Message"), 1);
                         }

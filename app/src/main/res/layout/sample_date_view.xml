@@ -13,6 +13,7 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical">
     
  <!--   <CalendarView
@@ -40,6 +41,21 @@
 
 
     <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:calendarTextColor="#A64242"
+        android:datePickerMode="calendar"
+        android:calendarViewShown="true"
+        android:dayOfWeekBackground="#C85757"
+        android:headerBackground="@drawable/aquamarine_bc"
+        android:textColorPrimaryInverse="@color/red"
+        android:textColorSecondaryInverse="@color/black"
+        android:colorControlActivated="@color/black"
+        android:colorControlHighlight="@color/black"
+        android:yearListSelectorColor="@color/black" />
+
+    <CalendarView
+        android:id="@+id/calendarView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:calendarTextColor="#A64242"
@@ -47,10 +63,11 @@
         android:calendarViewShown="true"
         android:dayOfWeekBackground="#C85757"
         android:headerBackground="@drawable/aquamarine_bc"
-
-        android:layerType="hardware"
-        android:outlineProvider="paddedBounds"
-        android:yearListSelectorColor="#7E6D6D" />
+        android:textColorPrimaryInverse="@color/red"
+        android:textColorSecondaryInverse="@color/black"
+        android:colorControlActivated="@color/black"
+        android:colorControlHighlight="@color/black"
+        android:yearListSelectorColor="@color/black"/>
 
 </LinearLayout>
 </layout>

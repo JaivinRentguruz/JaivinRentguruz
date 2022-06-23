@@ -39,7 +39,7 @@ public class Vehicle_Master_Agreement extends BaseFragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.header.screenHeader.setText(companyLabel.Agreement);
+        binding.header.screenHeader.setText(companyLabel.Reservation);
         binding.setUiColor(UiColor);
 
 
@@ -99,6 +99,7 @@ public class Vehicle_Master_Agreement extends BaseFragment {
                                 reservationListBinding.getRoot().setId(200 + j);
                                 reservationListBinding.getRoot().setLayoutParams(subparams);
                                 reservationListBinding.setReservation(reservations[j]);
+                                reservationListBinding.setUiColor(UiColor);
                                 Log.d(TAG, "run: " + reservations[j]._date);
                                 int finalJ = j;
 

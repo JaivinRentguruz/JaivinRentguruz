@@ -154,7 +154,7 @@ public class Fragment_New_Agreement_Equipment extends BaseFragment {
                             try {
                                 for (int j = 0; j <reservationSummarry.ReservationEquipmentInventoryModel.size() ; j++) {
                                     if (reservationSummarry.ReservationEquipmentInventoryModel.get(j).EquipInventId == equipment[i].Id){
-                                        Drawable squareline = getResources().getDrawable(R.drawable.round_image);
+                                       /* Drawable squareline = getResources().getDrawable(R.drawable.round_image);
                                         squareline.setTint(Color.parseColor(UiColor.primary));
                                         squareline.setTintMode(PorterDuff.Mode.LIGHTEN);
 
@@ -164,6 +164,12 @@ public class Fragment_New_Agreement_Equipment extends BaseFragment {
 
                                         // squareline.setColorFilter(Color.parseColor(UiColor.primary), PorterDuff.Mode.CLEAR);
                                         rowEquipmentBinding.line.setBackground(wrappedDrawable);
+                                        rowEquipmentBinding.line.setPadding(10,10,10,10);*/
+
+                                        Drawable squareline = getResources().getDrawable(R.drawable.round_image);
+                                        squareline.setTint(Color.parseColor(UiColor.primary));
+                                        //squareline.setTintMode(PorterDuff.Mode.LIGHTEN);
+                                        rowEquipmentBinding.line.setBackground(squareline);
                                         rowEquipmentBinding.line.setPadding(10,10,10,10);
                                     }
                                 }

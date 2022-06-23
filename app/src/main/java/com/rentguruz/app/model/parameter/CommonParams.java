@@ -30,9 +30,9 @@ public class CommonParams {
         JSONObject object = new JSONObject();
         try
         {
-            object.accumulate("limit", 20);
+            object.accumulate("limit", 30);
             object.accumulate("orderDir", "desc");
-            object.accumulate("pageSize", 20);
+            object.accumulate("pageSize", 30);
             ints.put(10);
             ints.put(20);
             ints.put(30);
@@ -51,9 +51,9 @@ public class CommonParams {
         JSONObject object = new JSONObject();
         try
         {
-            object.accumulate("limit", 20);
+            object.accumulate("limit", 30);
             object.accumulate("orderDir", "desc");
-            object.accumulate("pageSize", 20);
+            object.accumulate("pageSize", 30);
             ints.put(10);
             ints.put(20);
             ints.put(30);
@@ -73,9 +73,9 @@ public class CommonParams {
         JSONObject object = new JSONObject();
         try
         {
-            object.accumulate("limit", 20);
+            object.accumulate("limit", 30);
             object.accumulate("orderDir", "desc");
-            object.accumulate("pageSize", 20);
+            object.accumulate("pageSize", 30);
             ints.put(10);
             ints.put(20);
             ints.put(30);
@@ -467,6 +467,31 @@ public class CommonParams {
 
         return object;
     }
+    public JSONObject getEquipmentforReservation(String pickupdate, String returndate, int reservationid,int time){
+        JSONObject object = new JSONObject();
+        JSONObject filter = new JSONObject();
+        try {
+            object = common();
+            filter.accumulate("CompanyId", companyid);
+            filter.accumulate("IsActive", true);
+            filter.accumulate("GetForReservation", true);
+            filter.accumulate("fStartDate", pickupdate);
+            filter.accumulate("fEndDate", returndate);
+            filter.accumulate("ReservationId", reservationid);
+            JSONObject ReservationSummaryDetailModel = new JSONObject();
+            ReservationSummaryDetailModel.accumulate("TotalTime", time);
+            ReservationSummaryDetailModel.accumulate("ReservationSummaryDetailType", 9);
+            filter.accumulate("ReservationSummaryDetailModel", ReservationSummaryDetailModel);
+
+            object.accumulate("filterObj", filter);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return object;
+    }
 
     public JSONObject getMisc(int pickupLoc, int VehicleTypeId){
         JSONObject object = new JSONObject();
@@ -674,8 +699,8 @@ public class CommonParams {
             filter.accumulate("CompanyId", companyid);
             filter.accumulate("CustomerId", userFor);
             filter.accumulate("IsActive", true);
-            filter.accumulate("IsGetAgreement", true);
-            filter.accumulate("IsGetReservation", false);
+            /*filter.accumulate("IsGetAgreement", true);
+            filter.accumulate("IsGetReservation", false);*/
             filter.accumulate("GetWithDefaultImg", true);
             filter.accumulate("IsGetStandaredImage",true);
             /*filter.accumulate("ReservationStatus",5);*/
@@ -1166,6 +1191,22 @@ public class CommonParams {
         }
         return object;
     }
+    public JSONObject getBusinessSource(){
+        JSONObject object = new JSONObject();
+        JSONObject filter = new JSONObject();
+        try
+        {
+            object = common();
+            filter.accumulate("CompanyId", companyid);
+            filter.accumulate("IsActive", true);
+            object.accumulate("filterObj", filter);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return object;
+    }
 
 
     public JSONObject getAdditionalDriver(int locationId, int vehicletypeid){
@@ -1366,6 +1407,15 @@ public class CommonParams {
         HashMap<String, String> header = new HashMap<>();
         header.put("Id", String.valueOf(id));
         header.put("fileUploadType", "1");
+        header.put("IsFileExist", "true");
+        header.put("CompanyId", String.valueOf(companyid));
+        return header;
+    }
+    public HashMap<String, String> getUserInsuranceImage(int id){
+        HashMap<String, String> header = new HashMap<>();
+        header.put("Id", String.valueOf(id));
+        header.put("fileUploadMasterId",String.valueOf(id));
+        header.put("fileUploadType", "2");
         header.put("CompanyId", String.valueOf(companyid));
         return header;
     }

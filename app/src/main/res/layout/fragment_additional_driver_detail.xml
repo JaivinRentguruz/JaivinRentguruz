@@ -69,6 +69,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                         android:background="@color/green" />
 
                   <!--  <LinearLayout
@@ -445,36 +446,36 @@
                         android:orientation="vertical">
 
                         <RelativeLayout
+                            android:id="@+id/test"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="200dp"
                             android:layout_marginBottom="5dp"
-                            android:background="@drawable/ic_car_img_bg">
+                            style="@style/relativeImage">
                             <ImageView
                                 android:id="@+id/DLFronsideImg"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_main_camera"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:adjustViewBounds="true"
+                                android:scaleType="fitXY"
                                 android:layout_centerInParent="true"
-                                android:layout_gravity="center"
-                                app:tint="@color/green" />
+                                android:layout_gravity="center" />
                         </RelativeLayout>
 
 
                         <RelativeLayout
+                            android:id="@+id/test2"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="200dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:background="@drawable/ic_car_img_bg">
+                            style="@style/relativeImage">
                             <ImageView
                                 android:id="@+id/DLBacksideImg"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_main_camera"
-                                app:tint="@color/green"
-                                android:layout_centerInParent="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:adjustViewBounds="true"
+                                android:scaleType="fitXY"
+                                android:layout_centerInParent="true"
                                 android:layout_gravity="center"/>
                         </RelativeLayout>
 
@@ -496,9 +497,11 @@
                 android:id="@+id/save"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:background="@drawable/curved_box_lightblue_4dp">
 
                 <TextView
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

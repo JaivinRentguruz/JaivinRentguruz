@@ -68,7 +68,7 @@ public class Fragment_User_Timeline extends BaseFragment
     TimeLine timeLine;
     TimelineData timelineData;
     String selectedDateStr;
-    static List<TimeLine> alltimeline = new ArrayList<>();
+    static List<TimeLine> alltimeline;
     ProgressBar progressBar;
     FragmentUserTimelineBinding binding;
 
@@ -98,7 +98,7 @@ public class Fragment_User_Timeline extends BaseFragment
             binding.header.screenHeader.setText("User Timeline");
             SharedPreferences sp = getActivity().getSharedPreferences("FlexiiCar", MODE_PRIVATE);
             id = sp.getString(getString(R.string.id), "");
-
+            alltimeline = new ArrayList<>();
             id = "1";
             try {
                 if (Helper.isActiveCustomer){
@@ -124,9 +124,9 @@ public class Fragment_User_Timeline extends BaseFragment
             JSONObject filter = new JSONObject();
             try
             {
-                object.accumulate("limit", 10);
+                object.accumulate("limit", 0);
                 object.accumulate("orderDir", "desc");
-                object.accumulate("pageSize", 10);
+                object.accumulate("pageSize", 0);
                 ints.add(10);
                 ints.add(20);
                 ints.add(30);
@@ -154,7 +154,15 @@ public class Fragment_User_Timeline extends BaseFragment
                             .navigate(R.id.action_User_timeline_to_User_Details);
                 }
             });
-            AddUserTimeLine.setOnClickListener(new View.OnClickListener()
+
+            binding.header.discard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NavHostFragment.findNavController(Fragment_User_Timeline.this)
+                            .navigate(R.id.action_User_timeline_to_User_Details);
+                }
+            });
+          /*  AddUserTimeLine.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
@@ -168,7 +176,7 @@ public class Fragment_User_Timeline extends BaseFragment
                     e.printStackTrace();
                 }
                 }
-            });
+            });*/
 // horizontalCalendar
             Calendar startDate = Calendar.getInstance();
             startDate.add(Calendar.MONTH, -12);
@@ -483,8 +491,8 @@ public class Fragment_User_Timeline extends BaseFragment
                                                     ActivityTimeLine.putString("activityName", activityName);*/
                                 Bundle ActivityBundle = new Bundle();
                                 ActivityBundle.putBundle("ActivityTimeLine", ActivityTimeLine);
-                                NavHostFragment.findNavController(Fragment_User_Timeline.this)
-                                        .navigate(R.id.action_User_timeline_to_Update_CutomerActivity, ActivityBundle);
+                               /* NavHostFragment.findNavController(Fragment_User_Timeline.this)
+                                        .navigate(R.id.action_User_timeline_to_Update_CutomerActivity, ActivityBundle);*/
                             }
                         });
 

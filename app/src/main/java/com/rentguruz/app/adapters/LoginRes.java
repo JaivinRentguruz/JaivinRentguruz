@@ -2,26 +2,20 @@ package com.rentguruz.app.adapters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-import com.rentguruz.app.R;
-import com.rentguruz.app.model.display.Appcolor;
-import com.rentguruz.app.model.response.ReservationTimeModel;
-import com.rentguruz.app.model.response.VehicleModel;
 
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.IllegalFormatException;
 import java.util.List;
 
-import static com.rentguruz.app.apicall.ApiEndPoint.LOGIN;
 import static com.rentguruz.app.apicall.ApiEndPoint.PREF;
 
 public class LoginRes {
@@ -85,6 +79,22 @@ public class LoginRes {
    
         return t;
     }
+
+    public  <T> List<T> getModelArray (String data, Class<T>tClass ){
+        // Log.d("Mungara", "getModel: " + data);
+       List<T> T  = null;
+        try {
+            Gson gson = new Gson();
+            T t = null;
+            t = gson.fromJson(data,tClass);
+            T = Collections.singletonList(t);
+        } catch (IllegalFormatException e){
+            e.printStackTrace();
+        }
+
+        return  T;
+    }
+
 
     public <T> T getModelSystem(String key, Class<T>tClass ){
         // Log.d("Mungara", "getModel: " + data);

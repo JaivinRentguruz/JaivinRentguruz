@@ -40,8 +40,8 @@
                     android:layout_width="40dp"
                     android:layout_height="6dp"
                     android:layout_marginLeft="15dp"
-                    android:src="@drawable/progress_rectangle_selected"
-                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"/>
+                    android:background="@drawable/progress_rectangle_selected"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"/>
 
                 <ImageView
                     android:layout_width="40dp"
@@ -269,13 +269,13 @@
             android:layout_height="@dimen/bottommenuheight"
             android:layout_alignParentBottom="true"
             android:background="@color/bottommenucolor"
-            android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtnext"
                 style="@style/btntext"
-                android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

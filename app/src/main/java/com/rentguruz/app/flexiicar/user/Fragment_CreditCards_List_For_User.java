@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
 import com.rentguruz.app.R;
 import com.rentguruz.app.adapters.CreditCard;
+import com.rentguruz.app.adapters.CustomBindingAdapter;
 import com.rentguruz.app.adapters.Helper;
 import com.rentguruz.app.base.BaseFragment;
 import com.rentguruz.app.databinding.FragmentCreditcardsListBinding;
@@ -241,6 +242,7 @@ public class Fragment_CreditCards_List_For_User extends BaseFragment
             listCreditCardBinding.setCreditCard(creditCardModels.get(i));
           //  listCreditCardBinding.cardImage.setImageDrawable(getResources().getDrawable(R.drawable.visa));
             card.GetCreditCardType(listCreditCardBinding.cardImage,creditCardModels.get(i).Number);
+            CustomBindingAdapter.loadImage(listCreditCardBinding.cardss,loginRes.getData(getResources().getString(R.string.cardimg)));
             int finalI = i;
             if (getArguments().getInt("frag")==2){
                 listCreditCardBinding.creditcardLayout.setOnClickListener(v -> {

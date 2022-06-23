@@ -194,6 +194,7 @@ public class Fragment_More extends BaseFragment
             binding.agr.setText(companyLabel.Agreement);
             binding.res.setText(companyLabel.Reservation);
             binding.cus.setText(companyLabel.Customer);
+            binding.veh.setText(companyLabel.Vehicle);
         } catch (Exception e){
             e.printStackTrace();
         }

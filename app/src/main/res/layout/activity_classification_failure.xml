@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".ClassificationFailureActivity">
     <RelativeLayout
+        android:layout_marginTop="@dimen/_200sdp"
+        android:layout_marginHorizontal="@dimen/_20sdp"
         android:id="@+id/classificationMessageLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

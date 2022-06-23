@@ -1,17 +1,23 @@
 package com.rentguruz.app.flexiicar.user;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+
+import com.bumptech.glide.Glide;
 import com.rentguruz.app.R;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.rentguruz.app.adapters.CustomBindingAdapter;
 import com.rentguruz.app.adapters.CustomToast;
+import com.rentguruz.app.adapters.Helper;
 import com.rentguruz.app.apicall.ApiService;
 import com.rentguruz.app.apicall.OnResponseListener;
 import com.rentguruz.app.apicall.RequestType;
@@ -36,7 +42,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_CUSTOMER;
 import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_LOGIN;
+import static com.rentguruz.app.apicall.ApiEndPoint.GETCUSTOMER;
 import static com.rentguruz.app.apicall.ApiEndPoint.GETLICENSEALL;
 
 public class Fragment_Driving_License_List extends BaseFragment {
@@ -45,6 +53,7 @@ public class Fragment_Driving_License_List extends BaseFragment {
     LoginResponse loginResponse;
     CustomerProfile customerProfile;
     UpdateDL updateDL;
+    UpdateDL updateDLL;
     FragmentDrivingLicenseListBinding binding;
 
     public static void initImageLoader(Context context) {
@@ -100,6 +109,7 @@ public class Fragment_Driving_License_List extends BaseFragment {
             UserData.updateDL.MobileNo = UserData.customerProfile.MobileNo;
             UserData.updateDL.PhoneNo = UserData.customerProfile.MobileNo;
             updateDL = UserData.updateDL;
+            updateDLL = UserData.updateDL;
             binding.defaultDl.setDriver(updateDL);
             binding.progressCircular.setVisibility(View.VISIBLE);
             Log.d(TAG, "onViewCreated: " + updateDL.DrivingLicenceModel.ExpiryDate);
@@ -123,7 +133,9 @@ public class Fragment_Driving_License_List extends BaseFragment {
         loginResponse.User.UserFor =  UserData.loginResponse.User.UserFor;
        apiService = new ApiService(GetDrivingLicense, RequestType.POST,
                 GETLICENSEALL, BASE_URL_LOGIN, header, params.getDrivingLicenseList(loginResponse.User.UserFor));
+        String bodyParam = "?id=" + UserData.loginResponse.User.UserFor + "&isActive=true"+"&"+"IsWithSummary=true";
 
+        new ApiService(GetCustomerProfile, RequestType.GET, GETCUSTOMER,BASE_URL_CUSTOMER, header,bodyParam);
 
         try {
             bundle.putSerializable("timemodel",getArguments().getSerializable("timemodel"));
@@ -175,6 +187,7 @@ public class Fragment_Driving_License_List extends BaseFragment {
                         getActivity().findViewById(android.R.id.content), false);
                 modelList.get(i).Fname = modelList.get(i).FName;
                 modelList.get(i).Lname = modelList.get(i).LName;
+                listDrivingLicenseBinding.setUiColor(UiColor);
                 listDrivingLicenseBinding.setDriver(modelList.get(i));
                 int finalI = i;
                 listDrivingLicenseBinding.ViewDLDetails.setOnClickListener(new View.OnClickListener() {
@@ -244,7 +257,9 @@ public class Fragment_Driving_License_List extends BaseFragment {
                         .navigate(R.id.action_DrivingLicense_Details_to_DrivingLicense_Update,bundle);*/
                 updateDL.FName = updateDL.Fname;
                 updateDL.LName = updateDL.Lname;
-                bundle.putSerializable("LicenseBundle", updateDL);
+                updateDLL.FName = updateDLL.Fname;
+                updateDLL.LName = updateDLL.Lname;
+                bundle.putSerializable("LicenseBundle", updateDLL);
                 bundle.putBoolean("defaultLic", true);
                 NavHostFragment.findNavController(Fragment_Driving_License_List.this)
                         .navigate(R.id.action_DrivingLicense_Details_to_DrivingLicense_Update,bundle);
@@ -292,6 +307,92 @@ public class Fragment_Driving_License_List extends BaseFragment {
 
         @Override
         public void onError(String error) {
+            System.out.println("Error-" + error);
+        }
+    };
+
+
+    OnResponseListener GetCustomerProfile = new OnResponseListener()
+    {
+        @Override
+        public void onSuccess(final String response, HashMap<String, String> headers)
+        {
+            handler.post(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    try {
+                        System.out.println("Success");
+                        System.out.println(response);
+
+                        JSONObject responseJSON = new JSONObject(response);
+                        Boolean status = responseJSON.getBoolean("Status");
+
+                        if (status)
+                        {
+                            try
+                            {
+                                // JSONObject resultSet = responseJSON.getJSONObject("resultSet");
+                                final JSONObject customerProfile= responseJSON.getJSONObject("Data");
+                                loginRes.storedata("CustomerProfile", customerProfile.toString());
+                                UserData.UserDetail = customerProfile.toString();
+                                CustomerProfile customerProfile1 = new CustomerProfile();
+                                customerProfile1 =  loginRes.callFriend("CustomerProfile", CustomerProfile.class);
+                                bundle.putSerializable("CustomerBundle", customerProfile1);
+                                updateDL = loginRes.callFriend("CustomerProfile", UpdateDL.class);
+                                UserData.customerProfile = customerProfile1;
+                                UserData.updateDL=updateDL;
+                                UserData.loginResponse.LogedInCustomer.AddressesModel = UserData.customerProfile.AddressesModel;
+
+                                UserData.customer.FullName  = customerProfile1.FullName;
+                                UserData.customer.MobileNo = customerProfile1.MobileNo;
+                                UserData.customer.Email = customerProfile1.Email;
+
+                                try {
+                                   /* CustomerProfile customerProfilee = new CustomerProfile();
+                                    customerProfilee = UserData.customerProfile;*/
+                                    UserData.updateDL.MobileNo = UserData.customerProfile.MobileNo;
+                                    UserData.updateDL.PhoneNo = UserData.customerProfile.MobileNo;
+                                    updateDL = UserData.updateDL;
+                                    updateDLL = UserData.updateDL;
+                                    binding.defaultDl.setDriver(updateDL);
+                                    binding.progressCircular.setVisibility(View.GONE);
+                                    Log.d(TAG, "onViewCreated: " + updateDL.DrivingLicenceModel.ExpiryDate);
+                                    loginResponse = loginRes.callFriend("Data", LoginResponse.class);
+                                } catch (Exception e){
+                                    e.printStackTrace();
+                                }
+
+
+                               // fullProgressbar.hide();
+                            }
+                            catch (Exception e)
+                            {
+                             //   fullProgressbar.hide();
+                                e.printStackTrace();
+                            }
+                        }
+
+                        else
+                        {
+                         //   fullProgressbar.hide();
+                            String msg = responseJSON.getString("Message");
+                            CustomToast.showToast(getActivity(),msg,1);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                       // fullProgressbar.hide();
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+        @Override
+        public void onError(String error)
+        {
+          //  fullProgressbar.hide();
             System.out.println("Error-" + error);
         }
     };

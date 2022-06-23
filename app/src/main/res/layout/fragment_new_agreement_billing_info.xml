@@ -297,6 +297,7 @@
                         </LinearLayout>
 
                         <TextView
+                            android:visibility="gone"
                             android:theme="@style/texttheme"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -307,6 +308,7 @@
                             android:textSize="@dimen/thirteen" />
 
                         <EditText
+                            android:visibility="gone"
                             style="@style/edittext"
                             android:focusable="true"
                             android:focusableInTouchMode="true"
@@ -314,6 +316,7 @@
 
 
                         <TextView
+                            android:visibility="gone"
                             android:theme="@style/texttheme"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -324,6 +327,7 @@
                             android:textSize="@dimen/thirteen" />
 
                         <EditText
+                            android:visibility="gone"
                             style="@style/edittext"
                             android:focusable="true"
                             android:focusableInTouchMode="true"

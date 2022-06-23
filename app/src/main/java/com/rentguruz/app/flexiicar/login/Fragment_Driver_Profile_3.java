@@ -84,8 +84,9 @@ public class Fragment_Driver_Profile_3 extends BaseFragment
         checkBoxTC=view.findViewById(R.id.CheckboxtTC);
         txtDiscard=view.findViewById(R.id.discard);
         receiveEmail = view.findViewById(R.id.receiveEmail);
-        receiveEmail.setChecked(true);
 
+        userDraw.checkbtn(receiveEmail);
+        receiveEmail.setChecked(true);
         try {
             registration = (DoRegistration) getArguments().getSerializable("RegistrationBundle");
            // RegistrationBundle = getArguments().getBundle("RegistrationBundle");

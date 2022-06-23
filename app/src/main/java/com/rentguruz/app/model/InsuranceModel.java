@@ -12,4 +12,6 @@ public class InsuranceModel extends BaseModel implements Serializable {
  //   public InsuranceCompanyDetailsModel InsuranceCompanyDetailsModel = new InsuranceCompanyDetailsModel();
 
     public Boolean GetCompanyDetail;
+
+    public AttachmentsModel AttachmentsModel = new AttachmentsModel();
 }

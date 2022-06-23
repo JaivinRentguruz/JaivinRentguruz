@@ -127,6 +127,7 @@
 
                     <include
                         android:id="@+id/defaultDl"
+                        app:UiColor="@{UiColor}"
                         layout="@layout/list_driving_license" />
 
                     <View

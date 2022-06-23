@@ -346,7 +346,7 @@ public class Fragment_Term_And_Condition extends BaseFragment
         try {
             ReservationSummarry reservationSummarry = new ReservationSummarry();
             reservationSummarry = (ReservationSummarry) getArguments().getSerializable("reservationD");
-
+            popbackstack = true;
             new ApiService(new OnResponseListener() {
                 @Override
                 public void onSuccess(String response, HashMap<String, String> headers) {
@@ -380,7 +380,7 @@ public class Fragment_Term_And_Condition extends BaseFragment
 
                 }
             }, RequestType.POST, TERMSCONDITION, BASE_URL_LOGIN, header, params.gettermscondition(reservationSummarry.PickUpLocation, 2, documnetType));
-            popbackstack = true;
+
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -389,6 +389,7 @@ public class Fragment_Term_And_Condition extends BaseFragment
             Reservation reservation = new Reservation();
             reservation = (Reservation) getArguments().getSerializable("reservation");
             documnetType = 3;
+            popbackstack = true;
             new ApiService(new OnResponseListener() {
                 @Override
                 public void onSuccess(String response, HashMap<String, String> headers) {
@@ -422,7 +423,50 @@ public class Fragment_Term_And_Condition extends BaseFragment
 
                 }
             }, RequestType.POST, TERMSCONDITION, BASE_URL_LOGIN, header, params.gettermscondition(reservation.PickUpLocation, 2, documnetType));
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            ReservationSummarry reservation = new ReservationSummarry();
+            reservation = (ReservationSummarry) getArguments().getSerializable("reservationSum");
+            documnetType = 3;
             popbackstack = true;
+            new ApiService(new OnResponseListener() {
+                @Override
+                public void onSuccess(String response, HashMap<String, String> headers) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Log.d("TAG", "onSuccess: " + response);
+                                JSONObject responseJSON = new JSONObject(response);
+                                Boolean status = responseJSON.getBoolean("Status");
+                                if (status)
+                                {
+                                    try
+                                    {
+                                        JSONObject data = responseJSON.getJSONObject("Data");
+                                        String  Description = data.getString("Description");
+                                        binding.txtTermCondDesc.setText(Html.fromHtml(Description));
+                                    } catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                }
+                            } catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+
+                @Override
+                public void onError(String error) {
+
+                }
+            }, RequestType.POST, TERMSCONDITION, BASE_URL_LOGIN, header, params.gettermscondition(reservation.PickUpLocation, 2, documnetType));
+
         } catch (Exception e){
             e.printStackTrace();
         }

@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.rentguruz.app.adapters.CustomBindingAdapter;
+import com.rentguruz.app.adapters.CustomToast;
 import com.rentguruz.app.adapters.Helper;
 import com.rentguruz.app.base.BaseFragment;
 import com.rentguruz.app.databinding.FragmentCustomerInsuranceListBinding;
@@ -29,6 +30,9 @@ import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.rentguruz.app.model.response.CustomerProfile;
+import com.rentguruz.app.model.response.LoginResponse;
+import com.rentguruz.app.model.response.UpdateDL;
 
 import org.json.JSONObject;
 
@@ -220,6 +224,16 @@ public class Fragment_Customer_Insurance_list extends BaseFragment
                                             .navigate(R.id.action_InsurancePolicyList_to_InsurancePolicy, InsurancePolicy);
                             }
                         });
+
+                        try {
+                            if (insuranceModel.AttachmentsModel.AttachmentPath.length()!=0){
+                                CustomBindingAdapter.loadImage(listCustomerInsuranceBinding.image,insuranceModel.AttachmentsModel.AttachmentPath);
+                            }
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+
                         binding.rlInsurancePolicyList.addView(listCustomerInsuranceBinding.getRoot());
 
                        // final JSONArray getInsuranceDoc = resultSet.getJSONArray("t0050_Documents");
@@ -373,4 +387,83 @@ public class Fragment_Customer_Insurance_list extends BaseFragment
                 break;
         }
     }
+
+    OnResponseListener GetCustomerProfile = new OnResponseListener()
+    {
+        @Override
+        public void onSuccess(final String response, HashMap<String, String> headers)
+        {
+            handler.post(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    try {
+                        System.out.println("Success");
+                        System.out.println(response);
+
+                        JSONObject responseJSON = new JSONObject(response);
+                        Boolean status = responseJSON.getBoolean("Status");
+
+                        if (status)
+                        {
+                            try
+                            {
+                                // JSONObject resultSet = responseJSON.getJSONObject("resultSet");
+                                final JSONObject customerProfile= responseJSON.getJSONObject("Data");
+                                loginRes.storedata("CustomerProfile", customerProfile.toString());
+                                UserData.UserDetail = customerProfile.toString();
+                                CustomerProfile customerProfile1 = new CustomerProfile();
+                                customerProfile1 =  loginRes.callFriend("CustomerProfile", CustomerProfile.class);
+                                bundle.putSerializable("CustomerBundle", customerProfile1);
+                                UpdateDL updateDL = new UpdateDL();
+                                updateDL = loginRes.callFriend("CustomerProfile", UpdateDL.class);
+                                UserData.customerProfile = customerProfile1;
+                                UserData.updateDL=updateDL;
+                                UserData.loginResponse.LogedInCustomer.AddressesModel = UserData.customerProfile.AddressesModel;
+
+                                UserData.customer.FullName  = customerProfile1.FullName;
+                                UserData.customer.MobileNo = customerProfile1.MobileNo;
+                                UserData.customer.Email = customerProfile1.Email;
+
+                                try {
+
+
+
+                                } catch (Exception e){
+                                    e.printStackTrace();
+                                }
+
+
+                               // fullProgressbar.hide();
+                            }
+                            catch (Exception e)
+                            {
+                                //fullProgressbar.hide();
+                                e.printStackTrace();
+                            }
+                        }
+
+                        else
+                        {
+                           // fullProgressbar.hide();
+                            String msg = responseJSON.getString("Message");
+                            CustomToast.showToast(getActivity(),msg,1);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        fullProgressbar.hide();
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+        @Override
+        public void onError(String error)
+        {
+            fullProgressbar.hide();
+            System.out.println("Error-" + error);
+        }
+    };
 }

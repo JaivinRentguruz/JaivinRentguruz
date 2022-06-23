@@ -28,21 +28,26 @@ import java.util.HashMap;
 import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_CUSTOMER;
 import static com.rentguruz.app.apicall.ApiEndPoint.FORGETPASSWORD;
 import com.rentguruz.app.R;
-public class Fragment_Forgot_Password extends Fragment
+import com.rentguruz.app.base.BaseFragment;
+import com.rentguruz.app.databinding.FragmentForgotPasswordBinding;
+
+public class Fragment_Forgot_Password extends BaseFragment
 {
     LinearLayout verify_layout;
     ImageView backarrowimg;
     EditText edt_Email;
     public String Cust_Email = "";
-    Handler handler = new Handler();
-    public static Context context;
+    //Handler handler = new Handler();
+   // public static Context context;
     String bodyParam = "";
-
+    FragmentForgotPasswordBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forgot_password, container, false);
+       // return inflater.inflate(R.layout.fragment_forgot_password, container, false);
+        binding = FragmentForgotPasswordBinding.inflate(inflater, container,false);
+        return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState)
@@ -51,7 +56,7 @@ public class Fragment_Forgot_Password extends Fragment
         super.onViewCreated(view, savedInstanceState);
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
+        binding.setUiColor(UiColor);
         try {
             verify_layout = view.findViewById(R.id.lblverify);
             backarrowimg = view.findViewById(R.id.backimg_toLogin);
@@ -66,8 +71,8 @@ public class Fragment_Forgot_Password extends Fragment
                 }
             });
 
-            AndroidNetworking.initialize(getActivity());
-            Fragment_Forgot_Password.context = getActivity();
+           /* AndroidNetworking.initialize(getActivity());
+            Fragment_Forgot_Password.context = getActivity();*/
 
             verify_layout.setOnClickListener(new View.OnClickListener()
             {
@@ -80,13 +85,14 @@ public class Fragment_Forgot_Password extends Fragment
                             CustomToast.showToast(getActivity(),"Please enter a email",1);
                         else
                             {
-                            bodyParam="regEmail="+edt_Email.getText().toString();
+                            bodyParam="Email="+edt_Email.getText().toString();
+                                JSONObject object = new JSONObject();
+                                object.accumulate("Email",edt_Email.getText().toString() );
 
-                            ApiService ApiService = new ApiService(ForgetPassword, RequestType.GET,
-                                    FORGETPASSWORD, BASE_URL_CUSTOMER, new HashMap<String, String>(), bodyParam);
+                            new ApiService(ForgetPassword, RequestType.POST,
+                                    FORGETPASSWORD, BASE_URL_CUSTOMER, header, object);
 
-                            NavHostFragment.findNavController(Fragment_Forgot_Password.this)
-                                    .navigate(R.id.action_Forgot_Password_to_Reset_Password);
+
                         }
 
                     }
@@ -102,6 +108,12 @@ public class Fragment_Forgot_Password extends Fragment
             e.printStackTrace();
         }
     }
+
+    @Override
+    protected int getFragmentLayout() {
+        return binding.getRoot().getId();
+    }
+
     OnResponseListener ForgetPassword = new OnResponseListener()
     {
         @Override
@@ -117,17 +129,23 @@ public class Fragment_Forgot_Password extends Fragment
                         System.out.println(response);
 
                         JSONObject responseJSON = new JSONObject(response);
-                        Boolean status = responseJSON.getBoolean("status");
+                        Boolean status = responseJSON.getBoolean("Status");
 
                         if (status)
                         {
-                            String msg = responseJSON.getString("message");
+                            String msg = responseJSON.getString("Message");
                             CustomToast.showToast(getActivity(),msg,0);
+
+                            NavHostFragment.findNavController(Fragment_Forgot_Password.this)
+                                    .navigate(R.id.action_Forgot_Password_to_LoginFragment);
+
+                            /*NavHostFragment.findNavController(Fragment_Forgot_Password.this)
+                                    .navigate(R.id.action_Forgot_Password_to_Reset_Password);*/
                         }
 
                         else
                         {
-                            String msg = responseJSON.getString("message");
+                            String msg = responseJSON.getString("Message");
                             CustomToast.showToast(getActivity(),msg,1);
                         }
                     }
@@ -144,4 +162,9 @@ public class Fragment_Forgot_Password extends Fragment
             System.out.println("Error-" + error);
         }
     };
+
+    @Override
+    public void onClick(View v) {
+
+    }
 }

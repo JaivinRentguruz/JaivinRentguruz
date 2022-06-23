@@ -30,6 +30,7 @@
             android:layout_marginTop="@dimen/_2sdp"
             android:layout_marginRight="@dimen/_2sdp"
             android:background="@drawable/top_curve_light_gray"
+            android:backgroundTint="@{Color.parseColor(UiColor.AddtionalSecondColour)}"
             android:orientation="vertical">
 
             <LinearLayout

@@ -38,6 +38,8 @@ public class Fragment_Additional_Driver_Details extends BaseFragment {
         updateDL = (UpdateDL) getArguments().getSerializable("drivinglist");
         binding.setDriver(updateDL);
         binding.setUiColor(UiColor);
+        binding.test.setBackground(userDraw.getImageUpload());
+        binding.test2.setBackground(userDraw.getImageUpload());
        /* binding.txtFName.setText(updateDL.FName + " " + updateDL.LName);
         binding.licenceNumber.setText(updateDL.DrivingLicenceModel.Number);
         binding.expiryate.setText(updateDL.DrivingLicenceModel.ExpiryDate);

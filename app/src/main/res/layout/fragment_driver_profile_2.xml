@@ -303,11 +303,12 @@
                     style="@style/edittextheader"/>
 
                 <RelativeLayout
+                    android:id="@+id/test"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/custome_cam_select">
+                    style="@style/relativeImage">
                     <ImageView
                         android:id="@+id/DLFronsideImg"
                         android:layout_width="match_parent"
@@ -328,16 +329,18 @@
                     android:text="@string/upload_image_back"
                     style="@style/edittextheader"/>
                 <RelativeLayout
+                    android:id="@+id/test2"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/custome_cam_select">
+                    style="@style/relativeImage">
                     <ImageView
                         android:id="@+id/DLBacksideImg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
+                        android:scaleType="fitXY"
                         android:adjustViewBounds="true"
                         android:layout_gravity="center"/>
                 </RelativeLayout>

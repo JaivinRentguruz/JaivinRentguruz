@@ -183,7 +183,8 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/green" />
+                        android:background="@color/green"
+                        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"/>
 
                     <RelativeLayout
                         android:id="@+id/rl_InsurancePolicyList"

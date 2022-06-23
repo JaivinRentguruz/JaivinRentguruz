@@ -4,6 +4,13 @@
 
     <data>
 
+        <import type="android.graphics.Color"/>
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+
         <variable
             name="Driver"
             type="com.rentguruz.app.model.response.UpdateDL" />
@@ -103,7 +110,7 @@
                             android:layout_marginEnd="8dp"
                             android:layout_marginStart="8dp"
                             android:background="@drawable/curve_single_text"
-                            android:backgroundTint="@color/nameBox"
+                            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                             android:gravity="center"
                             android:orientation="horizontal"
                             android:weightSum="2">

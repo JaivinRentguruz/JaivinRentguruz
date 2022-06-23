@@ -26,6 +26,8 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+
+import com.bumptech.glide.Glide;
 import com.rentguruz.app.R;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -52,6 +54,7 @@ import com.rentguruz.app.model.VehicleOptionMappingModel;
 import com.rentguruz.app.model.VehicleOtherDetailsModel;
 import com.rentguruz.app.model.common.DropDown;
 import com.rentguruz.app.model.common.OnDropDownList;
+import com.rentguruz.app.model.response.AttachmentsModel;
 import com.rentguruz.app.model.response.VehicleModel;
 
 import org.json.JSONArray;
@@ -72,6 +75,7 @@ import static android.graphics.BitmapFactory.decodeFile;
 import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_LOGIN;
 import static com.rentguruz.app.apicall.ApiEndPoint.COMMONDROPDOWN;
 import static com.rentguruz.app.apicall.ApiEndPoint.COMMONDROPDOWNSINGLE;
+import static com.rentguruz.app.apicall.ApiEndPoint.IMAGEDELETE;
 import static com.rentguruz.app.apicall.ApiEndPoint.MAKEVEHICLE;
 import static com.rentguruz.app.apicall.ApiEndPoint.UPLOADIMAGE;
 import static com.rentguruz.app.apicall.ApiEndPoint.VEHICLECLASS;
@@ -274,16 +278,50 @@ public class Fragment_Vehicles_Edit_Basic_Details extends BaseFragment {
 
                             loginRes.testingLog(TAG,vehicleModel);
                             try {
-                                CustomBindingAdapter.loadImage(binding.carImage1, vehicleModel.AttachmentsModels.get(1).AttachmentPath);
-                                CustomBindingAdapter.loadImage(binding.carImage2, vehicleModel.AttachmentsModels.get(2).AttachmentPath);
-                                CustomBindingAdapter.loadImage(binding.carImage3, vehicleModel.AttachmentsModels.get(3).AttachmentPath);
-                                CustomBindingAdapter.loadImage(binding.carImage4, vehicleModel.AttachmentsModels.get(4).AttachmentPath);
-                                CustomBindingAdapter.loadImage(binding.carImage5, vehicleModel.AttachmentsModels.get(5).AttachmentPath);
-                                CustomBindingAdapter.loadImage(binding.carImage6, vehicleModel.AttachmentsModels.get(6).AttachmentPath);
-                                CustomBindingAdapter.loadImage(binding.carImage7, vehicleModel.AttachmentsModels.get(7).AttachmentPath);
-                                CustomBindingAdapter.loadImage(binding.carImage8, vehicleModel.AttachmentsModels.get(8).AttachmentPath);
-                                CustomBindingAdapter.loadImage(binding.carImage9, vehicleModel.AttachmentsModels.get(9).AttachmentPath);
-                                CustomBindingAdapter.loadImage(binding.carImage10, vehicleModel.AttachmentsModels.get(10).AttachmentPath);
+                                CustomBindingAdapter.loadImage(binding.carImage1, vehicleModel.AttachmentsModels.get(0).AttachmentPath);
+                                CustomBindingAdapter.loadImage(binding.carImage2, vehicleModel.AttachmentsModels.get(1).AttachmentPath);
+                                CustomBindingAdapter.loadImage(binding.carImage3, vehicleModel.AttachmentsModels.get(2).AttachmentPath);
+                                CustomBindingAdapter.loadImage(binding.carImage4, vehicleModel.AttachmentsModels.get(3).AttachmentPath);
+                                CustomBindingAdapter.loadImage(binding.carImage5, vehicleModel.AttachmentsModels.get(4).AttachmentPath);
+                                CustomBindingAdapter.loadImage(binding.carImage6, vehicleModel.AttachmentsModels.get(5).AttachmentPath);
+                                CustomBindingAdapter.loadImage(binding.carImage7, vehicleModel.AttachmentsModels.get(6).AttachmentPath);
+                                CustomBindingAdapter.loadImage(binding.carImage8, vehicleModel.AttachmentsModels.get(7).AttachmentPath);
+                                CustomBindingAdapter.loadImage(binding.carImage9, vehicleModel.AttachmentsModels.get(8).AttachmentPath);
+                                CustomBindingAdapter.loadImage(binding.carImage10, vehicleModel.AttachmentsModels.get(9).AttachmentPath);
+
+
+
+                            } catch (IndexOutOfBoundsException e){
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                for (int i = 0; i <vehicleModel.AttachmentsModels.size(); i++) {
+                                    if (vehicleModel.AttachmentsModels.get(i).AttachmentPath != null){
+                                        Log.e(TAG, "run: "+ vehicleModel.AttachmentsModels);
+                                        if (i==0) {
+                                            imgDelet(binding.cardelete1, 1, vehicleModel.AttachmentsModels.get(i));
+                                        } else if (i == 1){
+                                            imgDelet(binding.cardelete2, 2, vehicleModel.AttachmentsModels.get(i));
+                                        }else if (i == 2){
+                                            imgDelet(binding.cardelete3, 3, vehicleModel.AttachmentsModels.get(i));
+                                        }else if (i == 3){
+                                            imgDelet(binding.cardelete4, 4, vehicleModel.AttachmentsModels.get(i));
+                                        }else if (i == 4){
+                                            imgDelet(binding.cardelete5, 5, vehicleModel.AttachmentsModels.get(i));
+                                        }else if (i == 5){
+                                            imgDelet(binding.cardelete6, 6, vehicleModel.AttachmentsModels.get(i));
+                                        }else if (i == 6){
+                                            imgDelet(binding.cardelete7, 7, vehicleModel.AttachmentsModels.get(i));
+                                        }else if (i == 7){
+                                            imgDelet(binding.cardelete8, 8, vehicleModel.AttachmentsModels.get(i));
+                                        }else if (i == 8){
+                                            imgDelet(binding.cardelete9, 9, vehicleModel.AttachmentsModels.get(i));
+                                        }else if (i == 9){
+                                            imgDelet(binding.cardelete10, 10, vehicleModel.AttachmentsModels.get(i));
+                                        }
+                                    }
+                                }
                             } catch (IndexOutOfBoundsException e){
                                 e.printStackTrace();
                             }
@@ -320,7 +358,7 @@ public class Fragment_Vehicles_Edit_Basic_Details extends BaseFragment {
 
         for (int i = 1; i <=10 ; i++) {
             if (i==1)
-            imageClick(binding.carImage1,i);
+                imageClick(binding.carImage1,i);
             if (i==2)
                 imageClick(binding.carImage2,i);
             if (i==3)
@@ -1084,6 +1122,67 @@ public class Fragment_Vehicles_Edit_Basic_Details extends BaseFragment {
                         optionMenu.optionVisible(binding.sucessfullRegi, false);
                     }
                 });
+            }
+        });
+    }
+
+    private void imgDelet(ImageView imageView, int i, AttachmentsModel attachmentsModel){
+        imageView.setVisibility(View.VISIBLE);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e(TAG, "onClick: " + attachmentsModel.AttachmentPath );
+                new ApiService(new OnResponseListener() {
+                    @Override
+                    public void onSuccess(String response, HashMap<String, String> headers) {
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                    try {
+                                        JSONObject responseJSON = new JSONObject(response);
+                                        Boolean status = responseJSON.getBoolean("Status");
+                                        if (status)
+                                        {
+                                            CustomToast.showToast(getActivity(),responseJSON.getString("Message"),1);
+                                            //binding.carImage1.
+                                            if (i==1){
+                                                Glide.with(binding.carImage1).clear(binding.carImage1);
+                                            } else if (i==2){
+                                                Glide.with(binding.carImage2).clear(binding.carImage2);
+                                            }else if (i==3){
+                                                Glide.with(binding.carImage3).clear(binding.carImage3);
+                                            }else if (i==4){
+                                                Glide.with(binding.carImage4).clear(binding.carImage4);
+                                            }else if (i==5){
+                                                Glide.with(binding.carImage5).clear(binding.carImage5);
+                                            }else if (i==6){
+                                                Glide.with(binding.carImage6).clear(binding.carImage6);
+                                            }else if (i==7){
+                                                Glide.with(binding.carImage7).clear(binding.carImage7);
+                                            }else if (i==8){
+                                                Glide.with(binding.carImage8).clear(binding.carImage8);
+                                            }else if (i==9){
+                                                Glide.with(binding.carImage9).clear(binding.carImage9);
+                                            }else if (i==10){
+                                                Glide.with(binding.carImage10).clear(binding.carImage10);
+                                            }
+
+                                        } else {
+                                            CustomToast.showToast(getActivity(),responseJSON.getString("Message"),0);
+                                        }
+
+                                    } catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(String error) {
+
+                    }
+                }, RequestType.DELETE, IMAGEDELETE, BASE_URL_LOGIN, header, "?Id=" + attachmentsModel.Id);
             }
         });
     }

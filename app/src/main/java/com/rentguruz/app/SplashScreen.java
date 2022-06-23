@@ -2,6 +2,7 @@ package com.rentguruz.app;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -16,6 +17,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationListener;
@@ -1245,26 +1247,46 @@ public class SplashScreen extends AppCompatActivity {
 
                                                 if (status)
                                                 {
+                                                    try {
+
                                                     JSONObject resultSet = responseJSON.getJSONObject("Data");
                                                     // Log.e("TAG", "run: " + resultSet.toString());
-                                                    mobileBasicDetails =    loginRes.getModel(resultSet.toString(), MobileBasicDetails.class);
-                                                    ImageView icon = findViewById(R.id.logo);
-                                                    CustomBindingAdapter.loadImage(icon,mobileBasicDetails.IconAttachmentsModels.get(0).AttachmentPath);
-                                                    loginRes.storedata(getResources().getString(R.string.logo), mobileBasicDetails.LogoAttachmentsModels.get(0).AttachmentPath);
-                                                    loginRes.storedata(getResources().getString(R.string.icon), mobileBasicDetails.IconAttachmentsModels.get(0).AttachmentPath);
-                                                    Log.e("TAG", "run:logo " + mobileBasicDetails.LogoAttachmentsModels.get(0).AttachmentPath  );
-                                                    Log.e("TAG", "run:icon " + mobileBasicDetails.IconAttachmentsModels.get(0).AttachmentPath  );
-                                                    JSONObject object = new JSONObject(mobileBasicDetails.DetailJson);
-                                                    Appcolor appcolor = new Appcolor();
-                                                    appcolor = loginRes.getModel(object.toString(),Appcolor.class);
-                                                    UserData.UiColor.primary = appcolor.PrimaryColor;
-                                                    UserData.UiColor.secondary = appcolor.SecondColor;
-                                                    UserData.UiColor.primaryfont = appcolor.ThirdColor;
-                                                    UserData.UiColor.secondaryfont = appcolor.SecondColor;
-                                                    UserData.UiColor.additionalcolor = appcolor.AdditionalColor;
-                                                    Log.e("TAG", "run: " + appcolor.AdditionalColor );
-                                                    String colordata =  loginRes.modeltostring(appcolor);
-                                                    loginRes.storedata(getResources().getString(R.string.Appcolor), colordata);
+                                                    if(resultSet!= null) {
+                                                        mobileBasicDetails = loginRes.getModel(resultSet.toString(), MobileBasicDetails.class);
+                                                        ImageView icon = findViewById(R.id.logo);
+                                                        CustomBindingAdapter.loadImage(icon, mobileBasicDetails.IconAttachmentsModels.get(0).AttachmentPath);
+                                                        loginRes.storedata(getResources().getString(R.string.logo), mobileBasicDetails.LogoAttachmentsModels.get(0).AttachmentPath);
+                                                        loginRes.storedata(getResources().getString(R.string.icon), mobileBasicDetails.IconAttachmentsModels.get(0).AttachmentPath);
+                                                        loginRes.storedata(getResources().getString(R.string.cardimg), mobileBasicDetails.CreditCardAttachmentModel.get(0).AttachmentPath);
+                                                        Log.e("TAG", "run:logo " + mobileBasicDetails.LogoAttachmentsModels.get(0).AttachmentPath);
+                                                        Log.e("TAG", "run:icon " + mobileBasicDetails.IconAttachmentsModels.get(0).AttachmentPath);
+                                                        JSONObject object = new JSONObject(mobileBasicDetails.DetailJson);
+                                                        Appcolor appcolor = new Appcolor();
+                                                        appcolor = loginRes.getModel(object.toString(), Appcolor.class);
+                                                        UserData.UiColor.primary = appcolor.PrimaryColor;
+                                                        UserData.UiColor.secondary = appcolor.SecondColor;
+                                                        UserData.UiColor.primaryfont = appcolor.ThirdColor;
+                                                        UserData.UiColor.secondaryfont = appcolor.SecondColor;
+                                                        UserData.UiColor.additionalcolor = appcolor.AdditionalColor;
+                                                        UserData.UiColor.AddtionalSecondColour = appcolor.AddtionalSecondColour;
+                                                        UserData.UiColor.Squarebox1 = appcolor.Squarebox1;
+                                                        UserData.UiColor.Squarebox2 = appcolor.Squarebox2;
+                                                        UserData.UiColor.Squarebox3 = appcolor.Squarebox3;
+                                                        UserData.UiColor.Squarebox4 = appcolor.Squarebox4;
+
+                                                        Log.e("TAG", "run: " + appcolor.AdditionalColor);
+
+                                                        String colordata = loginRes.modeltostring(appcolor);
+                                                        loginRes.storedata(getResources().getString(R.string.Appcolor), colordata);
+                                                    } else {
+                                                        loginRes.storedata(getResources().getString(R.string.logo),"null");
+                                                        loginRes.storedata(getResources().getString(R.string.icon), "null");
+                                                        loginRes.storedata(getResources().getString(R.string.Appcolor), "null");
+                                                    }
+
+                                                    } catch (Exception e){
+                                                        e.printStackTrace();
+                                                    }
                                                 }
                                             } catch (Exception e){
                                                 e.printStackTrace();

@@ -2,10 +2,12 @@ package com.rentguruz.app.adapters;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Build;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
@@ -16,6 +18,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.StyleRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.datepicker.MaterialDatePicker;
 import com.rentguruz.app.model.base.UserData;
 import com.rentguruz.app.model.parameter.DateType;
 import com.rentguruz.app.R;
@@ -32,11 +35,17 @@ public class CustomeDialog {
     int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
     int hour = c.get(Calendar.HOUR);
     int minute = c.get(Calendar.MINUTE);
+    @ColorInt public static final int  colorAccent  = Color.parseColor(UserData.UiColor.primary);
+
 
     private DatePickerDialog datePickerDialog;
     public CustomeDialog(Context context) {
         this.context = context;
+       // themeset();
+    }
 
+    public void themeset(){
+        context = new ContextThemeWrapper(context, R.style.AppTheme);
     }
 
     public CustomeDialog() { }
@@ -87,6 +96,7 @@ public class CustomeDialog {
                 }
             });
             pickerDialog.show(appCompatActivity.getSupportFragmentManager(), "MonthYearPickerDialog");
+
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -116,10 +126,12 @@ public class CustomeDialog {
 
             //int themeee = Integer.parseInt(context.getTheme().getResources().getResourceTypeName(R.style.DialogTheme));
             ContextThemeWrapper themeWrapper = new ContextThemeWrapper(context,R.style.DialogTheme);*/
-            int themeee = R.style.DialogTheme;
-        datePickerDialog = new DatePickerDialog((Activity) context, themeee, new DatePickerDialog.OnDateSetListener() {
-            @Override
+            @StyleRes  int themeee = R.style.DialogTheme;
+
+        datePickerDialog = new DatePickerDialog((Activity) context, themeee ,  new DatePickerDialog.OnDateSetListener() {
+
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+               // view.setBackground();
                 String month, day;
                 if (monthOfYear < 9)
                     month = "0" + (monthOfYear + 1);
@@ -148,7 +160,6 @@ public class CustomeDialog {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public void getMaxDate(String mindate,String maxDate,OnStringListner onStringListner)
@@ -280,6 +291,22 @@ public class CustomeDialog {
         }
 
     }
+
+
+    public void dynamicDate (){
+
+
+    }
+
+  /*  public void getDateFromXML(OnStringListner onStringListner){
+        Activity activity = (Activity) context;
+        SampleDateViewBinding sampleDateViewBinding = SampleDateViewBinding.inflate(activity.getLayoutInflater(), activity.findViewById(android.R.id.content), false);
+        Dialog dialog = new Dialog(context);
+        sampleDateViewBinding.setUiColor(UserData.UiColor);
+        dialog.setContentView(sampleDateViewBinding.getRoot());
+        sampleDateViewBinding.setUiColor(UserData.UiColor);
+        dialog.show();
+    }*/
 
     public String getDOB()
     {

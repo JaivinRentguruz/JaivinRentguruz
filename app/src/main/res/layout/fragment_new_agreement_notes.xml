@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundColor"
-        android:backgroundTint="@{Color.parseColor(UiColor.primary)}">
+        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                                 android:orientation="horizontal"
                                 android:weightSum="100">
 
-                                <EditText
+                                <com.rentguruz.app.base.ActionEditText
                                     android:id="@+id/customernote"
                                     style="@style/edittext"
                                     android:layout_width="0dp"
@@ -119,7 +119,7 @@
                                     android:gravity="top"
                                     android:imeActionLabel="@string/equipment_extras"
                                     android:imeOptions="actionDone"
-                                    android:inputType="text"
+                                    android:inputType="text|textAutoCorrect|textCapSentences|textMultiLine"
                                     android:padding="8dp"
                                     android:textColor="@color/textlightcolor"
                                     android:textColorHint="@color/textlightcolor"
@@ -306,7 +306,7 @@
                         android:layout_marginTop="15dp"
                         android:visibility="gone"
                         android:background="@drawable/curve_box_light_green_bg"
-                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+
                         android:orientation="vertical"
                         android:paddingBottom="30dp">
 
@@ -379,6 +379,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/top_curve_box1"
+                    android:backgroundTint="@{Color.parseColor(UiColor.AddtionalSecondColour)}"
                     android:orientation="vertical"
                     android:paddingBottom="20dp">
 
@@ -433,7 +434,7 @@
                                 android:orientation="horizontal"
                                 android:weightSum="100">
 
-                                <EditText
+                                <com.rentguruz.app.base.ActionEditText
                                     android:id="@+id/internalnote"
                                     style="@style/edittext"
                                     android:layout_width="0dp"
@@ -443,7 +444,7 @@
                                     android:background="@drawable/ic_rectangle_note_and_remarks"
                                     android:gravity="top"
                                     android:imeOptions="actionDone"
-                                    android:inputType="textMultiLine"
+                                    android:inputType="text|textAutoCorrect|textCapSentences|textMultiLine"
                                     android:padding="8dp"
                                     android:textColor="@color/textlightcolor"
                                     android:textColorHint="@color/textlightcolor"
@@ -624,7 +625,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-15dp"
                         android:background="@drawable/curve_box_light_green_bg"
-                        android:backgroundTint="@color/lightgreen"
+                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
                         android:orientation="vertical"
                         android:paddingBottom="10dp">
 
@@ -699,7 +700,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-15dp"
                     android:background="@drawable/curve_box_light_green_bg"
-                    android:backgroundTint="@color/lightgreen"
+                    android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
                     android:orientation="vertical"
                     android:paddingBottom="10dp">
 
@@ -784,9 +785,10 @@
                                     android:layout_marginRight="10dp"
                                     android:layout_weight="1" />
 
-                                <EditText
+                                <TextView
+                                    android:id="@+id/oderIssuedate"
                                     android:layout_width="0dp"
-                                    style="@style/edittext"
+                                    style="@style/edittextfordate"
                                     android:layout_marginLeft="10dp"
                                     android:layout_weight="1"/>
 
@@ -840,9 +842,10 @@
                                     android:layout_marginRight="10dp"
                                     android:layout_weight="1" />
 
-                                <EditText
+                                <TextView
+                                    android:id="@+id/roderIssuedate"
                                     android:layout_width="0dp"
-                                    style="@style/edittext"
+                                    style="@style/edittextfordate"
                                     android:layout_marginLeft="10dp"
                                     android:layout_weight="1"/>
 

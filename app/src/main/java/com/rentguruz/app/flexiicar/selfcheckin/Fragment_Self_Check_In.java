@@ -40,6 +40,8 @@ import com.rentguruz.app.apicall.OnResponseListener;
 import com.rentguruz.app.apicall.RequestType;
 import com.rentguruz.app.flexiicar.user.Fragment_Summary_Of_Charges_For_Agreements;
 import com.rentguruz.app.model.ReservationCheckout;
+import com.rentguruz.app.model.common.DropDown;
+import com.rentguruz.app.model.common.OnDropDownList;
 import com.rentguruz.app.model.parameter.DateType;
 import com.rentguruz.app.model.response.LocationList;
 import com.rentguruz.app.model.response.Reservation;
@@ -67,8 +69,11 @@ import static android.content.Context.MODE_PRIVATE;
 import static com.rentguruz.app.apicall.ApiEndPoint.AVAILABLELOCATION;
 import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_LOGIN;
 import static com.rentguruz.app.apicall.ApiEndPoint.CHECKOUTODMETER;
+import static com.rentguruz.app.apicall.ApiEndPoint.COMMONDROPDOWNSINGLE;
 import static com.rentguruz.app.apicall.ApiEndPoint.SUMMARYCHARGE;
+import static com.rentguruz.app.apicall.ApiEndPoint.TAXLIST;
 import static com.rentguruz.app.apicall.ApiEndPoint.VEHICLEGETBYID;
+import static com.rentguruz.app.apicall.ApiEndPoint.VEHICLELOCATION;
 
 import com.rentguruz.app.R;
 public class Fragment_Self_Check_In extends BaseFragment
@@ -112,6 +117,7 @@ public class Fragment_Self_Check_In extends BaseFragment
     FragmentSelfCheckinBinding binding;
     SummaryDisplay summaryDisplay;
     VehicleModel vehicleModel;
+    Boolean validation;
     public static void initImageLoader(Context context)
     {
         ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(context);
@@ -157,6 +163,7 @@ public class Fragment_Self_Check_In extends BaseFragment
            // AgreementsBundle = getArguments().getBundle("AgreementsBundle");
            // reservationSummarry = (ReservationSummarry) getArguments().getSerializable("reservation");
             reservations = (Reservation) getArguments().getSerializable("reservation");
+            validation = false;
             bundle.putInt("reservationpmt", 1);
             binding.header.screenHeader.setText(companyLabel.CheckIn);
             binding.header.back.setOnClickListener(this);
@@ -266,8 +273,56 @@ public class Fragment_Self_Check_In extends BaseFragment
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                ApiService  apiService = new ApiService(AvailableLocation, RequestType.POST,
-                            AVAILABLELOCATION, BASE_URL_LOGIN,header ,  params.getAvailableLocation());
+                /*ApiService  apiService = new ApiService(AvailableLocation, RequestType.POST,
+                            AVAILABLELOCATION, BASE_URL_LOGIN,header ,  params.getAvailableLocation());*/
+
+                    new ApiService2<>(new OnResponseListener() {
+                        @Override
+                        public void onSuccess(String response, HashMap<String, String> headers) {
+                            handler.post(() -> {
+                                try {
+
+                                    JSONObject responseJSON = new JSONObject(response);
+                                    Boolean status = responseJSON.getBoolean("Status");
+                                    final JSONArray getReservationList = responseJSON.getJSONArray("Data");
+                                    OnDropDownList[] onDropDownLists;
+                                    List<String> strings = new ArrayList<>();
+                                    onDropDownLists = loginRes.getModel(getReservationList.toString(), OnDropDownList[].class);
+                                    for (int i = 0; i < onDropDownLists.length; i++) {
+                                        // data.add(new OnDropDownList(onDropDownLists[i].Id, onDropDownLists[i].Name));
+                                        OnDropDownList onDropDownList = new OnDropDownList();
+                                        onDropDownList = loginRes.getModel(getReservationList.get(i).toString(), OnDropDownList.class);
+                                       // data.add(onDropDownList);
+
+                                        strings.add(onDropDownLists[i].Name);
+                                    }
+
+                                    //   getSpinner(binding.makeId,strings);
+                                    //listSpinner(data);
+
+                                    int idd=0;
+                                    for (int i = 0; i <onDropDownLists.length; i++) {
+                                        location.add(onDropDownLists[i].Name);
+                                        if (reservations.PickUpLocationName.matches(strings.get(i))){
+                                            idd = i;
+                                        }
+                                    }
+                                    ArrayAdapter<String> adapterCategories = new ArrayAdapter<String>(getActivity().getApplication(), R.layout.spinner_layout, R.id.text1,location);
+                                    txtcheck_Out_Location_Name.setAdapter(adapterCategories);
+                                    txtcheck_Out_Location_Name.setSelection(idd);
+
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onError(String error) {
+
+                        }
+                    }, RequestType.POST, COMMONDROPDOWNSINGLE, BASE_URL_LOGIN, header, new DropDown(VEHICLELOCATION, Integer.parseInt(loginRes.getData("CompanyId")), true, false));
                 }
             },500);
 
@@ -337,13 +392,14 @@ public class Fragment_Self_Check_In extends BaseFragment
 
                 //reservations.CheckInDate = DateConvert.DateConverter(DateType.datetime,txtactualReturnDate.getText().toString(),DateType.fulldate);
                // reservationSummarry.CheckOutDate = DateConvert.DateConverter(DateType.fulldate,reservations.CheckInDate,DateType.fulldate);
-                reservationSummarry.CheckOutDate = reservations.CheckInDate;
+               // reservationSummarry.CheckOutDate = reservations.CheckInDate;
                 reservationSummarry.CheckInDate = DateConvert.DateConverter(DateType.datetime,txtactualReturnDate.getText().toString(),DateType.fulldate);
                 //reservationSummarry.DropLocation =
                // reservationSummarry.ReservationRatesModel.IsC
                 reservationSummarry.IgnorCalculationSummaryTypes = new ArrayList<>();
                 reservationSummarry.IgnorCalculationSummaryTypes.add(1);
                 reservationSummarry.IgnorCalculationSummaryTypes.add(2);
+                reservationSummarry.IgnorCalculationSummaryTypes.add(4);
                 reservationSummarry.IgnorCalculationSummaryTypes.add(4);
                 reservationSummarry.IgnorCalculationSummaryTypes.add(94);
                 reservationSummarry.IgnorCalculationSummaryTypes.add(101);
@@ -378,14 +434,18 @@ public class Fragment_Self_Check_In extends BaseFragment
             @Override
             public void onClick(View v)
             {
-                bundle.putSerializable("reservation", reservations);
-                bundle.putSerializable("reservationSum",reservationSummarry);
-                Log.e(TAG, "onClick: " + reservationSummarry.CustomerEmail );
+                if(validation) {
+                    bundle.putSerializable("reservation", reservations);
+                    bundle.putSerializable("reservationSum", reservationSummarry);
+                    Log.e(TAG, "onClick: " + reservationSummarry.CustomerEmail);
                    /* NavHostFragment.findNavController(Fragment_Self_Check_In.this)
                             .navigate(R.id.action_Self_check_In_to_SummaryOfChargeForSelfCheckIn,bundle);*/
-                String  bodyParam = "?id=" + reservations.CustomerId + "&isActive=true"+"&"+"IsWithSummary=true";
-                OptionMenu optionMenu = new OptionMenu(getActivity());
-                optionMenu.makePayment(Fragment_Self_Check_In.this,bundle,header,params,R.id.action_Self_check_In_to_Payment,1);
+                    String bodyParam = "?id=" + reservations.CustomerId + "&isActive=true" + "&" + "IsWithSummary=true";
+                    OptionMenu optionMenu = new OptionMenu(getActivity());
+                    optionMenu.makePayment(Fragment_Self_Check_In.this, bundle, header, params, R.id.action_Self_check_In_to_Payment, 1);
+                } else {
+                    CustomToast.showToast(getActivity(), "Please Insert Current OdometerIn", 1);
+                }
                 /*new ApiService(new OnResponseListener() {
                     @Override
                     public void onSuccess(String response, HashMap<String, String> headers) {
@@ -858,7 +918,7 @@ public class Fragment_Self_Check_In extends BaseFragment
                             setodmeter(txtOdometerOut,String.valueOf(reservationCheckout.ReservationCheckOutModel.CheckOutOdo));
                           //  txtOdometerOut.setText(String.valueOf(reservationCheckout.ReservationCheckOutModel.CheckOutOdo));
                             enablechangeEdit(txtOdometerOut);
-                            int s = reservationCheckout.ReservationCheckOutModel.CurrentFuel;
+                            int s= Integer.valueOf(reservationCheckout.ReservationCheckOutModel.CurrentFuel.intValue());
 
                             customSeekBar.setProgress(Integer.parseInt(String.valueOf(s)));
                             txtGasTankIn.setText(reservationCheckout.ReservationCheckOutModel.CurrentFuel+"%");
@@ -898,7 +958,7 @@ public class Fragment_Self_Check_In extends BaseFragment
                     try {
                         JSONObject responseJSON = new JSONObject(response);
                         Boolean status = responseJSON.getBoolean("Status");
-
+                        validation = true;
                         if (status) {
                             JSONObject resultSet = responseJSON.getJSONObject("Data");
                             JSONArray summarry = resultSet.getJSONArray("ReservationSummaryModels");

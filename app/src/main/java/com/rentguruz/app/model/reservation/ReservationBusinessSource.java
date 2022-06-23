@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ReservationBusinessSource extends BaseModel implements Serializable {
     public String Name,ReferralName;
-    public Boolean IsReferralSelect;
+    public Boolean IsReferralSelect,IsRateSelect;
     public int ReferralId;
 
     public String Code,RateName,ReservationTypeName;

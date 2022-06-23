@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.Spinner;
 import android.widget.ToggleButton;
 
 import com.rentguruz.app.R;
@@ -19,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.rentguruz.app.adapters.CustomBindingAdapter;
+import com.rentguruz.app.adapters.CustomToast;
 import com.rentguruz.app.adapters.CustomeDialog;
 import com.rentguruz.app.adapters.Helper;
 import com.rentguruz.app.adapters.OnStringListner;
@@ -84,7 +86,9 @@ public class Fragment_Vehicle_Master_Ownership  extends BaseFragment {
         binding.header.back.setOnClickListener(this);
         binding.header.discard.setOnClickListener(this);
         binding.next.setOnClickListener(this);
-
+        userDraw.checkbtn(binding.cashpurchase);
+        userDraw.checkbtn(binding.financepurchase);
+        userDraw.checkbtn(binding.leasepurchase);
         try {
            binding.companyname.setText(UserData.companyModel.Name);
            binding.emailid.setText(UserData.companyModel.EmailId);
@@ -110,6 +114,7 @@ public class Fragment_Vehicle_Master_Ownership  extends BaseFragment {
                                 OnDropDownList[] onDropDownLists;
                                 List<String> strings = new ArrayList<>();
                                 strings.add(0, "Select Vendor");
+                                int selectedvendor = 0;
                                 onDropDownLists = loginRes.getModel(getReservationList.toString(),OnDropDownList[].class);
                                 for (int i = 0; i < onDropDownLists.length; i++) {
                                     // data.add(new OnDropDownList(onDropDownLists[i].Id, onDropDownLists[i].Name));
@@ -118,9 +123,17 @@ public class Fragment_Vehicle_Master_Ownership  extends BaseFragment {
                                    // data.add(onDropDownList);
 
                                    strings.add(onDropDownLists[i].Name);
+                                   try {
+                                       if (onDropDownList.Id == vehicleModel.VehiclePurchaseDetailsModel.VendorMasterId){
+                                           selectedvendor = i+1;
+                                       }
+                                   } catch (Exception e){
+                                       e.printStackTrace();
+                                   }
                                 }
                                 ArrayAdapter<String> selectvendor = new ArrayAdapter<String>( context, R.layout.spinner_layout, R.id.text1,strings);
                                 binding.selectvendor.setAdapter(selectvendor);
+                                binding.selectvendor.setSelection(selectedvendor);
                                 //   getSpinner(binding.makeId,strings);
                                 //listSpinner(data);
 
@@ -146,6 +159,7 @@ public class Fragment_Vehicle_Master_Ownership  extends BaseFragment {
                                                                               binding.name.setText(vehicleVendor.ContactPersonName);
                                                                               binding.number.setText(vehicleVendor.ContactPersonTelephone);
                                                                               binding.email.setText(vehicleVendor.ContactPersonEmail);
+                                                                              VehiclePurchaseDetailsModel.VendorMasterId = vehicleVendor.Id;
                                                                               CustomBindingAdapter.html(binding.address,vehicleVendor.AddressesModel.PreviewAddress);
                                                                               CustomBindingAdapter.loadImage(binding.image,vehicleVendor.AttachmentsModel.AttachmentPath);
                                                                               Log.e(TAG, "run: " + response );
@@ -345,6 +359,8 @@ public class Fragment_Vehicle_Master_Ownership  extends BaseFragment {
             binding.cash.getRoot().setVisibility(View.VISIBLE);
             binding.finance.getRoot().setVisibility(View.GONE);
         }
+
+        userDraw.toggle(binding.isActive, false);
     }
 
         @Override
@@ -375,30 +391,34 @@ public class Fragment_Vehicle_Master_Ownership  extends BaseFragment {
             case R.id.next:
              //   vehicleModel = getVehicleModel();
                 //vehicleModel.VehiclePurchaseDetailsModel = new VehiclePurchaseDetailsModel();
-                loginRes.testingLog(TAG,getVehicleModel());
-                new ApiService2(new OnResponseListener() {
-                    @Override
-                    public void onSuccess(String response, HashMap<String, String> headers) {
-                        handler.post(() -> {
-                            try {
-                                JSONObject responseJSON = new JSONObject(response);
-                                Boolean status = responseJSON.getBoolean("Status");
-                                Log.e(TAG, "run: " + responseJSON);
-                                if (status) {
-                                    NavHostFragment.findNavController(Fragment_Vehicle_Master_Ownership.this).popBackStack();
+                if (validation()){
+                    loginRes.testingLog(TAG,getVehicleModel());
+                    new ApiService2(new OnResponseListener() {
+                        @Override
+                        public void onSuccess(String response, HashMap<String, String> headers) {
+                            handler.post(() -> {
+                                try {
+                                    JSONObject responseJSON = new JSONObject(response);
+                                    Boolean status = responseJSON.getBoolean("Status");
+                                    Log.e(TAG, "run: " + responseJSON);
+                                    if (status) {
+                                        NavHostFragment.findNavController(Fragment_Vehicle_Master_Ownership.this).popBackStack();
+                                    } else {
+                                        CustomToast.showToast(getActivity(), responseJSON.getString("Message"),1);
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
 
-                        });
-                    }
+                            });
+                        }
 
-                    @Override
-                    public void onError(String error) {
+                        @Override
+                        public void onError(String error) {
 
-                    }
-                }, RequestType.PUT,VEHICLEUPDATE,BASE_URL_LOGIN,header,getVehicleModel());
+                        }
+                    }, RequestType.PUT,VEHICLEPURCHASEUPDATE,BASE_URL_LOGIN,header,getVehicleModel());
+                }
                 break;
         }
 
@@ -486,45 +506,65 @@ public class Fragment_Vehicle_Master_Ownership  extends BaseFragment {
     public DoVehicle getVehicleModel(){
         vehicleModel.VehiclePurchaseDetailsModel =  VehiclePurchaseDetailsModel;
         vehicleModel.VehiclePurchaseDetailsModel.VehicleId = vehicleModel.Id;
+        vehicleModel.VehiclePurchaseDetailsModel.CompanyName = binding.companyname.getText().toString();
+        vehicleModel.VehiclePurchaseDetailsModel.Email = binding.emailid.getText().toString();
+        vehicleModel.VehiclePurchaseDetailsModel.MobileNo = binding.comnumber.getText().toString();
         if (binding.cashpurchase.isChecked()) {
-            vehicleModel.VehiclePurchaseDetailsModel.PurchasedBy = VehiclePurchasedBy.Cash.inte;
-            vehicleModel.VehiclePurchaseDetailsModel.PreTaxAmount = Double.valueOf(binding.cash.pretaxamt.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.PaidBy = binding.cash.paidby.getText().toString();
-            vehicleModel.VehiclePurchaseDetailsModel.DateOfPayment =CustomeDialog.dateConvert(binding.cash.pmtdate.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.AmountMonthly = Double.valueOf(binding.cash.monthlypaid.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.AnnualMilesAllowed = Integer.parseInt(binding.cash.kmsallowed.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.DownPayment = Double.valueOf(binding.cash.downpayment.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.TaxAmount = Double.valueOf(binding.cash.taxamt.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.ChequeNumber = binding.cash.chequenumber.getText().toString();
-            vehicleModel.VehiclePurchaseDetailsModel.BankName =        binding.cash.bankname.getText().toString();
-            vehicleModel.VehiclePurchaseDetailsModel.TotalAmount = Double.valueOf(binding.cash.totalamt.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.ApprovedBy = binding.cash.authorised.getSelectedItemPosition();
+            try{
+                vehicleModel.VehiclePurchaseDetailsModel.PurchasedBy = VehiclePurchasedBy.Cash.inte;
+                vehicleModel.VehiclePurchaseDetailsModel.PreTaxAmount = Double.valueOf(binding.cash.pretaxamt.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.PaidBy = binding.cash.paidby.getText().toString();
+                vehicleModel.VehiclePurchaseDetailsModel.DateOfPayment =CustomeDialog.dateConvert(binding.cash.pmtdate.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.AmountMonthly = Double.valueOf(binding.cash.monthlypaid.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.AnnualMilesAllowed = Integer.parseInt(binding.cash.kmsallowed.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.DownPayment = Double.valueOf(binding.cash.downpayment.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.TaxAmount = Double.valueOf(binding.cash.taxamt.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.ChequeNumber = binding.cash.chequenumber.getText().toString();
+                vehicleModel.VehiclePurchaseDetailsModel.BankName =        binding.cash.bankname.getText().toString();
+                vehicleModel.VehiclePurchaseDetailsModel.TotalAmount = Double.valueOf(binding.cash.totalamt.getText().toString());
+                // vehicleModel.VehiclePurchaseDetailsModel.ApprovedBy = binding.cash.authorised.getSelectedItemPosition();
+                vehicleModel.VehiclePurchaseDetailsModel.ApprovedBy = getAuthoriseby(binding.cash.authorised);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
         if (binding.financepurchase.isChecked()) {
-            vehicleModel.VehiclePurchaseDetailsModel.PurchasedBy = VehiclePurchasedBy.Finance.inte;
-            vehicleModel.VehiclePurchaseDetailsModel.CarPriceBeforeTax = Double.valueOf(binding.finance.beforetax.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.Reminder =      binding.finance.reminder.isChecked();
-            vehicleModel.VehiclePurchaseDetailsModel.LeaseTermsMonth =    binding.finance.leaseterms.getText().toString();
-            vehicleModel.VehiclePurchaseDetailsModel.DateOfPayment =CustomeDialog.dateConvert(binding.finance.pmtdate.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.AmountMonthly =     Double.valueOf(binding.finance.monthlypaid.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.AnnualMilesAllowed = Integer.parseInt(binding.finance.kmsallowed.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.DownPayment = Double.valueOf(binding.finance.downpayment.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.TaxAmount = Double.valueOf(binding.finance.taxamt.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.BankName =        binding.finance.bankname.getText().toString();
-            vehicleModel.VehiclePurchaseDetailsModel.ApprovedBy = binding.finance.authorised.getSelectedItemPosition();
+            try {
+                vehicleModel.VehiclePurchaseDetailsModel.PurchasedBy = VehiclePurchasedBy.Finance.inte;
+                vehicleModel.VehiclePurchaseDetailsModel.CarPriceBeforeTax = Double.valueOf(binding.finance.beforetax.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.Reminder =      binding.finance.reminder.isChecked();
+                vehicleModel.VehiclePurchaseDetailsModel.LeaseTermsMonth =    binding.finance.leaseterms.getText().toString();
+                vehicleModel.VehiclePurchaseDetailsModel.DateOfPayment =CustomeDialog.dateConvert(binding.finance.pmtdate.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.AmountMonthly =     Double.valueOf(binding.finance.monthlypaid.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.AnnualMilesAllowed = Integer.parseInt(binding.finance.kmsallowed.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.DownPayment = Double.valueOf(binding.finance.downpayment.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.TaxAmount = Double.valueOf(binding.finance.taxamt.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.BankName =        binding.finance.bankname.getText().toString();
+                // vehicleModel.VehiclePurchaseDetailsModel.ApprovedBy = binding.finance.authorised.getSelectedItemPosition();
+                vehicleModel.VehiclePurchaseDetailsModel.ApprovedBy = getAuthoriseby(binding.finance.authorised);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
         if (binding.leasepurchase.isChecked()) {
-            vehicleModel.VehiclePurchaseDetailsModel.PurchasedBy = VehiclePurchasedBy.Lease.inte;
-            vehicleModel.VehiclePurchaseDetailsModel.CarPriceBeforeTax = Double.valueOf(binding.finance.beforetax.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.Reminder =      binding.finance.reminder.isChecked();
-            vehicleModel.VehiclePurchaseDetailsModel.LeaseTermsMonth =    binding.finance.leaseterms.getText().toString();
-            vehicleModel.VehiclePurchaseDetailsModel.DateOfPayment =CustomeDialog.dateConvert(binding.finance.pmtdate.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.AmountMonthly =     Double.valueOf(binding.finance.monthlypaid.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.AnnualMilesAllowed = Integer.parseInt(binding.finance.kmsallowed.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.DownPayment = Double.valueOf(binding.finance.downpayment.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.TaxAmount = Double.valueOf(binding.finance.taxamt.getText().toString());
-            vehicleModel.VehiclePurchaseDetailsModel.BankName =        binding.finance.bankname.getText().toString();
-            vehicleModel.VehiclePurchaseDetailsModel.ApprovedBy = binding.finance.authorised.getSelectedItemPosition();
+            try {
+                vehicleModel.VehiclePurchaseDetailsModel.PurchasedBy = VehiclePurchasedBy.Lease.inte;
+                vehicleModel.VehiclePurchaseDetailsModel.CarPriceBeforeTax = Double.valueOf(binding.finance.beforetax.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.Reminder =      binding.finance.reminder.isChecked();
+                vehicleModel.VehiclePurchaseDetailsModel.LeaseTermsMonth =    binding.finance.leaseterms.getText().toString();
+                vehicleModel.VehiclePurchaseDetailsModel.DateOfPayment =CustomeDialog.dateConvert(binding.finance.pmtdate.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.AmountMonthly =     Double.valueOf(binding.finance.monthlypaid.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.AnnualMilesAllowed = Integer.parseInt(binding.finance.kmsallowed.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.DownPayment = Double.valueOf(binding.finance.downpayment.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.TaxAmount = Double.valueOf(binding.finance.taxamt.getText().toString());
+                vehicleModel.VehiclePurchaseDetailsModel.BankName =        binding.finance.bankname.getText().toString();
+                // vehicleModel.VehiclePurchaseDetailsModel.ApprovedBy = binding.finance.authorised.getSelectedItemPosition();
+                vehicleModel.VehiclePurchaseDetailsModel.ApprovedBy = getAuthoriseby(binding.finance.authorised);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         return vehicleModel;
@@ -544,5 +584,282 @@ public class Fragment_Vehicle_Master_Ownership  extends BaseFragment {
                 toggleButton.getBackground().setColorFilter(Color.parseColor(themeColors.secondary), PorterDuff.Mode.SCREEN);
             }
         });
+    }
+
+    public Integer getAuthoriseby(Spinner sp){
+        int value =0;
+        if (sp.getSelectedItemPosition() != 0){
+            for (int i = 0; i < data.size(); i++) {
+                if (i == binding.finance.authorised.getSelectedItemPosition()){
+                    return data.get(i).Id;
+                }
+            }
+        }
+        return value;
+    }
+
+    public Boolean validation(){
+        Boolean value = true;
+        if (binding.cashpurchase.isChecked()) {
+            if (binding.cash.pretaxamt.getText().toString().equals("")) {
+
+                binding.cash.pretaxamt.setError("Please Fill PreTax Amount");
+                CustomToast.showToast(getActivity(),"Please Fill PreTax Amount",1);
+                value = false;
+
+              /*  if (Integer.valueOf(binding.cash.pretaxamt.getText().toString()) == 0) {
+                    binding.cash.pretaxamt.setError("Please Fill PreTax Amount");
+                    CustomToast.showToast(getActivity(),"Please Fill PreTax Amount",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.cash.paidby.getText().toString().equals("")){
+                binding.cash.paidby.setError("Please Fill Paidby");
+                CustomToast.showToast(getActivity(),"Please Fill Paidby",1);
+                value = false;
+            }
+
+            if (binding.cash.pmtdate.getText().toString().equals("")){
+                binding.cash.pmtdate.setError("Please Select Payment Date");
+                CustomToast.showToast(getActivity(),"Please Select Payment Date",1);
+                value = false;
+            }
+
+            if (binding.cash.monthlypaid.getText().toString().equals("")){
+                binding.cash.monthlypaid.setError("Please Fill Monthly Paid Amount");
+                CustomToast.showToast(getActivity(),"Please Fill Monthly Paid Amount",1);
+                value = false;
+                /*if (Integer.valueOf(binding.cash.monthlypaid.getText().toString()) == 0) {
+                    binding.cash.monthlypaid.setError("Please Fill Monthly Paid Amount");
+                    CustomToast.showToast(getActivity(),"Please Fill Monthly Paid Amount",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.cash.kmsallowed.getText().toString().equals("")){
+                binding.cash.kmsallowed.setError("Please Fill Annual KMS Allowed");
+                CustomToast.showToast(getActivity(),"Please Fill Annual KMS Allowed",1);
+                value = false;
+               /* if (Integer.valueOf(binding.cash.kmsallowed.getText().toString()) == 0) {
+                    binding.cash.kmsallowed.setError("Please Fill Annual KMS Allowed");
+                    CustomToast.showToast(getActivity(),"Please Fill Annual KMS Allowed",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.cash.downpayment.getText().toString().equals("")){
+                binding.cash.downpayment.setError("Please Fill Downpayment Amount");
+                CustomToast.showToast(getActivity(),"Please Fill Downpayment Amount",1);
+                value = false;
+               /* if (Integer.valueOf(binding.cash.downpayment.getText().toString()) == 0) {
+                    binding.cash.downpayment.setError("Please Fill Downpayment Amount");
+                    CustomToast.showToast(getActivity(),"Please Fill Downpayment Amount",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.cash.taxamt.getText().toString().equals("")){
+                binding.cash.taxamt.setError("Please Fill Tax Amount");
+                CustomToast.showToast(getActivity(),"Please Fill Tax Amount",1);
+                value = false;
+                /*if (Integer.valueOf(binding.cash.taxamt.getText().toString()) == 0) {
+                    binding.cash.taxamt.setError("Please Fill Tax Amount");
+                    CustomToast.showToast(getActivity(),"Please Fill Tax Amount",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.cash.chequenumber.getText().toString().equals("")){
+                binding.cash.chequenumber.setError("Please Fill Cheque Number");
+                CustomToast.showToast(getActivity(),"Please Fill Cheque Number",1);
+                value = false;
+                /*if (Integer.valueOf(binding.cash.chequenumber.getText().toString()) == 0) {
+                    binding.cash.chequenumber.setError("Please Fill Cheque Number");
+                    CustomToast.showToast(getActivity(),"Please Fill Cheque Number",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.cash.bankname.getText().toString().equals("")){
+                    binding.cash.bankname.setError("Please Fill Bank Name");
+                    CustomToast.showToast(getActivity(),"Please Fill Bank Name",1);
+                    value = false;
+            }
+
+            if (binding.cash.totalamt.getText().toString().equals("")){
+                binding.cash.totalamt.setError("Please Fill Total Amount");
+                CustomToast.showToast(getActivity(),"Please Fill Total Amount",1);
+                value = false;
+                /*if (Integer.valueOf(binding.cash.totalamt.getText().toString()) == 0) {
+                    binding.cash.totalamt.setError("Please Fill Total Amount");
+                    CustomToast.showToast(getActivity(),"Please Fill Total Amount",1);
+                    value = false;
+                }*/
+            }
+        }
+
+        if (binding.financepurchase.isChecked()){
+            if (binding.finance.monthlypaid.getText().toString().equals("")) {
+                binding.finance.monthlypaid.setError("Please Fill Monthly Amount");
+                CustomToast.showToast(getActivity(),"Please Fill Monthly Amount",1);
+                value = false;
+               /* if (Integer.valueOf(binding.finance.monthlypaid.getText().toString()) == 0) {
+                    binding.finance.monthlypaid.setError("Please Fill Monthly Amount");
+                    CustomToast.showToast(getActivity(),"Please Fill Monthly Amount",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.finance.kmsallowed.getText().toString().equals("")) {
+                binding.finance.kmsallowed.setError("Please Fill Kms Allow");
+                CustomToast.showToast(getActivity(),"Please Fill Kms Allow",1);
+                value = false;
+               /* if (Integer.valueOf(binding.finance.kmsallowed.getText().toString()) == 0) {
+                    binding.finance.kmsallowed.setError("Please Fill Kms Allow");
+                    CustomToast.showToast(getActivity(),"Please Fill Kms Allow",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.finance.downpayment.getText().toString().equals("")) {
+                binding.finance.downpayment.setError("Please Fill Downpayment");
+                CustomToast.showToast(getActivity(),"Please Fill Downpayment",1);
+                value = false;
+               /* if (Integer.valueOf(binding.finance.downpayment.getText().toString()) == 0) {
+                    binding.finance.downpayment.setError("Please Fill Downpayment");
+                    CustomToast.showToast(getActivity(),"Please Fill Downpayment",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.finance.taxamt.getText().toString().equals("")) {
+                binding.finance.taxamt.setError("Please Fill Taxamount");
+                CustomToast.showToast(getActivity(),"Please Fill Taxamount",1);
+                value = false;
+                /*if (Integer.valueOf(binding.finance.taxamt.getText().toString()) == 0) {
+                    binding.finance.taxamt.setError("Please Fill Taxamount");
+                    CustomToast.showToast(getActivity(),"Please Fill Taxamount",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.finance.bankname.getText().toString().equals("")) {
+                    binding.finance.bankname.setError("Please Fill Bank Name");
+                    CustomToast.showToast(getActivity(),"Please Fill Bank Name",1);
+                    value = false;
+
+            }
+
+            if (binding.finance.beforetax.getText().toString().equals("")) {
+                binding.finance.beforetax.setError("Please Fill Before Tax Amount");
+                CustomToast.showToast(getActivity(),"Please Fill Before Tax Amount",1);
+                value = false;
+               /* if (Integer.valueOf(binding.finance.beforetax.getText().toString()) == 0) {
+                    binding.finance.beforetax.setError("Please Fill Before Tax Amount");
+                    CustomToast.showToast(getActivity(),"Please Fill Before Tax Amount",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.finance.pmtdate.getText().toString().equals("")){
+                binding.finance.pmtdate.setError("Please Select Payment Date");
+                CustomToast.showToast(getActivity(),"Please Select Payment Date",1);
+                value = false;
+            }
+
+            if (binding.finance.leaseterms.getText().toString().equals("")) {
+                binding.finance.leaseterms.setError("Please Fill Lease Terms (Month)");
+                CustomToast.showToast(getActivity(),"Please Fill Lease Terms (Month)",1);
+                value = false;
+                /*if (Integer.valueOf(binding.finance.leaseterms.getText().toString()) == 0) {
+                    binding.finance.leaseterms.setError("Please Fill Lease Terms (Month)");
+                    CustomToast.showToast(getActivity(),"Please Fill Lease Terms (Month)",1);
+                    value = false;
+                }*/
+            }
+        }
+
+        if (binding.leasepurchase.isChecked()){
+            if (binding.finance.monthlypaid.getText().toString().equals("")) {
+                binding.finance.monthlypaid.setError("Please Fill Monthly Amount");
+                CustomToast.showToast(getActivity(),"Please Fill Monthly Amount",1);
+                value = false;
+               /* if (Integer.valueOf(binding.finance.monthlypaid.getText().toString()) == 0) {
+                    binding.finance.monthlypaid.setError("Please Fill Monthly Amount");
+                    CustomToast.showToast(getActivity(),"Please Fill Monthly Amount",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.finance.kmsallowed.getText().toString().equals("")) {
+                binding.finance.kmsallowed.setError("Please Fill Kms Allow");
+                CustomToast.showToast(getActivity(),"Please Fill Kms Allow",1);
+                value = false;
+               /* if (Integer.valueOf(binding.finance.kmsallowed.getText().toString()) == 0) {
+                    binding.finance.kmsallowed.setError("Please Fill Kms Allow");
+                    CustomToast.showToast(getActivity(),"Please Fill Kms Allow",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.finance.downpayment.getText().toString().equals("")) {
+                binding.finance.downpayment.setError("Please Fill Downpayment");
+                CustomToast.showToast(getActivity(),"Please Fill Downpayment",1);
+                value = false;
+               /* if (Integer.valueOf(binding.finance.downpayment.getText().toString()) == 0) {
+                    binding.finance.downpayment.setError("Please Fill Downpayment");
+                    CustomToast.showToast(getActivity(),"Please Fill Downpayment",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.finance.taxamt.getText().toString().equals("")) {
+                binding.finance.taxamt.setError("Please Fill Taxamount");
+                CustomToast.showToast(getActivity(),"Please Fill Taxamount",1);
+                value = false;
+                /*if (Integer.valueOf(binding.finance.taxamt.getText().toString()) == 0) {
+                    binding.finance.taxamt.setError("Please Fill Taxamount");
+                    CustomToast.showToast(getActivity(),"Please Fill Taxamount",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.finance.bankname.getText().toString().equals("")) {
+                binding.finance.bankname.setError("Please Fill Bank Name");
+                CustomToast.showToast(getActivity(),"Please Fill Bank Name",1);
+                value = false;
+
+            }
+
+            if (binding.finance.beforetax.getText().toString().equals("")) {
+                binding.finance.beforetax.setError("Please Fill Before Tax Amount");
+                CustomToast.showToast(getActivity(),"Please Fill Before Tax Amount",1);
+                value = false;
+               /* if (Integer.valueOf(binding.finance.beforetax.getText().toString()) == 0) {
+                    binding.finance.beforetax.setError("Please Fill Before Tax Amount");
+                    CustomToast.showToast(getActivity(),"Please Fill Before Tax Amount",1);
+                    value = false;
+                }*/
+            }
+
+            if (binding.finance.pmtdate.getText().toString().equals("")){
+                binding.finance.pmtdate.setError("Please Select Payment Date");
+                CustomToast.showToast(getActivity(),"Please Select Payment Date",1);
+                value = false;
+            }
+
+            if (binding.finance.leaseterms.getText().toString().equals("")) {
+                binding.finance.leaseterms.setError("Please Fill Lease Terms (Month)");
+                CustomToast.showToast(getActivity(),"Please Fill Lease Terms (Month)",1);
+                value = false;
+               /* if (Integer.valueOf(binding.finance.leaseterms.getText().toString()) == 0) {
+                    binding.finance.leaseterms.setError("Please Fill Lease Terms (Month)");
+                    CustomToast.showToast(getActivity(),"Please Fill Lease Terms (Month)",1);
+                    value = false;
+                }*/
+            }
+        }
+        return value;
     }
 }

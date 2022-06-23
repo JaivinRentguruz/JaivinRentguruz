@@ -202,6 +202,7 @@ public class Fragment_New_Agreement_Confirmation extends BaseFragment {
 
                             if (charges[i].ReservationSummaryType==100){
                                 bundle.putString("netrate",DigitConvert.getDoubleDigit(charges[i].ReservationSummaryDetailModels[0].Total));
+                                Helper.reservationamt = charges[i].ReservationSummaryDetailModels[0].Total;
                             }
 
                         /*    if (i==1)
@@ -315,7 +316,9 @@ public class Fragment_New_Agreement_Confirmation extends BaseFragment {
                         reservationSummarry.Id =data.getInt("Id");
                         bundle.putSerializable("reservationSum",reservationSummarry );
                         loginRes.testingLog(TAG,reservationSummarry);
-                        NavHostFragment.findNavController(Fragment_New_Agreement_Confirmation.this).navigate(R.id.Agreement_Confirmation_to_Payment,bundle);
+                       // NavHostFragment.findNavController(Fragment_New_Agreement_Confirmation.this).navigate(R.id.Agreement_Confirmation_to_Payment,bundle);
+
+                        NavHostFragment.findNavController(Fragment_New_Agreement_Confirmation.this).navigate(R.id.Agreement_Confirmation_to_PaymentChangeOption ,bundle);
                     }  else
                     {
                         String msg = responseJSON.getString("Message");

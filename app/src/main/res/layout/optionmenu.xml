@@ -10,7 +10,7 @@
             name="UiColor"
             type="com.rentguruz.app.model.display.ThemeColors" />
     </data>
-<LinearLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/_5sdp"
@@ -22,6 +22,7 @@
         android:id="@+id/cancel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/optionmenuheight"
+        android:layout_marginTop="@dimen/_60sdp"
         android:gravity="center_vertical|center_horizontal"
         android:paddingVertical="@dimen/_5sdp"
         android:text="Select Option"
@@ -32,6 +33,11 @@
         android:textSize="@dimen/_14ssp"
         android:theme="@style/texttheme" />
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/cancel2"
+        android:layout_below="@id/cancel">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,7 +55,10 @@
         <LinearLayout
             android:id="@+id/AgreementMenu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
             android:orientation="vertical">
 
         <TextView
@@ -279,7 +288,8 @@
         <LinearLayout
             android:id="@+id/bookingconfirm"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:visibility="gone"
             android:orientation="vertical">
 
@@ -376,11 +386,12 @@
 
         </LinearLayout>
     </LinearLayout>
-
+    </androidx.core.widget.NestedScrollView>
     <TextView
         android:id="@+id/cancel2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/optionmenuheight"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/_5sdp"
         android:background="@drawable/curve_box_white"
         android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
@@ -391,5 +402,5 @@
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
         android:theme="@style/texttheme" />
-</LinearLayout>
+</RelativeLayout>
 </layout>

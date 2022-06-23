@@ -3,12 +3,14 @@ package com.rentguruz.app.home.vehicles;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
@@ -84,6 +86,7 @@ import static com.rentguruz.app.apicall.ApiEndPoint.COMMONDROPDOWN;
 import static com.rentguruz.app.apicall.ApiEndPoint.COMMONDROPDOWNSINGLE;
 import static com.rentguruz.app.apicall.ApiEndPoint.INSERTVEHICLE;
 import static com.rentguruz.app.apicall.ApiEndPoint.MAKEVEHICLE;
+import static com.rentguruz.app.apicall.ApiEndPoint.PREF;
 import static com.rentguruz.app.apicall.ApiEndPoint.UPLOADIMAGE;
 import static com.rentguruz.app.apicall.ApiEndPoint.VEHICLECLASS;
 import static com.rentguruz.app.apicall.ApiEndPoint.VEHICLEDETAIL;
@@ -93,7 +96,7 @@ import static com.rentguruz.app.apicall.ApiEndPoint.VEHICLEFLEET;
 import static com.rentguruz.app.apicall.ApiEndPoint.VEHICLELOCATION;
 import static com.rentguruz.app.apicall.ApiEndPoint.VEHICLEMAKE;
 
-public class Fragment_Vehicles_Basic_Details extends BaseFragment {
+public class Fragment_Vehicles_Basic_Details extends BaseFragment implements AdapterView.OnItemSelectedListener {
 
     FragmentVehicleBasicDetailsBinding binding;
     List<DropDown> dropDownList = new ArrayList<>();
@@ -215,6 +218,9 @@ public class Fragment_Vehicles_Basic_Details extends BaseFragment {
                 binding.makeId.getSelectedItem();
                 makeIdSpinner(binding.makeId.getSelectedItem().toString());
                 Log.e(TAG, "onItemSelected: " + binding.makeId.getSelectedItem() );
+                if (binding.makeId.getSelectedItemPosition() != 0){
+                    binding.makeId.setBackground(userDraw.getShortSpinner());
+                }
             }
 
             @Override
@@ -229,18 +235,26 @@ public class Fragment_Vehicles_Basic_Details extends BaseFragment {
         customeView.vehicleTypeSpinner(getContext(),binding.VehiclesStatus);
         customeView.vehicleTransmissionSpinner(getContext(),binding.vehicleTransmission);
         customeView.vehicleFuel(getContext(),binding.VehiclesFuel);
+       // binding.year.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
+      /*  Drawable drawable = getResources().getDrawable(R.drawable.ic_small_dropdown);
+        drawable.setTint(getResources().getColor(R.color.red));
+        drawable.setTintMode(PorterDuff.Mode.SRC);*/
 
-        binding.year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*binding.year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Log.e(TAG, "onItemSelected: "+ binding.year.getSelectedItem() );
+                //binding.year.setBackgroundColor(getResources().getColor(R.color.red));
+                //binding.year.setBackgroundTintMode(PorterDuff.Mode.ADD);
+
+                //binding.year.getBackground().setTintMode(PorterDuff.Mode.ADD);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
 
        /* binding.carImage1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -379,6 +393,31 @@ public class Fragment_Vehicles_Basic_Details extends BaseFragment {
             e.printStackTrace();
         }
 
+
+        /*binding.vehicleTransmission.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                binding.vehicleTransmission.setBackground(userDraw.getShortSpinner());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });*/
+
+        binding.vehicleTransmission.setOnItemSelectedListener(this);
+        binding.VehiclesFuel.setOnItemSelectedListener(this);
+        binding.year.setOnItemSelectedListener(this);
+        binding.vehicleModel.setOnItemSelectedListener(this);
+        binding.VehiclesClass.setOnItemSelectedListener(this);
+        binding.VehiclesEngine.setOnItemSelectedListener(this);
+        binding.VehiclesStatus.setOnItemSelectedListener(this);
+        binding.VehiclesSeat.setOnItemSelectedListener(this);
+        binding.VehiclesDoors.setOnItemSelectedListener(this);
+        binding.vehicleParked.setOnItemSelectedListener(this);
+        binding.vehicleOwnLoc.setOnItemSelectedListener(this);
+        binding.VehiclesBags.setOnItemSelectedListener(this);
 
     }
 
@@ -588,11 +627,14 @@ public class Fragment_Vehicles_Basic_Details extends BaseFragment {
         }
         years.add(0,"Select Year");
         getSpinner(binding.year, years);
-        vehicleSeat.add(0,"Select " + companyLabel.Vehicle  + " Seat");
+        //vehicleSeat.add(0,"Select " + companyLabel.Vehicle  + " Seat");
+        vehicleSeat.add(0,"Select Seat");
         getSpinner(binding.VehiclesSeat,vehicleSeat);
-        vehicleDoors.add(0,"Select " + companyLabel.Vehicle  + " Doors");
+        //vehicleDoors.add(0,"Select " + companyLabel.Vehicle  + " Doors");
+        vehicleDoors.add(0,"Select Doors");
         getSpinner(binding.VehiclesDoors,vehicleDoors);
-        vehicleBags.add(0,"Select " + companyLabel.Vehicle  + " Bags");
+        //vehicleBags.add(0,"Select " + companyLabel.Vehicle  + " Bags");
+        vehicleBags.add(0,"Select Bags");
         getSpinner(binding.VehiclesBags,vehicleBags);
     }
 
@@ -677,27 +719,150 @@ public class Fragment_Vehicles_Basic_Details extends BaseFragment {
     }
 
     private Boolean validation(){
-        boolean value = false;
-        if (binding.vinNumber.getText().toString().equals(""))
-            CustomToast.showToast(getActivity(),"Please Enter Vehicle Number",1);
+        //boolean value = false;
+       /* if (binding.vinNumber.getText().toString().equals(""))
+            //CustomToast.showToast(getActivity(),"Please Enter Vehicle Number",1);
+            binding.vinNumber.setError("Please Enter Vehicle Number");
         else if (binding.manufacturer.getText().toString().equals(""))
-            CustomToast.showToast(getActivity(),"Please Enter Vehicle Manufacturer",1);
+            //CustomToast.showToast(getActivity(),"Please Enter Vehicle Manufacturer",1);
+            binding.manufacturer.setError("Please Enter Vehicle Manufacturer");
         else if (binding.keycode.getText().toString().equals(""))
-            CustomToast.showToast(getActivity(),"Please Enter Vehicle Key",1);
+          //  CustomToast.showToast(getActivity(),"Please Enter Vehicle Key",1);
+            binding.keycode.setError("Please Enter Vehicle Key");
         else if (binding.licenceNumber.getText().toString().equals(""))
-            CustomToast.showToast(getActivity(),"Please Enter Vehicle Licence Number",1);
+           // CustomToast.showToast(getActivity(),"Please Enter Vehicle Licence Number",1);
+            binding.licenceNumber.setError("Please Enter Vehicle Licence Number");
         else if (binding.vehicleNumber.getText().toString().equals(""))
-            CustomToast.showToast(getActivity(),"Please Enter Vehicle Number",1);
+            //CustomToast.showToast(getActivity(),"Please Enter Vehicle Number",1);
+            binding.vehicleNumber.setError("Please Enter Vehicle Number");
         else if (binding.tanksize.getText().toString().equals(""))
-            CustomToast.showToast(getActivity(),"Please Enter Vehicle Fuel Tank Size",1);
+           // CustomToast.showToast(getActivity(),"Please Enter Vehicle Fuel Tank Size",1);
+            binding.tanksize.setError("Please Enter Vehicle Fuel Tank Size");
         else if (binding.VehiclesFuel.getSelectedItemPosition()==0)
             CustomToast.showToast(getActivity(),"Please Select Vehicle Fuel",1);
         else if (binding.vehicleTransmission.getSelectedItemPosition()==0)
             CustomToast.showToast(getActivity(),"Please Select Vehicle Transmission",1);
+       *//* else if (carimage.size() == 0 )
+            CustomToast.showToast(getActivity(),"Please Add Vehicle Image",1);*//*
+        else
+            value=true;*/
+        boolean value = true;
+        if (binding.vinNumber.getText().toString().equals("")) {
+            binding.vinNumber.setError("Please Enter Vehicle Number");
+            value = false;
+        }
+        if (binding.manufacturer.getText().toString().equals("")) {
+            binding.manufacturer.setError("Please Enter Vehicle Manufacturer");
+            value = false;
+        }
+        if (binding.keycode.getText().toString().equals("")) {
+            binding.keycode.setError("Please Enter Vehicle Key");
+            value = false;
+        }
+        if (binding.licenceNumber.getText().toString().equals("")) {
+            binding.licenceNumber.setError("Please Enter Vehicle Licence Number");
+            value = false;
+        }
+        if (binding.vehicleNumber.getText().toString().equals("")) {
+            binding.vehicleNumber.setError("Please Enter Vehicle Number");
+            value = false;
+        }
+        if (binding.tanksize.getText().toString().equals("")) {
+            binding.tanksize.setError("Please Enter Vehicle Fuel Tank Size");
+            value = false;
+        }
+
+        if (binding.licplate.getText().toString().equals("")){
+            binding.licplate.setError("Please Enter Vehicle Licence Plate Number");
+            value = false;
+        }
+        if (binding.VehiclesFuel.getSelectedItemPosition()==0) {
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Fuel", 1);
+           // binding.VehiclesFuel.setBackgroundColor(getResources().getColor(R.color.red));
+           // binding.VehiclesFuel.setBackgroundTintList();
+            binding.VehiclesFuel.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+            value = false;
+        }
+        if (binding.vehicleTransmission.getSelectedItemPosition()==0) {
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Transmission", 1);
+            value = false;
+            binding.vehicleTransmission.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }
+
+        if (binding.year.getSelectedItemPosition() == 0 ){
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Year", 1);
+            value = false;
+            binding.year.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }
+
+        if (binding.makeId.getSelectedItemPosition() == 0 ){
+            CustomToast.showToast(getActivity(), "Please Select Make Company", 1);
+            value = false;
+            binding.makeId.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }
+
+        if (binding.vehicleModel.getSelectedItemPosition() == 0 ){
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Model", 1);
+            value = false;
+            binding.vehicleModel.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }
+
+        if (binding.VehiclesClass.getSelectedItemPosition() == 0 ){
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Class", 1);
+            value = false;
+            binding.VehiclesClass.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }
+
+        if (binding.VehiclesEngine.getSelectedItemPosition() == 0 ){
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Engine", 1);
+            value = false;
+            binding.VehiclesEngine.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }
+
+       /* if (binding.VehiclesStatus.getSelectedItemPosition() == 0 ){
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Status", 1);
+            value = false;
+            binding.VehiclesStatus.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }*/
+
+        if (binding.VehiclesSeat.getSelectedItemPosition() == 0 ){
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Seat", 1);
+            value = false;
+            binding.VehiclesSeat.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }
+
+        if (binding.VehiclesDoors.getSelectedItemPosition() == 0 ){
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Doors", 1);
+            value = false;
+            binding.VehiclesDoors.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }
+
+        if (binding.vehicleParked.getSelectedItemPosition() == 0 ){
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Parked Location", 1);
+            value = false;
+            binding.vehicleParked.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }
+
+       /* if (binding.VehiclesFleet.getSelectedItemPosition() == 0 ){
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Fleet Location", 1);
+            value = false;
+            binding.VehiclesFleet.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }*/
+
+        if (binding.vehicleOwnLoc.getSelectedItemPosition() == 0 ){
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Parked Location", 1);
+            value = false;
+            binding.vehicleOwnLoc.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }
+
+        if (binding.VehiclesBags.getSelectedItemPosition() == 0 ){
+            CustomToast.showToast(getActivity(), "Please Select Vehicle Bags", 1);
+            value = false;
+            binding.VehiclesBags.getBackground().setColorFilter(getResources().getColor(R.color.red),PorterDuff.Mode.SCREEN);
+        }
+
        /* else if (carimage.size() == 0 )
             CustomToast.showToast(getActivity(),"Please Add Vehicle Image",1);*/
-        else
-            value=true;
 
         return value;
     }
@@ -1016,5 +1181,85 @@ public class Fragment_Vehicles_Basic_Details extends BaseFragment {
             //startActivityForResult(intent,RESULT_LOAD_IMAGE);
         }
         return intents;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (parent.getId()){
+            case R.id.vehicleTransmission:
+                binding.vehicleTransmission.setBackground(userDraw.getShortSpinner());
+                break;
+
+            case R.id.VehiclesFuel:
+                binding.VehiclesFuel.setBackground(userDraw.getShortSpinner());
+                break;
+
+            case R.id.year:
+                if (binding.year.getSelectedItemPosition() != 0){
+                    binding.year.setBackground(userDraw.getShortSpinner());
+                }
+                break;
+
+            case R.id.vehicleModel:
+                if (binding.vehicleModel.getSelectedItemPosition() != 0){
+                    binding.vehicleModel.setBackground(userDraw.getShortSpinner());
+                }
+                break;
+
+            case R.id.VehiclesClass:
+                if (binding.VehiclesClass.getSelectedItemPosition() != 0){
+                    binding.VehiclesClass.setBackground(userDraw.getShortSpinner());
+                }
+                break;
+
+            case R.id.VehiclesEngine:
+                if (binding.VehiclesEngine.getSelectedItemPosition() != 0){
+                    binding.VehiclesEngine.setBackground(userDraw.getShortSpinner());
+                }
+                break;
+
+            case R.id.VehiclesStatus:
+               // if (binding.VehiclesStatus.getSelectedItemPosition() != 0){
+                    binding.VehiclesStatus.setBackground(userDraw.getShortSpinner());
+               // }
+                break;
+
+            case R.id.VehiclesSeat:
+                if (binding.VehiclesSeat.getSelectedItemPosition() != 0){
+                    binding.VehiclesSeat.setBackground(userDraw.getShortSpinner());
+                }
+                break;
+
+            case R.id.VehiclesDoors:
+                if (binding.VehiclesDoors.getSelectedItemPosition() != 0){
+                    binding.VehiclesDoors.setBackground(userDraw.getShortSpinner());
+                }
+                break;
+
+            case R.id.vehicleParked:
+                if (binding.vehicleParked.getSelectedItemPosition() != 0){
+                    binding.vehicleParked.setBackground(userDraw.getShortSpinner());
+                }
+                break;
+            case R.id.vehicleOwnLoc:
+                if (binding.vehicleOwnLoc.getSelectedItemPosition() != 0){
+                    binding.vehicleOwnLoc.setBackground(userDraw.getShortSpinner());
+                }
+                break;
+
+            case R.id.VehiclesBags:
+                if (binding.VehiclesBags.getSelectedItemPosition() != 0){
+                    binding.VehiclesBags.setBackground(userDraw.getShortSpinner());
+                }
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + parent.getId());
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

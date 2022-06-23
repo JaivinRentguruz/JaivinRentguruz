@@ -71,6 +71,8 @@ public class Fragment_New_Agreement_FlightDetail extends BaseFragment {
         binding.departuredate.setOnClickListener(this);
         binding.flightarrivaltime.setOnClickListener(this);
         binding.save.setOnClickListener(this);
+        binding.arivaldt.setOnClickListener(this);
+        binding.departuredt.setOnClickListener(this);
     }
 
     @Override
@@ -121,6 +123,14 @@ public class Fragment_New_Agreement_FlightDetail extends BaseFragment {
 
             case R.id.flightarrivaltime:
                 dialog.getFullDate(string -> binding.flightarrivaltime.setText(string));
+                break;
+
+            case R.id.arivaldt:
+                dialog.getFullDate(string -> binding.arivaldt.setText(string));
+                break;
+
+            case R.id.departuredt:
+                dialog.getFullDate(string -> binding.departuredt.setText(string));
                 break;
 
             case R.id.save:

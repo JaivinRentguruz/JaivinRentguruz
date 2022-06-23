@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.rentguruz.app.SplashScreen;
 import com.rentguruz.app.adapters.CustomBindingAdapter;
@@ -162,7 +163,8 @@ public class Fragment_login extends BaseFragment
                 Intent i = new Intent(getActivity(), Driver_Profile.class);
                 startActivity(i);
             }
-        });
+        });*/
+
         txtforgetpassword.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -171,7 +173,7 @@ public class Fragment_login extends BaseFragment
                 NavHostFragment.findNavController(Fragment_login.this)
                         .navigate(R.id.action_LoginFragment_to_Forgot_Password);
             }
-        });*/
+        });
 
         ImageView icon =view.findViewById(R.id.logo);
         CustomBindingAdapter.loadImage(icon,loginRes.getData(getResources().getString(R.string.logo)));

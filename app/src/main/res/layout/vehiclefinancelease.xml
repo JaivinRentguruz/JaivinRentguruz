@@ -383,6 +383,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:hint="Bank Name"
+                android:inputType="text"
                 android:gravity="center_vertical"
                 android:textAlignment="gravity"
                 android:background="@drawable/ic_rectangle_box_2152"

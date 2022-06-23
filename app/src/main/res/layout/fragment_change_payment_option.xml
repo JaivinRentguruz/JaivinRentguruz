@@ -80,6 +80,326 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Payment By"
+                            android:textColor="@color/fontwhitebackground"
+                            android:textSize="@dimen/sixteen"
+                            android:theme="@style/texttheme" />
+
+                        <RadioGroup
+                            android:id="@+id/paymentOptionOnlineOffline"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/online"
+                                style="@style/MyRadioButton"
+                                android:layout_marginStart="-5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                android:text="  Online Payment"
+                                android:textColor="@color/textlightcolor"
+                                android:theme="@style/loginedit" />
+
+                            <RadioButton
+                                android:id="@+id/offline"
+                                style="@style/MyRadioButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                android:text="  Offline Payment"
+                                android:textColor="@color/textlightcolor"
+                                android:theme="@style/loginedit" />
+
+                        </RadioGroup>
+
+                        <RadioGroup
+                            android:id="@+id/selectPaymentCashCheque"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/cash"
+                                style="@style/MyRadioButton"
+                                android:layout_marginStart="-5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                android:text="  Cash"
+                                android:textColor="@color/textlightcolor"
+                                android:theme="@style/loginedit" />
+
+                            <RadioButton
+                                android:id="@+id/debitcard"
+                                style="@style/MyRadioButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                android:text="  DebitCard"
+                                android:textColor="@color/textlightcolor"
+                                android:theme="@style/loginedit" />
+
+                            <RadioButton
+                                android:id="@+id/cheque"
+                                style="@style/MyRadioButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                android:text="  Cheque"
+                                android:textColor="@color/textlightcolor"
+                                android:theme="@style/loginedit" />
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.7dp"
+                        android:background="@color/linne" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/cashpmtdetail"
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:weightSum="100">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="40"
+                                    android:gravity="left"
+                                    android:text="Payment By"
+                                    android:textColor="@color/textlightcolor"
+                                    android:textSize="@dimen/fourteen"
+                                    android:theme="@style/texttheme" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="12dp"
+                                    android:layout_weight="60"
+                                    android:gravity="left"
+                                    android:text="Select Name"
+                                    android:textColor="@color/textlightcolor"
+                                    android:textSize="@dimen/fourteen"
+                                    android:theme="@style/texttheme" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="100">
+
+                                <EditText
+                                    style="@style/edittext"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_weight="40"
+                                    android:background="@drawable/ic_rectangle_box_2152"
+                                    android:inputType="text"
+                                    android:padding="10dp"
+                                    android:textColor="@color/registerTextColor"
+                                    android:textColorHint="@color/hintColor"
+                                    android:textSize="@dimen/edt_font_size" />
+
+
+                                <EditText
+                                    style="@style/edittext"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="7dp"
+                                    android:layout_weight="60"
+                                    android:inputType="text"
+                                    android:padding="10dp"
+                                    android:textColor="@color/registerTextColor"
+                                    android:textColorHint="@color/hintColor"
+                                    android:textSize="@dimen/edt_font_size" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/chequeDetail"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="8dp"
+                                android:orientation="horizontal"
+                                android:weightSum="100">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="40"
+                                    android:gravity="left"
+                                    android:text="Cheque Date"
+                                    android:textColor="@color/textlightcolor"
+                                    android:textSize="@dimen/fourteen"
+                                    android:theme="@style/texttheme" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="12dp"
+                                    android:layout_weight="60"
+                                    android:gravity="left"
+                                    android:text="Cheque Number"
+                                    android:textColor="@color/textlightcolor"
+                                    android:textSize="@dimen/fourteen"
+                                    android:theme="@style/texttheme" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="100">
+
+                                <TextView
+                                    android:id="@+id/chequeDate"
+                                    style="@style/datetext"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_weight="40"
+                                    android:background="@drawable/ic_rectangle_box_2152"
+                                    android:hint="@string/mm_dd_yyyy"
+                                    android:inputType="datetime"
+                                    android:padding="10dp"
+                                    android:textColor="@color/registerTextColor"
+                                    android:textColorHint="@color/hintColor"
+                                    android:textSize="@dimen/edt_font_size"
+                                    android:theme="@style/texttheme" />
+
+
+                                <EditText
+                                    style="@style/edittext"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="7dp"
+                                    android:layout_weight="60"
+                                    android:background="@drawable/ic_rectangle_box_2152"
+                                    android:inputType="number"
+                                    android:padding="10dp"
+                                    android:textColor="@color/registerTextColor"
+                                    android:textColorHint="@color/hintColor"
+                                    android:textSize="@dimen/edt_font_size" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="8dp"
+                                android:orientation="horizontal"
+                                android:weightSum="100">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="40"
+                                    android:gravity="left"
+                                    android:text="Bank Name"
+                                    android:textColor="@color/textlightcolor"
+                                    android:textSize="@dimen/fourteen"
+                                    android:theme="@style/texttheme" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="12dp"
+                                    android:layout_weight="60"
+                                    android:gravity="left"
+                                    android:text="Account Number"
+                                    android:textColor="@color/textlightcolor"
+                                    android:textSize="@dimen/fourteen"
+                                    android:theme="@style/texttheme" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="100">
+
+                                <EditText
+                                    style="@style/edittext"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_weight="40"
+                                    android:background="@drawable/ic_rectangle_box_2152"
+                                    android:inputType="text"
+                                    android:padding="10dp"
+                                    android:textColor="@color/registerTextColor"
+                                    android:textColorHint="@color/hintColor"
+                                    android:textSize="@dimen/edt_font_size" />
+
+
+                                <EditText
+                                    style="@style/edittext"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="7dp"
+                                    android:layout_weight="60"
+                                    android:background="@drawable/ic_rectangle_box_2152"
+                                    android:inputType="number"
+                                    android:padding="10dp"
+                                    android:textColor="@color/registerTextColor"
+                                    android:textColorHint="@color/hintColor"
+                                    android:textSize="@dimen/edt_font_size" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.7dp"
+                        android:background="@color/linne" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal"
                         android:visibility="gone">
 
@@ -111,6 +431,132 @@
                         android:background="@color/linne"
                         android:visibility="gone" />
 
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="100">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="55"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Transaction Type"
+                                    android:textColor="@color/fontwhitebackground"
+                                    android:textSize="@dimen/sixteen"
+                                    android:theme="@style/texttheme" />
+
+                                <RadioGroup
+                                    android:id="@+id/transationtype"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/Payment"
+                                        style="@style/MyRadioButton"
+                                        android:layout_marginStart="-5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:layout_marginTop="6dp"
+                                        android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                        android:text="  Payment "
+                                        android:textColor="@color/textlightcolor"
+                                        android:theme="@style/loginedit" />
+
+                                    <RadioButton
+                                        android:id="@+id/Deposit"
+                                        style="@style/MyRadioButton"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:layout_marginTop="6dp"
+                                        android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                        android:text="  Deposit "
+                                        android:textColor="@color/textlightcolor"
+                                        android:theme="@style/loginedit" />
+
+                                    <RadioButton
+                                        android:id="@+id/preAuthorization"
+                                        style="@style/MyRadioButton"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:layout_marginTop="6dp"
+                                        android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                        android:text="  Pre-Authorization"
+                                        android:textColor="@color/textlightcolor"
+                                        android:theme="@style/loginedit" />
+                                </RadioGroup>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="45"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Process"
+                                    android:textColor="@color/fontwhitebackground"
+                                    android:textSize="@dimen/sixteen"
+                                    android:theme="@style/texttheme" />
+
+                                <RadioGroup
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <RadioButton
+                                        style="@style/MyRadioButton"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:layout_marginTop="6dp"
+                                        android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                        android:text="  Charge"
+                                        android:textColor="@color/textlightcolor"
+                                        android:theme="@style/loginedit" />
+
+                                    <RadioButton
+                                        style="@style/MyRadioButton"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:layout_marginTop="6dp"
+                                        android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                        android:text="  Refund"
+                                        android:textColor="@color/textlightcolor"
+                                        android:theme="@style/loginedit" />
+                                </RadioGroup>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.7dp"
+                        android:background="@color/linne" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -123,6 +569,7 @@
                         android:orientation="horizontal">
 
                         <ToggleButton
+                            android:visibility="gone"
                             android:id="@+id/changeamt"
                             android:layout_width="40dp"
                             android:layout_height="25dp"
@@ -139,7 +586,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginRight="7dp"
                             android:gravity="center"
-                            android:text="Change Amount"
+                            android:text="Total Amount"
                             android:textColor="@color/textlightcolor"
                             android:textSize="@dimen/sixteen"
                             android:theme="@style/texttheme" />
@@ -191,128 +638,6 @@
                         android:layout_height="0.7dp"
                         android:background="@color/linne" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:weightSum="100">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="55"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Transaction Type"
-                                    android:textColor="@color/fontwhitebackground"
-                                    android:textSize="@dimen/sixteen"
-                                    android:theme="@style/texttheme" />
-
-                                <RadioGroup
-                                    android:id="@+id/transationtype"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
-
-                                    <RadioButton
-                                        android:id="@+id/Payment"
-                                        style="@style/MyRadioButton"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
-                                        android:layout_marginTop="6dp"
-                                        android:buttonTint="@{Color.parseColor(UiColor.primary)}"
-                                        android:text="  Payment "
-                                        android:textColor="@color/textlightcolor"
-                                        android:theme="@style/loginedit" />
-
-                                    <RadioButton
-                                        android:id="@+id/Deposit"
-                                        style="@style/MyRadioButton"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
-                                        android:layout_marginTop="6dp"
-                                        android:buttonTint="@{Color.parseColor(UiColor.primary)}"
-                                        android:text="  Deposit "
-                                        android:textColor="@color/textlightcolor"
-                                        android:theme="@style/loginedit" />
-
-                                    <RadioButton
-                                        android:id="@+id/preAuthorization"
-                                        style="@style/MyRadioButton"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
-                                        android:layout_marginTop="6dp"
-                                        android:buttonTint="@{Color.parseColor(UiColor.primary)}"
-                                        android:text="  Pre-Authorization"
-                                        android:textColor="@color/textlightcolor"
-                                        android:theme="@style/loginedit" />
-                                </RadioGroup>
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="45"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Process"
-                                    android:textColor="@color/fontwhitebackground"
-                                    android:textSize="@dimen/sixteen"
-                                    android:theme="@style/texttheme" />
-
-                                <RadioGroup
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
-
-                                    <RadioButton
-                                        style="@style/MyRadioButton"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
-                                        android:layout_marginTop="6dp"
-                                        android:buttonTint="@{Color.parseColor(UiColor.primary)}"
-                                        android:text="  Charge"
-                                        android:textColor="@color/textlightcolor"
-                                        android:theme="@style/loginedit" />
-
-                                    <RadioButton
-                                        style="@style/MyRadioButton"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
-                                        android:layout_marginTop="6dp"
-                                        android:buttonTint="@{Color.parseColor(UiColor.primary)}"
-                                        android:text="  Refund"
-                                        android:textColor="@color/textlightcolor"
-                                        android:theme="@style/loginedit" />
-                                </RadioGroup>
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.7dp"
-                        android:background="@color/linne" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -714,282 +1039,9 @@
                         android:layout_height="0.7dp"
                         android:background="@color/linne" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Payment By"
-                            android:textColor="@color/fontwhitebackground"
-                            android:textSize="@dimen/sixteen"
-                            android:theme="@style/texttheme" />
-
-                        <RadioGroup
-                            android:id="@+id/selectPaymentCashCheque"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/cash"
-                                style="@style/MyRadioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="15dp"
-                                android:buttonTint="@{Color.parseColor(UiColor.primary)}"
-                                android:text="  Cash"
-                                android:textColor="@color/textlightcolor"
-                                android:theme="@style/loginedit" />
-
-                            <RadioButton
-                                android:id="@+id/cheque"
-                                style="@style/MyRadioButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="15dp"
-                                android:buttonTint="@{Color.parseColor(UiColor.primary)}"
-                                android:text="  Cheque"
-                                android:textColor="@color/textlightcolor"
-                                android:theme="@style/loginedit" />
-                        </RadioGroup>
-
-                    </LinearLayout>
 
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.7dp"
-                        android:background="@color/linne" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:id="@+id/cashpmtdetail"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="10dp"
-                                android:orientation="horizontal"
-                                android:weightSum="100">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="40"
-                                    android:gravity="left"
-                                    android:text="Payment By"
-                                    android:textColor="@color/textlightcolor"
-                                    android:textSize="@dimen/fourteen"
-                                    android:theme="@style/texttheme" />
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="12dp"
-                                    android:layout_weight="60"
-                                    android:gravity="left"
-                                    android:text="Select Name"
-                                    android:textColor="@color/textlightcolor"
-                                    android:textSize="@dimen/fourteen"
-                                    android:theme="@style/texttheme" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:weightSum="100">
-
-                                <EditText
-                                    style="@style/edittext"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="5dp"
-                                    android:layout_weight="40"
-                                    android:background="@drawable/ic_rectangle_box_2152"
-                                    android:inputType="text"
-                                    android:padding="10dp"
-                                    android:textColor="@color/registerTextColor"
-                                    android:textColorHint="@color/hintColor"
-                                    android:textSize="@dimen/edt_font_size" />
-
-
-                                <EditText
-                                    style="@style/edittext"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="7dp"
-                                    android:layout_weight="60"
-                                    android:inputType="text"
-                                    android:padding="10dp"
-                                    android:textColor="@color/registerTextColor"
-                                    android:textColorHint="@color/hintColor"
-                                    android:textSize="@dimen/edt_font_size" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/chequeDetail"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="8dp"
-                                android:orientation="horizontal"
-                                android:weightSum="100">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="40"
-                                    android:gravity="left"
-                                    android:text="Cheque Date"
-                                    android:textColor="@color/textlightcolor"
-                                    android:textSize="@dimen/fourteen"
-                                    android:theme="@style/texttheme" />
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="12dp"
-                                    android:layout_weight="60"
-                                    android:gravity="left"
-                                    android:text="Cheque Number"
-                                    android:textColor="@color/textlightcolor"
-                                    android:textSize="@dimen/fourteen"
-                                    android:theme="@style/texttheme" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:weightSum="100">
-
-                                <TextView
-                                    android:id="@+id/chequeDate"
-                                    style="@style/datetext"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="5dp"
-                                    android:layout_weight="40"
-                                    android:background="@drawable/ic_rectangle_box_2152"
-                                    android:hint="@string/mm_dd_yyyy"
-                                    android:inputType="datetime"
-                                    android:padding="10dp"
-                                    android:textColor="@color/registerTextColor"
-                                    android:textColorHint="@color/hintColor"
-                                    android:textSize="@dimen/edt_font_size"
-                                    android:theme="@style/texttheme" />
-
-
-                                <EditText
-                                    style="@style/edittext"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="7dp"
-                                    android:layout_weight="60"
-                                    android:background="@drawable/ic_rectangle_box_2152"
-                                    android:inputType="number"
-                                    android:padding="10dp"
-                                    android:textColor="@color/registerTextColor"
-                                    android:textColorHint="@color/hintColor"
-                                    android:textSize="@dimen/edt_font_size" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="8dp"
-                                android:orientation="horizontal"
-                                android:weightSum="100">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="40"
-                                    android:gravity="left"
-                                    android:text="Bank Name"
-                                    android:textColor="@color/textlightcolor"
-                                    android:textSize="@dimen/fourteen"
-                                    android:theme="@style/texttheme" />
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="12dp"
-                                    android:layout_weight="60"
-                                    android:gravity="left"
-                                    android:text="Account Number"
-                                    android:textColor="@color/textlightcolor"
-                                    android:textSize="@dimen/fourteen"
-                                    android:theme="@style/texttheme" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:weightSum="100">
-
-                                <EditText
-                                    style="@style/edittext"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="5dp"
-                                    android:layout_weight="40"
-                                    android:background="@drawable/ic_rectangle_box_2152"
-                                    android:inputType="text"
-                                    android:padding="10dp"
-                                    android:textColor="@color/registerTextColor"
-                                    android:textColorHint="@color/hintColor"
-                                    android:textSize="@dimen/edt_font_size" />
-
-
-                                <EditText
-                                    style="@style/edittext"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="7dp"
-                                    android:layout_weight="60"
-                                    android:background="@drawable/ic_rectangle_box_2152"
-                                    android:inputType="number"
-                                    android:padding="10dp"
-                                    android:textColor="@color/registerTextColor"
-                                    android:textColorHint="@color/hintColor"
-                                    android:textSize="@dimen/edt_font_size" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.7dp"
-                        android:background="@color/linne" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1013,14 +1065,15 @@
                                 android:textSize="@dimen/twelve"
                                 android:theme="@style/texttheme" />
 
-                            <EditText
+                            <com.rentguruz.app.base.ActionEditText
                                 style="@style/edittext"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="7dp"
                                 android:background="@drawable/ic_rectangle_for_note"
                                 android:gravity="top"
-                                android:inputType="text"
+                                android:imeOptions="actionDone"
+                                android:inputType="text|textAutoCorrect|textCapSentences|textMultiLine"
                                 android:padding="8dp"
                                 android:textColor="@color/textlightcolor"
                                 android:textColorHint="@color/textlightcolor"

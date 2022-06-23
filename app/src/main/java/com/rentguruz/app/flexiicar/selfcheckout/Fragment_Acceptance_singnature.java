@@ -485,12 +485,16 @@ public class Fragment_Acceptance_singnature extends BaseFragment {
                 case R.id.lblback_acceptance_sign:
 
                 case R.id.txt_Savesign:
-                    if(binding.CheckBoxTC.isChecked()){
-                        Bitmap signatureBitmap = binding.signaturePad.getSignatureBitmap();
-                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                        signatureBitmap.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream);
-                        byte[] byteArray = byteArrayOutputStream.toByteArray();
-                        String img_strbase64 = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+                    if (binding.signaturePad.isEmpty()){
+                        String msg = "Please Signature";
+                        CustomToast.showToast(getActivity(),msg,1);
+                    } else {
+                        if(binding.CheckBoxTC.isChecked()){
+                            Bitmap signatureBitmap = binding.signaturePad.getSignatureBitmap();
+                            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                            signatureBitmap.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream);
+                            byte[] byteArray = byteArrayOutputStream.toByteArray();
+                            String img_strbase64 = Base64.encodeToString(byteArray, Base64.NO_WRAP);
                    /*     try {
                             JSONObject signObj = new JSONObject();
                             signObj.put("Doc_For", 22);
@@ -502,18 +506,20 @@ public class Fragment_Acceptance_singnature extends BaseFragment {
                         {
                             e.printStackTrace();
                         }*/
-                        signatureModel.img64 = img_strbase64;
+                            signatureModel.img64 = img_strbase64;
 
-                        signatureModel.ReservationId = getArguments().getInt("Id");
-                        signatureModel.SignBy = reservationSummarry.CustomerId;
-                        signatureModel.Action = 1;
-                        signatureModel.SignType = 2;
-                        signatureModel.Latitude = Fragment_Vehicle_Image_1.lat;
-                        signatureModel.Longitude = Fragment_Vehicle_Image_1.log;
-                        ApiService2 apiService = new ApiService2(uploadSign, RequestType.POST, UPLOADSIGNATURE, BASE_URL_LOGIN,header,signatureModel);
-                    } else {
-                        CustomToast.showToast(getActivity(), getResources().getString(R.string.acceptterms), 1);
+                            signatureModel.ReservationId = getArguments().getInt("Id");
+                            signatureModel.SignBy = reservationSummarry.CustomerId;
+                            signatureModel.Action = 1;
+                            signatureModel.SignType = 2;
+                            signatureModel.Latitude = Fragment_Vehicle_Image_1.lat;
+                            signatureModel.Longitude = Fragment_Vehicle_Image_1.log;
+                            ApiService2 apiService = new ApiService2(uploadSign, RequestType.POST, UPLOADSIGNATURE, BASE_URL_LOGIN,header,signatureModel);
+                        } else {
+                            CustomToast.showToast(getActivity(), getResources().getString(R.string.acceptterms), 1);
+                        }
                     }
+
                     break;
 
                 case R.id.txt_clearsign:

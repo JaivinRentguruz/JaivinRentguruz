@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -53,4 +54,13 @@ public class CustomDrawable {
     public void checkbtn(RadioButton btn){
         btn.setButtonTintList(ColorStateList.valueOf(Color.parseColor(Uicolor.primary)));
     }
+
+    public void checkbtn(CheckBox btn){
+        btn.setButtonTintList(ColorStateList.valueOf(Color.parseColor(Uicolor.primary)));
+    }
+
+    public Drawable getShortSpinner(){
+      return context.getResources().getDrawable(R.drawable.ic_small_dropdown);
+    }
+
 }

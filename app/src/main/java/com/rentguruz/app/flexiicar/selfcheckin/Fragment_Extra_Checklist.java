@@ -50,7 +50,7 @@ public class Fragment_Extra_Checklist extends BaseFragment {
     ReservationSummarry reservationSummarry = new ReservationSummarry();
     SingleCheckboxBinding checkboxBinding;
     ChkHeaderBinding chkHeaderBinding;
-    ListCheckEquipmentBinding checkEquipmentBinding;
+   // ListCheckEquipmentBinding checkEquipmentBinding;
     ReservationEquipment[] equipment;
     boolean checking = false;
     ReservationCheckin reservationCheckout;
@@ -166,7 +166,7 @@ public class Fragment_Extra_Checklist extends BaseFragment {
 
                                 for (int i = 0; i <equipment.length ; i++) {
                                     getSubview(i);
-                                    checkEquipmentBinding = ListCheckEquipmentBinding.inflate(subinflater,
+                                    ListCheckEquipmentBinding  checkEquipmentBinding = ListCheckEquipmentBinding.inflate(subinflater,
                                             getActivity().findViewById(android.R.id.content), false);
                                     checkEquipmentBinding.getRoot().setId(200 + i);
                                     checkEquipmentBinding.getRoot().setLayoutParams(subparams);

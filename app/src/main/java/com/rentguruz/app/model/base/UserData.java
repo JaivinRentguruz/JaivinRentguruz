@@ -12,6 +12,7 @@ import com.rentguruz.app.model.display.ThemeColors;
 import com.rentguruz.app.model.reservation.ReservationEquipment;
 import com.rentguruz.app.model.response.CustomerProfile;
 import com.rentguruz.app.model.response.LoginResponse;
+import com.rentguruz.app.model.response.ReservationSummarry;
 import com.rentguruz.app.model.response.UpdateDL;
 import com.rentguruz.app.model.ReservationBusinessSource;
 
@@ -32,4 +33,5 @@ public class UserData {
     public static ReservationEquipment[] equipment;
     public static CreditCardModel activepmt = new CreditCardModel();
     public static ThemeColors UiColor = new ThemeColors();
+    public static ReservationSummarry reserversationSummary = new ReservationSummarry();
 }

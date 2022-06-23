@@ -71,8 +71,15 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
         binding.header.discard.setText("Card");
         customerProfile = new CustomerProfile();
         reservationPMT = new ReservationPMT();
+        reservationPMT =  (ReservationPMT) getArguments().getSerializable("pmtmodel");
+        if (reservationPMT!=null){
+
+        } else {
+            reservationPMT = new ReservationPMT();
+        }
         reserversationSummary = new ReservationSummarry();
         customer = new Customer();
+        String  bodyParam = "";
         try {
         if (getArguments().getInt("reservationpmt") != 1){
             bundle.putSerializable("reservationSum", (ReservationSummarry) getArguments().getSerializable("reservationSum"));
@@ -114,11 +121,15 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
            // binding.txtAmtPayable.setText(Helper.getAmtount(amountPayable,false));
             binding.txtAmtPayable.setText(Helper.getAmtount(amountPayable));
             reservationPMT.Amount =Double.valueOf(getArguments().getString("netrate"));
+            bodyParam ="?id="+ reserversationSummary.CustomerId +"&isActive=true";
+            String data = " Once the payment is processed successfully, you will get your payment reference number. Payment confirmation email will been sent to "+
+                    reserversationSummary.CustomerEmail +". Please call customer service for any errors.";
+            binding.detail.setText(data);
         }
         } catch (Exception e){
             e.printStackTrace();
         }
-        reservationPMT.SplitAmount =0;
+        /*reservationPMT.SplitAmount =0;
         reservationPMT.SplitAmountType = 0;
         reservationPMT.TransactionType = 1;
         reservationPMT.IsSplit = false;
@@ -129,12 +140,16 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
         reservationPMT.PaymentTransactionType = PaymentTransactionType.Deposit.inte;
         reservationPMT.PaymentProcess = PaymentProcess.Charge.inte;
         //reservationPMT.SplitAmountType =
-        reservationPMT.PaymentMode = PaymentMode.CreditCard.inte;
+        reservationPMT.PaymentMode = PaymentMode.CreditCard.inte;*/
+
+        try {
+            String dddd = "{\"CompanyId\":1,\"CustomerTypeId\":50,\"CorporateCompanyId\":0,\"DefaultLocationId\":9,\"DefaultRateId\":3,\"Fname\":\"AARON\",\"Lname\":\"ANDERSON\",\"Gender\":0,\"DOB\":\"1990-05-30T00:00:00\",\"Email\":\"nirav@rentguruz.com\",\"MobileNo\":\"5735762041\",\"QuickBookId\":null,\"IsDoNotRent\":false,\"IsDNDSMS\":false,\"IsDNDEmail\":false,\"Status\":0,\"IsTaxExemption\":false,\"CorporateEmail\":null,\"CorporateName\":\"Personal\",\"CorporatePhone\":null,\"customerSaveType\":0,\"FullName\":\"AARON ANDERSON\",\"AddressesModel\":{\"AddressType\":3,\"AddressFor\":10932,\"CountryId\":231,\"StateId\":3953,\"ZoneId\":0,\"Street\":\"879 NORTH KINGSHIGHWAY\",\"UnitNo\":null,\"City\":\"CAPE GIRARDEAU\",\"ZipCode\":\"63701\",\"Latitude\":null,\"Longitude\":null,\"CountryName\":\"United States\",\"StateName\":\"New Jersey\",\"PreviewAddress\":\"879 NORTH KINGSHIGHWAY, <br/>CAPE GIRARDEAU<br/>New Jersey, 63701, United States\",\"Id\":15929,\"DetailId\":0,\"IsActive\":true,\"auditLogModel\":null,\"dataTableRequestModel\":null,\"TotalRecord\":0,\"fIds\":null,\"APIRequestType\":1},\"DrivingLicenceModel\":{\"LicenceType\":3,\"LicenceFor\":10932,\"Number\":\"MO 14FA\",\"IssueDate\":\"2020-01-01T00:00:00\",\"ExpiryDate\":\"2022-01-01T00:00:00\",\"DOB\":\"1990-05-30T00:00:00\",\"IssueByCountry\":231,\"IssuedByState\":3956,\"Category\":null,\"EvidentStatus\":null,\"IssueByCountryName\":\"United States\",\"IssuedByStateName\":\"New York\",\"DisplayIssuedBy\":\"New York, United States\",\"DrivingLicenseFront\":null,\"DrivingLicenseBack\":null,\"DrivingHistoryDocument\":null,\"CriminalRecordDocument\":null,\"AddresssAttachmentsModel\":null,\"Id\":346,\"DetailId\":0,\"IsActive\":true,\"auditLogModel\":null,\"dataTableRequestModel\":null,\"TotalRecord\":0,\"fIds\":null,\"APIRequestType\":1},\"InsuranceDetailsModel\":{\"InsuranceType\":3,\"InsuranceFor\":10932,\"InsuranceCompanyId\":3,\"PolicyNo\":\"234377\",\"IssueDate\":\"2021-07-29T00:00:00\",\"ExpiryDate\":\"2022-01-01T00:00:00\",\"Deductible\":500,\"CoverLimit\":2000,\"Description\":null,\"VerifiedBy\":1,\"InsuranceCompanyDetailsModel\":{\"CompanyId\":1,\"Name\":\"PROGRESSIVE\",\"ContactName\":\"Mark mathew\",\"Email\":\"mark@gmail.com\",\"PhoneNo\":\"4561237899\",\"FaxNo\":\"\",\"Id\":3,\"DetailId\":0,\"IsActive\":true,\"auditLogModel\":null,\"dataTableRequestModel\":null,\"TotalRecord\":0,\"fIds\":null,\"APIRequestType\":1},\"GetCompanyDetail\":false,\"AttachmentsModel\":null,\"Id\":10067,\"DetailId\":0,\"IsActive\":true,\"auditLogModel\":null,\"dataTableRequestModel\":null,\"TotalRecord\":0,\"fIds\":null,\"APIRequestType\":1},\"CustomerIdProofModel\":null,\"CustomerDetailModel\":{\"CustomerId\":10932,\"ReferralAgentId\":0,\"AccountManagerId\":0,\"IsReset\":false,\"IsBlockAccess\":false,\"IsGrantAccess\":false},\"CorporateCompanyModel\":null,\"UserModel\":null,\"Age\":31,\"ReservationNo\":null,\"CheckInDate\":null,\"VehicleName\":null,\"LicenseNumber\":null,\"fStartDate\":\"0001-01-01T00:00:00\",\"fEndDate\":\"0001-01-01T00:00:00\",\"fUnderCheckIn\":false,\"CustomerTypeName\":\"Retail\",\"CTypeColorCode\":null,\"CreditCardModel\":{\"CreditCardType\":3,\"CreditCardFor\":10932,\"CardCompany\":\"Visa\",\"Number\":\"4111 1111 1111 1111\",\"NameOn\":\"\",\"ExpiryMonth\":9,\"ExpiryYear\":21,\"CVVCode\":123,\"IsDefault\":true,\"ZipCode\":\"\",\"Last4DigitNumber\":\"**** **** **** 1111\",\"Name\":\"**** **** **** 1111\",\"fStartDate\":\"0001-01-01T00:00:00\",\"fEndDate\":\"0001-01-01T00:00:00\",\"IsFirstInsert\":false,\"AddressesModel\":null,\"Fname\":null,\"Lname\":null,\"MobileNo\":null,\"Email\":null,\"Id\":5970,\"DetailId\":0,\"IsActive\":true,\"auditLogModel\":null,\"dataTableRequestModel\":null,\"TotalRecord\":0,\"fIds\":null,\"APIRequestType\":1},\"fIsDoNotRent\":false,\"CustomerDepositModel\":null,\"Search\":null,\"CustomerVerificationModel\":null,\"EvidentRequestId\":null,\"IsOnlyForUsa\":false,\"AttachmentsModel\":null,\"Id\":10932,\"DetailId\":0,\"IsActive\":true,\"auditLogModel\":null,\"dataTableRequestModel\":null,\"TotalRecord\":0,\"fIds\":null,\"APIRequestType\":1}";
+            reservationPMT.BillToInfoJSON = loginRes.modeltostring(TAG,customerProfile);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
 
-        String dddd = "{\"CompanyId\":1,\"CustomerTypeId\":50,\"CorporateCompanyId\":0,\"DefaultLocationId\":9,\"DefaultRateId\":3,\"Fname\":\"AARON\",\"Lname\":\"ANDERSON\",\"Gender\":0,\"DOB\":\"1990-05-30T00:00:00\",\"Email\":\"nirav@rentguruz.com\",\"MobileNo\":\"5735762041\",\"QuickBookId\":null,\"IsDoNotRent\":false,\"IsDNDSMS\":false,\"IsDNDEmail\":false,\"Status\":0,\"IsTaxExemption\":false,\"CorporateEmail\":null,\"CorporateName\":\"Personal\",\"CorporatePhone\":null,\"customerSaveType\":0,\"FullName\":\"AARON ANDERSON\",\"AddressesModel\":{\"AddressType\":3,\"AddressFor\":10932,\"CountryId\":231,\"StateId\":3953,\"ZoneId\":0,\"Street\":\"879 NORTH KINGSHIGHWAY\",\"UnitNo\":null,\"City\":\"CAPE GIRARDEAU\",\"ZipCode\":\"63701\",\"Latitude\":null,\"Longitude\":null,\"CountryName\":\"United States\",\"StateName\":\"New Jersey\",\"PreviewAddress\":\"879 NORTH KINGSHIGHWAY, <br/>CAPE GIRARDEAU<br/>New Jersey, 63701, United States\",\"Id\":15929,\"DetailId\":0,\"IsActive\":true,\"auditLogModel\":null,\"dataTableRequestModel\":null,\"TotalRecord\":0,\"fIds\":null,\"APIRequestType\":1},\"DrivingLicenceModel\":{\"LicenceType\":3,\"LicenceFor\":10932,\"Number\":\"MO 14FA\",\"IssueDate\":\"2020-01-01T00:00:00\",\"ExpiryDate\":\"2022-01-01T00:00:00\",\"DOB\":\"1990-05-30T00:00:00\",\"IssueByCountry\":231,\"IssuedByState\":3956,\"Category\":null,\"EvidentStatus\":null,\"IssueByCountryName\":\"United States\",\"IssuedByStateName\":\"New York\",\"DisplayIssuedBy\":\"New York, United States\",\"DrivingLicenseFront\":null,\"DrivingLicenseBack\":null,\"DrivingHistoryDocument\":null,\"CriminalRecordDocument\":null,\"AddresssAttachmentsModel\":null,\"Id\":346,\"DetailId\":0,\"IsActive\":true,\"auditLogModel\":null,\"dataTableRequestModel\":null,\"TotalRecord\":0,\"fIds\":null,\"APIRequestType\":1},\"InsuranceDetailsModel\":{\"InsuranceType\":3,\"InsuranceFor\":10932,\"InsuranceCompanyId\":3,\"PolicyNo\":\"234377\",\"IssueDate\":\"2021-07-29T00:00:00\",\"ExpiryDate\":\"2022-01-01T00:00:00\",\"Deductible\":500,\"CoverLimit\":2000,\"Description\":null,\"VerifiedBy\":1,\"InsuranceCompanyDetailsModel\":{\"CompanyId\":1,\"Name\":\"PROGRESSIVE\",\"ContactName\":\"Mark mathew\",\"Email\":\"mark@gmail.com\",\"PhoneNo\":\"4561237899\",\"FaxNo\":\"\",\"Id\":3,\"DetailId\":0,\"IsActive\":true,\"auditLogModel\":null,\"dataTableRequestModel\":null,\"TotalRecord\":0,\"fIds\":null,\"APIRequestType\":1},\"GetCompanyDetail\":false,\"AttachmentsModel\":null,\"Id\":10067,\"DetailId\":0,\"IsActive\":true,\"auditLogModel\":null,\"dataTableRequestModel\":null,\"TotalRecord\":0,\"fIds\":null,\"APIRequestType\":1},\"CustomerIdProofModel\":null,\"CustomerDetailModel\":{\"CustomerId\":10932,\"ReferralAgentId\":0,\"AccountManagerId\":0,\"IsReset\":false,\"IsBlockAccess\":false,\"IsGrantAccess\":false},\"CorporateCompanyModel\":null,\"UserModel\":null,\"Age\":31,\"ReservationNo\":null,\"CheckInDate\":null,\"VehicleName\":null,\"LicenseNumber\":null,\"fStartDate\":\"0001-01-01T00:00:00\",\"fEndDate\":\"0001-01-01T00:00:00\",\"fUnderCheckIn\":false,\"CustomerTypeName\":\"Retail\",\"CTypeColorCode\":null,\"CreditCardModel\":{\"CreditCardType\":3,\"CreditCardFor\":10932,\"CardCompany\":\"Visa\",\"Number\":\"4111 1111 1111 1111\",\"NameOn\":\"\",\"ExpiryMonth\":9,\"ExpiryYear\":21,\"CVVCode\":123,\"IsDefault\":true,\"ZipCode\":\"\",\"Last4DigitNumber\":\"**** **** **** 1111\",\"Name\":\"**** **** **** 1111\",\"fStartDate\":\"0001-01-01T00:00:00\",\"fEndDate\":\"0001-01-01T00:00:00\",\"IsFirstInsert\":false,\"AddressesModel\":null,\"Fname\":null,\"Lname\":null,\"MobileNo\":null,\"Email\":null,\"Id\":5970,\"DetailId\":0,\"IsActive\":true,\"auditLogModel\":null,\"dataTableRequestModel\":null,\"TotalRecord\":0,\"fIds\":null,\"APIRequestType\":1},\"fIsDoNotRent\":false,\"CustomerDepositModel\":null,\"Search\":null,\"CustomerVerificationModel\":null,\"EvidentRequestId\":null,\"IsOnlyForUsa\":false,\"AttachmentsModel\":null,\"Id\":10932,\"DetailId\":0,\"IsActive\":true,\"auditLogModel\":null,\"dataTableRequestModel\":null,\"TotalRecord\":0,\"fIds\":null,\"APIRequestType\":1}";
-        reservationPMT.BillToInfoJSON = loginRes.modeltostring(TAG,customerProfile);
-        String  bodyParam;
 
         if (getArguments().getInt("reservationpmt") == 1){
             Reservation reservation =(Reservation) getArguments().getSerializable("reservation");
@@ -191,7 +206,10 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
             bundle.putSerializable("reservation",getArguments().getSerializable("reservation"));
             reservationPMT.BillToInfoJSON = loginRes.modeltostring(TAG,UserData.customerProfile);
             bundle.putBundle(getActivity().getResources().getString(R.string.bundle),getArguments().getBundle(getActivity().getResources().getString(R.string.bundle)));
-        } else {
+
+
+
+        } /*else {
             bodyParam ="?id="+ customer.Id+"&isActive=true";
             reservationPMT.CustomerId = customer.Id;
             reservationPMT.ReservationId = reserversationSummary.Id;
@@ -199,7 +217,7 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
             String data = " Once the payment is processed successfully, you will get your payment reference number. Payment confirmation email will been sent to "+
                     reserversationSummary.CustomerEmail +". Please call customer service for any errors.";
             binding.detail.setText(data);
-        }
+        }*/
 
         if (customerProfile != null){
 
@@ -218,10 +236,12 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
             new ApiService(GetDefaultCreditCard, RequestType.GET, GETCUSTOMER, BASE_URL_CUSTOMER, header, bodyParam);
         }*/
 
+        //bodyParam ="?id="+ customer.Id+"&isActive=true";
+
         new ApiService(GetDefaultCreditCard, RequestType.GET, GETCUSTOMER, BASE_URL_CUSTOMER, header, bodyParam);
 
 
-        reservationPMT.BillTo = 1;
+      //  reservationPMT.BillTo = 1;
 
         binding.process.setOnClickListener(this);
         binding.offlinepayment.setOnClickListener(this);
@@ -309,12 +329,12 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
                 break;
 
             case R.id.back:
-
-                if (getArguments().getInt("reservationpmt") == 1){
+                NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).popBackStack();
+               /* if (getArguments().getInt("reservationpmt") == 1){
                     NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).popBackStack();
                 }else {
                     NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).navigate(R.id.payment_to_agreement,bundle);
-                }
+                }*/
                 break;
         }
     }

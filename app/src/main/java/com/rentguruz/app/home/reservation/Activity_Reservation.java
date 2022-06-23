@@ -125,6 +125,11 @@ public class Activity_Reservation extends AppCompatActivity {
                 navGraph.setStartDestination(R.id.Location);
                 navController.setGraph(navGraph);
             }
+
+            if (Helper.rsvcustomerscan){
+                navGraph.setStartDestination(R.id.CustomerList);
+                navController.setGraph(navGraph);
+            }
         } catch (Exception e){
             e.printStackTrace();
         }

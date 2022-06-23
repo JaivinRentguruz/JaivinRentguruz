@@ -111,13 +111,12 @@
                 android:layout_width="0dp"
                 style="@style/edittext"
                 android:layout_marginLeft="10dp"
+                android:inputType="text"
                 android:layout_weight="1"
                 android:hint="Paid By"
                 android:gravity="center_vertical"
                 android:textAlignment="gravity"
                 android:background="@drawable/ic_rectangle_box_2152"
-                android:focusableInTouchMode="true"
-                android:focusable="true"
                 android:imeOptions="actionDone"/>
 
         </LinearLayout>
@@ -467,6 +466,7 @@
                 android:background="@drawable/ic_rectangle_box_2152"
                 android:focusableInTouchMode="true"
                 android:focusable="true"
+                android:inputType="number"
                 android:imeOptions="actionDone"/>
 
         </LinearLayout>
@@ -509,12 +509,12 @@
                 style="@style/edittext"
                 android:id="@+id/bankname"
                 android:layout_weight="1"
+                android:inputType="text"
                 android:hint="Bank Name"
                 android:gravity="center_vertical"
                 android:textAlignment="gravity"
                 android:background="@drawable/ic_rectangle_box_2152"
-                android:focusableInTouchMode="true"
-                android:focusable="true"
+
                 android:imeOptions="actionDone"/>
 
             <LinearLayout
@@ -540,7 +540,7 @@
                     android:focusableInTouchMode="true"
                     android:background="@null"
                     android:focusable="true"
-                    android:imeOptions="actionNext"
+                    android:imeOptions="actionDone"
                     />
 
                 <RelativeLayout

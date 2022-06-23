@@ -144,7 +144,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:background="@drawable/curve_box_white_2"
                         android:layout_margin="15dp"
                         android:orientation="vertical"
@@ -155,10 +155,17 @@
                         android:gravity="bottom"
                         android:layout_width="0dp"
                         android:layout_height="0dp">
+
+                        <ImageView
+                            android:id="@+id/cardss"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/onlinepayment"
+                            android:scaleType="fitXY"/>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/onlinepayment"
                             android:gravity="bottom"
                             android:orientation="vertical">
                             <!--     <ImageView
@@ -214,7 +221,7 @@
                                     android:text=""/>
                             </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
+                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -459,6 +466,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="5"
                             android:textSize="12dp"
+                            android:buttonTint="@{Color.parseColor(UiColor.primary)}"
                             android:layout_height="wrap_content">
                         </CheckBox>
                         <CheckBox
@@ -470,6 +478,7 @@
                             android:textSize="12dp"
                             android:layout_weight="5"
                             android:layout_marginLeft="10dp"
+                            android:buttonTint="@{Color.parseColor(UiColor.primary)}"
                             android:layout_height="wrap_content">
                         </CheckBox>
                     </LinearLayout>

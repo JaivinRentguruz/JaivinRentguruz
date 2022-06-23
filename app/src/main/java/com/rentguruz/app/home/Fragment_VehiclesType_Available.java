@@ -50,6 +50,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
+import static br.com.zbra.androidlinq.Linq.stream;
 import static com.rentguruz.app.apicall.ApiEndPoint.AVAILABLEVEHICLETYPE;
 import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_LOGIN;
 import static com.rentguruz.app.apicall.ApiEndPoint.INSURANCECOVER;
@@ -261,24 +262,31 @@ public class Fragment_VehiclesType_Available extends BaseFragment
                  //  vehicleModel = loginRes.getModel(VehicleList.toString(), VehicleModel[].class);
                         reservationVehicleType = loginRes.getModel(VehicleList.toString(), ReservationVehicleType[].class);
 
+                       /* List<ReservationVehicleType> dasdas = new ArrayList<>();
+                        dasdas =  loginRes.getModelArray(VehicleList.toString(), ReservationVehicleType[].class);*/
+
+                        //dasdas =  stream(reservationVehicleType).toList();
                         Type listType = new TypeToken<ArrayList<VehicleModel>>(){}.getType();
                   // vehicleModelList = (List<VehicleModel>) loginRes.getModelList(VehicleList.toString(), VehicleModel.class);
                         int len;
                         len = reservationVehicleType.length;
                         int iid = -1;
                         for (int j = 0; j < len; j++) {
-                            Log.e(TAG, "onSuccess:1 " + j );
-                            if (reservationVehicleType[j].TotalAvailableVehicle != 0) {
+                            Log.e(TAG, "onSuccess:1 " + j + "    " + reservationVehicleType[j].TotalAvailableVehicle );
+                        //    if (reservationVehicleType[j].TotalAvailableVehicle != 0) {
                             getSubview(j);
                             vehicleAvailableListBinding = VehicletypeAvailableListBinding.inflate(subinflater,
                                     getActivity().findViewById(android.R.id.content), false);
+                                int finalJ = j;
+                                iid +=1;
                             vehicleAvailableListBinding.setVehicle(reservationVehicleType[j]);
                             vehicleAvailableListBinding.setUiColor(UiColor);
                             vehicleAvailableListBinding.getRoot().setId(200 + j);
                             vehicleAvailableListBinding.getRoot().setLayoutParams(subparams);
-                            int finalJ = j;
-                                iid +=1;
-                            Log.e(TAG, "onSuccess:2 " + j );
+                            if (reservationVehicleType[j].TotalAvailableVehicle == 0){
+                                vehicleAvailableListBinding.getRoot().setVisibility(View.GONE);
+                            }
+                            Log.e(TAG, "onSuccess:2 " + j + "    " + reservationVehicleType[j].TotalAvailableVehicle );
                             vehicleAvailableListBinding.available.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -331,7 +339,7 @@ public class Fragment_VehiclesType_Available extends BaseFragment
                             });
 
                             binding.relativeVehicleAvailable.addView(vehicleAvailableListBinding.getRoot());
-                         }
+                        // }
                         }
                         fullProgressbar.hide();
                     }

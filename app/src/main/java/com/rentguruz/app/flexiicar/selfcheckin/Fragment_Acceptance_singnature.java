@@ -149,26 +149,30 @@ public class Fragment_Acceptance_singnature extends BaseFragment
                 public void onClick(View view)
                 {
                     try{
-                        if(checkBoxTC.isChecked())
-                        {
-                            Bundle SelfCheckInBundle = new Bundle();
-                           // SelfCheckInBundle.putString("ImageList", ImageList.toString());
-                           // SelfCheckInBundle.putBundle("AgreementsBundle", AgreementsBundle);
-                            System.out.println(SelfCheckInBundle);
+                        if (signaturePad.isEmpty()){
+                            String msg = "Please Signature";
+                            CustomToast.showToast(getActivity(),msg,1);
+                        } else {
+                            if(checkBoxTC.isChecked())
+                            {
+                                Bundle SelfCheckInBundle = new Bundle();
+                                // SelfCheckInBundle.putString("ImageList", ImageList.toString());
+                                // SelfCheckInBundle.putBundle("AgreementsBundle", AgreementsBundle);
+                                System.out.println(SelfCheckInBundle);
                             /*NavHostFragment.findNavController(Fragment_Acceptance_singnature.this)
                                     .navigate(R.id.action_Signature_to_Self_check_In, bundle);*/
 /*
                             NavHostFragment.findNavController(Fragment_Acceptance_singnature.this)
                                     .navigate(R.id.locationkey,bundle);*/
 
-                            bitmap = signaturePad.getSignatureBitmap();
-                            path = saveImage(bitmap);
-                            try {
-                                Bitmap signatureBitmap = signaturePad.getSignatureBitmap();
-                                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                                signatureBitmap.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream);
-                                byte[] byteArray = byteArrayOutputStream.toByteArray();
-                                String img_strbase64 = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+                                bitmap = signaturePad.getSignatureBitmap();
+                                path = saveImage(bitmap);
+                                try {
+                                    Bitmap signatureBitmap = signaturePad.getSignatureBitmap();
+                                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                                    signatureBitmap.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream);
+                                    byte[] byteArray = byteArrayOutputStream.toByteArray();
+                                    String img_strbase64 = Base64.encodeToString(byteArray, Base64.NO_WRAP);
                    /*     try {
                             JSONObject signObj = new JSONObject();
                             signObj.put("Doc_For", 22);
@@ -180,29 +184,31 @@ public class Fragment_Acceptance_singnature extends BaseFragment
                         {
                             e.printStackTrace();
                         }*/
-                                signatureModel.img64 = img_strbase64;
+                                    signatureModel.img64 = img_strbase64;
 
-                               // signatureModel.ReservationId = getArguments().getInt("Id");
-                                signatureModel.ReservationId = reservationSummarry.Id;
-                                signatureModel.SignBy = reservationSummarry.CustomerId;
-                                signatureModel.Action = 1;
-                                signatureModel.SignType = 3;
-                                signatureModel.Latitude = Fragment_Vehicle_Image_1.lat;
-                                signatureModel.Longitude = Fragment_Vehicle_Image_1.log;
-                                ApiService2 apiService = new ApiService2(uploadSign, RequestType.POST, UPLOADSIGNATURE, BASE_URL_LOGIN,header,signatureModel);
-                            } catch (Exception e)
-                            {
-                                e.printStackTrace();
+                                    // signatureModel.ReservationId = getArguments().getInt("Id");
+                                    signatureModel.ReservationId = reservationSummarry.Id;
+                                    signatureModel.SignBy = reservationSummarry.CustomerId;
+                                    signatureModel.Action = 1;
+                                    signatureModel.SignType = 3;
+                                    signatureModel.Latitude = Fragment_Vehicle_Image_1.lat;
+                                    signatureModel.Longitude = Fragment_Vehicle_Image_1.log;
+                                    ApiService2 apiService = new ApiService2(uploadSign, RequestType.POST, UPLOADSIGNATURE, BASE_URL_LOGIN,header,signatureModel);
+                                } catch (Exception e)
+                                {
+                                    e.printStackTrace();
+                                }
+
+                                NavHostFragment.findNavController(Fragment_Acceptance_singnature.this)
+                                        .navigate(R.id.action_Signature_to_summary,bundle);
+
                             }
-
-                            NavHostFragment.findNavController(Fragment_Acceptance_singnature.this)
-                                    .navigate(R.id.action_Signature_to_summary,bundle);
-
+                            else {
+                                String msg = "Please accept term & condition";
+                                CustomToast.showToast(getActivity(),msg,1);
+                            }
                         }
-                        else {
-                            String msg = "Please accept term & condition";
-                            CustomToast.showToast(getActivity(),msg,1);
-                        }
+
                     }
                     catch (Exception e)
                     {

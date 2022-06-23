@@ -125,6 +125,5 @@ dependencies
 
          implementation 'com.github.fevziomurtekin:PayView:1.0.3'
 
-
-
+         implementation 'com.github.zbra-solutions:android-linq:1.1.0'
      }

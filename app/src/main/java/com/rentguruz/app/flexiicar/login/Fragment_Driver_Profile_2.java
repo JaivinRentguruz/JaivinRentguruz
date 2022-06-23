@@ -149,7 +149,8 @@ public class Fragment_Driver_Profile_2 extends BaseFragment
             binding.option.cameraopen.setOnClickListener(this);
             binding.option.gallaryopen.setOnClickListener(this);
 
-
+            binding.test.setBackground(userDraw.getImageUpload());
+            binding.test2.setBackground(userDraw.getImageUpload());
             //getbackscreendata
             registration = (DoRegistration) getArguments().getSerializable("RegistrationBundle");
 

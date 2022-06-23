@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.rentguruz.app.adapters.Helper;
 import com.rentguruz.app.adapters.LoginRes;
 import com.rentguruz.app.flexiicar.Reservation.Reservation_Activity;
 import com.rentguruz.app.flexiicar.TimeLine.Timeline_MainActivity;
@@ -124,6 +125,14 @@ public class User_Profile extends AppCompatActivity
                 NavGraph navGraph = navController.getNavInflater().inflate(R.navigation.nav_graph_user);
                 navGraph.setStartDestination(R.id.DrivingLicense_Add);
                 navController.setGraph(navGraph);
+            }
+            if (Helper.skipScan){
+                NavHostFragment hostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                NavController navController = hostFragment.getNavController();
+                NavGraph navGraph = navController.getNavInflater().inflate(R.navigation.nav_graph_user);
+                navGraph.setStartDestination(R.id.DrivingLicense_Add);
+                navController.setGraph(navGraph);
+                Helper.skipScan = false;
             }
         }
         catch (Exception e){

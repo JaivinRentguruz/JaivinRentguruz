@@ -42,7 +42,8 @@
                     android:layout_width="40dp"
                     android:layout_height="6dp"
                     android:layout_marginLeft="15dp"
-                    android:src="@drawable/progress_rectangle_selected"/>
+                    android:background="@drawable/progress_rectangle_selected"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"/>
 
                 <ImageView
                     android:layout_width="40dp"
@@ -87,7 +88,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="48dp"
+            android:layout_above="@+id/lbl_enter_details"
             android:layout_below="@id/createprofile"
             android:background="@drawable/curve_box">
 
@@ -133,10 +134,12 @@
             android:layout_height="@dimen/bottommenuheight"
             android:layout_alignParentBottom="true"
             android:background="@color/bottommenucolor"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:orientation="vertical">
 
             <TextView
                 android:theme="@style/texttheme"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:layout_gravity="center"
                 android:paddingTop="10dp"
                 android:paddingBottom="14dp"

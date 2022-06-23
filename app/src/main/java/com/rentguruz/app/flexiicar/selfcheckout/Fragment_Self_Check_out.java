@@ -324,7 +324,8 @@ public class Fragment_Self_Check_out extends BaseFragment //implements View.OnCl
                                         System.out.println(Agreements);*/
                     if (reservationCheckout.ReservationVehicleModel.CurrentOdo <Integer.parseInt(txt_OdoMeter.getText().toString())) {
                         reservationCheckout.ReservationCheckOutModel.CheckOutOdo = Integer.parseInt(txt_OdoMeter.getText().toString());
-                        reservationCheckout.ReservationCheckOutModel.CurrentFuel = customSeekBar.getProgress();
+                        Double va = Double.valueOf(customSeekBar.getProgress());
+                        reservationCheckout.ReservationCheckOutModel.CurrentFuel = va;
                         //reservationCheckout.ReservationCheckOutModel.CheckOutOdo = Integer.parseInt(txt_OdoMeter.getText().toString());
                         reservationCheckout.ReservationCheckOutModel.CheckOutOdo = Integer.parseInt(txt_OdoMeter.getText().toString());
                         reservationCheckout.ReservationCheckOutModel.Note = Edt_Notes.getText().toString();
@@ -379,7 +380,7 @@ public class Fragment_Self_Check_out extends BaseFragment //implements View.OnCl
                     try
                     {
                         txt_progressvalue.setText(String.valueOf(progress+"%"));
-                        reservationCheckout.ReservationCheckOutModel.CurrentFuel = progress;
+                        reservationCheckout.ReservationCheckOutModel.CurrentFuel = Double.valueOf(progress);
 
 
                     }

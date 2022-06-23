@@ -476,6 +476,8 @@
         <action android:id="@+id/Agreement_to_customer_list"
             app:destination="@+id/CustomerList"/>
 
+        <action android:id="@+id/Agreement_Confirmation_to_PaymentChangeOption"
+            app:destination="@+id/PaymentChangeOption"/>
 
     </fragment>
 
@@ -691,8 +693,11 @@
         <action android:id="@+id/action_SummaryOfChargesForAgreements_to_Printpreview"
             app:destination="@+id/Printpreview"/>
 
-        <action android:id="@+id/action_Acceptance_signature_to_Agreements_to_payment"
-            app:destination="@+id/Payment"/>
+       <!-- <action android:id="@+id/action_Acceptance_signature_to_Agreements_to_payment"
+            app:destination="@+id/Payment"/>-->
+
+         <action android:id="@+id/action_Acceptance_signature_to_Agreements_to_payment"
+            app:destination="@+id/PaymentChangeOption"/>
 
         <action android:id="@+id/action_summary_to_toll_charge"
             app:destination="@+id/toll_charge"/>

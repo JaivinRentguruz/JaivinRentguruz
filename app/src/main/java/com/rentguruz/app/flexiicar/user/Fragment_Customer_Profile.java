@@ -293,7 +293,7 @@ public class Fragment_Customer_Profile extends BaseFragment
             }
         });
 
-        LayoutReservation.setOnClickListener(new View.OnClickListener()
+        /*LayoutReservation.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -302,7 +302,7 @@ public class Fragment_Customer_Profile extends BaseFragment
                 NavHostFragment.findNavController(Fragment_Customer_Profile.this)
                         .navigate(R.id.action_User_Details_to_Reservation);
             }
-        });
+        });*/
         VehicleOnRent.setOnClickListener(new View.OnClickListener()
         {
             @Override

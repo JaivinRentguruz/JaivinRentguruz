@@ -20,11 +20,13 @@ import androidx.navigation.NavGraph;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.rentguruz.app.adapters.Helper;
+import com.rentguruz.app.adapters.LoginRes;
 import com.rentguruz.app.home.agreement.Activity_Agreements;
 import com.rentguruz.app.home.more.Activity_MoreTab;
 import com.rentguruz.app.home.reservation.Activity_Reservation;
 import com.rentguruz.app.home.vehicles.Activity_Vehicles;
 import com.rentguruz.app.model.base.UserData;
+import com.rentguruz.app.model.display.Appcolor;
 import com.rentguruz.app.model.response.CompanyLabel;
 
 
@@ -92,8 +94,12 @@ public class Activity_Home extends AppCompatActivity {
         homeIcon = findViewById(R.id.homeIcon);
         //homeIcon.setImageDrawable(getDrawable(R.drawable.ic_tab_home2));
         try {
-            bottommenu.setBackgroundColor(Color.parseColor(UserData.UiColor.secondary));
-            homeIcon.setColorFilter(Color.parseColor(UserData.UiColor.primary));
+            Appcolor appcolor = new Appcolor();
+            LoginRes loginRes = new LoginRes(getApplicationContext());
+            appcolor = loginRes.getModel( loginRes.getData(getString(R.string.Appcolor)), Appcolor.class);
+            bottommenu.setBackgroundColor(Color.parseColor(appcolor.SecondColor));
+            homeIcon.setColorFilter(Color.parseColor(appcolor.PrimaryColor));
+
         } catch (Exception e){
             e.printStackTrace();
         }

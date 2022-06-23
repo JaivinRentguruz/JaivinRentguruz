@@ -92,7 +92,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="-15dp">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_margin="15dp"
@@ -104,10 +104,16 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
+                        <ImageView
+                            android:id="@+id/cardss"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/onlinepayment"
+                            android:scaleType="fitXY"/>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/onlinepayment"
                             android:gravity="bottom"
                             android:orientation="vertical">
 
@@ -160,7 +166,7 @@
                                     android:theme="@style/texttheme" />
                             </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
+                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -588,6 +594,7 @@
                             android:layout_weight="5"
                             android:text="DEFAULT CARD"
                             android:textColor="@color/regtcolor"
+                            android:buttonTint="@{Color.parseColor(UiColor.primary)}"
                             android:textSize="12dp"
                             android:theme="@style/SwitchTheme" />
 

@@ -1,10 +1,15 @@
 package com.rentguruz.app.flexiicar.user;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,6 +32,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageCapture;
@@ -40,6 +46,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.rentguruz.app.adapters.ImageOptionMenu;
 import com.rentguruz.app.apicall.ApiService;
+import com.rentguruz.app.databinding.SampleDateViewBinding;
 import com.rentguruz.app.model.parameter.AttachmentType;
 import com.androidnetworking.AndroidNetworking;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -104,7 +111,7 @@ public class Fragment_Driving_License_Add extends BaseFragment {
     Bitmap Image1, Image2;
     public static Boolean screen = false;
     ActivityResultLauncher<Intent> activityResultLauncher;
-
+    String storeimagepath;
     ImageCapture imageCapture;
     ProcessCameraProvider cameraProvider;
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
@@ -180,6 +187,7 @@ public class Fragment_Driving_License_Add extends BaseFragment {
             e.printStackTrace();
             preference.stateCountry(binding.SpCountry, binding.SpState, "", "");
         }
+
         binding.CusDateofBirth.setText(Helper.getDateDisplay(DateType.yyyyMMddD, updateDL.DOB));
 
         relation.add("Parent");
@@ -293,6 +301,8 @@ public class Fragment_Driving_License_Add extends BaseFragment {
                                 if (imgId.equals("2")) {
                                     binding.imgDLFronside.setImageBitmap(bitmap);
                                     Image1 = bitmap;
+                                    storeImageCam(bitmap,false);
+                                    //loadBitmapFromView(binding.imgDLFronside);
                                 }
                                 if (imgId.equals("3")) {
                                     binding.imgDLBackside.setImageBitmap(bitmap);
@@ -379,6 +389,11 @@ public class Fragment_Driving_License_Add extends BaseFragment {
                     break;
                 case R.id.Cus_DateofBirth:
                     dialog.getMaxDate(dialog.getDOB(), "", string -> binding.CusDateofBirth.setText(string));
+                    /*SampleDateViewBinding sampleDateViewBinding = SampleDateViewBinding.inflate(getActivity().getLayoutInflater(), getActivity().findViewById(android.R.id.content), false);
+                    Dialog dialogs = new Dialog(context);
+                    sampleDateViewBinding.setUiColor(UiColor);
+                    dialogs.setContentView(sampleDateViewBinding.getRoot());
+                    dialogs.show();*/
                     break;
                 case R.id.edt_issuedate:
                     dialog.getMinDate(dialog.getIssueDate(binding.CusDateofBirth.getText().toString()), dialog.getToday(), string -> binding.edtIssuedate.setText(string));
@@ -622,19 +637,19 @@ public class Fragment_Driving_License_Add extends BaseFragment {
     }
 
     public void imgUpload(File file, Boolean value){
-        HashMap<String, String> header = new HashMap<>();
-        header.put("FileUploadMasterId", String.valueOf(updateDL.Id));
-        header.put("Id", String.valueOf(updateDL.Id));
-        header.put("IsActive","true");
-        header.put("CompanyId", String.valueOf(Helper.id));
+        HashMap<String, String> headers = new HashMap<>();
+        headers.put("FileUploadMasterId", String.valueOf(updateDL.Id));
+        headers.put("Id", String.valueOf(updateDL.Id));
+       // header.put("IsActive","true");
+        headers.put("CompanyId", String.valueOf(Helper.id));
         if (value) {
-            header.put("fileUploadType", String.valueOf(AttachmentType.DrivingLicenseFront));
+            headers.put("fileUploadType", String.valueOf(AttachmentType.DrivingLicenseFront));
         } else {
-            header.put("fileUploadType", String.valueOf(AttachmentType.DrivingLicenseBack));
+            headers.put("fileUploadType", String.valueOf(AttachmentType.DrivingLicenseBack));
         }
         AndroidNetworking.initialize(getActivity());
         ApiService apiService = new ApiService();
-        apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE, header, file);
+        apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE,header ,headers, file);
     }
 
     OnResponseListener uploadImage = new OnResponseListener() {
@@ -703,6 +718,7 @@ public class Fragment_Driving_License_Add extends BaseFragment {
         } else {
             mImageName  = "MI_" + timeStamp + 2 + ".jpg";
         }
+        storeimagepath = mImageName;
         mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
         return mediaFile;
     }
@@ -851,5 +867,89 @@ public class Fragment_Driving_License_Add extends BaseFragment {
     }
     private Executor getExecutor(){
         return  ContextCompat.getMainExecutor(getContext());
+    }
+
+
+    private void storeImageCam(Bitmap image, Boolean value) {
+        File pictureFile = getOutputMediaFile(value);
+        if (pictureFile == null) {
+            Log.e("TAG",
+                    "Error creating media file, check storage permissions: ");// e.getMessage());
+            return;
+        }
+        try {
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            image.compress(Bitmap.CompressFormat.PNG, 90, fos);
+            fos.close();
+            //imgUpload(pictureFile,value);
+        } catch (FileNotFoundException e) {
+            Log.e("TAG", "File not found: " + e.getMessage());
+        } catch (IOException e) {
+            Log.e("TAG", "Error accessing file: " + e.getMessage());
+        }
+    }
+
+    public Bitmap loadBitmapFromView(View v) {
+        Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(b);
+        v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+        v.draw(c);
+        return b;
+    }
+    public Bitmap textOnImage2(String image, String data) {
+        Log.e(TAG, "textOnImage2: " + 1 );
+            BitmapFactory.Options op = new BitmapFactory.Options();
+            op.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            Log.e(TAG, "textOnImage2: " +2 );
+            Bitmap bufferedImage = BitmapFactory.decodeFile(image, op);
+
+            bufferedImage = bufferedImage.copy(op.inPreferredConfig, true);
+            Log.e(TAG, "textOnImage2: "+3 );
+            Canvas canvas = new Canvas(bufferedImage);
+            Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            paint.setColor(Color.RED);
+            Log.e(TAG, "textOnImage2: " +4 );
+            paint.setTextSize((int) (50));
+            // paint.setShadowLayer(1f, 0f, 1f, Color.WHITE);
+            Rect bounds = new Rect();
+            bounds.bottom =10;
+            bounds.top=10;
+            bounds.left=10;
+            bounds.right = 10;
+            Log.e(TAG, "textOnImage2: " + 5 );
+            paint.getTextBounds(data, 0, data.length(), bounds);
+            int x = (100)/2;
+            int y = (100)/2;
+            Log.e(TAG, "textOnImage2: "+ x + " : " + y);
+            canvas.drawText(data, x, y, paint);
+            canvas.drawBitmap(bufferedImage, null,new Rect(10,10,50,10),paint);
+
+
+            return bufferedImage;
+
+
+    }
+
+    private  File getOutputMediaFilepath(String value){
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
+                + "/Android/data/"
+                + getContext().getPackageName()
+                + "/Files");
+
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
+
+        // Create the storage directory if it does not exist
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                return null;
+            }
+        }
+        // Create a media file name
+        File mediaFile;
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator + storeimagepath);
+        return mediaFile;
     }
 }

@@ -63,6 +63,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:background="@color/green" />
 
             <androidx.core.widget.NestedScrollView
@@ -212,7 +213,8 @@
 
                     <include
                         android:id="@+id/customer"
-                        layout="@layout/row_user_info"
+                        layout="@layout/do_customer"
+                        app:UiColor="@{UiColor}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="20dp"
@@ -424,11 +426,12 @@
                                     android:nextFocusLeft="@id/coverlimit"/>
 
                                 <TextView
+                                    android:id="@+id/fcurrency2"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="50"
                                     android:background="@drawable/curve_white22"
-                                    android:backgroundTint="@color/green"
+                                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                     android:gravity="center"
                                     android:text="USD $"
                                     android:textColor="@color/btntext"
@@ -465,11 +468,12 @@
                                     android:imeOptions="actionDone"/>
 
                                 <TextView
+                                    android:id="@+id/fcurrency1"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="50"
                                     android:background="@drawable/curve_white22"
-                                    android:backgroundTint="@color/green"
+                                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                                     android:gravity="center"
                                     android:text="USD $"
                                     android:textColor="@color/btntext"
@@ -586,6 +590,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                     android:id="@+id/text"
                     style="@style/fullbtn"
                     android:text="@string/save"/>

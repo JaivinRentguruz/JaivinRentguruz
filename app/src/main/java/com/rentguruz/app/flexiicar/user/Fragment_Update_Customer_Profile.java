@@ -52,6 +52,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
@@ -469,7 +470,7 @@ public class Fragment_Update_Customer_Profile extends BaseFragment
                 String  part_image = cursor.getString(indexImage);
                 File file = new File(part_image);
                 UploadImage uploadImages = new UploadImage();
-                uploadImages.CompanyId = 1;
+                uploadImages.CompanyId = UserData.companyModel.CompanyId;
                 uploadImages.fileUploadType = 1;
                 uploadImages.Id =UserData.loginResponse.User.UserFor ;
                 uploadImages.file = file;
@@ -484,6 +485,20 @@ public class Fragment_Update_Customer_Profile extends BaseFragment
                 Log.d("TAG", "onActivityResult: " + file_sizeMB);
 
                 apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE, params.getUserImage(UserData.loginResponse.User.UserFor), file);
+
+              /*  JSONObject object = new JSONObject();
+                try {
+                    object.accumulate("Id",UserData.loginResponse.User.UserFor);
+                    object.accumulate("fileUploadType",1);
+                    object.accumulate("FileUploadMasterId",UserData.loginResponse.User.UserFor);
+                    object.accumulate("IsFileExist",true);
+                    object.accumulate("CompanyId",Helper.di);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE,object , file);*/
 
                 Bitmap bitmap = null;
             }
@@ -1096,7 +1111,7 @@ public class Fragment_Update_Customer_Profile extends BaseFragment
     }
 
     public void imgUpload(File file){
-       /* HashMap<String, String> header = new HashMap<>();
+     /*   HashMap<String, String> header = new HashMap<>();
         header.put("FileUploadMasterId", String.valueOf(registration.DrivingLicenceModel.Id));
         header.put("Id", String.valueOf(registration.DrivingLicenceModel.Id));
         header.put("IsActive","true");
@@ -1104,7 +1119,9 @@ public class Fragment_Update_Customer_Profile extends BaseFragment
 
         AndroidNetworking.initialize(getActivity());
         ApiService apiService = new ApiService();
-        //apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE, header, file);
-        apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE, params.getUserImage(UserData.loginResponse.User.UserFor), file);
+      //  apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE, header, file);
+      //  apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE, params.getUserImage(UserData.loginResponse.User.UserFor), file);
+       // apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE, params.getUserImage(UserData.customerProfile.UserModel.UserFor), file);
+        apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE, getHeaderModel(UserData.customerProfile.UserModel.UserFor,1), file);
     }
 }

@@ -279,6 +279,100 @@ public class ApiService
         // header.put("", String.valueOf(file));
         AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.BODY);
         AndroidNetworking.upload(BASE_URL_LOGIN + endPoint)
+                //.addHeaders(header2)
+                .addMultipartParameter(header)
+                .addMultipartFile("",file)
+                .setTag("uploadTest")
+                .setOkHttpClient(getConfigOkHttpClient())
+                //        .setTag("uploadArtistData")
+                .setPriority(Priority.HIGH)
+                .setExecutor(Executors.newSingleThreadExecutor())
+                .build()
+                .setUploadProgressListener(new UploadProgressListener() {
+                    @Override
+                    public void onProgress(long bytesUploaded, long totalBytes) {
+
+
+                    }
+                })
+                .getAsOkHttpResponseAndString(new OkHttpResponseAndStringRequestListener() {
+                    @Override
+                    public void onResponse(Response okHttpResponse, String response) {
+                        if (!TextUtils.isEmpty(response)) {
+                            if (onResponseListener != null) {
+                                onResponseListener.onSuccess(response,
+                                        convertHeadersToHashMap(okHttpResponse.headers()));
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        System.out.println(error.getErrorDetail());
+                        if (onResponseListener != null)
+                            onResponseListener.onError(error.getErrorBody());
+                    }
+                });
+
+
+    }
+
+
+    public void UPLOAD_REQUEST(final OnResponseListener onResponseListener,
+                               String endPoint,
+                              JSONObject header, File file) {
+
+        // header.put("", String.valueOf(file));
+        AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.BODY);
+        AndroidNetworking.upload(BASE_URL_LOGIN + endPoint)
+                //.addHeaders(header2)
+                .addMultipartParameter(header)
+                .addMultipartFile("",file)
+                .setTag("uploadTest")
+                .setOkHttpClient(getConfigOkHttpClient())
+                //        .setTag("uploadArtistData")
+                .setPriority(Priority.HIGH)
+                .setExecutor(Executors.newSingleThreadExecutor())
+                .build()
+                .setUploadProgressListener(new UploadProgressListener() {
+                    @Override
+                    public void onProgress(long bytesUploaded, long totalBytes) {
+
+
+                    }
+                })
+                .getAsOkHttpResponseAndString(new OkHttpResponseAndStringRequestListener() {
+                    @Override
+                    public void onResponse(Response okHttpResponse, String response) {
+                        if (!TextUtils.isEmpty(response)) {
+                            if (onResponseListener != null) {
+                                onResponseListener.onSuccess(response,
+                                        convertHeadersToHashMap(okHttpResponse.headers()));
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        System.out.println(error.getErrorDetail());
+                        if (onResponseListener != null)
+                            onResponseListener.onError(error.getErrorBody());
+                    }
+                });
+
+
+    }
+
+
+
+    public void UPLOAD_REQUEST(final OnResponseListener onResponseListener,
+                               String endPoint,DoHeader header2,
+                               HashMap<String, String> header, File file) {
+
+        // header.put("", String.valueOf(file));
+        AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.BODY);
+        AndroidNetworking.upload(BASE_URL_LOGIN + endPoint)
+                .addHeaders(header2)
                 .addMultipartParameter(header)
                 .addMultipartFile("",file)
                 .setTag("uploadTest")
@@ -436,6 +530,10 @@ public class ApiService
             case GET:
                 GET_REQUEST(baseurl,endPoint, header, bodyParam);
                 break;
+
+            case DELETE:
+                DELETE_REQUEST(baseurl,endPoint, header, bodyParam);
+                break;
             default:
                 break;
         }
@@ -553,7 +651,34 @@ public class ApiService
         AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.BODY);
         AndroidNetworking.delete(baseurl + endPoint)
                 .addHeaders(header)
-                .addJSONObjectBody(bodyParam)
+                //.addJSONObjectBody(bodyParam)
+                .setPriority(Priority.HIGH)
+                .setExecutor(Executors.newSingleThreadExecutor())
+                .build()
+                .getAsOkHttpResponseAndString(new OkHttpResponseAndStringRequestListener() {
+                    @Override
+                    public void onResponse(Response okHttpResponse, String response) {
+                        if (!TextUtils.isEmpty(response)) {
+                            if (onResponseListener != null) {
+                                onResponseListener.onSuccess(response,
+                                        convertHeadersToHashMap(okHttpResponse.headers()));
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        if (onResponseListener != null)
+                            onResponseListener.onError(anError.getErrorBody());
+                    }
+                });
+    }
+
+    private void DELETE_REQUEST(String baseurl, String endPoint, DoHeader header, String bodyParam){
+        AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.BODY);
+        AndroidNetworking.delete(baseurl + endPoint+bodyParam)
+                .addHeaders(header)
+                //.addJSONObjectBody(bodyParam)
                 .setPriority(Priority.HIGH)
                 .setExecutor(Executors.newSingleThreadExecutor())
                 .build()

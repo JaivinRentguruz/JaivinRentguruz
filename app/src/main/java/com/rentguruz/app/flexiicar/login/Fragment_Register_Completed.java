@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -79,6 +80,14 @@ public class Fragment_Register_Completed extends BaseFragment
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         binding.setUiColor(UiColor);
+        binding.shuttle.getPathModelByName("one").setFillColor(Color.parseColor(UiColor.primary));
+        binding.shuttle.getPathModelByName("two").setFillColor(Color.parseColor(UiColor.primary));
+        binding.shuttle.getPathModelByName("three").setFillColor(Color.parseColor(UiColor.primary));
+        binding.shuttle.getPathModelByName("four").setFillColor(Color.parseColor(UiColor.secondary));
+        binding.shuttle.getPathModelByName("five").setFillColor(Color.parseColor(UiColor.secondary));
+        binding.shuttle.getPathModelByName("six").setFillColor(Color.parseColor(UiColor.secondary));
+        binding.shuttle.getPathModelByName("seven").setFillColor(Color.parseColor(UiColor.secondary));
+        binding.shuttle.getPathModelByName("eight").setFillColor(Color.parseColor(UiColor.secondary));
         lblexplore = view.findViewById(R.id.lblexplore);
         relativeLayout=view.findViewById(R.id.sucessfull_regi);
         AllowAccess=view.findViewById(R.id.AllowAccess);

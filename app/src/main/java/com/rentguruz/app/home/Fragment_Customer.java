@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,17 +63,46 @@ public class Fragment_Customer extends BaseFragment {
         binding.setUiColor(UiColor);
         fullProgressbar.show();
         customerList = new ArrayList<>();
-        bundle.putSerializable("reservationSum", (ReservationSummarry) getArguments().getSerializable("reservationSum"));
-        bundle.putSerializable("Model", (VehicleModel) getArguments().getSerializable("Model"));
-        bundle.putSerializable("models",(LocationList) getArguments().getSerializable("models"));
-        bundle.putSerializable("model",(LocationList) getArguments().getSerializable("model"));
-        bundle.putSerializable("timemodel",(ReservationTimeModel) getArguments().getSerializable("timemodel"));
-        bundle.putString("pickupdate", getArguments().getString("pickupdate"));
-        bundle.putString("dropdate", getArguments().getString("dropdate"));
-        bundle.putString("droptime", getArguments().getString("droptime"));
-        bundle.putString("pickuptime",  getArguments().getString("pickuptime"));
-        reservationSummarry = new ReservationSummarry();
-        reservationSummarry = (ReservationSummarry) getArguments().getSerializable("reservationSum");
+
+
+
+        try {
+            bundle.putSerializable("reservationSum", (ReservationSummarry) getArguments().getSerializable("reservationSum"));
+            bundle.putSerializable("Model", (VehicleModel) getArguments().getSerializable("Model"));
+            bundle.putSerializable("models",(LocationList) getArguments().getSerializable("models"));
+            bundle.putSerializable("model",(LocationList) getArguments().getSerializable("model"));
+            bundle.putSerializable("timemodel",(ReservationTimeModel) getArguments().getSerializable("timemodel"));
+            bundle.putString("pickupdate", getArguments().getString("pickupdate"));
+            bundle.putString("dropdate", getArguments().getString("dropdate"));
+            bundle.putString("droptime", getArguments().getString("droptime"));
+            bundle.putString("pickuptime",  getArguments().getString("pickuptime"));
+            reservationSummarry = new ReservationSummarry();
+            reservationSummarry = (ReservationSummarry) getArguments().getSerializable("reservationSum");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            if (Helper.rsvcustomerscan){
+                Log.e(TAG, "onViewCreated: " + 1 );
+                bundle.putSerializable("reservationSum", loginRes.getModelSystem("reservationSum",ReservationSummarry.class));
+                bundle.putSerializable("Model", loginRes.getModelSystem("Model",VehicleModel.class));
+                bundle.putSerializable("models",loginRes.getModelSystem("models",LocationList.class));
+                bundle.putSerializable("model",loginRes.getModelSystem("model",LocationList.class));
+                bundle.putSerializable("timemodel",loginRes.getModelSystem("timemodel",ReservationTimeModel.class));
+                bundle.putString("pickupdate", loginRes.getData("pickupdate"));
+                bundle.putString("dropdate", loginRes.getData("dropdate"));
+                bundle.putString("droptime", loginRes.getData("droptime"));
+                bundle.putString("pickuptime",  loginRes.getData("pickuptime"));
+                reservationSummarry = new ReservationSummarry();
+                reservationSummarry = loginRes.getModelSystem("reservationSum",ReservationSummarry.class);
+                Log.e(TAG, "onViewCreated: " + reservationSummarry.ReservationNo );
+                Helper.rsvcustomerscan = false;
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+
         new ApiService(CustomerList , RequestType.POST, CUSTOMERLIST,BASE_URL_CUSTOMER, header, params.getCustomerList(page));
         Helper.defaultInsurance = true;
         binding.header.back.setOnClickListener(this);
@@ -204,7 +234,17 @@ public class Fragment_Customer extends BaseFragment {
             case R.id.discard:
                 /*Intent i = new Intent(getActivity(), Customer_Profile.class);
                 startActivity(i);*/
-
+                Helper.rsvcustomerscan = true;
+                loginRes.storedata("pickuptime",  getArguments().getString("pickuptime"));
+                loginRes.storedata("droptime",  getArguments().getString("droptime"));
+                loginRes.storedata("dropdate",  getArguments().getString("dropdate"));
+                loginRes.storedata("pickupdate",  getArguments().getString("pickupdate"));
+                loginRes.storedata("timemodel",  loginRes.modeltostring((ReservationTimeModel) getArguments().getSerializable("timemodel")));
+                loginRes.storedata("model",  loginRes.modeltostring((LocationList) getArguments().getSerializable("model")));
+                loginRes.storedata("models",  loginRes.modeltostring((LocationList) getArguments().getSerializable("models")));
+                loginRes.storedata("Model",  loginRes.modeltostring((VehicleModel) getArguments().getSerializable("Model")));
+                loginRes.storedata("reservationSum", loginRes.modeltostring((ReservationSummarry) getArguments().getSerializable("reservationSum")));
+                Log.e(TAG, "onClick: " + "addcustomer" );
                 NavHostFragment.findNavController(Fragment_Customer.this)
                         .navigate(R.id.action_CustomerList_to_CreateProfile);
                 break;

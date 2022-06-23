@@ -19,6 +19,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.rentguruz.app.base.BaseFragment;
 import com.rentguruz.app.databinding.FragmentChangepasswordBinding;
 import com.rentguruz.app.databinding.FragmentCustomerProfileBinding;
+import com.rentguruz.app.model.base.UserData;
 import com.rentguruz.app.model.response.LoginResponse;
 import com.rentguruz.app.adapters.CustomToast;
 import com.rentguruz.app.apicall.ApiService;
@@ -71,6 +72,7 @@ public class Fragment_Change_Password extends BaseFragment
         }
         binding.setUiColor(UiColor);
         binding.header.screenHeader.setText("Change Password");
+        binding.header.discard.setVisibility(View.GONE);
    /*     try {
             ((User_Profile)getActivity()).BottomnavInVisible();
         } catch (Exception e){
@@ -131,8 +133,9 @@ public class Fragment_Change_Password extends BaseFragment
                             bodyParam.accumulate("PasswordHash", edt_ConfirmPassword.getText().toString());
                             bodyParam.accumulate("CurrentPasswordHash", Edt_Currentpassword.getText().toString());
                             bodyParam.accumulate("Type", 1);*/
-                            bodyParam.accumulate("UserId",loginResponse.apiUserLogin.UserId);
-                            bodyParam.accumulate("Email",loginResponse.User.Email);
+                            //bodyParam.accumulate("UserId",loginResponse.apiUserLogin.UserId);
+                            bodyParam.accumulate("UserId", UserData.customerProfile.UserModel.Id);
+                            bodyParam.accumulate("Email",UserData.customerProfile.UserModel.Email);
                             bodyParam.accumulate("CurrentPassword",Edt_Currentpassword.getText().toString());
                             bodyParam.accumulate("Password",edt_NewPassword.getText().toString());
                             System.out.println(bodyParam);

@@ -104,7 +104,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
+                    android:layout_weight="4"
                     android:orientation="horizontal">
 
                     <RelativeLayout
@@ -330,7 +330,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.7dp"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
                 android:background="@color/MGrey" />
 
@@ -347,7 +347,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:background="@drawable/curve_box_gray"
-                    android:backgroundTint="@color/for1"
+                    android:backgroundTint="@{Color.parseColor(UiColor.Squarebox1)}"
                     android:paddingVertical="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_5sdp"
                     android:layout_weight="5"
@@ -378,7 +378,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/curve_box_gray"
-                    android:backgroundTint="@color/for2"
+                    android:backgroundTint="@{Color.parseColor(UiColor.Squarebox2)}"
                     android:paddingVertical="@dimen/_5sdp"
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     android:layout_gravity="center"
@@ -400,7 +400,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="@{String.valueOf(@string/opens) +String.valueOf(@string/line) + label.Agreement}"
+                        android:text="@{String.valueOf(@string/opens) +String.valueOf(@string/line) + label.Reservation}"
                         android:textColor="@color/themebackgroundtext"
 
                         android:textSize="@dimen/_12ssp"
@@ -412,8 +412,8 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:background="@drawable/curve_box_gray"
+                    android:backgroundTint="@{Color.parseColor(UiColor.Squarebox3)}"
                     android:layout_marginStart="@dimen/_5sdp"
-                    android:backgroundTint="@color/for3"
                     android:paddingVertical="@dimen/_5sdp"
                     android:layout_weight="5"
                     android:orientation="vertical">
@@ -557,14 +557,14 @@
                                 android:layout_gravity="center"
                                 android:layout_margin="5dp"
                                 android:adjustViewBounds="true"
-                                android:src="@drawable/business_cards" />
+                                android:src="@drawable/upcoming_booking" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"
                                 android:gravity="center"
-                                android:text="@{label.Agreement}"
+                                android:text="@{label.Reservation}"
                                 android:textAllCaps="false"
                                 android:textColor="@color/regtcolor"
                                 android:textSize="@dimen/eleven"
@@ -584,14 +584,16 @@
                                 android:layout_gravity="center"
                                 android:layout_margin="5dp"
                                 android:adjustViewBounds="true"
-                                android:src="@drawable/upcoming_booking" />
+                                android:background="@drawable/icon_payment"
+                                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                                />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"
                                 android:gravity="center"
-                                android:text="@{label.Reservation}"
+                                android:text="@{label.Payment}"
                                 android:textAllCaps="false"
                                 android:textColor="@color/regtcolor"
                                 android:textSize="@dimen/eleven"

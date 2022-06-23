@@ -76,6 +76,7 @@ import static com.rentguruz.app.apicall.ApiEndPoint.AVAILABLELOCATION;
 import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_LOGIN;
 import static com.rentguruz.app.apicall.ApiEndPoint.BUSINESSBOOKINGTYPE;
 import static com.rentguruz.app.apicall.ApiEndPoint.BusinessSourceMaster;
+import static com.rentguruz.app.apicall.ApiEndPoint.BusinessSourceMasterALL;
 import static com.rentguruz.app.apicall.ApiEndPoint.COMMONDROPDOWNSINGLE;
 
 public class Fragment_Selected_Location extends BaseFragment
@@ -101,7 +102,7 @@ public class Fragment_Selected_Location extends BaseFragment
     public static  int businessmaster;
     public static int type;
 
-    List<OnDropDownList> data;
+    List<ReservationBusinessSource> data;
     Handler handler=new Handler(Looper.getMainLooper());
     public DateConvert dateConvert = new DateConvert();
     FragmentSelectedLocationBinding binding;
@@ -200,7 +201,7 @@ public class Fragment_Selected_Location extends BaseFragment
             SharedPreferences sp = getActivity().getSharedPreferences("FlexiiCar", MODE_PRIVATE);
             dropDownList = (new DropDown(BUSINESSBOOKINGTYPE,Integer.parseInt(loginRes.getData("CompanyId")),true,true));
 
-            new ApiService2<DropDown>(new OnResponseListener() {
+            new ApiService(new OnResponseListener() {
                 @Override
                 public void onSuccess(String response, HashMap<String, String> headers) {
                     handler.post(() -> {
@@ -208,19 +209,28 @@ public class Fragment_Selected_Location extends BaseFragment
 
                             JSONObject responseJSON = new JSONObject(response);
                             Boolean status = responseJSON.getBoolean("Status");
-                            final JSONArray getReservationList = responseJSON.getJSONArray("Data");
-                            OnDropDownList[] onDropDownLists;
+                            JSONObject datta = responseJSON.getJSONObject("Data");
+                            final JSONArray getReservationList = datta.getJSONArray("Data");
+                            ReservationBusinessSource[] onDropDownLists;
+                            //OnDropDownList[] onDropDownLists;
                             List<String> strings = new ArrayList<>();
-                            onDropDownLists = loginRes.getModel(getReservationList.toString(),OnDropDownList[].class);
+                            //onDropDownLists = loginRes.getModel(getReservationList.toString(),OnDropDownList[].class);
+                            onDropDownLists = loginRes.getModel(getReservationList.toString(),ReservationBusinessSource[].class);
                             for (int i = 0; i < onDropDownLists.length; i++) {
                                 // data.add(new OnDropDownList(onDropDownLists[i].Id, onDropDownLists[i].Name));
-                                OnDropDownList onDropDownList = new OnDropDownList();
+                                /*OnDropDownList onDropDownList = new OnDropDownList();
                                 onDropDownList =  loginRes.getModel(getReservationList.get(i).toString(), OnDropDownList.class);
-                                data.add(onDropDownList);
+                                data.add(onDropDownList);*/
 
-                                strings.add(onDropDownLists[i].Name);
+
+                                ReservationBusinessSource onDropDownList = new ReservationBusinessSource();
+                                onDropDownList =  loginRes.getModel(getReservationList.get(i).toString(), ReservationBusinessSource.class);
+                               // if (onDropDownList.IsRateSelect) {
+                                    data.add(onDropDownList);
+                                    strings.add(onDropDownLists[i].Name);
+                                //}
                             }
-                            final JSONArray businessSoures = responseJSON.getJSONArray("Data");
+                            final JSONArray businessSoures = datta.getJSONArray("Data");
                             businessSourceList = loginRes.getModel(businessSoures.toString(),BusinessSource[].class);
                             for (int i = 0; i < businessSourceList.length; i++) {
                                 if (businessSourceList[i].IsDefault){
@@ -243,7 +253,7 @@ public class Fragment_Selected_Location extends BaseFragment
                 public void onError(String error) {
 
                 }
-            }, RequestType.POST, COMMONDROPDOWNSINGLE, BASE_URL_LOGIN, header, dropDownList);
+            }, RequestType.POST, BusinessSourceMasterALL, BASE_URL_LOGIN, header, params.getBusinessSource());
 
 
 
@@ -872,16 +882,16 @@ public class Fragment_Selected_Location extends BaseFragment
     }
 };
 
-    public void listSpinner(List<OnDropDownList> data){
+    public void listSpinner(List<ReservationBusinessSource> data){
         List<String> business = new ArrayList<>();
         int select = 0;
         for (int i = 0; i <data.size() ; i++) {
-            if (data.get(i).TableType == BUSINESSBOOKINGTYPE){
+          //  if (data.get(i).TableType == BUSINESSBOOKINGTYPE){
                 business.add(data.get(i).Name);
                if (data.get(i).Id == businessSource.Id){
                    select =i;
                }
-            }
+          //  }
            /* if (data.get(i).Id == 4){
                 select = i;
             }*/
@@ -922,6 +932,10 @@ public class Fragment_Selected_Location extends BaseFragment
                                         lease = true;
                                         getCalabderData();
                                         loginRes.storedata("VehicleTypeMasterIds", "0");
+                                    } else {
+                                        startdatejourney = null;
+                                        lease = false;
+                                        getCalabderData();
                                     }
                                     /*if (idd == 41){
                                         startdatejourney = null;

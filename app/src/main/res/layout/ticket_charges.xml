@@ -184,13 +184,14 @@
         style="@style/edittextheaderfull" />
 
 
-    <EditText
+    <com.rentguruz.app.base.ActionEditText
         android:id="@+id/note"
         style="@style/edittextfull"
         android:background="@drawable/ic_rectangle_for_note"
         android:maxLines="3"
         android:minLines="3"
-        android:imeOptions="actionDone"/>
+        android:imeOptions="actionDone"
+        android:inputType="text|textAutoCorrect|textCapSentences|textMultiLine"/>
 
 </LinearLayout>
 </layout>

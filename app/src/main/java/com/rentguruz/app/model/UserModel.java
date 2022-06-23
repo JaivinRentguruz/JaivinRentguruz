@@ -9,6 +9,6 @@ public class UserModel extends BaseModel implements Serializable {
    // public int Id,DetailId;
    // public boolean IsActive;
 
-    public int UserType,UserFor;
+    public int UserType,UserFor,Id;
     public String UserName,Email,Password;
 }

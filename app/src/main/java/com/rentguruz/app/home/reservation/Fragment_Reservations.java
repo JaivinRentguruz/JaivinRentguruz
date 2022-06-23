@@ -271,7 +271,7 @@ public class Fragment_Reservations extends BaseFragment {
                             reservations = loginRes.getModel(getReservationList.toString(), Reservation[].class);
                             int len;
                             len = reservations.length;
-
+                            reservationList = new ArrayList<>();
                             for (int i = 0; i <len; i++) {
                              /*   if (scroll){
                                     Log.e(TAG, "run: " +  reservationList.size() );

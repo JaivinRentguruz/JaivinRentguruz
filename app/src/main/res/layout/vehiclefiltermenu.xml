@@ -53,7 +53,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
             android:text="All Vehicle"
-            android:textColor="@color/themebackgroundtext"
+            android:textColor="@{Color.parseColor(UiColor.secondary)}"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
@@ -69,7 +69,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
             android:text="Available"
-            android:textColor="@color/themebackgroundtext"
+            android:textColor="@{Color.parseColor(UiColor.secondary)}"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
@@ -85,7 +85,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
             android:text="Unavailable"
-            android:textColor="@color/themebackgroundtext"
+            android:textColor="@{Color.parseColor(UiColor.secondary)}"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
@@ -101,7 +101,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
             android:text="Accident"
-            android:textColor="@color/themebackgroundtext"
+            android:textColor="@{Color.parseColor(UiColor.secondary)}"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
@@ -116,7 +116,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
             android:text="Maintenance"
-            android:textColor="@color/themebackgroundtext"
+            android:textColor="@{Color.parseColor(UiColor.secondary)}"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
@@ -132,7 +132,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
             android:text="On Rent"
-            android:textColor="@color/themebackgroundtext"
+            android:textColor="@{Color.parseColor(UiColor.secondary)}"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
@@ -148,7 +148,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
             android:text="Certificate and License Expire"
-            android:textColor="@color/themebackgroundtext"
+            android:textColor="@{Color.parseColor(UiColor.secondary)}"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
@@ -164,7 +164,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
             android:text="OnHold"
-            android:textColor="@color/themebackgroundtext"
+            android:textColor="@{Color.parseColor(UiColor.secondary)}"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
@@ -180,7 +180,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
             android:text="Sell"
-            android:textColor="@color/themebackgroundtext"
+            android:textColor="@{Color.parseColor(UiColor.secondary)}"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
@@ -196,7 +196,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
             android:text="Suspend"
-            android:textColor="@color/themebackgroundtext"
+            android:textColor="@{Color.parseColor(UiColor.secondary)}"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
@@ -212,7 +212,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
             android:text="Last 10 Days"
-            android:textColor="@color/themebackgroundtext"
+            android:textColor="@{Color.parseColor(UiColor.secondary)}"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
@@ -229,7 +229,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
             android:text="Under Checkin"
-            android:textColor="@color/themebackgroundtext"
+            android:textColor="@{Color.parseColor(UiColor.secondary)}"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
@@ -241,7 +241,7 @@
         <RelativeLayout
             android:id="@+id/addtional"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"/>
 
        <!-- <include
             android:id="@+id/category"

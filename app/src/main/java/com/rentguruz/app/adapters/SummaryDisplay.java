@@ -40,6 +40,7 @@ public class SummaryDisplay {
 
         if (charges[i].ReservationSummaryType==100){
             bundle.putString("netrate",DigitConvert.getDoubleDigit(charges[i].ReservationSummaryDetailModels[0].Total));
+            Helper.reservationamt = charges[i].ReservationSummaryDetailModels[0].Total;
         }
 
                         /*    if (i==1)

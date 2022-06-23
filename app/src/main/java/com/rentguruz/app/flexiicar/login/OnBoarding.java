@@ -89,7 +89,7 @@ public class OnBoarding extends AppCompatActivity
         zero = (ImageView) findViewById(R.id.intro_indicator_0);
         one = (ImageView) findViewById(R.id.intro_indicator_1);
         two = (ImageView) findViewById(R.id.intro_indicator_2);
-        indicators = new ImageView[]{zero, one, two};
+        indicators = new ImageView[]{zero, one,two};
 
         mViewPager = findViewById(R.id.onboarding_view_pager);
         mViewPager.setBackgroundColor(Color.parseColor(pagecolor));
@@ -102,7 +102,7 @@ public class OnBoarding extends AppCompatActivity
         final int color2 = getResources().getColor(R.color.screen_bg_color);
         final int color3 = getResources().getColor(R.color.screen_bg_color);
 
-        final int[] colorList = new int[]{color1, color2, color3};
+        final int[] colorList = new int[]{color1, color2,color3};
 
         final ArgbEvaluator evaluator = new ArgbEvaluator();
 
@@ -165,7 +165,7 @@ public class OnBoarding extends AppCompatActivity
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)
         {
 
-            if(page == 2) {
+            if(page == splashScreen.CMSManagementModels.size()) {
                 // Check movement along the Y-axis. If it exceeds SWIPE_MAX_OFF_PATH,
                 // then dismiss the swipe.
                 if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH)
@@ -189,7 +189,7 @@ public class OnBoarding extends AppCompatActivity
                     if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
                         //onSwipeLeft();
 
-                        if (page == 2)
+                        if (page == splashScreen.CMSManagementModels.size())
                         {
                             //Intent intent = new Intent(OnBoarding.this, RentOption.class);
                             Intent intent = new Intent(OnBoarding.this, Login.class);
@@ -210,7 +210,7 @@ public class OnBoarding extends AppCompatActivity
     public boolean dispatchTouchEvent(MotionEvent ev)
     {
         // TouchEvent dispatcher.
-        if (gestureDetector != null && page == 2)
+        if (gestureDetector != null && page == splashScreen.CMSManagementModels.size())
         {
             if (gestureDetector.onTouchEvent(ev))
                 // If the gestureDetector handles the event, a swipe has been
@@ -348,20 +348,27 @@ public class OnBoarding extends AppCompatActivity
         @Override
         public int getCount() {
             // Show 3 total pages.
+           // return splashScreen.CMSManagementModels.size();
             return 3;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
+            /*switch (position) {
                 case 0:
                     return "SECTION 1";
                 case 1:
                     return "SECTION 2";
                 case 2:
                     return "SECTION 3";
-            }
-            return null;
+               *//* case 3:
+                    return "SECTION 4";
+                case 4:
+                    return "SECTION 5";
+                case 5:
+                    return "SECTION 6";*//*
+            }*/
+            return "SECTION";
         }
 
     }

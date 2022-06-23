@@ -70,6 +70,8 @@ public class Fragment_New_Agreement_Notes extends BaseFragment {
         binding.internalReminderdate.setText(getArguments().getString("pickupdate") + " , " + getArguments().getString("pickuptime"));
 
         binding.save.setOnClickListener(this);
+        binding.oderIssuedate.setOnClickListener(this);
+        binding.roderIssuedate.setOnClickListener(this);
     }
 
     @Override
@@ -121,6 +123,14 @@ public class Fragment_New_Agreement_Notes extends BaseFragment {
 
             case R.id.internalReminderdate:
                 dialog.getFullDate(string -> binding.internalReminderdate.setText(string));
+                break;
+
+            case R.id.oderIssuedate:
+                dialog.getFullDate(string -> binding.oderIssuedate.setText(string));
+                break;
+
+            case R.id.roderIssuedate:
+                dialog.getFullDate(string -> binding.roderIssuedate.setText(string));
                 break;
 
             case R.id.save:

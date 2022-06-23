@@ -96,6 +96,7 @@ public class Vehicle_Master_Reservation extends BaseFragment {
                                         getActivity().findViewById(android.R.id.content), false);
                                 reservationListBinding.getRoot().setId(200 + j);
                                 reservationListBinding.getRoot().setLayoutParams(subparams);
+                                reservationListBinding.setUiColor(UiColor);
                                 reservationListBinding.setReservation(reservations[j]);
                                 Log.d(TAG, "run: " + reservations[j]._date);
                                 int finalJ = j;

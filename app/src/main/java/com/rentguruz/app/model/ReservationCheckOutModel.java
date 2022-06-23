@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class ReservationCheckOutModel implements Serializable {
 
     public String Note;
-    public int ReservationId,CurrentFuel,CheckOutOdo,Id,VehicleId;
-
+    public int ReservationId,CheckOutOdo,Id,VehicleId;
+    public Double CurrentFuel;
 
 }

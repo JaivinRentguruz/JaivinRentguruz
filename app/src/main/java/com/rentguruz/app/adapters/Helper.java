@@ -38,7 +38,10 @@ public class Helper {
     public static int checkinFuel= 0;
     public static String checkindate;
     public static String imagee;
-
+    public static Double reservationamt = 0.0;
+    public static Boolean skipScan = false;
+    public static Boolean rsvcustomerscan = false;
+    public static Boolean isrsvUpdate = false;
 
     //public static Boolean AllowCustomerInsurance = false;
 

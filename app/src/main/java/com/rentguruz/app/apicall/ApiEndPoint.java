@@ -54,6 +54,7 @@ public class ApiEndPoint {
     public static final String RANDUMNUMBER = "Common/GenerateRandomString?length=8&prefix=8";
     public static final String RANDUMNUMBERS = "Common/GenerateRandomString";
 
+    public static final String BusinessSourceMasterALL = "BusinessSourceMaster/GetAll";
     public static final String BusinessSourceMaster = "BusinessSourceMaster/GetSingle";
     public static final String REPORT = "Report/GetReport";
 
@@ -187,6 +188,9 @@ public class ApiEndPoint {
 
     public static final String EMAIL = "Reservation/SendBookingEmail";
 
+    //delete
+    public static final String IMAGEDELETE = "Attachment/DeleteAttachment";
+
     //http://api.rentguruz.com/api/login/
     //LOGIN
     public static final String LOGIN_VERIFICATION = "LoginVerification";
@@ -231,7 +235,7 @@ public class ApiEndPoint {
     public static final String UPDATECUSTOMERACTIVITY = "UpdateCustomerActivity";
     public static final String ACTIVITYTIMELINE = "ActivityTimeLine";
 
-    public static final String FORGETPASSWORD = "ForgotPassword";
+    public static final String FORGETPASSWORD = "User/ForgotPassword";
     public static final String ADDPROFILEPICTURE = "AddProfilePicture";
     public static final String REMOVEPROFILEPICTURE = "RemoveProfilePicture";
 

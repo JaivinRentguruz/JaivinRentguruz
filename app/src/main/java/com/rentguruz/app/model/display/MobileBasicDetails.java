@@ -11,5 +11,6 @@ public class MobileBasicDetails extends BaseModel {
     public String DetailJson;
     public ArrayList<AttachmentsModel> IconAttachmentsModels = new ArrayList<>();
     public ArrayList<AttachmentsModel> LogoAttachmentsModels = new ArrayList<>();
+    public ArrayList<AttachmentsModel> CreditCardAttachmentModel = new ArrayList<>();
 
 }

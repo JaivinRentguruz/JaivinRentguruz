@@ -47,7 +47,7 @@ public class Fragment_Extra_Checklist extends BaseFragment {
     ReservationSummarry reservationSummarry;
     SingleCheckboxBinding checkboxBinding;
     ChkHeaderBinding chkHeaderBinding;
-    ListCheckEquipmentBinding checkEquipmentBinding;
+   // ListCheckEquipmentBinding checkEquipmentBinding;
     ReservationEquipment[] equipment;
     ReservationCheckout reservationCheckout;
     boolean checking = false;
@@ -165,7 +165,7 @@ public class Fragment_Extra_Checklist extends BaseFragment {
 
                                 for (int i = 0; i <equipment.length ; i++) {
                                     getSubview(i);
-                                    checkEquipmentBinding = ListCheckEquipmentBinding.inflate(subinflater,
+                                    ListCheckEquipmentBinding   checkEquipmentBinding = ListCheckEquipmentBinding.inflate(subinflater,
                                             getActivity().findViewById(android.R.id.content), false);
                                     checkEquipmentBinding.getRoot().setId(200 + i);
                                     checkEquipmentBinding.getRoot().setLayoutParams(subparams);
@@ -185,18 +185,46 @@ public class Fragment_Extra_Checklist extends BaseFragment {
                                     } catch (Exception e){
                                         e.printStackTrace();
                                     }
-                                    test =  1;
+
+                                    if(equipment[i].SerialNo !=null)  {
+                                        checkEquipmentBinding.withserial.setVisibility(View.VISIBLE);
+                                        checkEquipmentBinding.withoutserial.setVisibility(View.GONE);
+                                        checkEquipmentBinding.serial.setText(equipment[i].SerialNo);
+                                    } else {
+                                        checkEquipmentBinding.withserial.setVisibility(View.GONE);
+                                        checkEquipmentBinding.withoutserial.setVisibility(View.VISIBLE);
+                                    }
+
+                                  //  test =  1;
                                     checkEquipmentBinding.plus.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             if (!checkEquipmentBinding.text.getText().toString().isEmpty()){
+                                                test = Integer.valueOf(checkEquipmentBinding.text.getText().toString());
                                                 test += 1;
                                                 checkEquipmentBinding.text.setText(String.valueOf(test));
                                             } else {
-                                                checkEquipmentBinding.text.setText(String.valueOf(test));
+                                                //test -= 1;
+                                               // checkEquipmentBinding.text.setText(String.valueOf(test));
                                             }
                                         }
                                     });
+
+                                    checkEquipmentBinding.minus.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            if (!checkEquipmentBinding.text.getText().toString().isEmpty()){
+                                                test = Integer.valueOf(checkEquipmentBinding.text.getText().toString());
+                                                if (test>=0){
+                                                    test -= 1;
+                                                    checkEquipmentBinding.text.setText(String.valueOf(test));
+                                                }
+                                            }
+
+                                        }
+                                    });
+
+
                                     binding.equipment.addView(checkEquipmentBinding.getRoot());
                                 }
                             }
@@ -212,7 +240,8 @@ public class Fragment_Extra_Checklist extends BaseFragment {
             public void onError(String error) {
 
             }
-        }, RequestType.POST, EQUIPMENT, BASE_URL_LOGIN, header, params.getEquipment());
+        }, RequestType.POST, EQUIPMENT, BASE_URL_LOGIN, header,
+                params.getEquipmentforReservation(reservationSummarry.CheckOutDate, reservationSummarry.CheckInDate, reservationSummarry.Id, reservationSummarry.TotalDays));
 
         binding.bottom.setOnClickListener(this);
         binding.header.back.setOnClickListener(this);

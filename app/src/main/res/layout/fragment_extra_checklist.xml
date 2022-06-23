@@ -73,7 +73,7 @@
                         <androidx.core.widget.NestedScrollView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="1"
+                            android:layout_weight="0.5"
                             android:background="@drawable/curve_box">
                     <RelativeLayout
                         android:id="@+id/equipment"
@@ -94,7 +94,7 @@
                         <androidx.core.widget.NestedScrollView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="1"
+                            android:layout_weight="1.5"
                             android:background="@drawable/curve_box">
                     <RelativeLayout
                         android:id="@+id/extrachecklist"

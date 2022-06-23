@@ -177,6 +177,14 @@ public class Fragment_Agreement_Traffic_Ticket  extends BaseFragment implements 
 
         MapsInitializer.initialize(this.getActivity());
         binding.edtCustStreet.setOnClickListener(this);
+
+        try {
+
+            preference.stateCountry( binding.SpCountry, binding.SpState, "", "");
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
