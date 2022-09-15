@@ -164,7 +164,7 @@
                                             android:layout_marginTop="@dimen/_minus2sdp"
                                             android:gravity="center_horizontal|center_vertical"
                                             android:text="E"
-                                            android:textColor="@color/txtWhite"
+                                            android:textColor="@{Color.parseColor(UiColor.secondaryfont)}"
                                             android:textSize="@dimen/_8ssp" />
 
                                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -215,7 +215,7 @@
                                             android:layout_marginTop="@dimen/_minus2sdp"
                                             android:gravity="center_horizontal|center_vertical"
                                             android:text="T"
-                                            android:textColor="@color/txtWhite"
+                                            android:textColor="@{Color.parseColor(UiColor.secondaryfont)}"
                                             android:textSize="@dimen/_8ssp" />
 
                                     </androidx.appcompat.widget.LinearLayoutCompat>

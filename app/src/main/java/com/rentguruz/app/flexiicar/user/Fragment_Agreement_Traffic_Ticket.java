@@ -71,6 +71,7 @@ public class Fragment_Agreement_Traffic_Ticket  extends BaseFragment implements 
     ReservationSummarry reservationSummarry;
     CustomeDialog dialog;
     TrafficTickets tollCharges;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -96,7 +97,7 @@ public class Fragment_Agreement_Traffic_Ticket  extends BaseFragment implements 
         binding.bottom.setOnClickListener(this);
         binding.transationdate.setOnClickListener(this);
         binding.image.setOnClickListener(this);
-
+        binding.test.setBackground(userDraw.getImageUpload());
         try {
             dropDownList = (new DropDown(VEHICLELIST,Integer.parseInt(loginRes.getData("CompanyId")),true,false));
             new ApiService2<DropDown>(new OnResponseListener() {

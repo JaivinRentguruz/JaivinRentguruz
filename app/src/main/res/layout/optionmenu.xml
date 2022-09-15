@@ -1,406 +1,472 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <import type="android.graphics.Color"/>
+
+        <import type="android.graphics.Color" />
+
         <import type="androidx.core.content.ContextCompat" />
 
         <variable
             name="UiColor"
             type="com.rentguruz.app.model.display.ThemeColors" />
     </data>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/_5sdp"
-    android:animateLayoutChanges="true"
-    android:gravity="bottom"
-    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/cancel"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/optionmenuheight"
-        android:layout_marginTop="@dimen/_60sdp"
-        android:gravity="center_vertical|center_horizontal"
-        android:paddingVertical="@dimen/_5sdp"
-        android:text="Select Option"
-        android:textColor="@color/white"
-        android:background="@drawable/curve_box_white"
-        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
-        android:theme="@style/texttheme" />
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/cancel2"
-        android:layout_below="@id/cancel">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/curve_box_white"
-        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+        android:layout_marginHorizontal="@dimen/_5sdp"
+        android:animateLayoutChanges="true"
+        android:gravity="bottom"
         android:orientation="vertical">
 
-
-
-      <!--  <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/textColorHint" />-->
-
-        <LinearLayout
-            android:id="@+id/AgreementMenu"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="bottom"
-            android:gravity="bottom"
-            android:orientation="vertical">
-
         <TextView
-            android:id="@+id/paymentprocess"
+            android:id="@+id/cancel"
             android:layout_width="match_parent"
             android:layout_height="@dimen/optionmenuheight"
+            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/curve_box_white"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:gravity="center_vertical|center_horizontal"
-            android:paddingVertical="@dimen/_3sdp"
-            android:text="Process Payment"
-            android:textColor="@{Color.parseColor(UiColor.secondary)}"
+            android:paddingVertical="@dimen/_5sdp"
+            android:text="Select Option"
+            android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
             android:theme="@style/texttheme" />
 
-        <View
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/textColorHint" />
+            android:layout_height="match_parent"
+            android:layout_above="@id/cancel2"
+            android:layout_below="@id/cancel">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/curve_box_white"
+                android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                android:orientation="vertical">
+
+
+                <!--  <View
+                      android:layout_width="match_parent"
+                      android:layout_height="1dp"
+                      android:background="@color/textColorHint" />-->
+
+                <LinearLayout
+                    android:id="@+id/AgreementMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/paymentprocess"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="Process Payment"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/paymentprocessline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/deleteagreement"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="Delete Agreement"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/deleteagreementline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/editAgreement"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="Edit Agreement"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/editAgreementline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/readycheckout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="Ready for Check Out"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/readycheckoutline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/readyconfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="Confirm Now"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/readyconfirmline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/checkout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="Check Out"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/checkoutline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/checkIn"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="Check In"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/checkInline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/checkoutsummry"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="Check Out Summarry"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/checkoutsummryline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/checkinsummarry"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="Check In Summarry"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/checkinsummarryline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/printAgreement"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="Print Agreement"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/printAgreementline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/email_agreement"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="Email Agreement"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/email_agreementline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/changedate"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="@string/change_dates"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/changedateline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/changevehicle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="@string/change_vehicle"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/changevehicleline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/extendagreement"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="@string/extend_agreement"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+
+                    <View
+                        android:id="@+id/extendagreementline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/tollcharge"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="@string/tall_charges"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/tollchargeline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/traffic_tic"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="@string/traffic_tick"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:id="@+id/traffic_ticline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:id="@+id/cancelAgreement"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="Cancel Reservation"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/bookingconfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="@string/print_confirmation"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="@string/print_receipt"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="@string/email_confirmation"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="@string/email_receipt"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="@string/change_dates"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/optionmenuheight"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="@string/change_vehicle"
+                        android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                        android:textSize="@dimen/_14ssp"
+                        android:theme="@style/texttheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/textColorHint" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
         <TextView
-            android:id="@+id/deleteagreement"
+            android:id="@+id/cancel2"
             android:layout_width="match_parent"
             android:layout_height="@dimen/optionmenuheight"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/curve_box_white"
+            android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
             android:gravity="center_vertical|center_horizontal"
             android:paddingVertical="@dimen/_3sdp"
-            android:text="Delete Agreement"
-            android:textColor="@{Color.parseColor(UiColor.secondary)}"
+            android:text="Cancel"
+            android:textColor="@color/themebackgroundtext"
             android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
             android:theme="@style/texttheme" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/textColorHint" />
-
-        <TextView
-            android:id="@+id/editAgreement"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/optionmenuheight"
-            android:gravity="center_vertical|center_horizontal"
-            android:paddingVertical="@dimen/_3sdp"
-            android:text="Edit Agreement"
-            android:textColor="@{Color.parseColor(UiColor.secondary)}"
-            android:textSize="@dimen/_14ssp"
-            android:theme="@style/texttheme" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/textColorHint" />
-
-            <TextView
-                android:id="@+id/readycheckout"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="Ready for Check Out"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-            <TextView
-                android:id="@+id/readyconfirm"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="Confirm Now"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-       <!--     <View
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />-->
-
-        <TextView
-            android:id="@+id/checkout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/optionmenuheight"
-            android:gravity="center_vertical|center_horizontal"
-            android:paddingVertical="@dimen/_3sdp"
-            android:text="Check Out"
-            android:textColor="@{Color.parseColor(UiColor.secondary)}"
-            android:textSize="@dimen/_14ssp"
-            android:theme="@style/texttheme" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/textColorHint" />
-
-        <TextView
-            android:id="@+id/printAgreement"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/optionmenuheight"
-            android:gravity="center_vertical|center_horizontal"
-            android:paddingVertical="@dimen/_3sdp"
-            android:text="Print Agreement"
-            android:textColor="@{Color.parseColor(UiColor.secondary)}"
-            android:textSize="@dimen/_14ssp"
-            android:theme="@style/texttheme" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/textColorHint" />
-
-        <TextView
-            android:id="@+id/email_agreement"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/optionmenuheight"
-            android:gravity="center_vertical|center_horizontal"
-            android:paddingVertical="@dimen/_3sdp"
-            android:text="Email Agreement"
-            android:textColor="@{Color.parseColor(UiColor.secondary)}"
-            android:textSize="@dimen/_14ssp"
-            android:theme="@style/texttheme" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-            <TextView
-                android:id="@+id/changedate"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="@string/change_dates"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-            <TextView
-                android:id="@+id/changevehicle"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="@string/change_vehicle"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-            <TextView
-                android:id="@+id/extendagreement"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="@string/extend_agreement"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-            <TextView
-                android:id="@+id/tollcharge"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="@string/tall_charges"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-            <TextView
-                android:id="@+id/traffic_tic"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="@string/traffic_tick"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-            <TextView
-                android:id="@+id/cancelAgreement"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="Cancel Reservation"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/bookingconfirm"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:visibility="gone"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="@string/print_confirmation"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="@string/print_receipt"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="@string/email_confirmation"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="@string/email_receipt"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="@string/change_dates"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/optionmenuheight"
-                android:gravity="center_vertical|center_horizontal"
-                android:paddingVertical="@dimen/_3sdp"
-                android:text="@string/change_vehicle"
-                android:textColor="@{Color.parseColor(UiColor.secondary)}"
-                android:textSize="@dimen/_14ssp"
-                android:theme="@style/texttheme" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/textColorHint" />
-
-        </LinearLayout>
     </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-    <TextView
-        android:id="@+id/cancel2"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/optionmenuheight"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:background="@drawable/curve_box_white"
-        android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
-        android:gravity="center_vertical|center_horizontal"
-        android:paddingVertical="@dimen/_3sdp"
-        android:text="Cancel"
-        android:textColor="@color/themebackgroundtext"
-        android:textSize="@dimen/_14ssp"
-        android:textStyle="bold"
-        android:theme="@style/texttheme" />
-</RelativeLayout>
 </layout>

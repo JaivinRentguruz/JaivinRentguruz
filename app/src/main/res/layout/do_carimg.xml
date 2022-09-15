@@ -24,7 +24,8 @@
         <RelativeLayout
             android:id="@+id/rl_Checkin"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_minus5sdp">
 
             <LinearLayout
                 android:id="@+id/llvhg"
@@ -45,6 +46,10 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:maxLines="1"
                     android:minLines="1"
+                    android:paddingTop="0pt"
+                    android:paddingBottom="0pt"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="1dp"
                     android:singleLine="true"
                     android:text="0123456789"
                     android:textColor="@color/white"
@@ -85,7 +90,7 @@
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="100">
 
@@ -93,10 +98,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="1dp"
+                        android:weightSum="100"
                         android:orientation="horizontal">
 
                         <RelativeLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
+                            android:layout_weight="45"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_10sdp">
 
@@ -147,7 +154,7 @@
 
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentTop="true"
                                 android:layout_marginStart="@dimen/_5sdp"
@@ -162,6 +169,7 @@
                                     android:layout_height="@dimen/_18sdp"
                                     android:hint=" "
                                     android:text=""
+                                    android:singleLine="true"
                                     android:textColor="@color/pickupcarimag"
                                     android:textSize="@dimen/_14ssp"
                                     android:textStyle="bold"
@@ -174,7 +182,7 @@
                                     android:layout_height="@dimen/_14sdp"
                                     android:hint="18/12/2019, 12:00pm"
                                     android:textColor="@color/pcolor"
-                                    android:textSize="@dimen/_11ssp"
+                                    android:textSize="@dimen/_10ssp"
                                     android:theme="@style/texttheme" />
 
 
@@ -185,6 +193,7 @@
                                     android:layout_marginTop="@dimen/_18sdp"
                                     android:hint=""
                                     android:text=""
+                                    android:singleLine="true"
                                     android:textColor="@color/pickupcarimag"
                                     android:textSize="@dimen/_14ssp"
                                     android:textStyle="bold"
@@ -196,7 +205,7 @@
                                     android:layout_height="@dimen/_14sdp"
                                     android:hint="18/12/2019, 12:00pm"
                                     android:textColor="@color/pcolor"
-                                    android:textSize="@dimen/_11ssp"
+                                    android:textSize="@dimen/_10ssp"
                                     android:theme="@style/texttheme" />
 
                             </LinearLayout>

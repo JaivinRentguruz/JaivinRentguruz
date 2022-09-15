@@ -7,7 +7,9 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
+import com.rentguruz.app.model.weather.CountryModel;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
@@ -164,6 +166,77 @@ public class LoginRes {
         return t;
     }
 
+    public <T> List<T> arraytolist(T array[]){
+        List<T> list = new ArrayList<>();
+        for (T t: array){
+            list.add(t);
+        }
+        return list;
+    }
+
+    public List<CountryModel> getCountryList(){
+        List<CountryModel> countryModelList = new ArrayList<>();
+        try {
+            //      Log.d("Mungara", "getStringArray: " + response);
+            String response = preferences.getString("country", "");
+            JSONObject responseJSON = new JSONObject(response);
+            JSONArray country = responseJSON.getJSONArray("Data");
+            int len = country.length();
+            for (int i = 0; i < len; i++) {
+                JSONObject test = (JSONObject) country.get(i);
+                CountryModel countryModel = new CountryModel();
+                countryModel = getModel(test.toString(),CountryModel.class);
+                countryModelList.add(countryModel);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return countryModelList;
+    }
+
+    public List<String> getCountryName(){
+        List<String> countryModelList = new ArrayList<>();
+        try {
+            //      Log.d("Mungara", "getStringArray: " + response);
+            String response = preferences.getString("country", "");
+            JSONObject responseJSON = new JSONObject(response);
+            JSONArray country = responseJSON.getJSONArray("Data");
+            int len = country.length();
+            for (int i = 0; i < len; i++) {
+                JSONObject test = (JSONObject) country.get(i);
+                String name = test.getString("Name");
+                countryModelList.add(name);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return countryModelList;
+    }
+
+    public CountryModel getCountryModel(String countryname){
+        CountryModel countryModelList = new CountryModel();
+        try {
+            //      Log.d("Mungara", "getStringArray: " + response);
+            String response = preferences.getString("country", "");
+            JSONObject responseJSON = new JSONObject(response);
+            JSONArray country = responseJSON.getJSONArray("Data");
+            int len = country.length();
+            for (int i = 0; i < len; i++) {
+                JSONObject test = (JSONObject) country.get(i);
+                String name = test.getString("Name");
+               // Log.e("TAG", "getCountryModel: " + name + " : " + countryname );
+                if (name.matches(countryname)) {
+                 //   Log.e("TAG", "getCountryModel: done");
+                    countryModelList = getModel(test.toString(), CountryModel.class);
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return countryModelList;
+    }
 }
 
 

@@ -15,8 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.core.widget.NestedScrollView;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.rentguruz.app.adapters.CustomToast;
 import com.rentguruz.app.adapters.Helper;
 import com.rentguruz.app.apicall.ApiService;
+import com.rentguruz.app.apicall.ApiService2;
 import com.rentguruz.app.apicall.OnResponseListener;
 import com.rentguruz.app.apicall.RequestType;
 import com.rentguruz.app.base.BaseFragment;
@@ -39,7 +41,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_CUSTOMER;
+import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_LOGIN;
 import static com.rentguruz.app.apicall.ApiEndPoint.CUSTOMERLIST;
+import static com.rentguruz.app.apicall.ApiEndPoint.RESERVATIONVALIDATION;
 
 public class Fragment_Customer extends BaseFragment {
 
@@ -287,9 +291,40 @@ public class Fragment_Customer extends BaseFragment {
                     reservationSummarry.CustomerPhone =  customerList.get(finalI).MobileNo;
                     bundle.putSerializable("reservationSum", reservationSummarry);
                     bundle.putSerializable("customer", customerList.get(finalI));
-                    NavHostFragment.findNavController(Fragment_Customer.this).navigate(R.id.customerlist_to_booking,bundle);
+                    //NavHostFragment.findNavController(Fragment_Customer.this).navigate(R.id.customerlist_to_booking,bundle);
+
+                    new ApiService2<ReservationSummarry>(isReseravtionValid, RequestType.POST,RESERVATIONVALIDATION, BASE_URL_LOGIN,header,reservationSummarry);
                 }
             });
         }
     }
+
+    OnResponseListener isReseravtionValid = new OnResponseListener() {
+        @Override
+        public void onSuccess(String response, HashMap<String, String> headers) {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        JSONObject responseJSON = new JSONObject(response);
+                        Boolean status = responseJSON.getBoolean("Status");
+                        if (status){
+//                            JSONObject resultSet = responseJSON.getJSONObject("Data");
+                            //  Log.e(TAG, "run: "+ resultSet );
+                            NavHostFragment.findNavController(Fragment_Customer.this).navigate(R.id.customerlist_to_booking,bundle);
+                        } else {
+                            CustomToast.showToast(getActivity(),responseJSON.getString("Message"),1);
+                        }
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void onError(String error) {
+
+        }
+    };
 }

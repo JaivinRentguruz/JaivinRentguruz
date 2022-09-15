@@ -15,6 +15,7 @@
     android:layout_height="match_parent"
     android:layout_marginHorizontal="@dimen/_5sdp"
     android:animateLayoutChanges="true"
+    android:layout_marginBottom="@dimen/bottommenuheight"
     android:gravity="bottom"
     android:orientation="vertical">
 
@@ -22,7 +23,7 @@
         android:id="@+id/cancel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/optionmenuheight"
-        android:layout_marginTop="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_85sdp"
         android:gravity="center_vertical|center_horizontal"
         android:paddingVertical="@dimen/_5sdp"
         android:text="Select Option"
@@ -269,10 +270,10 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/optionmenuheight"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="@dimen/_5sdp"
         android:background="@drawable/curve_box_white"
         android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
         android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="@dimen/_5sdp"
         android:paddingVertical="@dimen/_3sdp"
         android:text="Cancel"
         android:textColor="@color/themebackgroundtext"

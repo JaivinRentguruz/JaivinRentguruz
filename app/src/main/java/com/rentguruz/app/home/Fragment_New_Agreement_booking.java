@@ -11,6 +11,7 @@ import com.rentguruz.app.R;
 import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.rentguruz.app.home.reservation.Activity_Reservation;
 import com.rentguruz.app.model.response.RIequipment;
 import com.bumptech.glide.Glide;
 import com.rentguruz.app.adapters.CustomToast;
@@ -227,6 +228,11 @@ public class Fragment_New_Agreement_booking extends BaseFragment {
                 binding.flightdetailsLayout.setVisibility(View.GONE);
             }
 
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            ((Activity_Reservation) getActivity()).BottomnavInVisible();
         } catch (Exception e){
             e.printStackTrace();
         }

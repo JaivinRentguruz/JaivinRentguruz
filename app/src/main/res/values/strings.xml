@@ -11,6 +11,7 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="streetno">STREET NO &amp; NAME</string>
     <string name="cp_additional_driver">This is our additional driver policy. Please read carefully.</string>
+    <string name="TandC">Please scroll below to review the key\npoints of our Privacy Policy and Terms of\nService.\n\nWe use your data for the purpose set out \nin our Privacy Policy including:\n\nThis is a condition one for the policy.\nThis is a condition one for the policy.\nThis is a condition one for the policy.\nThis is a condition one for the policy.\nThis is a condition one for the policy.\nThis is a condition one for the policy.\nThis is a condition one for the policy.</string>
     <!--    <string name="onBoardingScreen1Text">
         <b> Commitment</b>
         \n\n
@@ -132,7 +133,7 @@
     <!--<string name="map_api_key">AIzaSyB8GVnpTSKV8BBBf3nqhHL4fmrFar3A5sM</string>-->
     <!--    <string name="map_api_key">AIzaSyBI_lIw-YvKBuiyXC3GVi2QTx2RgFmGcWQ</string>-->
     <!--<string name="map_api_key">AIzaSyDLDdpvPMi9P5z75AknbTuakKYl6H_HWoo</string>-->
-
+    <integer name="locationlentgh">15</integer>
     <string name="car_rental_tax">@ 12% =$ 157.68</string>
     <string name="con_recovery">10 Days @ 0.50 = $5.00</string>
     <string name="con_recovery_fees">@11.11% = $ 136.52</string>
@@ -358,7 +359,7 @@
     <string name="update">Update</string>
     <string name="submit">Submit</string>
     <string name="scompany">scompany</string>
-
+    <string name="companyname">Company Name</string>
 
     <string-array name="vehicleyear">
         <item>Select Year</item>

@@ -29,6 +29,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.navigation.fragment.NavHostFragment;
 import com.rentguruz.app.R;
+import com.rentguruz.app.home.reservation.Activity_Reservation;
 import com.rentguruz.app.model.parameter.enums.ReservationMainType;
 import com.rentguruz.app.model.response.User;
 import com.archit.calendardaterangepicker.customviews.CalendarListener;
@@ -154,6 +155,14 @@ public class Fragment_Selected_Location extends BaseFragment
         }
           binding.setUiColor(UiColor);
         binding.header.screenHeader.setText(getResources().getString(R.string.select_location));
+
+
+        try {
+            ((Activity_Reservation)getActivity()).BottomnavInVisible();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
 //        ((Activity_Home) getActivity()).BottomnavInVisible();
 
 /*
@@ -465,6 +474,7 @@ public class Fragment_Selected_Location extends BaseFragment
                     reserversationSummary.ReservationType = reservationBusinessSource.ReservationTypeId;
                     reserversationSummary.TypeOf = 1;
                     reserversationSummary.PickUpLocation = location.Id;
+                    Helper.selectedloc = location.Id;
                     reserversationSummary.DropLocation = location.Id;
                     if (returnlocation!= null)
                         reserversationSummary.DropLocation = returnlocation.Id;
@@ -548,9 +558,26 @@ public class Fragment_Selected_Location extends BaseFragment
             bundle.putSerializable("locModel",getArguments().getSerializable("locModel"));
             LocationList[]  locationListsData;
             locationListsData = (LocationList[]) getArguments().getSerializable("locModel");
+            Log.e(TAG, "onViewCreated: " + locationListsData.length );
             setLocation(locationListsData,false);
         } catch (Exception e){
             e.printStackTrace();
+
+            Log.e(TAG, "onViewCreated: " + " 0 " + e.getMessage() );
+        }
+
+        try {
+            if (Helper.isselectlocation){
+                LocationList[]  locationListsData;
+                //locationListsData = (LocationList[]) getArguments().getSerializable("locModel");
+                String d = loginRes.getData("locModel");
+                locationListsData =  loginRes.getModel(d,LocationList[].class);
+                setLocation(locationListsData,false);
+                Log.e(TAG, "onViewCreated: "  + 1);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+            Log.e(TAG, "onViewCreated: "  + " 2 " + e.getMessage());
         }
 
         binding.pickuploc.lblselectedlocation1.setOnClickListener(new View.OnClickListener() {
@@ -672,6 +699,7 @@ public class Fragment_Selected_Location extends BaseFragment
                 break;
 
             case  R.id.discard:
+
                 /*NavHostFragment.findNavController(Fragment_Selected_Location.this)
                         .navigate(R.id.action_Selected_location_to_Search_activity);*/
                 Intent i = new Intent(getActivity(), Activity_Home.class);
@@ -705,7 +733,10 @@ public class Fragment_Selected_Location extends BaseFragment
                 dialog.show();*/
               /*  Intent ii = new Intent(getActivity(), Activity_Home.class);
                 startActivity(ii);*/
-                NavHostFragment.findNavController(Fragment_Selected_Location.this).popBackStack();
+                Helper.isselectlocation = false;
+                Intent ii = new Intent(getActivity(), Activity_Home.class);
+                startActivity(ii);
+                //NavHostFragment.findNavController(Fragment_Selected_Location.this).popBackStack();
                 break;
             case R.id.lblselectedlocation1:
                 bundle.putSerializable("model", location);
@@ -826,6 +857,7 @@ public class Fragment_Selected_Location extends BaseFragment
                         LocationList[]  locationListsData;
                         locationListsData = loginRes.getModel(locationlist.toString(), LocationList[].class);
                         bundle.putSerializable("locModel",locationListsData);
+                        loginRes.storedata("locModel",loginRes.modeltostring(locationListsData));
                         setLocation(locationListsData,true);
                    /*     if (locationListsData.length == 1){
                             binding.differentLocationLayout.setVisibility(View.GONE);
@@ -1021,7 +1053,7 @@ public class Fragment_Selected_Location extends BaseFragment
             //UserData.loginResponse.User.addressesModel.Latitude ==
 
             //Double   Helper.getAmtount()
-            if (UserData.loginResponse.User.addressesModel!=null){
+           /* if (UserData.loginResponse.User.addressesModel!=null){
                 if (UserData.loginResponse.User.addressesModel.AddressFor == location.Id){
                     binding.pickuploc.setLocation(location);
                     binding.droploc.setLocation(returnlocation);
@@ -1031,13 +1063,15 @@ public class Fragment_Selected_Location extends BaseFragment
                 binding.pickuploc.setLocation(location);
                 binding.droploc.setLocation(returnlocation);
                 break;
-            }
+            }*/
 
-         /*   if (location.Id == reservationBusinessSource.DefaultLocationId) {
+            Log.e(TAG, "setLocation: " + location.ParentLocationId );
+
+            if (location.Id == reservationBusinessSource.DefaultLocationId) {
                 binding.pickuploc.setLocation(location);
                 binding.droploc.setLocation(returnlocation);
                 break;
-                 }*/
+                 }
             }
         } else {
             binding.pickuploc.setLocation(location);

@@ -49,7 +49,7 @@ import static com.rentguruz.app.apicall.ApiEndPoint.VENDOR;
 public class Fragment_New_Agreement_Billing extends BaseFragment {
 
     FragmentNewAgreementBillingInfoBinding binding;
-  //  List<DropDown> dropDownList = new ArrayList<>();
+    //  List<DropDown> dropDownList = new ArrayList<>();
     List<OnDropDownList> data = new ArrayList<>();
     List<String> customerlist = new ArrayList<>();
     Customer customer;
@@ -191,22 +191,25 @@ public class Fragment_New_Agreement_Billing extends BaseFragment {
                 select = i;
             }
         }
-       if (binding.entity.getSelectedItem().toString().equals("Customer")){
-           binding.searchview.setVisibility(View.VISIBLE);
-           binding.userlist.setVisibility(View.GONE);
-           adaptercustomer = new ArrayAdapter<String>(context, R.layout.spinner_layout, R.id.text1, customerlist);
-           binding.searchview.setThreshold(1);
-           binding.searchview.setAdapter(adaptercustomer);
-           binding.searchview.setText(customer.FullName);
+        if (binding.entity.getSelectedItem().toString().equals("Customer")){
+            binding.searchview.setVisibility(View.VISIBLE);
+            binding.userlist.setVisibility(View.GONE);
+            adaptercustomer = new ArrayAdapter<String>(context, R.layout.spinner_layout, R.id.text1, customerlist);
+            binding.searchview.setThreshold(1);
+            binding.searchview.setAdapter(adaptercustomer);
+            binding.searchview.setText(customer.FullName);
+            binding.number.setText(customer.MobileNo);
+            binding.email.setText(customer.Email);
+//           binding.address.setText(Html.fromHtml(customerProfile.AddressesModel.PreviewAddress));
 
 
-       } else {
-           binding.searchview.setVisibility(View.GONE);
-           binding.userlist.setVisibility(View.VISIBLE);
-           adaptercustomer = new ArrayAdapter<String>(context, R.layout.spinner_layout, R.id.text1, customerlist);
-           binding.userlist.setAdapter(adaptercustomer);
-           binding.userlist.setSelection(select);
-       }
+        } else {
+            binding.searchview.setVisibility(View.GONE);
+            binding.userlist.setVisibility(View.VISIBLE);
+            adaptercustomer = new ArrayAdapter<String>(context, R.layout.spinner_layout, R.id.text1, customerlist);
+            binding.userlist.setAdapter(adaptercustomer);
+            binding.userlist.setSelection(select);
+        }
 
         binding.userlist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -252,98 +255,130 @@ public class Fragment_New_Agreement_Billing extends BaseFragment {
             }
         });
 
-       binding.searchview.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-           @Override
-           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               getDropdownId(binding.searchview.getText().toString());
-               String string = "?id=" + idd;
-               new ApiService(new OnResponseListener() {
-                   @Override
-                   public void onSuccess(String response, HashMap<String, String> headers) {
-                       handler.post(() -> {
-                           try {
-                               JSONObject responseJSON = new JSONObject(response);
-                               Boolean status = responseJSON.getBoolean("Status");
+        getDropdownId(binding.searchview.getText().toString());
+        String string = "?id=" + idd;
+        new ApiService(new OnResponseListener() {
+            @Override
+            public void onSuccess(String response, HashMap<String, String> headers) {
+                handler.post(() -> {
+                    try {
+                        JSONObject responseJSON = new JSONObject(response);
+                        Boolean status = responseJSON.getBoolean("Status");
 
-                               if (status)
-                               {
-                                   final JSONObject custommer= responseJSON.getJSONObject("Data");
-                                   Log.e(TAG, "run: " + custommer );
-                                   customerProfile = loginRes.getModel(custommer.toString(), CustomerProfile.class);
-                                   binding.name.setText( customerProfile.FullName);
-                                   binding.number.setText(customerProfile.MobileNo);
-                                   binding.email.setText(customerProfile.Email);
-                                   binding.address.setText(Html.fromHtml(customerProfile.AddressesModel.PreviewAddress));
-                               }
-                           } catch (Exception e){
-                               e.printStackTrace();
-                           }
-                       });
-                   }
+                        if (status)
+                        {
+                            final JSONObject custommer= responseJSON.getJSONObject("Data");
+                            Log.e(TAG, "run: " + custommer );
+                            customerProfile = loginRes.getModel(custommer.toString(), CustomerProfile.class);
+                            binding.name.setText( customerProfile.FullName);
+                            binding.number.setText(customerProfile.MobileNo);
+                            binding.email.setText(customerProfile.Email);
+                            binding.address.setText(Html.fromHtml(customerProfile.AddressesModel.PreviewAddress));
+                        }
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+                });
+            }
 
-                   @Override
-                   public void onError(String error) {
+            @Override
+            public void onError(String error) {
 
-                   }
-               }, RequestType.GET, GETCUSTOMER, BASE_URL_CUSTOMER, header, string);
-           }
+            }
+        }, RequestType.GET, GETCUSTOMER, BASE_URL_CUSTOMER, header, string);
 
-           @Override
-           public void onNothingSelected(AdapterView<?> parent) {
+        binding.searchview.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                getDropdownId(binding.searchview.getText().toString());
+                String string = "?id=" + idd;
+                new ApiService(new OnResponseListener() {
+                    @Override
+                    public void onSuccess(String response, HashMap<String, String> headers) {
+                        handler.post(() -> {
+                            try {
+                                JSONObject responseJSON = new JSONObject(response);
+                                Boolean status = responseJSON.getBoolean("Status");
 
-           }
-       });
+                                if (status)
+                                {
+                                    final JSONObject custommer= responseJSON.getJSONObject("Data");
+                                    Log.e(TAG, "run: " + custommer );
+                                    customerProfile = loginRes.getModel(custommer.toString(), CustomerProfile.class);
+                                    binding.name.setText( customerProfile.FullName);
+                                    binding.number.setText(customerProfile.MobileNo);
+                                    binding.email.setText(customerProfile.Email);
+                                    binding.address.setText(Html.fromHtml(customerProfile.AddressesModel.PreviewAddress));
+                                }
+                            } catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        });
+                    }
 
-       binding.searchview.addTextChangedListener(new TextWatcher() {
-           @Override
-           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    @Override
+                    public void onError(String error) {
 
-           }
+                    }
+                }, RequestType.GET, GETCUSTOMER, BASE_URL_CUSTOMER, header, string);
+            }
 
-           @Override
-           public void onTextChanged(CharSequence s, int start, int before, int count) {
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-           }
+            }
+        });
 
-           @Override
-           public void afterTextChanged(Editable s) {
-               if (s.length() > 4){
-                   getDropdownId(binding.searchview.getText().toString());
-                   String string = "?id=" + idd;
-                   new ApiService(new OnResponseListener() {
-                       @Override
-                       public void onSuccess(String response, HashMap<String, String> headers) {
-                           handler.post(() -> {
-                               try {
-                                   JSONObject responseJSON = new JSONObject(response);
-                                   Boolean status = responseJSON.getBoolean("Status");
+        binding.searchview.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                                   if (status)
-                                   {
-                                       final JSONObject custommer= responseJSON.getJSONObject("Data");
-                                       Log.e(TAG, "run: " + custommer );
-                                       customerProfile = loginRes.getModel(custommer.toString(), CustomerProfile.class);
-                                       binding.name.setText( customerProfile.FullName);
-                                       binding.number.setText(customerProfile.MobileNo);
-                                       binding.email.setText(customerProfile.Email);
-                                       binding.address.setText(Html.fromHtml(customerProfile.AddressesModel.PreviewAddress));
-                                   } else {
-                                       binding.name.setText(responseJSON.getString("Message"));
-                                   }
-                               } catch (Exception e){
-                                   e.printStackTrace();
-                               }
-                           });
-                       }
+            }
 
-                       @Override
-                       public void onError(String error) {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                       }
-                   }, RequestType.GET, GETCUSTOMER, BASE_URL_CUSTOMER, header, string);
-               }
-           }
-       });
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() > 1){
+                    getDropdownId(binding.searchview.getText().toString());
+                    String string = "?id=" + idd;
+                    new ApiService(new OnResponseListener() {
+                        @Override
+                        public void onSuccess(String response, HashMap<String, String> headers) {
+                            handler.post(() -> {
+                                try {
+                                    JSONObject responseJSON = new JSONObject(response);
+                                    Boolean status = responseJSON.getBoolean("Status");
+
+                                    if (status)
+                                    {
+                                        final JSONObject custommer= responseJSON.getJSONObject("Data");
+                                        Log.e(TAG, "run: " + custommer );
+                                        customerProfile = loginRes.getModel(custommer.toString(), CustomerProfile.class);
+                                        binding.name.setText( customerProfile.FullName);
+                                        binding.number.setText(customerProfile.MobileNo);
+                                        binding.email.setText(customerProfile.Email);
+                                        binding.address.setText(Html.fromHtml(customerProfile.AddressesModel.PreviewAddress));
+                                    } else {
+                                        binding.name.setText(responseJSON.getString("Message"));
+                                    }
+                                } catch (Exception e){
+                                    e.printStackTrace();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onError(String error) {
+
+                        }
+                    }, RequestType.GET, GETCUSTOMER, BASE_URL_CUSTOMER, header, string);
+                }
+            }
+        });
 
     }
 

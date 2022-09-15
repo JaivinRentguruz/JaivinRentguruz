@@ -33,6 +33,7 @@ import com.rentguruz.app.model.parameter.SplitAmountType;
 import com.rentguruz.app.model.response.CustomerProfile;
 import com.rentguruz.app.model.response.LocationList;
 import com.rentguruz.app.model.response.Reservation;
+import com.rentguruz.app.model.response.ReservationMultiplePmt;
 import com.rentguruz.app.model.response.ReservationPMT;
 import com.rentguruz.app.model.response.ReservationSummarry;
 import com.rentguruz.app.model.response.ReservationTimeModel;
@@ -56,6 +57,8 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
     CustomerProfile customerProfile;
     Customer customer;
     List<ReservationPMT> pmtList = new ArrayList<>();
+    public static boolean PmtCondition = false;
+    public static Double Amt = 0.0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -175,7 +178,8 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
         binding.chequeDetail.setVisibility(View.GONE);
         binding.splitAmount.setChecked(false);
         binding.Deposit.setChecked(true);
-
+        binding.Deposit2.setChecked(true);
+        binding.Payment2.setChecked(true);
 
 
         userDraw.toggle(binding.changeamt, false);
@@ -205,7 +209,7 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
 
 
 
-        binding.transationtype.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+       /* binding.transationtype.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
@@ -234,6 +238,58 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
                         binding.amountPayable.setText(Helper.getAmtount(reservationSummarry.ReservationRatesModel.RateFeaturesModel.SecurityDeposit));
                         Log.e(TAG, "onCheckedChanged: " + "Pre Authorization" );
                         break;
+                }
+            }
+        });*/
+
+
+
+        binding.Payment2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    reservationPMT.TransactionType = PaymentTransactionType.Payment.inte;
+                    reservationPMT.PaymentProcess = PaymentProcess.Charge.inte;
+                    if (binding.Deposit2.isChecked()){
+                        binding.amount.setText(Helper.getAmtount(Helper.isDeposit + Helper.reservationamt));
+                        binding.amountPayable.setText(Helper.getAmtount(Helper.isDeposit + Helper.reservationamt));
+                    } else {
+                        binding.amount.setText(Helper.getAmtount(Helper.reservationamt));
+                        binding.amountPayable.setText(Helper.getAmtount(Helper.reservationamt));
+                    }
+                } else {
+                    if (binding.Deposit2.isChecked()){
+                        binding.amount.setText(Helper.getAmtount(Helper.isDeposit));
+                        binding.amountPayable.setText(Helper.getAmtount(Helper.isDeposit));
+                    } else {
+                        binding.amount.setText("00");
+                        binding.amountPayable.setText("00");
+                    }
+                }
+            }
+        });
+
+        binding.Deposit2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    reservationPMT.TransactionType = PaymentTransactionType.Deposit.inte;
+                    reservationPMT.PaymentProcess = PaymentProcess.Refund.inte;
+                    if (binding.Payment2.isChecked()){
+                        binding.amount.setText(Helper.getAmtount(Helper.isDeposit+ Helper.reservationamt));
+                        binding.amountPayable.setText(Helper.getAmtount(Helper.isDeposit + Helper.reservationamt));
+                    } else {
+                        binding.amount.setText(Helper.getAmtount(Helper.isDeposit));
+                        binding.amountPayable.setText(Helper.getAmtount(Helper.isDeposit));
+                    }
+                } else {
+                    if (binding.Payment2.isChecked()){
+                        binding.amount.setText(Helper.getAmtount(Helper.reservationamt));
+                        binding.amountPayable.setText(Helper.getAmtount(Helper.reservationamt));
+                    } else {
+                        binding.amount.setText("00");
+                        binding.amountPayable.setText("00");
+                    }
                 }
             }
         });
@@ -361,8 +417,8 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
        // binding.splitpercentage.setChecked(true);
        // binding.splitfixamount.setChecked(true);
 
-        binding.amount.setText(Helper.getAmtount(reservationSummarry.ReservationRatesModel.RateFeaturesModel.SecurityDeposit));
-        binding.amountPayable.setText(Helper.getAmtount(reservationSummarry.ReservationRatesModel.RateFeaturesModel.SecurityDeposit));
+        binding.amount.setText(Helper.getAmtount(Helper.isDeposit + Helper.reservationamt));
+        binding.amountPayable.setText(Helper.getAmtount(Helper.isDeposit + Helper.reservationamt));
 
         binding.lessamount.addTextChangedListener(new TextWatcher() {
             @Override
@@ -457,23 +513,46 @@ public class Fragment_Change_Payment_Option extends BaseFragment {
                 reservationPMT.CustomerId = customer.Id;
                 reservationPMT.InvoiceAmount = reservationPMT.Amount;
                 reservationPMT.ReservationId = reservationSummarry.Id;
-                pmtList.add(reservationPMT);
+
+                    bundle.putSerializable("pmtmodel", reservationPMT);
+                    bundle.putString("netrate",binding.amountPayable.getText().toString() );
+                    bundle.putString("netrate",binding.amount.getText().toString() );
+                    Helper.pmt = true;
+
+                if (binding.Deposit2.isChecked() && binding.Payment2.isChecked()){
+                    PmtCondition = true;
+                    Amt = Helper.isDeposit;
+                    ReservationPMT reservationPMT1 = new ReservationPMT(reservationPMT.AgreementNumber,reservationPMT.BillTo,reservationPMT.CreditCardId,reservationPMT.CustomerId,
+                            reservationPMT.PaymentForId,PaymentProcess.Refund.inte,reservationPMT.PaymentProcessMode,reservationPMT.ReservationId,reservationPMT.SplitAmount,
+                            reservationPMT.SplitAmountType,reservationPMT.BillToInfoJSON,reservationPMT.IsSplit,PaymentTransactionType.Deposit.inte,
+                            Helper.isDeposit, Helper.isDeposit,reservationPMT.PaymentTransactionType,reservationPMT.PaymentMode);
+
+                    pmtList.add(reservationPMT1);
+
+                    ReservationPMT reservationPMT2 = new ReservationPMT(reservationPMT.AgreementNumber,reservationPMT.BillTo,reservationPMT.CreditCardId,reservationPMT.CustomerId,
+                            reservationPMT.PaymentForId,PaymentProcess.Charge.inte,reservationPMT.PaymentProcessMode,reservationPMT.ReservationId,reservationPMT.SplitAmount,
+                            reservationPMT.SplitAmountType,reservationPMT.BillToInfoJSON,reservationPMT.IsSplit,PaymentTransactionType.Payment.inte,
+                            Helper.reservationamt,Helper.reservationamt,reservationPMT.PaymentTransactionType,reservationPMT.PaymentMode);
+                    pmtList.add(reservationPMT2);
+                    Log.e(TAG, "onClick: " + 1 );
+                } else {
+                    PmtCondition = false;
+                    pmtList.add(reservationPMT);
+                    Log.e(TAG, "onClick: " + 2 );
+                }
                 //new ApiService2<List<ReservationPMT>>(processPayment, RequestType.POST, RESERVATIONPMT, BASE_URL_LOGIN,header ,pmtList);
-                bundle.putSerializable("pmtmodel", reservationPMT);
-                bundle.putString("netrate",binding.amountPayable.getText().toString() );
-                bundle.putString("netrate",binding.amount.getText().toString() );
-                Helper.pmt = true;
+
              /*   if (getArguments().getBoolean("pmt")){
                     NavHostFragment.findNavController(Fragment_Change_Payment_Option.this).navigate(R.id.paymentChangeOption_to_Payment,bundle);
                 } else {
                     NavHostFragment.findNavController(Fragment_Change_Payment_Option.this).navigate(R.id.paymentChangeOption_to_PaymentOffline,bundle);
                 }*/
-                if (binding.offline.isChecked()) {
-                    new ApiService2<List<ReservationPMT>>(processPayment, RequestType.POST,
-                            RESERVATIONPMT, BASE_URL_LOGIN, header, pmtList);
-                } else {
-                    NavHostFragment.findNavController(Fragment_Change_Payment_Option.this).navigate(R.id.paymentChangeOption_to_Payment,bundle);
-                }
+                    if (binding.offline.isChecked()) {
+                        new ApiService2<List<ReservationPMT>>(processPayment, RequestType.POST,
+                                RESERVATIONPMT, BASE_URL_LOGIN, header, pmtList);
+                    } else {
+                        NavHostFragment.findNavController(Fragment_Change_Payment_Option.this).navigate(R.id.paymentChangeOption_to_Payment,bundle);
+                    }
                 } catch (Exception e){
                     e.printStackTrace();
                 }

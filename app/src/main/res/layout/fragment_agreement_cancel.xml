@@ -107,7 +107,7 @@
                         android:layout_marginRight="3dp"
                         android:layout_weight="5"
                         android:background="@drawable/curve_box_gray"
-                        android:backgroundTint="@color/for1"
+                        android:backgroundTint="@{Color.parseColor(UiColor.Squarebox1)}"
                         android:orientation="vertical"
                         android:padding="4dp"
                         android:paddingVertical="5dp">
@@ -143,7 +143,7 @@
                         android:layout_marginRight="3dp"
                         android:layout_weight="5"
                         android:background="@drawable/curve_box_gray"
-                        android:backgroundTint="@color/for2"
+                        android:backgroundTint="@{Color.parseColor(UiColor.Squarebox2)}"
                         android:orientation="vertical"
                         android:padding="4dp">
                         <TextView
@@ -175,7 +175,7 @@
                         android:layout_marginRight="3dp"
                         android:layout_weight="5"
                         android:background="@drawable/curve_box_gray"
-                        android:backgroundTint="@color/for3"
+                        android:backgroundTint="@{Color.parseColor(UiColor.Squarebox3)}"
                         android:orientation="vertical"
                         android:padding="4dp">
 
@@ -206,7 +206,7 @@
                         android:layout_marginLeft="3dp"
                         android:layout_weight="5"
                         android:background="@drawable/curve_box_gray"
-                        android:backgroundTint="@color/for4"
+                        android:backgroundTint="@{Color.parseColor(UiColor.Squarebox4)}"
                         android:orientation="vertical"
                         android:padding="4dp">
 

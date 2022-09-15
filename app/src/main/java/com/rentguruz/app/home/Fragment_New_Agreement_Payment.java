@@ -9,10 +9,10 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.bumptech.glide.Glide;
 import com.rentguruz.app.R;
 import com.rentguruz.app.adapters.CustomBindingAdapter;
-import com.rentguruz.app.model.response.Reservation;
-import com.bumptech.glide.Glide;
 import com.rentguruz.app.adapters.CustomToast;
 import com.rentguruz.app.adapters.Helper;
 import com.rentguruz.app.apicall.ApiService;
@@ -27,10 +27,10 @@ import com.rentguruz.app.model.base.UserData;
 import com.rentguruz.app.model.parameter.DateType;
 import com.rentguruz.app.model.parameter.PaymentMode;
 import com.rentguruz.app.model.parameter.PaymentProcess;
-import com.rentguruz.app.model.parameter.PaymentProcessMode;
 import com.rentguruz.app.model.parameter.PaymentTransactionType;
 import com.rentguruz.app.model.response.CustomerProfile;
 import com.rentguruz.app.model.response.LocationList;
+import com.rentguruz.app.model.response.Reservation;
 import com.rentguruz.app.model.response.ReservationPMT;
 import com.rentguruz.app.model.response.ReservationSummarry;
 import com.rentguruz.app.model.response.ReservationTimeModel;
@@ -53,12 +53,14 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
     ReservationPMT reservationPMT;
     ReservationSummarry reserversationSummary;
     Customer customer;
-    List<ReservationPMT> pmtList = new ArrayList<>();
+    List<ReservationPMT> pmtList;
     String transactionId;
     CustomerProfile customerProfile;
+    ReservationPMT reservationPMTs;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        pmtList = new ArrayList<>();
         binding = FragmentNewAgreementPaymentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -71,7 +73,10 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
         binding.header.discard.setText("Card");
         customerProfile = new CustomerProfile();
         reservationPMT = new ReservationPMT();
-        reservationPMT =  (ReservationPMT) getArguments().getSerializable("pmtmodel");
+        reservationPMTs = new ReservationPMT();
+        reservationPMT = (ReservationPMT) getArguments().getSerializable("pmtmodel");
+        reservationPMTs = (ReservationPMT) getArguments().getSerializable("pmtmodel");
+        Log.e(TAG, "onViewCreated: " + Fragment_Change_Payment_Option.PmtCondition );
         if (reservationPMT!=null){
 
         } else {
@@ -257,6 +262,16 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
             e.printStackTrace();
         }
 
+        try {
+            if (Helper.checkinsummarry){
+                reservationPMT.TransactionType = PaymentTransactionType.Payment.inte;
+                reservationPMT.PaymentProcess = PaymentProcess.Charge.inte;
+                reservationPMT.PaymentMode = PaymentMode.CreditCard.inte;
+                Helper.checkinsummarry = false;
+            }
+        } catch (Exception e){
+            e.getMessage();
+        }
     }
 
     @Override
@@ -301,23 +316,37 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
             case R.id.payment:
 
                 reservationPMT.CreditCardId = UserData.UpdateCreditCard.Id;
-               // reservationPMT.CustomerId = customer.Id;
+                // reservationPMT.CustomerId = customer.Id;
                 reservationPMT.Amount = Double.valueOf(binding.txtAmtPayable.getText().toString());
                 reservationPMT.InvoiceAmount = reservationPMT.Amount;
 
                 bundle.putString("netrate", binding.txtAmtPayable.getText().toString());
                 //reservationPMT.ReservationId = reserversationSummary.Id;
-                pmtList.add(reservationPMT);
 
-                new ApiService2<List<ReservationPMT>>(processPayment, RequestType.POST,
-                        RESERVATIONPMT, BASE_URL_LOGIN,header ,pmtList);
+                if (Fragment_Change_Payment_Option.PmtCondition) {
+                  ReservationPMT reservationPMT1 = new ReservationPMT(reservationPMT.AgreementNumber,reservationPMT.BillTo,reservationPMT.CreditCardId,reservationPMT.CustomerId,
+                            reservationPMT.PaymentForId,PaymentProcess.Refund.inte,reservationPMT.PaymentProcessMode,reservationPMT.ReservationId,reservationPMT.SplitAmount,
+                            reservationPMT.SplitAmountType,reservationPMT.BillToInfoJSON,reservationPMT.IsSplit,PaymentTransactionType.Deposit.inte,
+                            Fragment_Change_Payment_Option.Amt, Fragment_Change_Payment_Option.Amt,reservationPMT.PaymentTransactionType,reservationPMT.PaymentMode);
+                    pmtList.add(reservationPMT1);
 
+                    ReservationPMT reservationPMT2 = new ReservationPMT(reservationPMT.AgreementNumber,reservationPMT.BillTo,reservationPMT.CreditCardId,reservationPMT.CustomerId,
+                            reservationPMT.PaymentForId,PaymentProcess.Charge.inte,reservationPMT.PaymentProcessMode,reservationPMT.ReservationId,reservationPMT.SplitAmount,
+                            reservationPMT.SplitAmountType,reservationPMT.BillToInfoJSON,reservationPMT.IsSplit,PaymentTransactionType.Payment.inte,
+                            Helper.reservationamt,Helper.reservationamt,reservationPMT.PaymentTransactionType,reservationPMT.PaymentMode);
+                    pmtList.add(reservationPMT2);
+                } else {
+                    pmtList.add(reservationPMT);
+                }
+                new ApiService2<>(processPayment, RequestType.POST,
+                        RESERVATIONPMT, BASE_URL_LOGIN, header, pmtList);
                 break;
 
             case R.id.discard:
-                bundle.putInt("frag",2);
+                bundle.putInt("frag", 2);
                 bundle.putBoolean("popback", true);
-                NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).navigate(R.id.payment_to_select_card,bundle);
+                Helper.checkinsummarry = false;
+                NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).navigate(R.id.payment_to_select_card, bundle);
                    /* UserData.loginResponse.User.UserFor = customer.Id;
                     NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).navigate(R.id.payment_to_select_card, bundle);*/
                 break;
@@ -329,6 +358,7 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
                 break;
 
             case R.id.back:
+                Helper.checkinsummarry = false;
                 NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).popBackStack();
                /* if (getArguments().getInt("reservationpmt") == 1){
                     NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).popBackStack();
@@ -423,6 +453,7 @@ public class Fragment_New_Agreement_Payment extends BaseFragment {
                             bundle.putString("netrate", binding.txtAmtPayable.getText().toString());
                             String message = responseJSON.getString("Message");
                             CustomToast.showToast(getActivity(),message,0);
+                            Helper.checkinsummarry = false;
                             NavHostFragment.findNavController(Fragment_New_Agreement_Payment.this).navigate(R.id.payment_to_paymentsucess,bundle);
 
                         }

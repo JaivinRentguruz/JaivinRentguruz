@@ -1,9 +1,17 @@
 package com.rentguruz.app.flexiicar.user;
 
+import android.app.DownloadManager;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +36,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
@@ -72,6 +82,7 @@ public class Fragment_Payment_Reciept_2 extends BaseFragment
 
             getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
             binding.setUiColor(UiColor);
+            fullProgressbar.show();
             Payment_Total = view.findViewById(R.id.Payment_Total);
             backarrow = view.findViewById(R.id.back);
             web_view = view.findViewById(R.id.webview);
@@ -85,7 +96,15 @@ public class Fragment_Payment_Reciept_2 extends BaseFragment
             serverpath = sp.getString("serverPath", "");
             id = sp.getString(getString(R.string.id), "");
             binding.header.screenHeader.setText("Payment Receipt");
-            binding.header.discard.setVisibility(View.GONE);
+//            binding.header.discard.setVisibility(View.GONE);
+            binding.header.discard.setText("");
+            Drawable drawable = getResources().getDrawable(R.drawable.ic_baseline_cloud_download_24);
+            drawable.setTint(Color.parseColor(UiColor.primary));
+            binding.header.discard.setBackground( drawable);
+            binding.header.optionmenu.setVisibility(View.VISIBLE);
+            binding.header.optionmenu.setImageResource(R.drawable.ic_baseline_share_24);
+            binding.header.optionmenu.setColorFilter(Color.parseColor(UiColor.primary));
+
            /* PaymentBundle = getArguments().getBundle("PaymentBundle");
             System.out.println(PaymentBundle);
 
@@ -428,6 +447,22 @@ public class Fragment_Payment_Reciept_2 extends BaseFragment
 
                         //web_view.fromUri(Uri.parse(pdfFileName)).load();
 
+                        binding.header.discard.setOnClickListener(v -> {
+                            Log.e(TAG, "onClick: "+ pdfFileName.substring(pdfFileName.lastIndexOf('/'), pdfFileName.length()).split("/")[1]);
+                            downloadFile(pdfFileName,pdfFileName.substring(pdfFileName.lastIndexOf('/'), pdfFileName.length()).split("/")[1]);
+                        });
+
+
+                        binding.header.optionmenu.setOnClickListener(v -> {
+                            try {
+                                Log.e(TAG, "onClick: " + pdfFileName );
+                                Log.e(TAG, "onClick: " + new File(pdfFileName).toURI().toURL() );
+                                ShareFile(new File(pdfFileName).toURI().toURL() );
+                            } catch (MalformedURLException e) {
+                                e.printStackTrace();
+                            }
+                        });
+
                         new RetrivePDFfromUrl().execute(pdfFileName);
 
                    /*     web_view.getSettings().setJavaScriptEnabled(true);
@@ -439,6 +474,7 @@ public class Fragment_Payment_Reciept_2 extends BaseFragment
 
                     } catch (Exception e){
                         e.printStackTrace();
+                        fullProgressbar.dismiss();
                     }
 
                 }
@@ -454,6 +490,18 @@ public class Fragment_Payment_Reciept_2 extends BaseFragment
     @Override
     public void onClick(View v) {
 
+    }
+
+    public void ShareFile(URL path)
+    {
+        Intent shareToneIntent=new Intent(Intent.ACTION_SEND);
+        shareToneIntent.setType("text/plain");
+        shareToneIntent.putExtra(Intent.EXTRA_SUBJECT,"Insert Subject here");
+        String data = "Your Receipt Copy " + path;
+        shareToneIntent.putExtra(Intent.EXTRA_TEXT, data);
+        //shareToneIntent.setType(GetMimeType(Uri.parse(path.toString())));
+        // shareToneIntent.setType(String.valueOf(path));
+        requireContext().startActivity(Intent.createChooser(shareToneIntent, "Share Via"));
     }
 
     // create an async task class for loading pdf file from URL.
@@ -479,6 +527,7 @@ public class Fragment_Payment_Reciept_2 extends BaseFragment
                 // this is the method
                 // to handle errors.
                 e.printStackTrace();
+                fullProgressbar.dismiss();
                 return null;
             }
             return inputStream;
@@ -489,6 +538,24 @@ public class Fragment_Payment_Reciept_2 extends BaseFragment
             // after the execution of our async
             // task we are loading our pdf in our pdf view.
             web_view.fromStream(inputStream).load();
+            fullProgressbar.dismiss();
         }
     }
+
+    public void downloadFile(String url, String filename){
+        try {
+            DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+            Uri filelink = Uri.parse(url);
+            DownloadManager.Request request = new DownloadManager.Request(filelink);
+            request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE).setMimeType("pdf").setAllowedOverRoaming(true)
+                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_ONLY_COMPLETION)
+                    .setTitle("Rentguruz")
+                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, File.pathSeparator+filename);
+
+            downloadManager.enqueue(request);
+        } catch (Exception e){
+            e.printStackTrace();
+            Log.e(TAG, "downloadFile: " + e.getMessage());
+        }
+    };
 }

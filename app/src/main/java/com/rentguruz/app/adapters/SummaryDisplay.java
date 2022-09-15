@@ -3,6 +3,7 @@ package com.rentguruz.app.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -10,6 +11,7 @@ import com.rentguruz.app.R;
 import com.rentguruz.app.databinding.ListChargesBinding;
 import com.rentguruz.app.databinding.RowSummarryChargeHeadBinding;
 import com.rentguruz.app.databinding.VehicleTaxDetailsBinding;
+import com.rentguruz.app.model.response.LogedInCustomer;
 import com.rentguruz.app.model.response.ReservationSummaryModels;
 
 import java.util.ArrayList;
@@ -38,9 +40,26 @@ public class SummaryDisplay {
         rowSummarryChargeHeadBinding.chargename.setText(charges[i].SummaryName);
         rowSummarryChargeHeadBinding.charge.setText(Helper.getAmtount( charges[i].TotalAmount,true));
 
+        try {
+
         if (charges[i].ReservationSummaryType==100){
-            bundle.putString("netrate",DigitConvert.getDoubleDigit(charges[i].ReservationSummaryDetailModels[0].Total));
-            Helper.reservationamt = charges[i].ReservationSummaryDetailModels[0].Total;
+            if (Double.valueOf(getDatafrom(charges,102))!=0.0) {
+                bundle.putString("netrate", DigitConvert.getDoubleDigit(charges[i].ReservationSummaryDetailModels[0].Total));
+                Helper.reservationamt = charges[i].ReservationSummaryDetailModels[0].Total;
+            } else {
+                bundle.putString("netrate", "0.00");
+                Helper.reservationamt = 0.00;
+            }
+        }
+
+
+
+        if (charges[i].ReservationSummaryType == 101 && charges[i].ReservationSummaryDetailModels[0].Total != 0.0)
+            Helper.isDeposit = 0.0;
+
+
+        } catch (Exception e){
+            e.printStackTrace();
         }
 
                         /*    if (i==1)
@@ -49,20 +68,24 @@ public class SummaryDisplay {
                             if (i==3)
                                 rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11lightyellow));*/
 
+        int test = 0;
         for (int j = 0; j <charges[i].ReservationSummaryDetailModels.length ; j++) {
 
-            subparams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            subparams.addRule(RelativeLayout.BELOW, (200 + j - 1));
-            subparams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            subparams.setMargins(0, 10, 0, 0);
-            subinflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            try {
+                if (charges[i].ReservationSummaryDetailModels[j].Title != null) {
+                    subparams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    subparams.addRule(RelativeLayout.BELOW, (200 + test - 1));
+                    subparams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                    subparams.setMargins(0, 10, 0, 0);
+                    subinflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            ListChargesBinding listChargesBinding = ListChargesBinding.inflate(subinflater, activity.findViewById(android.R.id.content), false );
-            listChargesBinding.getRoot().setId(200 + j);
-            listChargesBinding.getRoot().setLayoutParams(subparams);
+                    ListChargesBinding listChargesBinding = ListChargesBinding.inflate(subinflater, activity.findViewById(android.R.id.content), false);
+                    listChargesBinding.getRoot().setId(200 + test);
+                    listChargesBinding.getRoot().setLayoutParams(subparams);
+                    test += 1;
 
-            listChargesBinding.textHeader.setText(charges[i].ReservationSummaryDetailModels[j].Title);
-            listChargesBinding.textdetail.setText(charges[i].ReservationSummaryDetailModels[j].Description);
+                    listChargesBinding.textHeader.setText(charges[i].ReservationSummaryDetailModels[j].Title);
+                    listChargesBinding.textdetail.setText(charges[i].ReservationSummaryDetailModels[j].Description);
 /*
                                 Drawable unwrappedDrawable = AppCompatResources.getDrawable(context, R.drawable.ic_ellipse_default);
                                 Drawable wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable);
@@ -72,42 +95,64 @@ public class SummaryDisplay {
                                     DrawableCompat.setTint(wrappedDrawable, getResources().getColor(R.color.txt11lightyellow));
                                 }*/
 
-            // listChargesBinding.icon.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.AppBlack)));
-            if (i==0){
-                rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.green));
-                listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.green));
-            } else if (i==1) {
-                rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11blue));
-                listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11blue));
-            } else if (i==2) {
-                rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11lightyellow));
-                listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11lightyellow));
-            } else if (i==3){
-                rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11navyblue));
-                listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11navyblue));
-            } else if (i==4) {
-                rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11blue));
-                listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11blue));
-            }else if (i==5){
-                rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11navyblue));
-                listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11navyblue));
-            }
+                    // listChargesBinding.icon.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.AppBlack)));
+                    if (i == 0) {
+                        rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.green));
+                        listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.green));
+                    } else if (i == 1) {
+                        rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11blue));
+                        listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11blue));
+                    } else if (i == 2) {
+                        rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11lightyellow));
+                        listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11lightyellow));
+                    } else if (i == 3) {
+                        rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11navyblue));
+                        listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11navyblue));
+                    } else if (i == 4) {
+                        rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11blue));
+                        listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11blue));
+                    } else if (i == 5) {
+                        rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11navyblue));
+                        listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11navyblue));
+                    } else if (i == 6) {
+                        rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.green));
+                        listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.green));
+                    } else if (i == 7) {
+                        rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11blue));
+                        listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11blue));
+                    } else if (i == 8) {
+                        rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11lightyellow));
+                        listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11lightyellow));
+                    } else if (i == 9) {
+                        rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11navyblue));
+                        listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11navyblue));
+                    } else if (i == 10) {
+                        rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11blue));
+                        listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11blue));
+                    } else if (i == 11) {
+                        rowSummarryChargeHeadBinding.charge.setTextColor(activity.getResources().getColor(R.color.txt11navyblue));
+                        listChargesBinding.icon.setColorFilter(activity.getResources().getColor(R.color.txt11navyblue));
+                    }
 
 
-            try {
-                if (charges[i].ReservationSummaryDetailModels[j].Title.length() != 0) {
-                    rowSummarryChargeHeadBinding.listsummarry.addView(listChargesBinding.getRoot());
-                                    rowSummarryChargeHeadBinding.sumarrydetail.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            if (rowSummarryChargeHeadBinding.listsummarry.getVisibility() == View.VISIBLE){
+                    try {
+                        if (charges[i].ReservationSummaryDetailModels[j].Title != null) {
+                            rowSummarryChargeHeadBinding.listsummarry.addView(listChargesBinding.getRoot());
+                            rowSummarryChargeHeadBinding.sumarrydetail.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if (rowSummarryChargeHeadBinding.listsummarry.getVisibility() == View.VISIBLE) {
 
-                                                rowSummarryChargeHeadBinding.listsummarry.setVisibility(View.GONE);
-                                            } else {
-                                                rowSummarryChargeHeadBinding.listsummarry.setVisibility(View.VISIBLE);
-                                            }
-                                        }
-                                    });
+                                        rowSummarryChargeHeadBinding.listsummarry.setVisibility(View.GONE);
+                                    } else {
+                                        rowSummarryChargeHeadBinding.listsummarry.setVisibility(View.VISIBLE);
+                                    }
+                                }
+                            });
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } catch (Exception e){
                 e.printStackTrace();

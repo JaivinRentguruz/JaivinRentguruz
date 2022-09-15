@@ -14,8 +14,10 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import com.rentguruz.app.R;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.view.GravityCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -69,6 +71,7 @@ public class Fragment_Reservations extends BaseFragment {
     public static boolean scroll = false;
     OptionMenu optionMenu;
     static ReservationStatusDetail[] reservationStatusDetails;
+    ActionBarDrawerToggle actionBarDrawerToggle;
     List<ThemeColors> colors = new ArrayList<>();
     public static void initImageLoader(Context context) {
         ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(context);
@@ -96,9 +99,22 @@ public class Fragment_Reservations extends BaseFragment {
         binding.header.discard.setOnClickListener(this);
         binding.header.discard.setText(getResources().getString(R.string.add));
         binding.header.back.setVisibility(View.GONE);
-        binding.header.optionmenu.setVisibility(View.VISIBLE);
+        binding.header.optionmenu.setVisibility(View.GONE);
         fullProgressbar.show();
         binding.setUiColor(UiColor);
+
+       /* actionBarDrawerToggle = new ActionBarDrawerToggle(getActivity(), binding.slider,R.string.nav_open,R.string.nav_close);
+        binding.slider.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        binding.slider.closeDrawer(GravityCompat.END);
+        binding.filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            binding.slider.openDrawer(GravityCompat.END);
+            }
+        });*/
+
+
         try {
             if (getArguments().getBoolean("status")){
                 ApiService apiService = new ApiService(GetReservationlist, RequestType.POST,
@@ -120,6 +136,12 @@ public class Fragment_Reservations extends BaseFragment {
             new Fragment_Selected_Location().starttimejourney = null;
             new Fragment_Selected_Location().endtimejourney = null;
             new Fragment_Selected_Location().lease = false;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            ((Activity_Reservation) getActivity()).BottomnavVisible();
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -170,7 +192,7 @@ public class Fragment_Reservations extends BaseFragment {
 
 
 
-
+        binding.view.setVisibility(View.VISIBLE);
     }
 
     @Override

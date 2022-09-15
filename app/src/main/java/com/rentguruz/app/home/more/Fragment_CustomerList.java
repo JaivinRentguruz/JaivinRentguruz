@@ -118,7 +118,10 @@ public class Fragment_CustomerList extends BaseFragment {
                /* Intent i = new Intent(getActivity(),Activity_MoreTab.class);
                 startActivity(i);*/
 
-                NavHostFragment.findNavController(Fragment_CustomerList.this).popBackStack();
+               // NavHostFragment.findNavController(Fragment_CustomerList.this).popBackStack();
+                NavHostFragment.findNavController(Fragment_CustomerList.this)
+                        .navigate(R.id.action_CustomerList_to_MoreInfo);
+
                 break;
 
 

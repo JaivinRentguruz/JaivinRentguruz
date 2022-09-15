@@ -8,5 +8,5 @@ import java.io.Serializable;
 public class LocationList extends BaseModel implements Serializable {
     public String Name,PhoneNo;
     public AddressesModel AddressesModel = new AddressesModel();
-    public int Id;
+    public int Id,ParentLocationId;
 }

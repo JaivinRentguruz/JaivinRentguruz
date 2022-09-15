@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.rentguruz.app.adapters.CustomPreference;
 import com.rentguruz.app.adapters.CustomToast;
 import com.rentguruz.app.adapters.CustomeDialog;
 import com.rentguruz.app.adapters.DateConvert;
@@ -97,6 +98,7 @@ public class Fragment_Agreement_Toll_Charge extends BaseFragment implements  Goo
         binding.entryplazadate.setOnClickListener(this);
         binding.exitplazadate.setOnClickListener(this);
         binding.image.setOnClickListener(this);
+        binding.test.setBackground(userDraw.getImageUpload());
         try {
             dropDownList = (new DropDown(VEHICLELIST,Integer.parseInt(loginRes.getData("CompanyId")),true,false));
             new ApiService2<DropDown>(new OnResponseListener() {
@@ -177,6 +179,7 @@ public class Fragment_Agreement_Toll_Charge extends BaseFragment implements  Goo
 
         //MapsInitializer.initialize(this.getActivity());
         binding.edtCustStreet.setOnClickListener(this);
+        preference.stateCountry( binding.SpCountry, binding.SpState, "", "");
     }
 
     @Override

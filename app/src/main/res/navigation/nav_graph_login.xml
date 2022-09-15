@@ -13,6 +13,13 @@
         <action
             android:id="@+id/action_LoginFragment_to_Forgot_Password"
             app:destination="@id/Forgot_Password" />
+
+        <action android:id="@+id/action_loginFragment_to_company_register_1"
+            app:destination="@+id/company_register_1"/>
+
+        <action android:id="@+id/company_loginFragment_to_company_insert_1"
+            app:destination="@+id/company_insert_1"/>
+
     </fragment>
 
     <fragment
@@ -41,5 +48,61 @@
             app:destination="@id/LoginFragment" />
     </fragment>
 
+
+    <fragment android:id="@+id/company_register_1"
+        android:name="com.rentguruz.app.flexiicar.login.Fragment_Company_OTP_Verification_1"
+        android:label="Company Insert"
+        tools:layout="@layout/fragment_company_otp_verification_1">
+
+        <action android:id="@+id/company_register_1_to_company_register_2"
+            app:destination="@+id/company_register_2"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/company_register_2"
+        android:name="com.rentguruz.app.flexiicar.login.Fragment_Company_OTP_Verification_2"
+        android:label="Company Insert"
+        tools:layout="@layout/fragment_company_otp_verification_2">
+
+        <action android:id="@+id/company_register_2_to_company_register_3"
+            app:destination="@+id/company_register_3"/>
+    </fragment>
+
+    <fragment android:id="@+id/company_register_3"
+        android:name="com.rentguruz.app.flexiicar.login.Fragment_Company_OTP_Verification_3"
+        android:label="Company Insert"
+        tools:layout="@layout/fragment_company_otp_verification_3">
+
+        <action android:id="@+id/company_register_3_to_company_insert_1"
+            app:destination="@+id/company_insert_1"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/company_insert_1"
+        android:name="com.rentguruz.app.flexiicar.login.Fragment_Company_Insert_1"
+        android:label="Company Insert"
+        tools:layout="@layout/fragment_company_insert_1">
+
+        <action android:id="@+id/company_insert_1_to_company_insert_2"
+            app:destination="@+id/company_insert_2"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/company_insert_2"
+        android:name="com.rentguruz.app.flexiicar.login.Fragment_Company_Insert_2"
+        android:label="Company Insert"
+        tools:layout="@layout/fragment_company_insert_2">
+
+        <action android:id="@+id/company_insert_2_to_company_insert_completed"
+            app:destination="@+id/company_insert_completed"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/company_insert_completed"
+        android:name="com.rentguruz.app.flexiicar.login.Fragment_Company_Insert_Completed"
+        android:label="Company Insert"
+        tools:layout="@layout/fragment_registration_completed">
+
+    </fragment>
 
 </navigation>

@@ -438,24 +438,22 @@
                     android:textColor="@color/header1_color"
                     android:theme="@style/edittextheader" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <RelativeLayout
+                    android:id="@+id/test"
+                    style="@style/relativeImage"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/ic_car_img_bg"
                     android:gravity="center">
 
                     <ImageView
                         android:id="@+id/image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:adjustViewBounds="true"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_main_camera" />
-                </LinearLayout>
+                        android:scaleType="fitXY" />
+                </RelativeLayout>
             </LinearLayout>
 
 

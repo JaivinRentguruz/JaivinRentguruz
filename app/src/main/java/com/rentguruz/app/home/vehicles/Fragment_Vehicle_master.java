@@ -18,6 +18,7 @@ import com.rentguruz.app.apicall.OnResponseListener;
 import com.rentguruz.app.apicall.RequestType;
 import com.rentguruz.app.base.BaseFragment;
 import com.rentguruz.app.databinding.FragmentVehicleMasterBinding;
+import com.rentguruz.app.home.reservation.Activity_Reservation;
 import com.rentguruz.app.model.DoVehicle;
 import com.rentguruz.app.model.common.DropDown;
 import com.rentguruz.app.model.common.OnDropDownList;
@@ -71,6 +72,12 @@ public class Fragment_Vehicle_master extends BaseFragment {
         binding.inspection.setOnClickListener(this);
         binding.header.back.setOnClickListener(this);
         binding.header.discard.setOnClickListener(this);
+
+        try {
+            ((Activity_Vehicles)getActivity()).BottomnavInVisible();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
        /* new ApiService(new OnResponseListener() {
             @Override

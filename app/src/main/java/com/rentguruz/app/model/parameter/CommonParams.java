@@ -235,6 +235,53 @@ public class CommonParams {
         return object;
     }
 
+    public JSONObject getVechicleList(int pickuplocation, String checkout, String checkindate,int parentloaction, boolean parentlocation,JSONArray array){
+        JSONObject object = new JSONObject();
+        JSONObject filter = new JSONObject();
+        JSONObject reservationModel = new JSONObject();
+        JSONArray data = new JSONArray();
+        data.put(1);
+        data.put(2);
+        data.put(3);
+        try
+        {
+            object = common();
+            filter.accumulate("CompanyId", companyid);
+            filter.accumulate("IsActive", true);
+           // filter.accumulate("VehicleTypeId", 0);
+           // filter.accumulate("fVehicleTypeIds", data);
+            filter.accumulate("GetVehicleForReservation", true);
+            filter.accumulate("APIRequestType", 2);
+
+            if (parentloaction == 0){
+                reservationModel.accumulate("PickUpLocation", pickuplocation);
+                filter.accumulate("CurrentLocation", pickuplocation);
+            } else {
+                filter.accumulate("fCurrentLocationIds", parentloaction);
+                filter.accumulate("fCurrentLocationIds", pickuplocation);
+                filter.accumulate("fVehicleTypeIds", array);
+                reservationModel.accumulate("PickUpLocation", parentloaction);
+            }
+
+           /* filter.accumulate("fCurrentLocationIds", parentloaction);
+            filter.accumulate("fCurrentLocationIds", pickuplocation);
+            filter.accumulate("fVehicleTypeIds", array);*/
+            filter.accumulate("Status", 1);
+            filter.accumulate("GetWithDefaultImg", true);
+            reservationModel.accumulate("CheckOutDate", checkout);
+            reservationModel.accumulate("CheckInDate", checkindate);
+           // reservationModel.accumulate("PickUpLocation", pickuplocation);
+            filter.accumulate("ReservationModel", reservationModel);
+            object.accumulate("filterObj", filter);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        Log.e("Mungara", "getVechicleList: " + object.toString());
+        return object;
+    }
+
     public JSONObject getVehicleType(int pickuplocation, String checkout, String checkindate,JSONArray fIds){
         JSONObject object = new JSONObject();
         JSONObject filter = new JSONObject();
@@ -263,6 +310,7 @@ public class CommonParams {
         }
         return object;
     }
+
     public JSONObject getVehicleType(int pickuplocation, String checkout, String checkindate){
         JSONObject object = new JSONObject();
         JSONObject filter = new JSONObject();
@@ -352,6 +400,51 @@ public class CommonParams {
             reservationModel.accumulate("CheckOutDate", checkout);
             reservationModel.accumulate("CheckInDate", checkindate);
             reservationModel.accumulate("PickUpLocation", pickuplocation);
+            filter.accumulate("Status", 1);
+            filter.accumulate("GetWithDefaultImg", true);
+            filter.accumulate("ReservationModel", reservationModel);
+            object.accumulate("filterObj", filter);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        Log.e("Mungara", "getVechicleList: " + object.toString());
+        return object;
+    }
+
+    public JSONObject getVechicleList(int pickuplocation, String checkout, String checkindate, int VehicleType, int parentloaction, boolean parentlocation,JSONArray array){
+        JSONObject object = new JSONObject();
+        JSONObject filter = new JSONObject();
+        JSONObject reservationModel = new JSONObject();
+        JSONArray data = new JSONArray();
+        data.put(1);
+        data.put(2);
+        data.put(3);
+        try
+        {
+            object = common();
+            filter.accumulate("CompanyId", companyid);
+            filter.accumulate("IsActive", true);
+           // filter.accumulate("VehicleTypeId", 0);
+           // filter.accumulate("fVehicleTypeIds", data);
+            filter.accumulate("GetVehicleForReservation", true);
+            filter.accumulate("APIRequestType", 2);
+            if (parentloaction == 0){
+                reservationModel.accumulate("PickUpLocation", pickuplocation);
+                filter.accumulate("CurrentLocation", pickuplocation);
+                filter.accumulate("VehicleTypeId",VehicleType);
+            } else {
+                filter.accumulate("fCurrentLocationIds", parentloaction);
+                filter.accumulate("fCurrentLocationIds", pickuplocation);
+                filter.accumulate("fVehicleTypeIds", array);
+                reservationModel.accumulate("PickUpLocation", parentloaction);
+            }
+
+            //filter.accumulate("VehicleTypeId",VehicleType);
+            reservationModel.accumulate("CheckOutDate", checkout);
+            reservationModel.accumulate("CheckInDate", checkindate);
+
             filter.accumulate("Status", 1);
             filter.accumulate("GetWithDefaultImg", true);
             filter.accumulate("ReservationModel", reservationModel);
@@ -998,7 +1091,11 @@ public class CommonParams {
             filter.accumulate("APIRequestType", 2);
             reservationModel.accumulate("CheckOutDate", Helper.setPostDate(DateType.defaultdate, new Date().toString()));
             reservationModel.accumulate("CheckInDate",Helper.setPostDate(DateType.defaultdate, new Date( new Date().getTime() + 1000*60*60*24 ).toString()));
-            /*reservationModel.accumulate("PickUpLocation", 8);*/
+            /*reservationModel.accumulate("PickUpLocation", 8);
+            * UserData.companyModel.MinReservationDays */
+
+            //reservationModel.accumulate("PickUpLocation", UserData.loginResponse.User.addressesModel.AddressFor);
+            //filter.accumulate("CurrentLocation", UserData.loginResponse.User.addressesModel.AddressFor);
             filter.accumulate("GetWithDefaultImg", true);
             filter.accumulate("GetVehicleForReservation",false);
             filter.accumulate("ReservationModel", reservationModel);
@@ -1378,6 +1475,53 @@ public class CommonParams {
             e.printStackTrace();
         }
         return object;
+    }
+
+    public JSONObject getSignature(int reservationid){
+        JSONObject object = new JSONObject();
+        JSONObject filter = new JSONObject();
+        try
+        {
+            object = common();
+            filter.accumulate("CompanyId",companyid);
+            filter.accumulate("IsActive",true);
+            filter.accumulate("ReservationId",reservationid);
+
+            object.accumulate("filterObj", filter);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return object;
+    }
+
+    public JSONObject getOtp(String mobileno){
+        JSONObject filter = new JSONObject();
+        try
+        {
+            filter.accumulate("tableType",2);
+            filter.accumulate("MobileNumber",mobileno.trim());
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return filter;
+    }
+    public JSONObject getOtpVerify(String mobileno,int otp){
+        JSONObject filter = new JSONObject();
+        try
+        {
+            filter.accumulate("tableType",2);
+            filter.accumulate("MobileNumber",mobileno.trim());
+            filter.accumulate("OTP",otp);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return filter;
     }
 
     public HashMap<String, String> getCheckoutImage(int id){

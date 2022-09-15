@@ -98,11 +98,12 @@
                                 android:id="@+id/txtFullname"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/_minus5sdp"
                                 android:hint="Name"
                                 android:singleLine="true"
                                 android:text="@={Reservation.CustomerName}"
                                 android:textColor="@color/registerTextColor"
-                                android:textSize="18dp"
+                                android:textSize="20dp"
                                 android:theme="@style/texttheme"
                                 app:_camelcase="@{Reservation.CustomerName}" />
                         </LinearLayout>
@@ -129,7 +130,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginTop="3dp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
                             android:weightSum="10">
@@ -151,11 +152,11 @@
                                     style="@style/textfont"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_marginTop="@dimen/_minus2sdp"
+                                    android:layout_marginTop="@dimen/_minus1sdp"
                                     android:gravity="center_horizontal|center_vertical"
                                     android:text="E"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/textsize_nine"
+                                    android:textColor="@{Color.parseColor(UiColor.secondaryfont)}"
+                                    android:textSize="@dimen/eleven"
                                     android:textStyle="bold" />
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -170,16 +171,17 @@
                                 android:gravity="center_vertical"
                                 android:singleLine="true"
                                 android:text="@={Reservation.Email}"
+                                android:layout_marginTop="@dimen/_minus1sdp"
                                 android:textAllCaps="false"
-                                android:textColor="@color/TitleTextColor"
-                                android:textSize="@dimen/eleven"
+                                android:textColor="@{Color.parseColor(UiColor.secondaryfont)}"
+                                android:textSize="@dimen/twelve"
                                 android:theme="@style/texttheme" />
                         </LinearLayout>
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_3sdp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
                             android:weightSum="10">
@@ -201,11 +203,11 @@
                                     style="@style/textfont"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_marginTop="@dimen/_minus2sdp"
+                                    android:layout_marginTop="@dimen/_minus1sdp"
                                     android:gravity="center_horizontal|center_vertical"
                                     android:text="T"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/textsize_nine"
+                                    android:textColor="@{Color.parseColor(UiColor.secondaryfont)}"
+                                    android:textSize="@dimen/eleven"
                                     android:textStyle="bold" />
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -217,10 +219,11 @@
                                 android:layout_marginStart="@dimen/_4sdp"
                                 android:layout_weight="9.5"
                                 android:gravity="center_vertical"
+                                android:layout_marginTop="@dimen/_minus1sdp"
                                 android:singleLine="true"
                                 android:text="@={Reservation.MobileNo}"
-                                android:textColor="@color/TitleTextColor"
-                                android:textSize="@dimen/eleven"
+                                android:textColor="@{Color.parseColor(UiColor.secondaryfont)}"
+                                android:textSize="@dimen/twelve"
                                 android:theme="@style/texttheme" />
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -247,7 +250,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="3dp"
-                            android:layout_weight="90"
+                            android:layout_weight="105"
                             android:background="@drawable/ic_rectangle_box1_light_122"
                             android:backgroundTint="@color/regtcolor"
                             android:gravity="center">
@@ -417,6 +420,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_marginRight="@dimen/_4sdp"
                                 android:layout_marginTop="9dp"
                                 android:orientation="vertical">
 
@@ -428,6 +432,7 @@
                                     android:text="@={Reservation.PickUpLocationName}"
                                     android:textColor="@{Color.parseColor(UiColor.secondary)}"
                                     android:textSize="@dimen/heading1_font_size"
+                                    android:singleLine="true"
                                     android:theme="@style/texttheme" />
 
                                 <LinearLayout
@@ -457,6 +462,7 @@
                                     android:hint=""
                                     android:text="@={Reservation.DropLocationName}"
                                     android:textColor="@{Color.parseColor(UiColor.secondary)}"
+                                    android:singleLine="true"
                                     android:textSize="@dimen/heading1_font_size"
                                     android:theme="@style/texttheme" />
 

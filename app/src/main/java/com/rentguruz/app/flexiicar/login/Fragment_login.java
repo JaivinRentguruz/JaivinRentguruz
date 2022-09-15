@@ -137,9 +137,11 @@ public class Fragment_login extends BaseFragment
             @Override
             public void onClick(View v)
             {
-                Helper.RegistrationD= true;
+               /* Helper.RegistrationD= true;
                 Intent i = new Intent(getActivity(), Driver_Profile.class);
-                startActivity(i);
+                startActivity(i);*/
+                NavHostFragment.findNavController(Fragment_login.this).navigate(R.id.action_loginFragment_to_company_register_1, bundle);
+                //NavHostFragment.findNavController(Fragment_login.this).navigate(R.id.company_loginFragment_to_company_insert_1, bundle);
             }
         });
 

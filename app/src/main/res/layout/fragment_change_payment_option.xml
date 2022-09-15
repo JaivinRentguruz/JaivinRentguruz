@@ -436,7 +436,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginBottom="10dp"
                         android:orientation="vertical">
@@ -463,6 +462,7 @@
 
                                 <RadioGroup
                                     android:id="@+id/transationtype"
+                                    android:visibility="gone"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:orientation="horizontal">
@@ -502,7 +502,43 @@
                                         android:theme="@style/loginedit" />
                                 </RadioGroup>
 
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="@dimen/_5sdp"
+                                    android:orientation="horizontal">
 
+                                <CheckBox
+                                    android:id="@+id/Payment2"
+                                    style="@style/MyRadioButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:button="@drawable/sharp_checkbox_drawable"
+                                    android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                    android:text="  Payment "
+                                    android:textColor="@color/textlightcolor"
+                                    android:theme="@style/loginedit" />
+                                <CheckBox
+                                    android:id="@+id/Deposit2"
+                                    style="@style/MyRadioButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:button="@drawable/sharp_checkbox_drawable"
+                                    android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                    android:text="  Deposit "
+                                    android:textColor="@color/textlightcolor"
+                                    android:theme="@style/loginedit" />
+                                <CheckBox
+                                    android:id="@+id/preAuthorization2"
+                                    style="@style/MyRadioButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:button="@drawable/sharp_checkbox_drawable"
+                                    android:buttonTint="@{Color.parseColor(UiColor.primary)}"
+                                    android:text="  Pre-Authorization"
+                                    android:textColor="@color/textlightcolor"
+                                    android:theme="@style/loginedit" />
+                                </LinearLayout>
                             </LinearLayout>
 
                             <LinearLayout
@@ -583,8 +619,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginRight="7dp"
                             android:gravity="center"
                             android:text="Total Amount"
                             android:textColor="@color/textlightcolor"
@@ -658,7 +692,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
                                 android:text="Split"
                                 android:textColor="@color/textlightcolor"
                                 android:textSize="@dimen/fourteen"

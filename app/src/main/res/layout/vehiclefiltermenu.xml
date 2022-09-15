@@ -16,6 +16,7 @@
     android:layout_marginHorizontal="@dimen/_5sdp"
     android:animateLayoutChanges="true"
     android:gravity="bottom"
+    android:layout_marginBottom="@dimen/bottommenuheight"
     android:orientation="vertical">
 
     <TextView

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.graphics.Color" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/selected_dot"
+        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/imagelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_60sdp"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="@dimen/iconl"
+                    android:layout_height="@dimen/iconl"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/icon"
+                        android:layout_width="@dimen/iconl"
+                        android:layout_height="@dimen/iconl"
+                        android:layout_centerHorizontal="true"
+                        android:adjustViewBounds="true" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/footerbtn"
+                android:layout_below="@id/imagelayout">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginRight="35dp"
+                        android:layout_marginBottom="@dimen/_50sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/quicksand_medium"
+                            android:text="Verification"
+                            android:textColor="@color/white"
+                            android:textSize="47dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/quicksand_medium"
+                            android:gravity="bottom"
+                            android:text="Code received by SMS/Text Message"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/eighteen" />
+
+                  <!--      <in.aabhasjindal.otptextview.OtpTextView
+                            android:id="@+id/otp_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#ffffff"
+                            app:bar_active_color="@color/white"
+                            app:bar_enabled="true"
+                            app:bar_error_color="@color/red"
+                            app:bar_height="1.5dp"
+                            app:bar_inactive_color="@color/white"
+                            app:bar_margin_bottom="0dp"
+                            app:bar_margin_left="2dp"
+                            app:bar_margin_right="2dp"
+                            app:bar_success_color="@color/green"
+                            app:box_margin="1dp"
+                            app:height="10dp"
+                            app:hide_otp="true"
+                            app:length="4"
+                            app:otp=""
+                            app:width="@dimen/_10sdp"
+                            app:otp_text_size="@dimen/_10ssp"
+
+                            />-->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal"
+                            android:weightSum="100">
+
+                            <EditText
+                                android:id="@+id/first"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="25"
+                                android:background="@drawable/ic_verification_no_box"
+                                android:fontFamily="@font/quicksand_medium"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:text="9"
+                                android:textColor="@color/textlightcolor"
+                                android:textSize="60dp"
+                                android:imeOptions="actionNext"
+                                android:nextFocusLeft="@id/second"/>
+
+                            <EditText
+                                android:id="@+id/second"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="25"
+                                android:background="@drawable/ic_verification_no_box"
+                                android:fontFamily="@font/quicksand_medium"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:text="9"
+                                android:textColor="@color/textlightcolor"
+                                android:textSize="60dp"
+                                android:nextFocusForward="@id/first"
+                                android:imeOptions="actionNext"
+                                android:nextFocusLeft="@id/third"/>
+
+                            <EditText
+                                android:id="@+id/third"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="25"
+                                android:background="@drawable/ic_verification_no_box"
+                                android:fontFamily="@font/quicksand_medium"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:text="9"
+                                android:textColor="@color/textlightcolor"
+                                android:textSize="60dp"
+                                android:nextFocusForward="@id/second"
+                                android:imeOptions="actionNext"
+                                android:nextFocusLeft="@id/fourth"/>
+
+                            <EditText
+                                android:id="@+id/fourth"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_weight="25"
+                                android:background="@drawable/ic_verification_no_box"
+                                android:fontFamily="@font/quicksand_medium"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:text="9"
+                                android:textColor="@color/textlightcolor"
+                                android:textSize="60dp"
+                                android:imeOptions="actionDone"
+                                android:nextFocusForward="@id/third"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:text="By clicking “Get Started”, you accept the "
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/twelve" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:text="TERMS OF"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/twelve"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:text="SERVICE "
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/twelve"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:text="and "
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/twelve" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:text=" PRIVACY POLICY "
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/twelve"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:text="of RentGuruz Inc"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/twelve" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/footerbtn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottommenuheight"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:background="@color/bottommenucolor"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/started"
+                    style="@style/textfont"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Confirm"
+                    android:textAllCaps="true"
+                    android:textColor="@color/TitleTextColor"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

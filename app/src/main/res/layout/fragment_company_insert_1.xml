@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.graphics.Color" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="UiColor"
+            type="com.rentguruz.app.model.display.ThemeColors" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/selected_dot"
+        android:backgroundTint="@{Color.parseColor(UiColor.primary)}">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/footerbtn"
+                android:background="@color/selected_dot"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/headertopmargin"
+                    android:layout_marginBottom="@dimen/_10sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <ImageView
+                            android:id="@+id/back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:paddingRight="@dimen/_5sdp"
+                            android:src="@drawable/ic_chevron_left" />
+
+                        <TextView
+                            android:id="@+id/screenHeader"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_weight="10"
+                            android:fontFamily="@font/quicksand_regular"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:text="Company Details"
+                            android:textAllCaps="false"
+                            android:textColor="@{Color.parseColor(UiColor.primaryfont)}"
+                            android:textSize="@dimen/_15ssp"
+                            android:theme="@style/texttheme" />
+
+
+                        <ImageView
+                            android:id="@+id/icon"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_width="@dimen/icons"
+                            android:layout_height="@dimen/icons"
+                            android:layout_centerHorizontal="true"
+                            android:adjustViewBounds="true" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="6dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/progress_rectangle_selected"
+                        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}" />
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="6dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/progress_rectangle_default" />
+
+                </LinearLayout>
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/lblnext11"
+                    android:layout_below="@id/createprofile"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/curve_box"
+                    android:scrollbars="vertical"
+                    android:windowSoftInputMode="adjustResize|adjustPan">
+
+                    <LinearLayout
+                        android:id="@+id/layout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="25dp"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            style="@style/edittextheader"
+                            android:text="@string/first_name" />
+
+                        <EditText
+                            android:id="@+id/firstname"
+                            style="@style/edittext"
+                            android:hint="@string/first_name"
+                            android:imeOptions="actionNext"
+                            android:nextFocusLeft="@id/lastname" />
+
+                        <TextView
+                            style="@style/edittextheader"
+                            android:text="@string/last_name" />
+
+                        <EditText
+                            android:id="@+id/lastname"
+                            style="@style/edittext"
+                            android:hint="@string/last_name"
+                            android:imeOptions="actionNext"
+                            android:nextFocusLeft="@id/email" />
+
+                        <TextView
+                            style="@style/edittextheader"
+                            android:text="@string/email" />
+
+                        <EditText
+                            android:id="@+id/email"
+                            style="@style/edittext"
+                            android:hint="@string/email"
+                            android:inputType="textEmailAddress"
+                            android:imeOptions="actionNext"
+                            android:nextFocusLeft="@id/telephone" />
+
+                        <TextView
+                            style="@style/edittextheader"
+                            android:text="@string/telephone" />
+
+                        <EditText
+                            android:id="@+id/telephone"
+                            style="@style/edittext"
+                            android:hint="@string/telephone"
+                            android:inputType="phone"
+                            android:imeOptions="actionNext"
+                            android:nextFocusLeft="@id/edt_NewPass1" />
+
+
+                        <TextView
+                            style="@style/edittextheader"
+                            android:text="@string/password" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            app:hintEnabled="false"
+                            app:passwordToggleEnabled="true">
+
+                            <EditText
+                                android:id="@+id/edt_NewPass1"
+                                style="@style/edittext"
+                                android:hint="@string/enter_new_password"
+                                android:inputType="textPassword"
+                                android:imeOptions="actionNext"
+                                android:nextFocusLeft="@id/edt_NewPass2" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            style="@style/edittextheader"
+                            android:text="@string/confirm_new_password" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            app:hintEnabled="false"
+                            app:passwordToggleEnabled="true">
+
+                            <EditText
+                                android:id="@+id/edt_NewPass2"
+                                style="@style/edittext"
+                                android:hint="@string/confirm_new_password"
+                                android:inputType="textPassword"
+                                android:imeOptions="actionDone"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/footerbtn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottommenuheight"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:background="@color/bottommenucolor"
+                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/started"
+                    style="@style/textfont"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/next"
+                    android:textAllCaps="true"
+                    android:textColor="@color/TitleTextColor"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

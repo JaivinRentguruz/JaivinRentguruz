@@ -1,6 +1,7 @@
 package com.rentguruz.app.adapters;
 
 import android.text.Html;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import com.rentguruz.app.model.base.UserData;
 import com.bumptech.glide.Glide;
 import com.rentguruz.app.model.parameter.DateType;
 import com.rentguruz.app.model.parameter.ReservationStatus;
+import com.rentguruz.app.model.parameter.VehicleStatus;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -83,6 +85,17 @@ public class CustomBindingAdapter {
         textView.setText(d1 + " , " + d2);*/
         //textView.setText( Helper.getAmtount(amt, false) + " / Deposit");
         textView.setText(" "  +Helper.getAmtount(amt, false) + " " + UserData.loginResponse.CompanyLabel.Deposit);
+    }
+
+    @BindingAdapter({"bind:_Dipositss"})
+    public static void depositss (TextView textView, Double amt)
+    {
+    /*    //textView.setText(DateConvert.DateConverter(DateType.fulldate,date,DateType.ddMMyyyyS1));
+        String d1 = Helper.getDateDisplay(DateType.fulldate,date);
+        String d2 = Helper.getTimeDisplay(DateType.fulldate,date);
+        textView.setText(d1 + " , " + d2);*/
+        //textView.setText( Helper.getAmtount(amt, false) + " / Deposit");
+        textView.setText(Helper.getAmtount(amt, false) + " " + UserData.loginResponse.CompanyLabel.Deposit);
     }
 
     @BindingAdapter({"bind:_date"})
@@ -293,6 +306,20 @@ public class CustomBindingAdapter {
             e.printStackTrace();
         }
 
+    }
+
+    @BindingAdapter({"bind:_vehiclestatus"})
+    public static void getvehicleStatus(TextView textView, String status){
+        try {
+            Log.e("TAG", "getvehicleStatus: " +  VehicleStatus.values()[Integer.parseInt(status)]);
+            textView.setText(VehicleStatus.values()[Integer.parseInt(status)].toString());
+           //textView.setText( VehicleStatus.valueOf(status));
+
+        }
+        catch (Exception e){
+            Log.e("TAG", "getvehicleStatus: " +e.getMessage());
+            e.printStackTrace();
+        }
     }
 
 }

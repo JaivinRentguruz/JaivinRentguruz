@@ -15,876 +15,1751 @@
             type="com.rentguruz.app.model.response.CompanyLabel" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/backgroundColor"
-        android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/process"
-            android:orientation="vertical">
+            android:background="@color/backgroundColor"
+            android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
-            <include
-                android:id="@+id/header"
-                app:UiColor="@{UiColor}"
-                layout="@layout/row_header" />
-
-            <androidx.core.widget.NestedScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/curve_box_light_green_bg"
-                android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
-                android:paddingTop="@dimen/_10sdp">
+                android:layout_above="@id/process"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <include
+                    android:id="@+id/header"
+                    layout="@layout/row_header"
+                    app:UiColor="@{UiColor}" />
+
+                <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/_minus5sdp"
-                    android:orientation="vertical">
-
-                    <include
-                        android:id="@+id/carimage"
-                        app:UiColor="@{UiColor}"
-                        layout="@layout/do_carimg" />
+                    android:background="@drawable/curve_box_light_green_bg"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                    android:fillViewport="true"
+                    android:paddingTop="@dimen/rsvtpadding">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/lightgreen"
-                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
-                        android:orientation="vertical"
-                        android:layout_marginTop="@dimen/_minus10sdp"
-                        android:paddingBottom="@dimen/_25sdp">
+                        android:orientation="vertical">
 
                         <include
-                            android:id="@+id/customer"
-                            app:UiColor="@{UiColor}"
-                            layout="@layout/do_customer"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/accessories_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:minHeight="@dimen/_350sdp"
-                        android:layout_marginTop="@dimen/_minus23sdp"
-                        android:background="@drawable/top_curve_box1"
-                        android:paddingBottom="@dimen/_60sdp"
-                        android:backgroundTint="@color/white"
-                        android:orientation="vertical">
+                            android:id="@+id/carimage"
+                            layout="@layout/do_carimg"
+                            app:UiColor="@{UiColor}" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_minus27sdp"
+                            android:background="@color/lightgreen"
+                            android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                            android:orientation="vertical"
+                            android:paddingBottom="@dimen/_25sdp">
+
+                            <include
+                                android:id="@+id/customer"
+                                layout="@layout/do_customer"
+                                app:UiColor="@{UiColor}" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/accessories_layout"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
-                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_minus23sdp"
+                            android:background="@drawable/top_curve_box1"
+                            android:backgroundTint="@color/white"
                             android:orientation="vertical">
 
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="CUSTOMIZE"
-                                android:theme="@style/texttheme"
-                                android:paddingStart="@dimen/_4sdp"
-                                android:paddingBottom="@dimen/_2sdp"
-                                android:textColor="@color/txtBlack"
-                                android:textSize="@dimen/_12ssp" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_1sdp"
-                                android:background="@color/linne" />
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                android:orientation="vertical">
 
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:padding="@dimen/_4sdp"
-                                android:weightSum="20">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingStart="@dimen/_4sdp"
+                                    android:paddingBottom="@dimen/_2sdp"
+                                    android:text="CUSTOMIZE"
+                                    android:textColor="@color/txtBlack"
+                                    android:textSize="@dimen/_12ssp"
+                                    android:theme="@style/texttheme" />
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="2"
-                                    android:background="@drawable/curve_single_text"
-                                    android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
-                                    android:gravity="center_horizontal|center_vertical">
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_1sdp"
+                                    android:background="@color/linne" />
 
-                                    <ImageView
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_width="@dimen/aggrementIcon"
-                                        android:layout_height="@dimen/aggrementIcon"
-                                        android:src="@drawable/icon_insurance"
-                                        app:tint="@color/iconblack" />
-                                </LinearLayout>
 
                                 <LinearLayout
-                                    android:id="@+id/insurance"
-                                    android:layout_width="0dp"
+                                    android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="17"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center_vertical"
-                                        android:text="@{label.Insurance}"
-                                        android:theme="@style/texttheme"
-                                        android:textSize="@dimen/aggrementHeaderText" />
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_4sdp"
+                                    android:weightSum="20">
 
                                     <LinearLayout
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:orientation="horizontal">
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal|center_vertical">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/icon_insurance"
+                                            app:tint="@color/iconblack" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/insurance"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_weight="17"
+                                        android:orientation="vertical">
 
                                         <TextView
-                                            android:id="@+id/customerInsurance"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:gravity="center_vertical"
-                                            android:paddingEnd="@dimen/_10sdp"
-                                            android:text="Gaiko"
-                                            android:theme="@style/texttheme"
-                                            android:textColor="@color/agrementText"
-                                            android:textSize="@dimen/aggrementText" />
+                                            android:text="@{label.Insurance}"
+                                            android:textSize="@dimen/aggrementHeaderText"
+                                            android:theme="@style/texttheme" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/customerInsurance"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text="Gaiko"
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText"
+                                                android:theme="@style/texttheme" />
+
+                                        </LinearLayout>
 
                                     </LinearLayout>
 
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
                                 </LinearLayout>
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_11sdp"
-                                        android:src="@drawable/ic_next_arrow" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_1sdp"
-                                android:background="@color/linne" />
-
-                            <LinearLayout
-                                android:id="@+id/additionalDriverLayout"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:padding="@dimen/_4sdp"
-                                android:weightSum="20">
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_1sdp"
+                                    android:background="@color/linne" />
 
                                 <LinearLayout
-                                    android:layout_width="0dp"
+                                    android:id="@+id/additionalDriverLayout"
+                                    android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_weight="2"
-                                    android:background="@drawable/curve_single_text"
-                                    android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
-                                    android:gravity="center_horizontal">
-
-                                    <ImageView
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_width="@dimen/aggrementIcon"
-                                        android:layout_height="@dimen/aggrementIcon"
-                                        android:src="@drawable/icon_additional_driver"
-                                        app:tint="@color/iconblack"/>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/addtionalDriver"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="17"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-
-                                        android:gravity="center_vertical"
-                                        android:text="Additional Drivers"
-                                        android:theme="@style/texttheme"
-                                        android:textSize="@dimen/aggrementHeaderText" />
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_4sdp"
+                                    android:weightSum="20">
 
                                     <LinearLayout
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
 
-                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/icon_additional_driver"
+                                            app:tint="@color/iconblack" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/addtionalDriver"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_weight="17"
+                                        android:orientation="vertical">
 
                                         <TextView
-                                            android:id="@+id/additionalDriver"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+
                                             android:gravity="center_vertical"
-                                            android:paddingEnd="@dimen/_10sdp"
-                                            android:text=""
-                                            android:theme="@style/texttheme"
-                                            android:textColor="@color/agrementText"
-                                            android:textSize="@dimen/aggrementText"/>
+                                            android:text="Additional Drivers"
+                                            android:textSize="@dimen/aggrementHeaderText"
+                                            android:theme="@style/texttheme" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/additionalDriver"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text=""
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText"
+                                                android:theme="@style/texttheme" />
+
+                                        </LinearLayout>
 
                                     </LinearLayout>
 
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
                                 </LinearLayout>
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center">
 
-                                    <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_11sdp"
-                                        android:src="@drawable/ic_next_arrow" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-
-                            <View
-                                android:id="@+id/additionalDriverLayoutline"
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/linne" />
-
-                            <LinearLayout
-                                android:id="@+id/referal"
-                                android:visibility="gone"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:padding="@dimen/_4sdp"
-                                android:weightSum="20">
+                                <View
+                                    android:id="@+id/additionalDriverLayoutline"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/linne" />
 
                                 <LinearLayout
-                                    android:layout_width="0dp"
+                                    android:id="@+id/referal"
+                                    android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_weight="2"
-                                    android:background="@drawable/curve_single_text"
-                                    android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
-                                    android:gravity="center_horizontal">
-
-                                    <ImageView
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_width="@dimen/aggrementIcon"
-                                        android:layout_height="@dimen/aggrementIcon"
-                                        android:src="@drawable/ic_icon_2" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/refferrels"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="17"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-
-                                        android:gravity="center_vertical"
-                                        android:text="Referrals"
-                                        android:theme="@style/texttheme"
-                                        android:textSize="@dimen/aggrementHeaderText" />
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_4sdp"
+                                    android:visibility="gone"
+                                    android:weightSum="20">
 
                                     <LinearLayout
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
 
-                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/ic_icon_2" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/refferrels"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_weight="17"
+                                        android:orientation="vertical">
 
                                         <TextView
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:gravity="center_vertical"
-                                            android:paddingEnd="@dimen/_10sdp"
-                                            android:text="ABCD Travel Agency"
-                                            android:theme="@style/texttheme"
-                                            android:textColor="@color/agrementText"
-                                            android:textSize="@dimen/aggrementText" />
 
+                                            android:gravity="center_vertical"
+                                            android:text="Referrals"
+                                            android:textSize="@dimen/aggrementHeaderText"
+                                            android:theme="@style/texttheme" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text="ABCD Travel Agency"
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText"
+                                                android:theme="@style/texttheme" />
+
+
+                                        </LinearLayout>
 
                                     </LinearLayout>
 
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
                                 </LinearLayout>
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center">
-
-                                    <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_11sdp"
-                                        android:src="@drawable/ic_next_arrow" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <View
-                                android:id="@+id/referal_line"
-                                android:layout_width="match_parent"
-                                android:visibility="gone"
-                                android:layout_height="1dp"
-                                android:background="@color/linne" />
-
-                            <LinearLayout
-                                android:id="@+id/billingLayout"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:padding="4dp"
-                                android:weightSum="20">
+                                <View
+                                    android:id="@+id/referal_line"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/linne"
+                                    android:visibility="gone" />
 
                                 <LinearLayout
-                                    android:layout_width="0dp"
+                                    android:id="@+id/billingLayout"
+                                    android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_weight="2"
-                                    android:background="@drawable/curve_single_text"
-                                    android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
-                                    android:gravity="center_horizontal">
-
-                                    <ImageView
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_width="@dimen/aggrementIcon"
-                                        android:layout_height="@dimen/aggrementIcon"
-                                        android:src="@drawable/icon_billing"
-                                        app:tint="@color/iconblack"/>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/billing"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="17"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-
-                                        android:gravity="center_vertical"
-                                        android:text="@{label.Billing}"
-                                        android:theme="@style/texttheme"
-                                        android:textSize="@dimen/aggrementHeaderText"/>
+                                    android:orientation="horizontal"
+                                    android:padding="4dp"
+                                    android:weightSum="20">
 
                                     <LinearLayout
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
 
-                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/icon_billing"
+                                            app:tint="@color/iconblack" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/billing"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_weight="17"
+                                        android:orientation="vertical">
 
                                         <TextView
-                                            android:id="@+id/bilinginfo"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:gravity="center_vertical"
-                                            android:paddingEnd="@dimen/_10sdp"
-                                            android:text=""
-                                            android:theme="@style/texttheme"
-                                            android:textColor="@color/agrementText"
-                                            android:textSize="@dimen/aggrementText" />
 
+                                            android:gravity="center_vertical"
+                                            android:text="@{label.Billing}"
+                                            android:textSize="@dimen/aggrementHeaderText"
+                                            android:theme="@style/texttheme" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/bilinginfo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text=""
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText"
+                                                android:theme="@style/texttheme" />
+
+
+                                        </LinearLayout>
 
                                     </LinearLayout>
 
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
                                 </LinearLayout>
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center">
-
-                                    <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_11sdp"
-                                        android:src="@drawable/ic_next_arrow" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <View
-                                android:id="@+id/billingLayoutline"
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/linne" />
-
-                            <LinearLayout
-                                android:id="@+id/equipmentLayout"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:padding="4dp"
-                                android:weightSum="20">
+                                <View
+                                    android:id="@+id/billingLayoutline"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/linne" />
 
                                 <LinearLayout
-                                    android:layout_width="0dp"
+                                    android:id="@+id/equipmentLayout"
+                                    android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_weight="2"
-                                    android:background="@drawable/curve_single_text"
-                                    android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
-                                    android:gravity="center_horizontal">
-
-                                    <ImageView
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_width="@dimen/aggrementIcon"
-                                        android:layout_height="@dimen/aggrementIcon"
-                                        android:src="@drawable/icon_equipments"
-                                        app:tint="@color/iconblack"/>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/equipment"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="17"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-
-                                        android:gravity="center_vertical"
-                                        android:text="@{label.Equipment}"
-                                        android:theme="@style/texttheme"
-                                        android:textSize="@dimen/aggrementHeaderText"/>
+                                    android:orientation="horizontal"
+                                    android:padding="4dp"
+                                    android:weightSum="20">
 
                                     <LinearLayout
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
 
-                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/icon_equipments"
+                                            app:tint="@color/iconblack" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/equipment"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_weight="17"
+                                        android:orientation="vertical">
 
                                         <TextView
-                                            android:id="@+id/equipmentname"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:gravity="center_vertical"
-                                            android:paddingEnd="@dimen/_10sdp"
-                                            android:text=""
-                                            android:theme="@style/texttheme"
-                                            android:textColor="@color/agrementText"
-                                            android:textSize="@dimen/aggrementText" />
 
+                                            android:gravity="center_vertical"
+                                            android:text="@{label.Equipment}"
+                                            android:textSize="@dimen/aggrementHeaderText"
+                                            android:theme="@style/texttheme" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/equipmentname"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text=""
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText"
+                                                android:theme="@style/texttheme" />
+
+
+                                        </LinearLayout>
 
                                     </LinearLayout>
 
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
                                 </LinearLayout>
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center">
 
-                                    <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_11sdp"
-                                        android:src="@drawable/ic_next_arrow" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-
-                            <View
-                                android:id="@+id/equipmentLayoutline"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_1sdp"
-                                android:background="@color/linne" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:visibility="gone"
-                                android:padding="@dimen/_4sdp"
-                                android:weightSum="20">
+                                <View
+                                    android:id="@+id/equipmentLayoutline"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_1sdp"
+                                    android:background="@color/linne" />
 
                                 <LinearLayout
-                                    android:layout_width="0dp"
+                                    android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_weight="2"
-                                    android:background="@drawable/curve_single_text"
-                                    android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
-                                    android:gravity="center_horizontal">
-
-                                    <ImageView
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_width="@dimen/aggrementIcon"
-                                        android:layout_height="@dimen/aggrementIcon"
-                                        android:src="@drawable/icon_inventory"
-                                        app:tint="@color/iconblack"/>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/inventory"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="17"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-
-                                        android:gravity="center_vertical"
-                                        android:text="@{label.Inventory}"
-                                        android:theme="@style/texttheme"
-                                        android:textSize="@dimen/aggrementHeaderText" />
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_4sdp"
+                                    android:visibility="gone"
+                                    android:weightSum="20">
 
                                     <LinearLayout
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
 
-                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/icon_inventory"
+                                            app:tint="@color/iconblack" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/inventory"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_weight="17"
+                                        android:orientation="vertical">
 
                                         <TextView
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:gravity="center_vertical"
-                                            android:paddingEnd="@dimen/_10sdp"
-                                            android:text="Pickup needed from Airport"
-                                            android:theme="@style/texttheme"
-                                            android:textColor="@color/agrementText"
-                                            android:textSize="@dimen/aggrementText" />
 
+                                            android:gravity="center_vertical"
+                                            android:text="@{label.Inventory}"
+                                            android:textSize="@dimen/aggrementHeaderText"
+                                            android:theme="@style/texttheme" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text="Pickup needed from Airport"
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText"
+                                                android:theme="@style/texttheme" />
+
+
+                                        </LinearLayout>
 
                                     </LinearLayout>
 
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
                                 </LinearLayout>
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center">
 
-                                    <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_11sdp"
-                                        android:src="@drawable/ic_next_arrow" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_1sdp"
-                                android:visibility="gone"
-                                android:background="@color/linne" />
-
-                            <LinearLayout
-                                android:id="@+id/additionalnoteLayout"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:padding="@dimen/_4sdp"
-                                android:weightSum="20">
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_1sdp"
+                                    android:background="@color/linne"
+                                    android:visibility="gone" />
 
                                 <LinearLayout
-                                    android:layout_width="0dp"
+                                    android:id="@+id/additionalnoteLayout"
+                                    android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_weight="2"
-                                    android:background="@drawable/curve_single_text"
-                                    android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
-                                    android:gravity="center_horizontal">
-
-                                    <ImageView
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_width="@dimen/aggrementIcon"
-                                        android:layout_height="@dimen/aggrementIcon"
-                                        android:src="@drawable/icon_note"
-                                        app:tint="@color/iconblack"/>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/notes"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="17"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-
-                                        android:gravity="center_vertical"
-                                        android:text="@{label.SpecialNote}"
-                                        android:theme="@style/texttheme"
-                                        android:textSize="@dimen/aggrementHeaderText"/>
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_4sdp"
+                                    android:weightSum="20">
 
                                     <LinearLayout
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
 
-                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/icon_note"
+                                            app:tint="@color/iconblack" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/notes"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_weight="17"
+                                        android:orientation="vertical">
 
                                         <TextView
-                                            android:id="@+id/notedata"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:gravity="center_vertical"
-                                            android:paddingEnd="@dimen/_10sdp"
-                                            android:text=""
-                                            android:theme="@style/texttheme"
-                                            android:textColor="@color/agrementText"
-                                            android:textSize="@dimen/aggrementText" />
 
+                                            android:gravity="center_vertical"
+                                            android:text="@{label.SpecialNote}"
+                                            android:textSize="@dimen/aggrementHeaderText"
+                                            android:theme="@style/texttheme" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/notedata"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text=""
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText"
+                                                android:theme="@style/texttheme" />
+
+
+                                        </LinearLayout>
 
                                     </LinearLayout>
 
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
                                 </LinearLayout>
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center">
 
-                                    <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_11sdp"
-                                        android:src="@drawable/ic_next_arrow" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-
-                            <View
-                                android:id="@+id/additionalnoteLayoutline"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_1sdp"
-                                android:background="@color/linne" />
-
-                            <LinearLayout
-                                android:id="@+id/flightdetailsLayout"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:padding="@dimen/_4sdp"
-                                android:weightSum="20">
+                                <View
+                                    android:id="@+id/additionalnoteLayoutline"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_1sdp"
+                                    android:background="@color/linne" />
 
                                 <LinearLayout
-                                    android:layout_width="0dp"
+                                    android:id="@+id/flightdetailsLayout"
+                                    android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_weight="2"
-                                    android:background="@drawable/curve_single_text"
-                                    android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
-                                    android:gravity="center_horizontal">
-
-                                    <ImageView
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_width="@dimen/aggrementIcon"
-                                        android:layout_height="@dimen/aggrementIcon"
-                                        android:src="@drawable/icon_flight"
-                                        app:tint="@color/iconblack"/>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/flight"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="17"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-
-                                        android:gravity="center_vertical"
-                                        android:text="@{label.FlightDetails}"
-                                        android:theme="@style/texttheme"
-                                        android:textSize="@dimen/aggrementHeaderText"/>
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_4sdp"
+                                    android:weightSum="20">
 
                                     <LinearLayout
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
 
-                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/icon_flight"
+                                            app:tint="@color/iconblack" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/flight"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_weight="17"
+                                        android:orientation="vertical">
 
                                         <TextView
-                                            android:id="@+id/flight_details"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:gravity="center_vertical"
-                                            android:paddingEnd="@dimen/_10sdp"
-                                            android:text=""
-                                            android:theme="@style/texttheme"
-                                            android:textColor="@color/agrementText"
-                                            android:textSize="@dimen/aggrementText" />
 
+                                            android:gravity="center_vertical"
+                                            android:text="@{label.FlightDetails}"
+                                            android:textSize="@dimen/aggrementHeaderText"
+                                            android:theme="@style/texttheme" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/flight_details"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text=""
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText"
+                                                android:theme="@style/texttheme" />
+
+
+                                        </LinearLayout>
 
                                     </LinearLayout>
 
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
                                 </LinearLayout>
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center">
 
-                                    <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_11sdp"
-                                        android:src="@drawable/ic_next_arrow" />
-                                </LinearLayout>
                             </LinearLayout>
-
 
                         </LinearLayout>
 
                     </LinearLayout>
-                </LinearLayout>
 
-            </androidx.core.widget.NestedScrollView>
+                </androidx.core.widget.NestedScrollView>
 
-        </LinearLayout>
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/process"
-            android:background="@color/bottommenucolor"
+            <LinearLayout
+                android:id="@+id/process"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottommenuheight"
+                android:layout_alignParentBottom="true"
+                android:background="@color/bottommenucolor"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <include
+                    android:id="@+id/btm"
+                    layout="@layout/btm_charges"
+                    app:UiColor="@{UiColor}" />
+                <!-- <LinearLayout
+                     android:layout_width="0dp"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="@dimen/_13sdp"
+                     android:layout_weight="30"
+                     android:orientation="vertical">
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:theme="@style/texttheme"
+                         android:text="Amount"
+                         android:textColor="@color/themebackgroundtext"
+                         android:textSize="@dimen/edt_font_size"/>
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:orientation="horizontal"
+                         android:layout_height="match_parent">
+                         <TextView
+                             android:id="@+id/fcurrency"
+                             android:layout_width="wrap_content"
+                             android:text="$ "
+                             android:textColor="@color/themebackgroundtext"
+                             android:textSize="@dimen/_14ssp"
+                             android:theme="@style/texttheme"
+                             android:layout_height="wrap_content"/>
+                         <TextView
+                             android:id="@+id/txt_TotalAmount"
+                             android:layout_width="wrap_content"
+                             android:text="2000.00"
+                             android:textColor="@color/themebackgroundtext"
+                             android:textSize="@dimen/_14ssp"
+                             android:singleLine="true"
+                             android:minLines="1"
+                             android:maxLines="1"
+                             android:theme="@style/texttheme"
+                             android:layout_height="wrap_content"/>
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="0dp"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="35"
+                     android:orientation="vertical">
+
+                     <TextView
+                         android:id="@+id/fueltype"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:theme="@style/texttheme"
+                         android:text="Mileage"
+                         android:textColor="@color/themebackgroundtext"
+                         android:textSize="@dimen/edt_font_size"/>
+
+                     <TextView
+                         android:id="@+id/txtMileage"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:singleLine="true"
+                         android:minLines="1"
+                         android:maxLines="1"
+                         android:text="400 kms"
+                         android:textColor="@color/themebackgroundtext"
+                         android:theme="@style/texttheme"
+                         android:textSize="@dimen/_14ssp"/>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="0dp"
+                     android:layout_height="match_parent"
+                     android:layout_gravity="center"
+                     android:layout_weight="35"
+                     android:gravity="center"
+                     android:orientation="vertical">
+
+                     <LinearLayout
+                         android:id="@+id/confirm"
+                         android:layout_width="100dp"
+                         android:layout_height="40dp"
+                         android:background="@drawable/curved_box_bg"
+                         android:backgroundTint="@color/rentalselectbtn"
+                         android:gravity="center">
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:textAllCaps="false"
+                             android:gravity="center"
+                             android:text="@string/next"
+                             style="@style/btntext"
+                             android:textColor="@color/btntext"
+                             android:theme="@style/texttheme"
+                             android:textSize="@dimen/_16ssp"/>
+                     </LinearLayout>
+                 </LinearLayout>-->
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--<androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/bottommenuheight"
-            android:gravity="center_vertical"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            android:weightSum="100">
-
-            <include
-                android:id="@+id/btm"
-                app:UiColor="@{UiColor}"
-                layout="@layout/btm_charges"/>
-           <!-- <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_13sdp"
-                android:layout_weight="30"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/texttheme"
-                    android:text="Amount"
-                    android:textColor="@color/themebackgroundtext"
-                    android:textSize="@dimen/edt_font_size"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:id="@+id/fcurrency"
-                        android:layout_width="wrap_content"
-                        android:text="$ "
-                        android:textColor="@color/themebackgroundtext"
-                        android:textSize="@dimen/_14ssp"
-                        android:theme="@style/texttheme"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/txt_TotalAmount"
-                        android:layout_width="wrap_content"
-                        android:text="2000.00"
-                        android:textColor="@color/themebackgroundtext"
-                        android:textSize="@dimen/_14ssp"
-                        android:singleLine="true"
-                        android:minLines="1"
-                        android:maxLines="1"
-                        android:theme="@style/texttheme"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-            </LinearLayout>
+            android:layout_height="match_parent"
+            android:background="@color/backgroundColor"
+            android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="35"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/fueltype"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/texttheme"
-                    android:text="Mileage"
-                    android:textColor="@color/themebackgroundtext"
-                    android:textSize="@dimen/edt_font_size"/>
-
-                <TextView
-                    android:id="@+id/txtMileage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:minLines="1"
-                    android:maxLines="1"
-                    android:text="400 kms"
-                    android:textColor="@color/themebackgroundtext"
-                    android:theme="@style/texttheme"
-                    android:textSize="@dimen/_14ssp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="35"
-                android:gravity="center"
+                android:layout_above="@id/process"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/confirm"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/curved_box_bg"
-                    android:backgroundTint="@color/rentalselectbtn"
-                    android:gravity="center">
+                <include
+                    android:id="@+id/header"
+                    app:UiColor="@{UiColor}"
+                    layout="@layout/row_header" />
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+                    android:background="@drawable/curve_box_light_green_bg"
+                    android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
+                    android:paddingTop="@dimen/_10sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/_minus5sdp"
+                        android:orientation="vertical">
+
+                        <include
+                            android:id="@+id/carimage"
+                            app:UiColor="@{UiColor}"
+                            layout="@layout/do_carimg" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/lightgreen"
+                            android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                            android:orientation="vertical"
+                            android:layout_marginTop="@dimen/_minus10sdp"
+                            android:paddingBottom="@dimen/_25sdp">
+
+                            <include
+                                android:id="@+id/customer"
+                                app:UiColor="@{UiColor}"
+                                layout="@layout/do_customer"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/accessories_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/_minus23sdp"
+                            android:background="@drawable/top_curve_box1"
+                            android:paddingBottom="@dimen/_60sdp"
+                            android:backgroundTint="@color/white"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:orientation="vertical">
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="CUSTOMIZE"
+                                    android:theme="@style/texttheme"
+                                    android:paddingStart="@dimen/_4sdp"
+                                    android:paddingBottom="@dimen/_2sdp"
+                                    android:textColor="@color/txtBlack"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_1sdp"
+                                    android:background="@color/linne" />
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_4sdp"
+                                    android:weightSum="20">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal|center_vertical">
+
+                                        <ImageView
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:src="@drawable/icon_insurance"
+                                            app:tint="@color/iconblack" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/insurance"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="17"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center_vertical"
+                                            android:text="@{label.Insurance}"
+                                            android:theme="@style/texttheme"
+                                            android:textSize="@dimen/aggrementHeaderText" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/customerInsurance"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text="Gaiko"
+                                                android:theme="@style/texttheme"
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_1sdp"
+                                    android:background="@color/linne" />
+
+                                <LinearLayout
+                                    android:id="@+id/additionalDriverLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_4sdp"
+                                    android:weightSum="20">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
+
+                                        <ImageView
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:src="@drawable/icon_additional_driver"
+                                            app:tint="@color/iconblack"/>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/addtionalDriver"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="17"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+
+                                            android:gravity="center_vertical"
+                                            android:text="Additional Drivers"
+                                            android:theme="@style/texttheme"
+                                            android:textSize="@dimen/aggrementHeaderText" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/additionalDriver"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text=""
+                                                android:theme="@style/texttheme"
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText"/>
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+                                <View
+                                    android:id="@+id/additionalDriverLayoutline"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/linne" />
+
+                                <LinearLayout
+                                    android:id="@+id/referal"
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_4sdp"
+                                    android:weightSum="20">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
+
+                                        <ImageView
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:src="@drawable/ic_icon_2" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/refferrels"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="17"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+
+                                            android:gravity="center_vertical"
+                                            android:text="Referrals"
+                                            android:theme="@style/texttheme"
+                                            android:textSize="@dimen/aggrementHeaderText" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text="ABCD Travel Agency"
+                                                android:theme="@style/texttheme"
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText" />
+
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <View
+                                    android:id="@+id/referal_line"
+                                    android:layout_width="match_parent"
+                                    android:visibility="gone"
+                                    android:layout_height="1dp"
+                                    android:background="@color/linne" />
+
+                                <LinearLayout
+                                    android:id="@+id/billingLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:padding="4dp"
+                                    android:weightSum="20">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
+
+                                        <ImageView
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:src="@drawable/icon_billing"
+                                            app:tint="@color/iconblack"/>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/billing"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="17"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+
+                                            android:gravity="center_vertical"
+                                            android:text="@{label.Billing}"
+                                            android:theme="@style/texttheme"
+                                            android:textSize="@dimen/aggrementHeaderText"/>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/bilinginfo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text=""
+                                                android:theme="@style/texttheme"
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText" />
+
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <View
+                                    android:id="@+id/billingLayoutline"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/linne" />
+
+                                <LinearLayout
+                                    android:id="@+id/equipmentLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:padding="4dp"
+                                    android:weightSum="20">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
+
+                                        <ImageView
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:src="@drawable/icon_equipments"
+                                            app:tint="@color/iconblack"/>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/equipment"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="17"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+
+                                            android:gravity="center_vertical"
+                                            android:text="@{label.Equipment}"
+                                            android:theme="@style/texttheme"
+                                            android:textSize="@dimen/aggrementHeaderText"/>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/equipmentname"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text=""
+                                                android:theme="@style/texttheme"
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText" />
+
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+                                <View
+                                    android:id="@+id/equipmentLayoutline"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_1sdp"
+                                    android:background="@color/linne" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:padding="@dimen/_4sdp"
+                                    android:weightSum="20">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
+
+                                        <ImageView
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:src="@drawable/icon_inventory"
+                                            app:tint="@color/iconblack"/>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/inventory"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="17"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+
+                                            android:gravity="center_vertical"
+                                            android:text="@{label.Inventory}"
+                                            android:theme="@style/texttheme"
+                                            android:textSize="@dimen/aggrementHeaderText" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text="Pickup needed from Airport"
+                                                android:theme="@style/texttheme"
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText" />
+
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_1sdp"
+                                    android:visibility="gone"
+                                    android:background="@color/linne" />
+
+                                <LinearLayout
+                                    android:id="@+id/additionalnoteLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_4sdp"
+                                    android:weightSum="20">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
+
+                                        <ImageView
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:src="@drawable/icon_note"
+                                            app:tint="@color/iconblack"/>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/notes"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="17"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+
+                                            android:gravity="center_vertical"
+                                            android:text="@{label.SpecialNote}"
+                                            android:theme="@style/texttheme"
+                                            android:textSize="@dimen/aggrementHeaderText"/>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/notedata"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text=""
+                                                android:theme="@style/texttheme"
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText" />
+
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+                                <View
+                                    android:id="@+id/additionalnoteLayoutline"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_1sdp"
+                                    android:background="@color/linne" />
+
+                                <LinearLayout
+                                    android:id="@+id/flightdetailsLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_4sdp"
+                                    android:weightSum="20">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/curve_single_text"
+                                        android:backgroundTint="@{Color.parseColor(UiColor.additionalcolor)}"
+                                        android:gravity="center_horizontal">
+
+                                        <ImageView
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_width="@dimen/aggrementIcon"
+                                            android:layout_height="@dimen/aggrementIcon"
+                                            android:src="@drawable/icon_flight"
+                                            app:tint="@color/iconblack"/>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/flight"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="17"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+
+                                            android:gravity="center_vertical"
+                                            android:text="@{label.FlightDetails}"
+                                            android:theme="@style/texttheme"
+                                            android:textSize="@dimen/aggrementHeaderText"/>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/flight_details"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_vertical"
+                                                android:paddingEnd="@dimen/_10sdp"
+                                                android:text=""
+                                                android:theme="@style/texttheme"
+                                                android:textColor="@color/agrementText"
+                                                android:textSize="@dimen/aggrementText" />
+
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_6sdp"
+                                            android:layout_height="@dimen/_11sdp"
+                                            android:src="@drawable/ic_next_arrow" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.core.widget.NestedScrollView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/process"
+                android:background="@color/bottommenucolor"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottommenuheight"
+                android:gravity="center_vertical"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <include
+                    android:id="@+id/btm"
+                    app:UiColor="@{UiColor}"
+                    layout="@layout/btm_charges"/>
+               &lt;!&ndash; <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_13sdp"
+                    android:layout_weight="30"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAllCaps="false"
-                        android:gravity="center"
-                        android:text="@string/next"
-                        style="@style/btntext"
-                        android:textColor="@color/btntext"
                         android:theme="@style/texttheme"
-                        android:textSize="@dimen/_16ssp"/>
-                </LinearLayout>
-            </LinearLayout>-->
-        </LinearLayout>
+                        android:text="Amount"
+                        android:textColor="@color/themebackgroundtext"
+                        android:textSize="@dimen/edt_font_size"/>
 
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:id="@+id/fcurrency"
+                            android:layout_width="wrap_content"
+                            android:text="$ "
+                            android:textColor="@color/themebackgroundtext"
+                            android:textSize="@dimen/_14ssp"
+                            android:theme="@style/texttheme"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/txt_TotalAmount"
+                            android:layout_width="wrap_content"
+                            android:text="2000.00"
+                            android:textColor="@color/themebackgroundtext"
+                            android:textSize="@dimen/_14ssp"
+                            android:singleLine="true"
+                            android:minLines="1"
+                            android:maxLines="1"
+                            android:theme="@style/texttheme"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="35"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fueltype"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/texttheme"
+                        android:text="Mileage"
+                        android:textColor="@color/themebackgroundtext"
+                        android:textSize="@dimen/edt_font_size"/>
+
+                    <TextView
+                        android:id="@+id/txtMileage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:minLines="1"
+                        android:maxLines="1"
+                        android:text="400 kms"
+                        android:textColor="@color/themebackgroundtext"
+                        android:theme="@style/texttheme"
+                        android:textSize="@dimen/_14ssp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="35"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/confirm"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/curved_box_bg"
+                        android:backgroundTint="@color/rentalselectbtn"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAllCaps="false"
+                            android:gravity="center"
+                            android:text="@string/next"
+                            style="@style/btntext"
+                            android:textColor="@color/btntext"
+                            android:theme="@style/texttheme"
+                            android:textSize="@dimen/_16ssp"/>
+                    </LinearLayout>
+                </LinearLayout>&ndash;&gt;
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
 </layout>

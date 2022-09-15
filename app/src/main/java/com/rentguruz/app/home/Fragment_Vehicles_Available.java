@@ -167,7 +167,19 @@ public class Fragment_Vehicles_Available extends BaseFragment
                         getArguments().getString("pickupdate")+ "T" +getArguments().getString("pickuptime"),
                         getArguments().getString("dropdate")+ "T" +getArguments().getString("droptime")));
 */
+        JSONArray vehicletype = new JSONArray();
         try {
+
+            String  veh = loginRes.getData("VehicleTypeMasterIds");
+            for (int i = 0; i < veh.split(",").length; i++) {
+                vehicletype.put(Integer.valueOf(veh.split(",")[i].trim()));
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+     /*   try {
             VehicleModel vm = new VehicleModel();
             vm = (VehicleModel) getArguments().getSerializable("Model");
             new ApiService(getVehicleList, RequestType.POST, AVAILABLEVICHICLE, BASE_URL_LOGIN, header,
@@ -176,6 +188,23 @@ public class Fragment_Vehicles_Available extends BaseFragment
             e.printStackTrace();
             new ApiService(getVehicleList, RequestType.POST, AVAILABLEVICHICLE, BASE_URL_LOGIN, header,
                     params.getVechicleList(pickuploc.Id,getArguments().getString("pickupdate"),getArguments().getString("dropdate")));
+        }*/
+
+        try {
+            VehicleModel vm = new VehicleModel();
+            vm = (VehicleModel) getArguments().getSerializable("Model");
+            new ApiService(getVehicleList, RequestType.POST, AVAILABLEVICHICLE, BASE_URL_LOGIN, header,
+                    params.getVechicleList(pickuploc.Id,
+                            getArguments().getString("pickupdate")+ "T" +getArguments().getString("pickuptime"),
+                            getArguments().getString("dropdate")+ "T" +getArguments().getString("droptime"),
+                            vm.VehicleTypeId,pickuploc.ParentLocationId,false,vehicletype));
+        } catch (Exception e){
+            e.printStackTrace();
+            new ApiService(getVehicleList, RequestType.POST, AVAILABLEVICHICLE, BASE_URL_LOGIN, header,
+                    params.getVechicleList(pickuploc.Id,
+                            getArguments().getString("pickupdate")+ "T" +getArguments().getString("pickuptime"),
+                            getArguments().getString("dropdate")+ "T" +getArguments().getString("droptime"),
+                            pickuploc.ParentLocationId,false,vehicletype));
         }
 
 
@@ -229,6 +258,11 @@ public class Fragment_Vehicles_Available extends BaseFragment
             {
             }
         });*/
+
+        if (pickuploc.ParentLocationId != 0){
+             pickuploc.Id = pickuploc.ParentLocationId;
+             reserversationSummary.PickUpLocation = pickuploc.ParentLocationId;
+        }
 
     }
 
@@ -468,6 +502,8 @@ public class Fragment_Vehicles_Available extends BaseFragment
                 break;
 
             case R.id.back:
+                Helper.isselectlocation = true;
+                bundle.putSerializable("locModel",getArguments().getSerializable("locModel"));
                 NavHostFragment.findNavController(Fragment_Vehicles_Available.this).navigate(R.id.vehicles_available_to_location,bundle);
                        // .navigate(R.id.action_Vehicles_Available_to_Selected_location, bundle);
                 break;

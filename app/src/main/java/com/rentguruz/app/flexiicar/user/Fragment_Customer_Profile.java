@@ -366,6 +366,7 @@ public class Fragment_Customer_Profile extends BaseFragment
             @Override
             public void onClick(View v)
             {
+                Helper.isskipins = false;
                 Bundle bundle = new Bundle();
                 bundle.putInt("key",0);
                 NavHostFragment.findNavController(Fragment_Customer_Profile.this)

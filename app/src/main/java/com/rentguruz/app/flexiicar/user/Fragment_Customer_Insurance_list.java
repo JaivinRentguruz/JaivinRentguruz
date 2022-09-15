@@ -102,7 +102,7 @@ public class Fragment_Customer_Insurance_list extends BaseFragment
         binding.header.screenHeader.setText(companyLabel.Insurance + " Policy");
         binding.header.back.setOnClickListener(this);
         binding.header.discard.setOnClickListener(this);
-        binding.header.discard.setText("Save");
+        binding.header.discard.setText("Add");
         String  path = "?tableType=3&insuranceFor=" + UserData.loginResponse.User.UserFor;
        //String  path = "?tableType=3&insuranceFor=" + UserData.customer.Id;
        apiService = new ApiService(GetCustomerInsurance, RequestType.GET,
@@ -356,8 +356,15 @@ public class Fragment_Customer_Insurance_list extends BaseFragment
                     } else {
                         String errorString = responseJSON.getString("Message");
                        // CustomToast.showToast(getActivity(),errorString,1);
-                        NavHostFragment.findNavController(Fragment_Customer_Insurance_list.this).
-                                navigate(R.id.action_InsurancePolicyList_to_AddInsurancePolicy,bundle);
+                        try {
+                            if (Helper.isskipins) {
+                                NavHostFragment.findNavController(Fragment_Customer_Insurance_list.this).
+                                        navigate(R.id.action_InsurancePolicyList_to_AddInsurancePolicy, bundle);
+                            }
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
+
                     }
                 } catch (Exception e)
                 {

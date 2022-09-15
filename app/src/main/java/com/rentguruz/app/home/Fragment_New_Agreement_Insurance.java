@@ -419,7 +419,12 @@ public class Fragment_New_Agreement_Insurance extends BaseFragment {
                 try {
                     if (reservationSummarry.ReservationInsuranceModel.InsuranceCoverDetailId == reservationInsurances[i].DetailId) {
                     //    binding.rlInsurancePolicyList.setBackground(getResources().getDrawable(R.drawable.curve_box_dark_gray));
+
+                        Drawable squareline = getResources().getDrawable(R.drawable.round_image);
+                        squareline.setTint(Color.parseColor(UiColor.primary));
+
                         detailInsuranceBinding.line.setBackground(getResources().getDrawable(R.drawable.round_image));
+                       // detailInsuranceBinding.line.getBackground().setColorFilter(Color.parseColor(UiColor.secondary), PorterDuff.Mode.SCREEN);
                         detailInsuranceBinding.line.setPadding(ii,ii,ii,ii);
                       //  detailInsuranceBinding.getRoot().setBackground(getResources().getDrawable(R.drawable.round_image));
                        // Drawable unwrappedDrawable = AppCompatResources.getDrawable(context, R.drawable.round_image);
@@ -490,7 +495,8 @@ public class Fragment_New_Agreement_Insurance extends BaseFragment {
         listCustomerInsuranceBinding.getRoot().setId(200+1);
         listCustomerInsuranceBinding.getRoot().setLayoutParams(subparams);
         listCustomerInsuranceBinding.ViewInsDetails.setVisibility(View.GONE);
-
+        listCustomerInsuranceBinding.setUiColor(UiColor);
+        listCustomerInsuranceBinding.test.setBackground(userDraw.getImageUpload());
         listCustomerInsuranceBinding.txtprimaryName.setText(customer.FullName);
         listCustomerInsuranceBinding.txtTelephoneNo.setText(customer.MobileNo);
         listCustomerInsuranceBinding.txtUserEmail.setText(customer.Email);

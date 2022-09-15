@@ -117,6 +117,7 @@ public class Fragment_New_Agreement_Confirmation extends BaseFragment {
         activationDetail.put(71,bussiness);
         updateReservationSummarry(71);
         Helper.pmt = false;
+        Helper.isDeposit = reservationSummarry.ReservationRatesModel.RateFeaturesModel.SecurityDeposit;
         /*String insurance = loginRes.modeltostring(TAG,reservationSummarry.ReservationInsuranceModel);
         activationDetail.put(52, insurance);
         updateReservationSummarry(52);*/
@@ -149,6 +150,7 @@ public class Fragment_New_Agreement_Confirmation extends BaseFragment {
                 //NavHostFragment.findNavController(Fragment_New_Agreement_Confirmation.this).navigate(R.id.Agreement_Confirmation_to_PaymentOffline);
                // NavHostFragment.findNavController(Fragment_New_Agreement_Confirmation.this).navigate(R.id.Agreement_Confirmation_to_Payment,bundle);
                 binding.btmcharges.layoutPayment.setClickable(false);
+                reservationSummarry.PickUpLocation = Helper.selectedloc;
                 if (reservationSummarry.Id != 0){
                     new ApiService2<ReservationSummarry>(doInsertReservation, RequestType.PUT, RESERVATIONUPDATE, BASE_URL_LOGIN, header, reservationSummarry);
                 } else {
@@ -210,15 +212,18 @@ public class Fragment_New_Agreement_Confirmation extends BaseFragment {
 
                             if (i==3)
                                 rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11lightyellow));*/
-
+                            int test = 0;
                             for (int j = 0; j <charges[i].ReservationSummaryDetailModels.length ; j++) {
-                                getSubview(j);
-                                ListChargesBinding listChargesBinding = ListChargesBinding.inflate(subinflater, getActivity().findViewById(android.R.id.content), false );
-                                listChargesBinding.getRoot().setId(200 + j);
-                                listChargesBinding.getRoot().setLayoutParams(subparams);
 
-                                listChargesBinding.textHeader.setText(charges[i].ReservationSummaryDetailModels[j].Title);
-                                listChargesBinding.textdetail.setText(charges[i].ReservationSummaryDetailModels[j].Description);
+                                try {
+                                    if (charges[i].ReservationSummaryDetailModels[j].Title != null) {
+                                        getSubview(test);
+                                        ListChargesBinding listChargesBinding = ListChargesBinding.inflate(subinflater, getActivity().findViewById(android.R.id.content), false);
+                                        listChargesBinding.getRoot().setId(200 + test);
+                                        listChargesBinding.getRoot().setLayoutParams(subparams);
+                                        test += 1;
+                                        listChargesBinding.textHeader.setText(charges[i].ReservationSummaryDetailModels[j].Title);
+                                        listChargesBinding.textdetail.setText(charges[i].ReservationSummaryDetailModels[j].Description);
 /*
                                 Drawable unwrappedDrawable = AppCompatResources.getDrawable(context, R.drawable.ic_ellipse_default);
                                 Drawable wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable);
@@ -228,46 +233,68 @@ public class Fragment_New_Agreement_Confirmation extends BaseFragment {
                                     DrawableCompat.setTint(wrappedDrawable, getResources().getColor(R.color.txt11lightyellow));
                                 }*/
 
-                               // listChargesBinding.icon.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.AppBlack)));
-                                if (i==0){
-                                    rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.green));
-                                    listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.green));
-                                } else if (i==1) {
-                                    rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11blue));
-                                    listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11blue));
-                                } else if (i==2) {
-                                    rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11lightyellow));
-                                    listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11lightyellow));
-                                } else if (i==3){
-                                    rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11navyblue));
-                                    listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11navyblue));
-                                } else if (i==4) {
-                                    rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11blue));
-                                    listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11blue));
-                                }else if (i==5){
-                                    rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11navyblue));
-                                    listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11navyblue));
-                                }
-
-
-                                try {
-                                if (charges[i].ReservationSummaryDetailModels[j].Title.length() != 0) {
-                                    rowSummarryChargeHeadBinding.listsummarry.addView(listChargesBinding.getRoot());
-                                    rowSummarryChargeHeadBinding.sumarrydetail.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            if (rowSummarryChargeHeadBinding.listsummarry.getVisibility() == View.VISIBLE){
-
-                                                rowSummarryChargeHeadBinding.listsummarry.setVisibility(View.GONE);
-                                            } else {
-                                                rowSummarryChargeHeadBinding.listsummarry.setVisibility(View.VISIBLE);
-                                            }
+                                        // listChargesBinding.icon.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.AppBlack)));
+                                        if (i == 0) {
+                                            rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.green));
+                                            listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.green));
+                                        } else if (i == 1) {
+                                            rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11blue));
+                                            listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11blue));
+                                        } else if (i == 2) {
+                                            rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11lightyellow));
+                                            listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11lightyellow));
+                                        } else if (i == 3) {
+                                            rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11navyblue));
+                                            listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11navyblue));
+                                        } else if (i == 4) {
+                                            rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11blue));
+                                            listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11blue));
+                                        } else if (i == 5) {
+                                            rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11navyblue));
+                                            listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11navyblue));
+                                        } else if (i == 6) {
+                                            rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.green));
+                                            listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.green));
+                                        } else if (i == 7) {
+                                            rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11blue));
+                                            listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11blue));
+                                        } else if (i == 8) {
+                                            rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11lightyellow));
+                                            listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11lightyellow));
+                                        } else if (i == 9) {
+                                            rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11navyblue));
+                                            listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11navyblue));
+                                        } else if (i == 10) {
+                                            rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11blue));
+                                            listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11blue));
+                                        } else if (i == 11) {
+                                            rowSummarryChargeHeadBinding.charge.setTextColor(getResources().getColor(R.color.txt11navyblue));
+                                            listChargesBinding.icon.setColorFilter(getResources().getColor(R.color.txt11navyblue));
                                         }
-                                    });
-                                }
-                                } catch (Exception e){
-                                    e.printStackTrace();
-                                }
+
+
+                                        try {
+                                            if (charges[i].ReservationSummaryDetailModels[j].Title.length() != 1) {
+                                                rowSummarryChargeHeadBinding.listsummarry.addView(listChargesBinding.getRoot());
+                                                rowSummarryChargeHeadBinding.sumarrydetail.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        if (rowSummarryChargeHeadBinding.listsummarry.getVisibility() == View.VISIBLE) {
+
+                                                            rowSummarryChargeHeadBinding.listsummarry.setVisibility(View.GONE);
+                                                        } else {
+                                                            rowSummarryChargeHeadBinding.listsummarry.setVisibility(View.VISIBLE);
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                    } catch(Exception e){
+                                        e.printStackTrace();
+                                    }
                             }
 
                             binding.summarry.addView(rowSummarryChargeHeadBinding.getRoot());
@@ -301,9 +328,7 @@ public class Fragment_New_Agreement_Confirmation extends BaseFragment {
             handler.post(() -> {
 
                 try {
-
-
-                    Log.d("TAG", "onSuccess: " + response);
+                    Log.d(TAG, "onSuccess: " + response);
                     JSONObject responseJSON = new JSONObject(response);
                     Boolean status = responseJSON.getBoolean("Status");
 

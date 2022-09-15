@@ -27,6 +27,10 @@
             android:id="@+id/action_CustomerList_to_CreateProfile"
             app:destination="@id/CreateProfile" />
 
+        <action
+            android:id="@+id/action_CustomerList_to_MoreInfo"
+            app:destination="@id/MoreInfo" />
+
     </fragment>
 
 

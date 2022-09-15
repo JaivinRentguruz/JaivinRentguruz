@@ -15,8 +15,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
->
+    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -153,6 +152,7 @@
                         android:layout_marginLeft="5dp">
 
                         <RadioButton
+                            style="@style/MyRadioButton"
                             android:id="@+id/splitpercentage"
                             android:layout_width="wrap_content"
                             android:layout_height="20dp"
@@ -162,6 +162,7 @@
                             android:textColor="@color/textlightcolor" />
 
                         <RadioButton
+                            style="@style/MyRadioButton"
                             android:id="@+id/splitfixamount"
                             android:layout_width="wrap_content"
                             android:layout_height="20dp"

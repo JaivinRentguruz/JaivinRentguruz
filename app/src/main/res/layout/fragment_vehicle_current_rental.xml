@@ -109,7 +109,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="12dp"
                                         android:text="MITSUBISHI MIRAGE"
-
+                                        android:singleLine="true"
                                         android:textColor="@color/regtcolor"
                                         android:textSize="@dimen/textsize_eighteen"
                                         android:theme="@style/texttheme" />

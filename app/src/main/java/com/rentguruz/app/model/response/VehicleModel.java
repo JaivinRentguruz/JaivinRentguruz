@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class VehicleModel extends BaseModel implements Serializable {
     public String VehicleShortName,DefaultImagePath,VehicleName,VehDescription;
-    public int Id,NoOfSeats,NoOfBags,NoOfDoors,Year;
+    public int Id,NoOfSeats,NoOfBags,NoOfDoors,Year,Status;
     public Double TotalAmount,PerDayAmount;
     //public Boolean ;
     public int RateId,SecurityDeposit;

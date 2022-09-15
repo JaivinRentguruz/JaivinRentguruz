@@ -1,19 +1,25 @@
 package com.rentguruz.app.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.rentguruz.app.R;
 import com.rentguruz.app.model.display.ThemeColors;
+
+import java.util.Locale;
 
 public class CustomDrawable {
 
@@ -63,4 +69,34 @@ public class CustomDrawable {
       return context.getResources().getDrawable(R.drawable.ic_small_dropdown);
     }
 
+    public Typeface getOdMeterFont(){
+        Activity activity = (Activity) context;
+        AssetManager am = activity.getApplicationContext().getAssets();
+       /* Typeface typefaceFSSiena = Typeface.createFromAsset(am,
+                String.format(Locale.US, "fonts/%s", "DS-DIGI.TTF"));*/
+        return  Typeface.createFromAsset(am,
+                String.format(Locale.US, "fonts/%s", "DS-DIGI.TTF"));
+    }
+
+    public void setodmeter(TextView e, String valuee){
+        e.setTypeface(getOdMeterFont());
+        String va =String.valueOf(valuee);
+        int p = va.trim().length();
+        String t = "";
+        if (p != 6){
+            int tt = 6-p;
+            for (int i = 0; i <tt; i++) {
+                t += "0";
+            }
+
+        }
+
+        for (int i = 0; i <va.length(); i++) {
+            char c = va.charAt(i);
+            t += String.valueOf(c);
+        }
+
+        e.setText(t);
+
+    }
 }

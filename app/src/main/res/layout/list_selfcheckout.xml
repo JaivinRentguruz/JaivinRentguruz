@@ -49,7 +49,6 @@
             android:layout_height="match_parent"
             android:text="Snow Brush"
             android:textColor="@color/txtBlack"
-
             android:textSize="12dp"
             android:theme="@style/texttheme" />
     </LinearLayout>

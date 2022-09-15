@@ -52,6 +52,7 @@ import com.rentguruz.app.databinding.RowCheckboxBinding;
 import com.rentguruz.app.model.DoVehicle;
 import com.rentguruz.app.model.VehicleOptionMappingModel;
 import com.rentguruz.app.model.VehicleOtherDetailsModel;
+import com.rentguruz.app.model.base.UserData;
 import com.rentguruz.app.model.common.DropDown;
 import com.rentguruz.app.model.common.OnDropDownList;
 import com.rentguruz.app.model.response.AttachmentsModel;
@@ -1047,6 +1048,7 @@ public class Fragment_Vehicles_Edit_Basic_Details extends BaseFragment {
         AndroidNetworking.initialize(getActivity());
         ApiService apiService = new ApiService();
         apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE, header, file);
+        //apiService.UPLOAD_REQUEST(uploadImage,UPLOADIMAGE, getHeaderModel(iddd,8), file);
        // }
     }
 

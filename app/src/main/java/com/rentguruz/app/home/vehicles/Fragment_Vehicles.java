@@ -21,6 +21,9 @@ import com.rentguruz.app.apicall.RequestType;
 import com.rentguruz.app.base.BaseFragment;
 import com.rentguruz.app.databinding.FragmentVehiclesBinding;
 import com.rentguruz.app.databinding.VehicleAvailableList2Binding;
+import com.rentguruz.app.databinding.VehicleAvailableListBinding;
+import com.rentguruz.app.databinding.VehicleAvailableListtBinding;
+import com.rentguruz.app.model.base.UserData;
 import com.rentguruz.app.model.base.UserReservationData;
 import com.rentguruz.app.model.reservation.ReservationVehicleType;
 import com.rentguruz.app.model.response.ReservationTimeModel;
@@ -46,7 +49,7 @@ public class Fragment_Vehicles  extends BaseFragment {
 
     List<VehicleModel> vehicleModelList = new ArrayList<>();
    // RowVehicleBinding vehicleAvailableListBinding;
-    VehicleAvailableList2Binding vehicleAvailableListBinding;
+    VehicleAvailableListtBinding vehicleAvailableListBinding;
 
     int TotalRecord=0;
 
@@ -73,10 +76,11 @@ public class Fragment_Vehicles  extends BaseFragment {
         binding.header.screenHeader.setText(companyLabel.Vehicle + " List");
         binding.header.discard.setText(getResources().getString(R.string.add));
         binding.header.back.setVisibility(View.GONE);
-        binding.header.optionmenu.setVisibility(View.VISIBLE);
+        binding.header.optionmenu.setVisibility(View.GONE);
         binding.header.screenHeader.setPadding(40,0,0,0);
-        try {
 
+        try {
+            Log.e(TAG, "onViewCreated: " + getArguments().getInt("staus") );
                 new ApiService(getVehicleList, RequestType.POST,
                         AVAILABLEVICHICLE, BASE_URL_CUSTOMER, header, params.getVehicleList(TotalRecord,
                         getArguments().getInt("staus"),
@@ -90,7 +94,11 @@ public class Fragment_Vehicles  extends BaseFragment {
             new ApiService(getVehicleList, RequestType.POST,
                     AVAILABLEVICHICLE, BASE_URL_CUSTOMER, header, params.getVehicleList(TotalRecord));
         }
-
+        try {
+            ((Activity_Vehicles)getActivity()).BottomnavVisible();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
 
         binding.header.discard.setOnClickListener(this);
@@ -178,9 +186,7 @@ public class Fragment_Vehicles  extends BaseFragment {
 
             }
         }, RequestType.POST, VEHICLEFILTER, BASE_URL_LOGIN, header, params.getEquipment());*/
-
-
-
+        binding.view.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -301,7 +307,7 @@ public class Fragment_Vehicles  extends BaseFragment {
         for (int j = 0; j <vehicleModelList.size() ; j++) {
            // Log.e(TAG, "getViewDetail: " + vehicleModelList.size() );
             getSubview(j);
-            vehicleAvailableListBinding = VehicleAvailableList2Binding.inflate(subinflater,
+            vehicleAvailableListBinding = VehicleAvailableListtBinding.inflate(subinflater,
                     getActivity().findViewById(android.R.id.content), false);
             vehicleAvailableListBinding.setVehicle(vehicleModelList.get(j));
             vehicleAvailableListBinding.getRoot().setId(200 + j);

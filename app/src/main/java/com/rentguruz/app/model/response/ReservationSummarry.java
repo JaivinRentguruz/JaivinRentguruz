@@ -1,6 +1,7 @@
 package com.rentguruz.app.model.response;
 
 import com.rentguruz.app.model.base.BaseModel;
+import com.rentguruz.app.model.checkinout.CheckInCalculationModel;
 import com.rentguruz.app.model.parameter.enums.ReservationRecurringDetailModel;
 import com.rentguruz.app.model.reservation.ReservationFlightAndHotelModel;
 import com.rentguruz.app.model.reservation.ReservationNoteModel;
@@ -61,4 +62,6 @@ public class ReservationSummarry extends BaseModel implements Serializable {
     public Boolean IsExtraDayCalculation = true;
 
     public Boolean IsLoanerMainType = false;
+
+    public ArrayList<CheckInCalculationModel> CheckInCalculationModels = new ArrayList<CheckInCalculationModel>();
 }

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.rentguruz.app.R;
@@ -115,6 +116,8 @@ public class Activity_Reservation extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        Helper.isselectlocation = false;
+        Helper.selectedloc = 0;
         try {
             NavHostFragment hostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
             NavController navController = hostFragment.getNavController();
@@ -155,5 +158,24 @@ public class Activity_Reservation extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void BottomnavVisible() {
+        LinearLayout lblcontinue1 = findViewById(R.id.bottommenu);
+        lblcontinue1.setVisibility(View.VISIBLE);
+
+        LinearLayout MainFragment = findViewById(R.id.MainFragment);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) MainFragment.getLayoutParams();
+        params.setMargins(0, 0, 0, 0);
+        MainFragment.setLayoutParams(params);
+    }
+
+    public void BottomnavInVisible() {
+        LinearLayout lblcontinue1 = findViewById(R.id.bottommenu);
+        lblcontinue1.setVisibility(View.GONE);
+        LinearLayout MainFragment = findViewById(R.id.MainFragment);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) MainFragment.getLayoutParams();
+        params.setMargins(0, 0, 0, 0);
+        MainFragment.setLayoutParams(params);
     }
 }

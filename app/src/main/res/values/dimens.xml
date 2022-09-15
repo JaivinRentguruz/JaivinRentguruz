@@ -48,9 +48,12 @@
 
     <dimen name="icon">@dimen/_70sdp</dimen>
 
+    <dimen name="iconl">@dimen/_100sdp</dimen>
+    <dimen name="icons">@dimen/_40sdp</dimen>
+
     <dimen name="logow">@dimen/_150sdp</dimen>
     <dimen name="logoh">@dimen/_75sdp</dimen>
 
     <dimen name="marginview">10dp</dimen>
-
+    <dimen name="rsvtpadding">@dimen/_8sdp</dimen>
 </resources>

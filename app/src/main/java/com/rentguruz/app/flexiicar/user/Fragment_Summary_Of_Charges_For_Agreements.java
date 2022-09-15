@@ -16,6 +16,7 @@ import com.rentguruz.app.R;
 import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.rentguruz.app.home.reservation.Activity_Reservation;
 import com.rentguruz.app.model.response.ReservationTimeModel;
 import com.rentguruz.app.adapters.CustomBindingAdapter;
 import com.rentguruz.app.adapters.CustomToast;
@@ -236,6 +237,8 @@ public class Fragment_Summary_Of_Charges_For_Agreements extends BaseFragment
                                         CustomBindingAdapter.loadImage(binding.VehicleImg,reservations.VehicleImagePath);
                                         binding.CheckInLocName.setText(reservationSummarry.PickUpLocationName);
                                         binding.CheckOutLocName.setText(reservationSummarry.DropLocationName);
+                                        binding.staus.setText(companyLabel.Reservation + " " + companyLabel.Status);
+                                        binding.statusdetails.setText(reservations.ReservationStatusDesc);
                                         UserData.loginResponse.User.UserFor = reservations.CustomerId;
                                     }
                                     catch (Exception e)
@@ -279,6 +282,12 @@ public class Fragment_Summary_Of_Charges_For_Agreements extends BaseFragment
             bundle.putSerializable("resrvation", reservationSummarry);
             Agreements.putSerializable("resrvation", reservationSummarry);
             Agreements.putSerializable("checklist", (Serializable) checkOutLists);
+
+            try {
+                ((Activity_Reservation)getActivity()).BottomnavInVisible();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
 
            /* CheckOutLocName.setText(AgreementsBundle.getString("check_Out_Location_Name"));
             CheckInLocName.setText(AgreementsBundle.getString("check_in_Location_Name"));
@@ -1051,12 +1060,17 @@ public class Fragment_Summary_Of_Charges_For_Agreements extends BaseFragment
                         ReservationTimeModel timeModel = new ReservationTimeModel();
                         timeModel = loginRes.getModel(time.toString(),ReservationTimeModel.class);
                         charges = loginRes.getModel(summarry.toString(), ReservationSummaryModels[].class);
+                        Helper.isDeposit = reservationSummarry.ReservationRatesModel.RateFeaturesModel.SecurityDeposit;
+                        Log.e(TAG, "onSuccess: " + reservationSummarry.ReservationRatesModel.RateFeaturesModel.SecurityDeposit + " " +  Helper.isDeposit);
+                        List<ReservationSummaryModels> data = loginRes.arraytolist(charges);
+                        Log.e(TAG, "onSuccess: " + data.size() );
+                       // data =  stream(data).
                         summaryDisplay.getB2BSummarry(bundle,charges, binding.rlSummaryofcharge);
                         pickupdrop.noDays = timeModel.TotalDays;
                         binding.pickup.setPickupdrop(pickupdrop);
                         bundle.putSerializable("reservationSum", reservationSummarry);
                         OptionMenu optionMenu = new OptionMenu(getActivity());
-                        optionMenu.optionmenulist(binding.sucessfullRegi,views,bundle,Fragment_Summary_Of_Charges_For_Agreements.this,header,params);
+                        optionMenu.optionmenulist(binding.sucessfullRegi,views,bundle,Fragment_Summary_Of_Charges_For_Agreements.this,header,params,binding.option);
                         /*for (int i = 0; i <charges.length ; i++) {
                             getSubview(i);
                             VehicleTaxDetailsBinding vehicleTaxDetailsBinding = VehicleTaxDetailsBinding.inflate(subinflater, getActivity().findViewById(android.R.id.content), false );

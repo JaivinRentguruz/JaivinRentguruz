@@ -104,8 +104,9 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
+                        <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/cardss"
+                            app:shapeAppearance="@style/roundedImageViewRounded"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:src="@drawable/onlinepayment"

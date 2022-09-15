@@ -37,6 +37,7 @@ import androidx.transition.TransitionManager;
 import com.rentguruz.app.apicall.ApiService;
 import com.rentguruz.app.apicall.OnResponseListener;
 import com.rentguruz.app.apicall.RequestType;
+import com.rentguruz.app.databinding.OptionmenuBinding;
 import com.rentguruz.app.databinding.VehiclecashBinding;
 import com.rentguruz.app.databinding.VehiclecatagorylistBinding;
 import com.rentguruz.app.databinding.VehiclefiltermenuBinding;
@@ -69,6 +70,7 @@ import java.util.HashMap;
 
 import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_CUSTOMER;
 import static com.rentguruz.app.apicall.ApiEndPoint.BASE_URL_LOGIN;
+import static com.rentguruz.app.apicall.ApiEndPoint.CHECKOUTVALIDATION;
 import static com.rentguruz.app.apicall.ApiEndPoint.DELETE;
 import static com.rentguruz.app.apicall.ApiEndPoint.EMAIL;
 import static com.rentguruz.app.apicall.ApiEndPoint.GETCUSTOMER;
@@ -77,6 +79,7 @@ import static com.rentguruz.app.apicall.ApiEndPoint.RESERVATIONSTATUS;
 import static com.rentguruz.app.apicall.ApiEndPoint.RESERVATIONSTATUSUPDATE;
 import static com.rentguruz.app.apicall.ApiEndPoint.VEHICLEFILTER;
 import static com.rentguruz.app.apicall.ApiEndPoint.secondImage;
+import static com.rentguruz.app.model.parameter.ReservationStatuss.*;
 
 
 public class OptionMenu {
@@ -191,7 +194,7 @@ public class OptionMenu {
         Reservation finalReservation2 = reservation;
 
         getText(view,R.id.readycheckout).setOnClickListener(v -> {
-            if  (finalReservation2.ReservationStatus == ReservationStatuss.Confirmed.inte) {
+            if  (finalReservation2.ReservationStatus == Confirmed.inte) {
 
                 new ApiService(new OnResponseListener() {
                     @Override
@@ -474,7 +477,7 @@ public class OptionMenu {
             }
         });
 
-        if (finalReservation1.ReservationStatus == ReservationStatuss.Draft.inte) {
+        if (finalReservation1.ReservationStatus == Draft.inte) {
             getText(view, R.id.readyconfirm).setVisibility(View.VISIBLE);
         }
 
@@ -520,7 +523,7 @@ public class OptionMenu {
                                     public void onError(String error) {
 
                                     }
-                                }, RequestType.POST, RESERVATIONSTATUSUPDATE, BASE_URL_LOGIN, header, params.reservationstatusupdate(finalReservation.Id, ReservationStatuss.Confirmed.inte));
+                                }, RequestType.POST, RESERVATIONSTATUSUPDATE, BASE_URL_LOGIN, header, params.reservationstatusupdate(finalReservation.Id, Confirmed.inte));
                             }
                         });
 
@@ -625,11 +628,755 @@ public class OptionMenu {
         setText(getText(view,R.id.tollcharge),  "Toll" +UserData.loginResponse.CompanyLabel.Charge);
         setText(getText(view,R.id.cancelAgreement),  "Cancel");
 
-        if (reservation.ReservationStatus == ReservationStatuss.Draft.inte || reservation.ReservationStatus == ReservationStatuss.Confirmed.inte){
+        if (reservation.ReservationStatus == Draft.inte || reservation.ReservationStatus == Confirmed.inte){
             setText(getText(view,R.id.readycheckout), "Ready For " + UserData.loginResponse.CompanyLabel.CheckOut);
             getText(view,R.id.readycheckout).setVisibility(View.VISIBLE);
         }
         setVisibility(getText(view,R.id.checkout), reservation);
+    }
+
+    public void optionmenulist(RelativeLayout sucessfullRegi, View view, Bundle bundle, Fragment fragment, DoHeader header, CommonParams params, OptionmenuBinding binding){
+        fragments = fragment;
+        Reservation reservation = new Reservation();
+        reservation = (Reservation) bundle.getSerializable("reservation");
+        bundle.putSerializable("reservation",reservation);
+        back.putSerializable("reservation",reservation);
+        back.putSerializable("resrvation", bundle.getSerializable("resrvation"));
+        bundle.putInt("reservationpmt", 1);
+        bundle.putString("netrate","1");
+        String  bodyParam = "?id=" + reservation.CustomerId + "&isActive=true"+"&"+"IsWithSummary=true";
+        Reservation finalReservation2 = reservation;
+        bundle.putBundle(activity.getResources().getString(R.string.bundle), back);
+        binding.cancel2.setOnClickListener(v -> optionVisible(sucessfullRegi,false));
+        binding.cancel.setOnClickListener(v -> optionVisible(sucessfullRegi,false));
+        ImageView OpenbottomMenu = view.findViewById(R.id.optionmenu);
+        OpenbottomMenu.setOnClickListener(v ->optionVisible(sucessfullRegi,true));
+
+
+
+        binding.editAgreement.setOnClickListener(v -> {
+            if (loginRes.getData(activity.getResources().getString(R.string.userType)).equals("1")){
+                Helper.isActiveCustomer = true;
+                Helper.reservationwithoutmap =true;
+                Intent i = new Intent(activity, Customer_Booking_Activity.class);
+                //   i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                activity.startActivity(i);
+            } else {
+                Helper.B2BRESERVATION = true;
+                Intent i = new Intent(activity, Activity_Reservation.class);
+                //   i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                activity.startActivity(i);
+            }
+        });
+
+        binding.changedate.setOnClickListener(v -> NavHostFragment.findNavController(fragment)
+                .navigate(R.id.action_SummaryOfChargesForAgreements_to_chnageAgeement,bundle));
+
+        binding.changevehicle.setOnClickListener(v -> NavHostFragment.findNavController(fragment)
+                .navigate(R.id.action_SummaryOfChargesForAgreements_to_chnageAgeementVehicle,bundle));
+
+        binding.extendagreement.setOnClickListener(v ->NavHostFragment.findNavController(fragment)
+                .navigate(R.id.action_SummaryOfChargesForAgreements_to_chnageAgeementextend,bundle) );
+
+        binding.tollcharge.setOnClickListener(v -> NavHostFragment.findNavController(fragment)
+                .navigate(R.id.action_summary_to_toll_charge,bundle));
+
+        binding.trafficTic.setOnClickListener(v -> NavHostFragment.findNavController(fragment)
+                .navigate(R.id.action_summary_to_traffic_tic,bundle));
+
+        binding.cancelAgreement.setOnClickListener(v -> NavHostFragment.findNavController(fragment)
+                .navigate(R.id.action_summary_to_cancel_agreement,bundle));
+
+
+
+        binding.readycheckout.setOnClickListener(v -> {
+            if  (finalReservation2.ReservationStatus == Confirmed.inte) {
+
+                new ApiService(new OnResponseListener() {
+                    @Override
+                    public void onSuccess(String response, HashMap<String, String> headers) {
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    JSONObject responseJSON = new JSONObject(response);
+                                    Boolean status = responseJSON.getBoolean("Status");
+                                    String msg = responseJSON.getString("Message");
+                                    CustomToast.showToast(activity,msg,1);
+                                    if (status){
+                                        if (loginRes.getData(activity.getResources().getString(R.string.userType)) .equals("2") ) {
+                                            Intent i = new Intent(activity, Activity_Reservation.class);
+                                            activity.startActivity(i);
+                                        } else{
+                                            NavHostFragment.findNavController(fragment).popBackStack();
+                                        }
+
+                                    }
+                                    // CustomToast.showToast(activity,msg,1);
+                                } catch (Exception e){
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(String error) {
+
+                    }
+                }, RequestType.POST, READYFORCHECKOUT, BASE_URL_LOGIN, header, params.readyforcheckout(finalReservation2.Id));
+
+               /* AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                builder.setMessage("Are you sure you want to Allow Checkout Without Payment ?");
+                builder.setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which)
+                            {
+
+                                new ApiService(new OnResponseListener() {
+                                    @Override
+                                    public void onSuccess(String response, HashMap<String, String> headers) {
+                                        handler.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                try {
+                                                    JSONObject responseJSON = new JSONObject(response);
+                                                    Boolean status = responseJSON.getBoolean("Status");
+                                                    String msg = responseJSON.getString("Message");
+                                                    CustomToast.showToast(activity,msg,1);
+                                                    if (status){
+
+                                                        Intent i = new Intent(activity, Activity_Reservation.class);
+                                                        activity.startActivity(i);
+                                                    }
+                                                   // CustomToast.showToast(activity,msg,1);
+                                                } catch (Exception e){
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        });
+                                    }
+
+                                    @Override
+                                    public void onError(String error) {
+
+                                    }
+                                }, RequestType.POST, READYFORCHECKOUT, BASE_URL_LOGIN, header, params.readyforcheckout(finalReservation2.Id));
+                            }
+                        });
+                builder.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which)
+                            {
+                                dialog.dismiss();
+                                Transition transition = new Slide(Gravity.BOTTOM);
+                                transition.setDuration(600);
+                                transition.addTarget( sucessfullRegi);
+                                //binding.sucessfullRegi.setVisibility(View.VISIBLE);
+
+                                TransitionManager.beginDelayedTransition(sucessfullRegi,transition);
+                                sucessfullRegi.setVisibility(View.GONE);
+                            }
+                        });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+*/
+            }
+        });
+
+        binding.printAgreement.setOnClickListener(v -> NavHostFragment.findNavController(fragment)
+                .navigate(R.id.action_SummaryOfChargesForAgreements_to_Printpreview,bundle));
+
+        binding.deleteagreement.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            builder.setMessage("Are you sure you want to Delete Agreement?");
+            builder.setPositiveButton("Yes",
+                    (dialog, which) -> {
+                        String msg = "You Have Been Successfully Delete Agreement!";
+                        CustomToast.showToast(activity,msg,0);
+                        new ApiService(DeleteReservation, RequestType.POST,
+                                DELETE, BASE_URL_LOGIN, header, params.getDelete(36, finalReservation2.Id));
+                    });
+            builder.setNegativeButton("Cancel",
+                    new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which)
+                        {
+                            dialog.dismiss();
+                            Transition transition = new Slide(Gravity.BOTTOM);
+                            transition.setDuration(600);
+                            transition.addTarget( sucessfullRegi);
+                            //binding.sucessfullRegi.setVisibility(View.VISIBLE);
+
+                            TransitionManager.beginDelayedTransition(sucessfullRegi,transition);
+                            sucessfullRegi.setVisibility(View.GONE);
+                        }
+                    });
+
+            final AlertDialog dialog = builder.create();
+            dialog.show();
+        });
+
+        binding.emailAgreement.setOnClickListener(v -> new ApiService(new OnResponseListener() {
+            @Override
+            public void onSuccess(String response, HashMap<String, String> headers) {
+                handler.post(() -> {
+                    try {
+                        System.out.println("Success");
+                        System.out.println(response);
+
+                        JSONObject responseJSON = new JSONObject(response);
+                        Boolean status = responseJSON.getBoolean("Status");
+
+                        if (status)
+                        {
+                            try
+                            {
+                                // JSONObject resultSet = responseJSON.getJSONObject("resultSet");
+                                final JSONObject customerProfile= responseJSON.getJSONObject("Data");
+                                Log.e(TAG, "run: "+  customerProfile );
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                                //builder.setMessage("Are you sure you want to Delete Agreement?");
+                                builder.setMessage(UserData.loginResponse.CompanyLabel.Agreement + " sent EmailId" + finalReservation2.Email);
+                             /*   builder.setPositiveButton("Yes",
+                                        new DialogInterface.OnClickListener()
+                                        {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which)
+                                            {
+                                                String msg = "You Have Been Successfully Delete Agreement!";
+                                                CustomToast.showToast(activity,msg,0);
+                                                new ApiService(DeleteReservation, RequestType.POST,
+                                                        DELETE, BASE_URL_LOGIN, header, params.getDelete(36, finalReservation.Id));
+                                            }
+                                        });*/
+                                builder.setNegativeButton("Cancel",
+                                        (dialog, which) -> {
+                                            dialog.dismiss();
+                                            optionVisible(sucessfullRegi,false);
+                                        });
+
+                                final AlertDialog dialog = builder.create();
+                                dialog.show();
+
+                            } catch (Exception e){
+                                e.printStackTrace();
+                            }
+
+
+
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        }, RequestType.POST, EMAIL, BASE_URL_LOGIN, header, params.getemail(finalReservation2.Id, finalReservation2.Email)));
+
+
+
+        binding.checkout.setOnClickListener(v -> {
+
+
+            new ApiService(new OnResponseListener() {
+                @Override
+                public void onSuccess(String response, HashMap<String, String> headers) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                JSONObject responseJSON = new JSONObject(response);
+                                Boolean status = responseJSON.getBoolean("Status");
+
+                                if (status){
+                                    NavHostFragment.findNavController(fragments)
+                                            .navigate(R.id.action_SummaryOfChargesForAgreements_to_Self_check_Out,bundle);
+                                } else {
+                                    CustomToast.showToast(activity,responseJSON.getString("Message"), 1);
+                                }
+
+
+                            } catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+
+                }
+
+                @Override
+                public void onError(String error) {
+
+                }
+            }, RequestType.GET, CHECKOUTVALIDATION, BASE_URL_LOGIN, header, "?ReservationId=" + finalReservation2.Id);
+
+            // .navigate(R.id.action_SummaryOfChargesForAgreements_to_Location_And_Key,bundle);
+
+
+           /* NavHostFragment.findNavController(fragments)
+                    //    .navigate(R.id.action_SummaryOfChargesForAgreements_to_LocationKey_ForSelfCheckOut,bundle);
+                    .navigate(R.id.action_SummaryOfChargesForAgreements_to_Self_check_In,bundle);*/
+
+       /*     NavHostFragment.findNavController(fragments)
+                    //.navigate(R.id.action_SummaryOfChargesForAgreements_to_Self_check_Out,bundle);
+                    .navigate(R.id.action_SummaryOfChargesForAgreements_to_Location_And_Key,bundle);*/
+
+           /* NavHostFragment.findNavController(fragments)
+                    .navigate(R.id.checkoutsucess,bundle);*/
+
+         /*   if (finalReservation1.ReservationStatus == CheckIn.inte){
+                NavHostFragment.findNavController(fragments)
+                        //    .navigate(R.id.action_SummaryOfChargesForAgreements_to_LocationKey_ForSelfCheckOut,bundle);
+                        .navigate(R.id.action_SummaryOfChargesForAgreements_to_Self_check_In,bundle);
+                       // .navigate(R.id.checkoutsucess,bundle);
+            }
+           else if (finalReservation1.ReservationStatus != 5){
+                NavHostFragment.findNavController(fragments)
+                        .navigate(R.id.action_SummaryOfChargesForAgreements_to_Self_check_Out,bundle);
+               // .navigate(R.id.action_SummaryOfChargesForAgreements_to_Location_And_Key,bundle);
+            }
+            else {
+                NavHostFragment.findNavController(fragments)
+                    //    .navigate(R.id.action_SummaryOfChargesForAgreements_to_LocationKey_ForSelfCheckOut,bundle);
+                          .navigate(R.id.action_SummaryOfChargesForAgreements_to_Self_check_In,bundle);
+                     //   .navigate(R.id.checkoutsucess,bundle);
+            }*/
+
+           /* NavHostFragment.findNavController(fragments)
+                    //    .navigate(R.id.action_SummaryOfChargesForAgreements_to_LocationKey_ForSelfCheckOut,bundle);
+                    .navigate(R.id.action_SummaryOfChargesForAgreements_to_Self_check_In,bundle);*/
+
+           /* if (finalReservation1.ReservationStatus == ReservationStatuss.ReadyForCheckOut.inte)
+            {
+                NavHostFragment.findNavController(fragments)
+                        .navigate(R.id.action_SummaryOfChargesForAgreements_to_Self_check_Out,bundle);
+            } if (finalReservation1.ReservationStatus == ReservationStatuss.CheckOut.inte)
+            {
+                NavHostFragment.findNavController(fragments)
+                        .navigate(R.id.action_SummaryOfChargesForAgreements_to_LocationKey_ForSelfCheckOut,bundle);
+            }*/
+        });
+
+        binding.checkIn.setOnClickListener(v -> {
+            NavHostFragment.findNavController(fragments)
+                    //    .navigate(R.id.action_SummaryOfChargesForAgreements_to_LocationKey_ForSelfCheckOut,bundle);
+                    .navigate(R.id.action_SummaryOfChargesForAgreements_to_Self_check_In,bundle);
+        });
+
+        binding.readyconfirm.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            builder.setMessage("Are you sure ?" +
+                    "\n" +
+                    "Do you want to Confirmed this Booking without payment?");
+
+            builder.setPositiveButton("Yes",
+                    (dialog, which) -> new ApiService(new OnResponseListener() {
+                        @Override
+                        public void onSuccess(String response, HashMap<String, String> headers) {
+                            handler.post(() -> {
+                                try {
+                                    JSONObject responseJSON = new JSONObject(response);
+                                    Boolean status = responseJSON.getBoolean("Status");
+                                    String Message = responseJSON.getString("Message");
+                                    CustomToast.showToast(activity, Message,1);
+                                    if (status){
+                                        Intent i = new Intent(activity, Activity_Reservation.class);
+                                        activity.startActivity(i);
+
+                                    }
+
+
+                                } catch (Exception e){
+                                    e.printStackTrace();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onError(String error) {
+
+                        }
+                    }, RequestType.POST, RESERVATIONSTATUSUPDATE, BASE_URL_LOGIN, header, params.reservationstatusupdate(finalReservation2.Id, Confirmed.inte)));
+
+            builder.setNegativeButton("Cancel",
+                    (dialog, which) -> {
+                        dialog.dismiss();
+                        optionVisible(sucessfullRegi,false);
+                    });
+
+            final AlertDialog dialog = builder.create();
+            dialog.show();
+        });
+
+        /* }*/
+        binding.paymentprocess.setOnClickListener(v -> {
+
+           /* if (UserData.customerProfile != null){
+                NavHostFragment.findNavController(fragment)
+                        .navigate(R.id.action_Acceptance_signature_to_Agreements_to_payment,bundle);
+            } else {*/
+
+            new ApiService(new OnResponseListener() {
+                @Override
+                public void onSuccess(String response, HashMap<String, String> headers) {
+                    handler.post(() -> {
+                        try {
+                            System.out.println("Success");
+                            System.out.println(response);
+
+                            JSONObject responseJSON = new JSONObject(response);
+                            Boolean status = responseJSON.getBoolean("Status");
+
+                            if (status)
+                            {
+                                try
+                                {
+                                    // JSONObject resultSet = responseJSON.getJSONObject("resultSet");
+                                    final JSONObject customerProfile= responseJSON.getJSONObject("Data");
+                                    loginRes.storedata("CustomerProfile", customerProfile.toString());
+                                    UserData.UserDetail = customerProfile.toString();
+                                    CustomerProfile customerProfile1 = new CustomerProfile();
+                                    customerProfile1 =  loginRes.callFriend("CustomerProfile", CustomerProfile.class);
+                                    UserData.customerProfile = customerProfile1;
+                                    NavHostFragment.findNavController(fragment)
+                                            .navigate(R.id.action_Acceptance_signature_to_Agreements_to_payment,bundle);
+
+                                } catch (Exception e){
+                                    e.printStackTrace();
+                                }
+
+
+
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                    });
+                }
+
+                @Override
+                public void onError(String error) {
+
+                }
+            }, RequestType.GET, GETCUSTOMER, BASE_URL_CUSTOMER, header, bodyParam);
+        });
+
+       /* setText(getText(view,R.id.paymentprocess), UserData.loginResponse.CompanyLabel.Payment + " " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.deleteagreement),  "Delete " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.editAgreement),  "Edit " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.printAgreement),  "Print " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.email_agreement),  "Email " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.changevehicle),  "Change " +UserData.loginResponse.CompanyLabel.Vehicle);
+        setText(getText(view,R.id.extendagreement),  "Extend " +UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.tollcharge),  "Toll " +UserData.loginResponse.CompanyLabel.Charge);
+        setText(getText(view,R.id.cancelAgreement),  "Cancel " +UserData.loginResponse.CompanyLabel.Agreement);*/
+        binding.checkoutsummry.setOnClickListener(v -> NavHostFragment.findNavController(fragments)
+                .navigate(R.id.checkoutsucess,bundle));
+
+        binding.checkinsummarry.setOnClickListener(v -> NavHostFragment.findNavController(fragments)
+                .navigate(R.id.checkinsucess,bundle));
+
+
+        setText(getText(view,R.id.paymentprocess), UserData.loginResponse.CompanyLabel.Payment );
+        setText(getText(view,R.id.deleteagreement),  "Delete");
+        setText(getText(view,R.id.editAgreement),  "Edit");
+        setText(getText(view,R.id.printAgreement),  "Print");
+        setText(getText(view,R.id.email_agreement),  "Email");
+        setText(getText(view,R.id.changevehicle),   "Change " +UserData.loginResponse.CompanyLabel.Vehicle);
+        setText(getText(view,R.id.extendagreement),  "Extend " + UserData.loginResponse.CompanyLabel.Agreement);
+        setText(getText(view,R.id.tollcharge),  "Toll" +UserData.loginResponse.CompanyLabel.Charge);
+        setText(getText(view,R.id.cancelAgreement),  "Cancel");
+        setText(getText(view,R.id.checkoutsummry),  UserData.loginResponse.CompanyLabel.CheckOut  + " Process") ;
+        setText(getText(view,R.id.checkinsummarry),  UserData.loginResponse.CompanyLabel.CheckIn  + " Process") ;
+        if (reservation.ReservationStatus == Draft.inte || reservation.ReservationStatus == Confirmed.inte){
+            setText(getText(view,R.id.readycheckout), "Ready For " + UserData.loginResponse.CompanyLabel.CheckOut);
+            getText(view,R.id.readycheckout).setVisibility(View.VISIBLE);
+            View view1 = view.findViewById(R.id.readycheckoutline);
+            view1.setVisibility(View.VISIBLE);
+        }
+        //  setVisibility(getText(view,R.id.checkout), reservation);
+
+
+
+        int reservationstatus = reservation.ReservationStatus;
+
+        int values =  valueOf(reservation.ReservationStatusDesc).inte;
+
+        Log.e(TAG, "optionmenulist: " + values );
+
+        switch (values){
+            case 1: //draft
+                binding.readycheckout.setVisibility(View.GONE);
+                binding.readycheckoutline.setVisibility(View.GONE);
+                binding.checkout.setVisibility(View.GONE);
+                binding.checkoutline.setVisibility(View.GONE);
+                binding.checkIn.setVisibility(View.GONE);
+                binding.checkInline.setVisibility(View.GONE);
+                binding.checkinsummarry.setVisibility(View.GONE);
+                binding.checkinsummarryline.setVisibility(View.GONE);
+                binding.checkoutsummry.setVisibility(View.GONE);
+                binding.checkoutsummryline.setVisibility(View.GONE);
+                binding.extendagreement.setVisibility(View.GONE);
+                binding.extendagreementline.setVisibility(View.GONE);
+                binding.tollcharge.setVisibility(View.GONE);
+                binding.tollchargeline.setVisibility(View.GONE);
+                binding.trafficTic.setVisibility(View.GONE);
+                binding.trafficTicline.setVisibility(View.GONE);
+                binding.cancelAgreement.setVisibility(View.GONE);
+
+                break;
+
+            case 2: //reject
+                binding.readycheckout.setVisibility(View.GONE);
+                binding.readycheckoutline.setVisibility(View.GONE);
+                binding.editAgreement.setVisibility(View.GONE);
+                binding.editAgreementline.setVisibility(View.GONE);
+                binding.checkout.setVisibility(View.GONE);
+                binding.checkoutline.setVisibility(View.GONE);
+                binding.checkinsummarry.setVisibility(View.GONE);
+                binding.checkinsummarryline.setVisibility(View.GONE);
+                binding.checkIn.setVisibility(View.GONE);
+                binding.checkInline.setVisibility(View.GONE);
+                binding.checkoutsummry.setVisibility(View.GONE);
+                binding.checkoutsummryline.setVisibility(View.GONE);
+                binding.changedate.setVisibility(View.GONE);
+                binding.changedateline.setVisibility(View.GONE);
+                binding.changevehicle.setVisibility(View.GONE);
+                binding.changevehicleline.setVisibility(View.GONE);
+                binding.extendagreement.setVisibility(View.GONE);
+                binding.extendagreementline.setVisibility(View.GONE);
+                binding.tollcharge.setVisibility(View.GONE);
+                binding.tollchargeline.setVisibility(View.GONE);
+                binding.trafficTic.setVisibility(View.GONE);
+                binding.trafficTicline.setVisibility(View.GONE);
+                binding.cancelAgreement.setVisibility(View.GONE);
+                binding.readyconfirm.setVisibility(View.GONE);
+                binding.readyconfirmline.setVisibility(View.GONE);
+                break;
+
+            case 3: //canceled
+                binding.readycheckout.setVisibility(View.GONE);
+                binding.readycheckoutline.setVisibility(View.GONE);
+                binding.editAgreement.setVisibility(View.GONE);
+                binding.editAgreementline.setVisibility(View.GONE);
+                binding.checkout.setVisibility(View.GONE);
+                binding.checkoutline.setVisibility(View.GONE);
+                binding.checkinsummarry.setVisibility(View.GONE);
+                binding.checkinsummarryline.setVisibility(View.GONE);
+                binding.checkIn.setVisibility(View.GONE);
+                binding.checkInline.setVisibility(View.GONE);
+                binding.checkoutsummry.setVisibility(View.GONE);
+                binding.checkoutsummryline.setVisibility(View.GONE);
+                binding.changedate.setVisibility(View.GONE);
+                binding.changedateline.setVisibility(View.GONE);
+                binding.changevehicle.setVisibility(View.GONE);
+                binding.changevehicleline.setVisibility(View.GONE);
+                binding.extendagreement.setVisibility(View.GONE);
+                binding.extendagreementline.setVisibility(View.GONE);
+                binding.tollcharge.setVisibility(View.GONE);
+                binding.tollchargeline.setVisibility(View.GONE);
+                binding.trafficTic.setVisibility(View.GONE);
+                binding.trafficTicline.setVisibility(View.GONE);
+                binding.cancelAgreement.setVisibility(View.GONE);
+                binding.readyconfirm.setVisibility(View.GONE);
+                binding.readyconfirmline.setVisibility(View.GONE);
+                break;
+
+            case 4: //confirm
+                binding.extendagreement.setVisibility(View.GONE);
+                binding.extendagreementline.setVisibility(View.GONE);
+                binding.tollcharge.setVisibility(View.GONE);
+                binding.tollchargeline.setVisibility(View.GONE);
+                binding.trafficTic.setVisibility(View.GONE);
+                binding.trafficTicline.setVisibility(View.GONE);
+                binding.checkoutsummry.setVisibility(View.GONE);
+                binding.checkoutsummryline.setVisibility(View.GONE);
+                binding.checkinsummarry.setVisibility(View.GONE);
+                binding.checkinsummarryline.setVisibility(View.GONE);
+                binding.checkIn.setVisibility(View.GONE);
+                binding.checkInline.setVisibility(View.GONE);
+                binding.readyconfirm.setVisibility(View.GONE);
+                binding.readyconfirmline.setVisibility(View.GONE);
+                break;
+
+            case 5: //CheckOut
+                binding.checkinsummarry.setVisibility(View.GONE);
+                binding.checkinsummarryline.setVisibility(View.GONE);
+                binding.checkout.setVisibility(View.GONE);
+                binding.checkoutline.setVisibility(View.GONE);
+                binding.cancelAgreement.setVisibility(View.GONE);
+                binding.editAgreement.setVisibility(View.GONE);
+                binding.editAgreementline.setVisibility(View.GONE);
+                binding.readyconfirm.setVisibility(View.GONE);
+                binding.readyconfirmline.setVisibility(View.GONE);
+                break;
+
+            case 6: //CheckIn
+                binding.checkout.setVisibility(View.GONE);
+                binding.checkoutline.setVisibility(View.GONE);
+                binding.checkIn.setVisibility(View.GONE);
+                binding.checkInline.setVisibility(View.GONE);
+                binding.cancelAgreement.setVisibility(View.GONE);
+                binding.changedate.setVisibility(View.GONE);
+                binding.changedateline.setVisibility(View.GONE);
+                binding.changevehicle.setVisibility(View.GONE);
+                binding.changevehicleline.setVisibility(View.GONE);
+                binding.editAgreement.setVisibility(View.GONE);
+                binding.editAgreementline.setVisibility(View.GONE);
+                binding.readyconfirm.setVisibility(View.GONE);
+                binding.readyconfirmline.setVisibility(View.GONE);
+                break;
+
+            case 7: //PendingPayment
+                binding.checkout.setVisibility(View.GONE);
+                binding.checkoutline.setVisibility(View.GONE);
+                binding.checkIn.setVisibility(View.GONE);
+                binding.checkInline.setVisibility(View.GONE);
+                binding.cancelAgreement.setVisibility(View.GONE);
+                binding.changedate.setVisibility(View.GONE);
+                binding.changedateline.setVisibility(View.GONE);
+                binding.changevehicle.setVisibility(View.GONE);
+                binding.changevehicleline.setVisibility(View.GONE);
+                binding.editAgreement.setVisibility(View.GONE);
+                binding.editAgreementline.setVisibility(View.GONE);
+                binding.readyconfirm.setVisibility(View.GONE);
+                binding.readyconfirmline.setVisibility(View.GONE);
+                break;
+
+            case 8://PaymentOutStanding
+                binding.checkout.setVisibility(View.GONE);
+                binding.checkoutline.setVisibility(View.GONE);
+                binding.checkIn.setVisibility(View.GONE);
+                binding.checkInline.setVisibility(View.GONE);
+                binding.cancelAgreement.setVisibility(View.GONE);
+                binding.changedate.setVisibility(View.GONE);
+                binding.changedateline.setVisibility(View.GONE);
+                binding.changevehicle.setVisibility(View.GONE);
+                binding.changevehicleline.setVisibility(View.GONE);
+                binding.editAgreement.setVisibility(View.GONE);
+                binding.editAgreementline.setVisibility(View.GONE);
+                binding.checkoutsummry.setVisibility(View.GONE);
+                binding.checkoutsummryline.setVisibility(View.GONE);
+                binding.checkinsummarry.setVisibility(View.GONE);
+                binding.checkinsummarryline.setVisibility(View.GONE);
+                binding.cancelAgreement.setVisibility(View.GONE);
+                binding.readyconfirm.setVisibility(View.GONE);
+                binding.readyconfirmline.setVisibility(View.GONE);
+                break;
+
+            case 9: //DepositOutStanding
+                binding.checkout.setVisibility(View.GONE);
+                binding.checkoutline.setVisibility(View.GONE);
+                binding.checkIn.setVisibility(View.GONE);
+                binding.checkInline.setVisibility(View.GONE);
+                binding.cancelAgreement.setVisibility(View.GONE);
+                binding.changedate.setVisibility(View.GONE);
+                binding.changedateline.setVisibility(View.GONE);
+                binding.changevehicle.setVisibility(View.GONE);
+                binding.changevehicleline.setVisibility(View.GONE);
+                binding.editAgreement.setVisibility(View.GONE);
+                binding.editAgreementline.setVisibility(View.GONE);
+                binding.readyconfirm.setVisibility(View.GONE);
+                binding.readyconfirmline.setVisibility(View.GONE);
+                break;
+
+            case 10: //ReadyForCheckOut
+                binding.checkIn.setVisibility(View.GONE);
+                binding.checkInline.setVisibility(View.GONE);
+                binding.changedate.setVisibility(View.GONE);
+                binding.changedateline.setVisibility(View.GONE);
+                binding.checkoutsummry.setVisibility(View.GONE);
+                binding.checkoutsummryline.setVisibility(View.GONE);
+                binding.checkinsummarry.setVisibility(View.GONE);
+                binding.checkinsummarryline.setVisibility(View.GONE);
+                binding.editAgreement.setVisibility(View.GONE);
+                binding.editAgreementline.setVisibility(View.GONE);
+                binding.readyconfirm.setVisibility(View.GONE);
+                binding.readyconfirmline.setVisibility(View.GONE);
+                break;
+
+            case 11: //NoShow
+                binding.checkout.setVisibility(View.GONE);
+                binding.checkoutline.setVisibility(View.GONE);
+                binding.checkIn.setVisibility(View.GONE);
+                binding.checkInline.setVisibility(View.GONE);
+                binding.checkoutsummry.setVisibility(View.GONE);
+                binding.checkoutsummryline.setVisibility(View.GONE);
+                binding.checkinsummarry.setVisibility(View.GONE);
+                binding.checkinsummarryline.setVisibility(View.GONE);
+                binding.cancelAgreement.setVisibility(View.GONE);
+                binding.changevehicle.setVisibility(View.GONE);
+                binding.changevehicleline.setVisibility(View.GONE);
+                binding.tollcharge.setVisibility(View.GONE);
+                binding.tollchargeline.setVisibility(View.GONE);
+                binding.trafficTic.setVisibility(View.GONE);
+                binding.trafficTicline.setVisibility(View.GONE);
+                binding.extendagreement.setVisibility(View.GONE);
+                binding.extendagreementline.setVisibility(View.GONE);
+                binding.readyconfirm.setVisibility(View.GONE);
+                binding.readyconfirmline.setVisibility(View.GONE);
+                break;
+
+            case 12: //OverDue
+                binding.checkout.setVisibility(View.GONE);
+                binding.checkoutline.setVisibility(View.GONE);
+                binding.checkIn.setVisibility(View.GONE);
+                binding.checkInline.setVisibility(View.GONE);
+                binding.cancelAgreement.setVisibility(View.GONE);
+                binding.changedate.setVisibility(View.GONE);
+                binding.changedateline.setVisibility(View.GONE);
+                binding.changevehicle.setVisibility(View.GONE);
+                binding.changevehicleline.setVisibility(View.GONE);
+                binding.editAgreement.setVisibility(View.GONE);
+                binding.editAgreementline.setVisibility(View.GONE);
+                binding.readyconfirm.setVisibility(View.GONE);
+                binding.readyconfirmline.setVisibility(View.GONE);
+                break;
+
+            case 15:
+                binding.paymentprocess.setVisibility(View.GONE);
+                binding.paymentprocessline.setVisibility(View.GONE);
+                binding.readycheckout.setVisibility(View.GONE);
+                binding.readycheckoutline.setVisibility(View.GONE);
+                binding.editAgreement.setVisibility(View.GONE);
+                binding.editAgreementline.setVisibility(View.GONE);
+                binding.checkout.setVisibility(View.GONE);
+                binding.checkoutline.setVisibility(View.GONE);
+                binding.checkIn.setVisibility(View.GONE);
+                binding.checkInline.setVisibility(View.GONE);
+                binding.cancelAgreement.setVisibility(View.GONE);
+                binding.changedate.setVisibility(View.GONE);
+                binding.changedateline.setVisibility(View.GONE);
+                binding.changevehicle.setVisibility(View.GONE);
+                binding.changevehicleline.setVisibility(View.GONE);
+                binding.editAgreement.setVisibility(View.GONE);
+                binding.editAgreementline.setVisibility(View.GONE);
+                binding.readyconfirm.setVisibility(View.GONE);
+                binding.readyconfirmline.setVisibility(View.GONE);
+                binding.deleteagreement.setVisibility(View.GONE);
+                binding.deleteagreementline.setVisibility(View.GONE);
+                break;
+
+        }
     }
 
     /*public void optionmenulist(RelativeLayout sucessfullRegi, View view, Bundle bundle, Fragment fragment, DoHeader header, CommonParams params, View.OnClickListener clickListener){
@@ -958,7 +1705,7 @@ public class OptionMenu {
         back.putSerializable("reservation",reservation);
         back.putSerializable("resrvation", bundle.getSerializable("resrvation"));
         back.putSerializable("checklist", bundle.getSerializable("checklist"));
-
+        Helper.checkinsummarry = true;
         back.putInt(activity.getResources().getString(R.string.back), backid);
         bundle.putBundle(activity.getResources().getString(R.string.bundle), back);
         new ApiService(new OnResponseListener() {
@@ -1053,11 +1800,11 @@ public class OptionMenu {
                             for (int i = 0; i <reservationStatusDetails.length ; i++) {
                                //if (reservationStatusDetails[i].ReservationStatus == )
 
-                                  if (reservationStatusDetails[i].ReservationStatus == ReservationStatuss.Draft.inte){
+                                  if (reservationStatusDetails[i].ReservationStatus == Draft.inte){
                                       setText(getText(view,R.id.draft), "Draft " + "("+reservationStatusDetails[i].Total  +  ")");
                                       bundle.putBoolean("status",true);
                                       //bundle.putInt("statuss", ReservationStatuss.Draft.inte);
-                                      setFilterview(getText(view,R.id.draft),bundle,fragment, ReservationStatuss.Draft.inte);
+                                      setFilterview(getText(view,R.id.draft),bundle,fragment, Draft.inte);
                                      /* getText(view,R.id.draft).setOnClickListener(v -> {
                                           bundle.putBoolean("status",true);
                                           bundle.putInt("statuss", ReservationStatuss.Draft.inte);
@@ -1081,11 +1828,11 @@ public class OptionMenu {
                                     setFilterview(getText(view,R.id.noshow),bundle,fragment, ReservationStatuss.NoShow.inte);
                                 }
 
-                                if (reservationStatusDetails[i].ReservationStatus == ReservationStatuss.Confirmed.inte){
+                                if (reservationStatusDetails[i].ReservationStatus == Confirmed.inte){
                                     setText(getText(view,R.id.confirmT), "Confirmed " + "("+reservationStatusDetails[i].Total  +  ")");
                                     bundle.putBoolean("status",true);
                                     //bundle.putInt("statuss", ReservationStatuss.Confirmed.inte);
-                                    setFilterview(getText(view,R.id.confirmT),bundle,fragment, ReservationStatuss.Confirmed.inte);
+                                    setFilterview(getText(view,R.id.confirmT),bundle,fragment, Confirmed.inte);
                                 }
 
                                 if (reservationStatusDetails[i].ReservationStatus == ReservationStatuss.ReadyForCheckOut.inte){
@@ -1185,7 +1932,7 @@ public class OptionMenu {
         getText(view,R.id.cancel2).setOnClickListener(v -> optionVisible(sucessfullRegi,false));
         getText(view,R.id.cancel).setOnClickListener(v -> optionVisible(sucessfullRegi,false));
 
-        ImageView OpenbottomMenu = view.findViewById(R.id.optionmenu);
+        ImageView OpenbottomMenu = view.findViewById(R.id.filter);
         OpenbottomMenu.setOnClickListener(v -> optionVisible(sucessfullRegi,true));
         // Trsv
 
@@ -1201,11 +1948,11 @@ public class OptionMenu {
         for (int i = 0; i <reservationStatusDetails.length ; i++) {
             //if (reservationStatusDetails[i].ReservationStatus == )
 
-            if (reservationStatusDetails[i].ReservationStatus == ReservationStatuss.Draft.inte){
+            if (reservationStatusDetails[i].ReservationStatus == Draft.inte){
                 setText(getText(view,R.id.draft), "Draft " + "("+reservationStatusDetails[i].Total  +  ")");
                 bundle.putBoolean("status",true);
                 //bundle.putInt("statuss", ReservationStatuss.Draft.inte);
-                setFilterview(getText(view,R.id.draft),bundle,fragment, ReservationStatuss.Draft.inte);
+                setFilterview(getText(view,R.id.draft),bundle,fragment, Draft.inte);
                                      /* getText(view,R.id.draft).setOnClickListener(v -> {
                                           bundle.putBoolean("status",true);
                                           bundle.putInt("statuss", ReservationStatuss.Draft.inte);
@@ -1229,11 +1976,11 @@ public class OptionMenu {
                 setFilterview(getText(view,R.id.noshow),bundle,fragment, ReservationStatuss.NoShow.inte);
             }
 
-            if (reservationStatusDetails[i].ReservationStatus == ReservationStatuss.Confirmed.inte){
+            if (reservationStatusDetails[i].ReservationStatus == Confirmed.inte){
                 setText(getText(view,R.id.confirmT), "Confirmed " + "("+reservationStatusDetails[i].Total  +  ")");
                 bundle.putBoolean("status",true);
                 //bundle.putInt("statuss", ReservationStatuss.Confirmed.inte);
-                setFilterview(getText(view,R.id.confirmT),bundle,fragment, ReservationStatuss.Confirmed.inte);
+                setFilterview(getText(view,R.id.confirmT),bundle,fragment, Confirmed.inte);
             }
 
             if (reservationStatusDetails[i].ReservationStatus == ReservationStatuss.ReadyForCheckOut.inte){
@@ -1337,8 +2084,8 @@ public class OptionMenu {
                         reservation.ReservationStatus == ReservationStatuss.PaymentOutStanding.inte ||
                         reservation.ReservationStatus == ReservationStatuss.PendingPayment.inte ||
                         reservation.ReservationStatus == ReservationStatuss.Closed.inte ||
-                        reservation.ReservationStatus == ReservationStatuss.Confirmed.inte ||
-                        reservation.ReservationStatus == ReservationStatuss.Draft.inte  ||
+                        reservation.ReservationStatus == Confirmed.inte ||
+                        reservation.ReservationStatus == Draft.inte  ||
                         reservation.ReservationStatus == ReservationStatuss.NoShow.inte ||
                         reservation.ReservationStatus == ReservationStatuss.OverDue.inte
                 ) {
@@ -1355,7 +2102,7 @@ public class OptionMenu {
         getText(view,R.id.cancel2).setOnClickListener(v -> optionVisible(sucessfullRegi,false));
         getText(view,R.id.cancel).setOnClickListener(v -> optionVisible(sucessfullRegi,false));
 
-        ImageView OpenbottomMenu = view.findViewById(R.id.optionmenu);
+        ImageView OpenbottomMenu = view.findViewById(R.id.filter);
         OpenbottomMenu.setOnClickListener(v -> optionVisible(sucessfullRegi,true));
         RelativeLayout  vehicletypelist = view.findViewById(R.id.addtional);
 

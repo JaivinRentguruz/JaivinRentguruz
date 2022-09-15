@@ -417,7 +417,7 @@
                                     android:layout_marginTop="0dp"
                                     android:layout_weight="50"
                                     android:gravity="center"
-                                    android:hint="1000.00"
+                                    android:hint="00.00"
                                     android:textSize="@dimen/fifteen"
                                     android:background="@null"
                                     android:inputType="numberDecimal"
@@ -460,7 +460,7 @@
                                     android:layout_marginTop="0dp"
                                     android:layout_weight="50"
                                     android:gravity="center"
-                                    android:hint="1000.00"
+                                    android:hint="00.00"
                                     android:textSize="@dimen/fifteen"
                                     android:background="@null"
                                     android:inputType="numberDecimal"
@@ -485,15 +485,37 @@
 
                         </LinearLayout>
 
-                        <TextView
-                            android:theme="@style/texttheme"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:text="Upload Image"
-                            android:textAllCaps="false"
-                            android:textColor="@color/textlightcolor"
-                            android:textSize="@dimen/thirteen" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:theme="@style/texttheme"
+                                android:gravity="left"
+                                android:text="Upload Image"
+                                android:textColor="@color/textlightcolor"
+                                android:textSize="@dimen/fourteen" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:theme="@style/texttheme"
+                                android:gravity="left"
+                                android:text="Notes "
+                                android:textColor="@color/textlightcolor"
+                                android:textSize="@dimen/fourteen" />
+
+                        </LinearLayout>
+
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -508,13 +530,12 @@
                                 android:layout_marginRight="5dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:background="@drawable/ic_upload_logo_bg">
+                                android:background="@drawable/custome_cam_select">
 
                                 <ImageView
                                     android:id="@+id/image"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/pluse_img"/>
+                                    android:layout_height="wrap_content" />
 
                             </RelativeLayout>
 
@@ -541,36 +562,20 @@
                                 android:gravity="center"
                                 android:background="@drawable/ic_upload_logo_bg">
 
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/pluse_img"/>
+                                <EditText
+                                    style="@style/edittext"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/ic_rectangle_for_note"
+                                    android:inputType="text"
+                                    android:maxLines="3"
+                                    android:minLines="3"
+                                    android:imeOptions="actionDone"/>
 
                             </RelativeLayout>
                         </LinearLayout>
-
-
-                        <TextView
-                            android:theme="@style/texttheme"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:text="Notes "
-                            android:textAllCaps="false"
-                            android:textColor="@color/textlightcolor"
-                            android:textSize="@dimen/thirteen" />
-
-
-                        <EditText
-                            style="@style/edittext"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/ic_rectangle_for_note"
-                            android:inputType="text"
-                            android:maxLines="3"
-                            android:minLines="3"
-                            android:imeOptions="actionDone"/>
 
                     </LinearLayout>
 

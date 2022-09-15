@@ -1,7 +1,5 @@
 package com.rentguruz.app.model;
 
-import android.text.Html;
-
 import androidx.databinding.Observable;
 
 import com.rentguruz.app.model.base.BaseModel;

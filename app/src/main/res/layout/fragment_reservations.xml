@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.graphics.Color"/>
+
+        <import type="android.graphics.Color" />
+
         <import type="androidx.core.content.ContextCompat" />
 
         <variable
@@ -11,16 +14,24 @@
             type="com.rentguruz.app.model.display.ThemeColors" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:background="@color/backgroundColor"
-    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
-    android:layout_height="match_parent">
-    <RelativeLayout
+  <!--  <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/slider"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="false"
+        tools:openDrawer="end">-->
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundColor"
+            android:backgroundTint="@{Color.parseColor(UiColor.secondary)}">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/selectlocation"
@@ -95,58 +106,59 @@
 
             </RelativeLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:orientation="horizontal"
-                android:weightSum="15">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:weightSum="15">
 
-                <EditText
-                    android:id="@+id/search"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="15"
-                    android:background="@drawable/ic_rectangle_forsearch"
-                    android:drawableRight="@drawable/ic_timeline_search_icon"
-                    android:drawablePadding="8dp"
-                     style="@style/textfont"
-                    android:gravity="left"
-                    android:hint="Search"
-                    android:padding="14dp"
-                    android:singleLine="true"
-                    android:inputType="text"
-                    android:imeOptions="actionDone"
+                        <EditText
+                            android:id="@+id/search"
+                            style="@style/textfont"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="13"
+                            android:background="@drawable/ic_rectangle_forsearch"
+                            android:drawableRight="@drawable/ic_timeline_search_icon"
+                            android:drawablePadding="8dp"
+                            android:gravity="left"
+                            android:hint="Search"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:padding="14dp"
+                            android:singleLine="true"
                     android:textColor="@color/graytextcolor"
                     android:textColorHint="@color/graytextcolor"
                     android:textSize="15dp" />
 
-              <!--  <LinearLayout
-                    android:layout_width="0dp"
-                    android:id="@+id/filter_Reservation"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:layout_marginRight="10dp">
+                        <LinearLayout
+                            android:id="@+id/filter_Reservation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2">
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="right"
-                        android:background="@drawable/curved_box_darkblue_4dp">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/curved_box_darkblue_4dp"
+                                android:backgroundTint="@{Color.parseColor(UiColor.primary)}">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/filter_icon"
-                            android:adjustViewBounds="true"
-                            android:layout_centerInParent="true"/>
+                                <ImageView
+                                    android:id="@+id/filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:adjustViewBounds="true"
+                                    android:background="@drawable/filter_icon"
+                                    android:backgroundTint="@{Color.parseColor(UiColor.secondary)}" />
 
-                    </RelativeLayout>
+                            </RelativeLayout>
 
-                </LinearLayout>-->
+                        </LinearLayout>
 
             </LinearLayout>
 
@@ -177,6 +189,13 @@
 
 
                 </RelativeLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:orientation="vertical"
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bottommenuheight"/>
 
               <!--  <include layout="@layout/row_reservation"/>
                 <include layout="@layout/row_reservation"/>
@@ -516,12 +535,47 @@
                 <include
                     android:id="@+id/option"
                     app:UiColor="@{UiColor}"
-                    layout="@layout/filtermenu"/>
+                    layout="@layout/filtermenu" />
 
 
             </LinearLayout>
 
         </RelativeLayout>
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+       <!-- <LinearLayout
+            android:id="@+id/nav_view"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="false"
+            android:layout_gravity="end"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/sucessfull_regi"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/successful_bg"
+                android:animateLayoutChanges="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/option"
+                        app:UiColor="@{UiColor}"
+                        layout="@layout/filtermenu" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>-->
+    <!--</androidx.drawerlayout.widget.DrawerLayout>-->
 </layout>

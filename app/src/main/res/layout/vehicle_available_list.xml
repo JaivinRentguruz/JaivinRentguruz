@@ -50,7 +50,7 @@
                     android:layout_weight="75"
                     android:padding="@dimen/_5sdp"
                     android:text="@={Vehicle.VehicleClass}"
-                    android:textColor="@color/topcolor"
+                    android:textColor="@color/registerTextColor"
                     android:textSize="@dimen/_10ssp"
                     android:theme="@style/texttheme" />
 
@@ -66,7 +66,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_17sdp"
                         android:layout_gravity="center"
-                        android:background="@drawable/ic_rectangle_box1_light_12"
+                        android:background="@drawable/ic_rectangle_box1_light_122"
                         android:backgroundTint="@{Color.parseColor(UiColor.secondary)}"
                         android:gravity="center">
 
@@ -76,7 +76,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
-                            android:text="5"
+                            android:text=""
                             android:textAlignment="gravity"
                             android:textAllCaps="false"
                             android:textSize="@dimen/_9ssp"
@@ -92,7 +92,8 @@
                             android:textAlignment="gravity"
                             android:textAllCaps="false"
                             android:textSize="@dimen/_9ssp"
-                            android:theme="@style/texttheme" />
+                            android:theme="@style/texttheme"
+                            app:_vehiclestatus="@{String.valueOf(Vehicle.Status)}"/>
 
                     </RelativeLayout>
                 </LinearLayout>
@@ -157,7 +158,9 @@
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/car_imgview"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
                             android:src="@drawable/car_icon"
                             app:_imageUrl="@{Vehicle.DefaultImagePath}"
                             app:shapeAppearance="@style/roundedImageViewRounded" />
@@ -209,7 +212,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_4sdp"
                             android:layout_weight="7"
-                            android:hint="Test"
+                            android:hint=""
                             android:text="@{Vehicle.TransmissionDesc}"
                             android:textColor="@color/registerTextColor"
                             android:textSize="@dimen/_10ssp"

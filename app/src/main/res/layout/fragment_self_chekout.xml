@@ -88,7 +88,8 @@
             android:layout_above="@+id/backlbl_Selfcheckout"
             android:background="@drawable/curve_box_light_gray"
             android:backgroundTint="@{Color.parseColor(UiColor.primary)}"
-            android:paddingTop="14dp">
+            android:fillViewport="true"
+            android:paddingTop="8dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -96,7 +97,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -119,7 +120,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -173,7 +174,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
 
                             <LinearLayout
@@ -332,7 +333,7 @@
                         <LinearLayout
                             android:id="@+id/accessories_layout"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:background="@drawable/top_curve_box1"
                             android:backgroundTint="#EBEAEA"
 
@@ -340,7 +341,7 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="7dp"
                                 android:layout_marginRight="15dp">
 
@@ -360,7 +361,7 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginRight="5dp"
@@ -369,7 +370,7 @@
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_weight="100"
                                     android:orientation="horizontal">
 
@@ -511,7 +512,7 @@
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginRight="15dp"
                                     android:layout_marginBottom="10dp">

@@ -59,6 +59,7 @@ public class Fragment_Vehicle_Additional_Image_All extends BaseFragment
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         binding.setUiColor(UiColor);
+        binding.header.screenHeader.setText(companyLabel.Vehicle + " Images" );
         txt_DateTime=view.findViewById(R.id.text_DateTime12);
         bundle.putSerializable( "reservation",getArguments().getSerializable("reservation"));
         Calendar c = Calendar.getInstance();

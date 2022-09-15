@@ -39,10 +39,13 @@ public class Helper {
     public static String checkindate;
     public static String imagee;
     public static Double reservationamt = 0.0;
+    public static Double isDeposit = 0.0;
     public static Boolean skipScan = false;
     public static Boolean rsvcustomerscan = false;
     public static Boolean isrsvUpdate = false;
-
+    public static Boolean isskipins = false;
+    public static Boolean isselectlocation = false;
+    public static int selectedloc = 0;
     //public static Boolean AllowCustomerInsurance = false;
 
 
@@ -72,6 +75,7 @@ public class Helper {
     //public static final String fueltype = getfuel(fuel);
     public static String fueltype;
     public static Boolean insertinsuarancefromreservation = false;
+    public static Boolean checkinsummarry = false;
 
     public static String getAmtount(Double amt, Boolean symbol){
         String value = null;

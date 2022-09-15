@@ -80,6 +80,7 @@ public class Fragment_Bills_And_Payment extends BaseFragment
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         binding.setUiColor(UiColor);
         binding.header.screenHeader.setText("Bills Payments");
+        fullProgressbar.show();
         backarrow=view.findViewById(R.id.back);
         edt_search=view.findViewById(R.id.edt_searchAccountStatment);
         filter_icon=view.findViewById(R.id.filter_iconForAC);
@@ -567,16 +568,18 @@ public class Fragment_Bills_And_Payment extends BaseFragment
                                 rlAccountStatement.addView(listAccountStatementBinding.getRoot());
                             }
 
-
+                            fullProgressbar.dismiss();
                         }
                         else
                         {
                             String errorString = responseJSON.getString("Message");
                             CustomToast.showToast(getActivity(),errorString,1);
+                            fullProgressbar.dismiss();
                         }
                     }
                     catch (Exception e)
                     {
+                        fullProgressbar.dismiss();
                         e.printStackTrace();
                     }
                 }
@@ -585,6 +588,7 @@ public class Fragment_Bills_And_Payment extends BaseFragment
         @Override
         public void onError(String error)
         {
+            fullProgressbar.dismiss();
             System.out.println("Error-" + error);
         }
     };

@@ -11,8 +11,8 @@ android {
         applicationId "com.rentguruz.app"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 2
-        versionName "1.1"
+        versionCode 4
+        versionName "1.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         vectorDrawables.useSupportLibrary = true
@@ -116,7 +116,7 @@ dependencies
          //implementation 'com.vinaygaba:creditcardview:1.0.4'
          //implementation  'com.example.creditcardlibrary:cardview:0.0.15'
 
-        // implementation 'com.github.maxpilotto:credit-card-view:8.0.0'
+         // implementation 'com.github.maxpilotto:credit-card-view:8.0.0'
 
          //compile 'xyz.vinesh:creditcardview:1.1.+’
 
@@ -126,4 +126,8 @@ dependencies
          implementation 'com.github.fevziomurtekin:PayView:1.0.3'
 
          implementation 'com.github.zbra-solutions:android-linq:1.1.0'
+
+         implementation 'com.github.aabhasr1:OtpView:v1.1.2'
+
+         implementation 'com.koushikdutta.ion:ion:2.1.6'
      }

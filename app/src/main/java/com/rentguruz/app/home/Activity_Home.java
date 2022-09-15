@@ -75,7 +75,8 @@ public class Activity_Home extends AppCompatActivity {
         }*/
 
         Helper.B2BRESERVATION = false;
-
+        Helper.isselectlocation = false;
+        Helper.selectedloc = 0;
         if (Helper.screenNumber > 1) {
             NavHostFragment hostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
             NavController navController = hostFragment.getNavController();

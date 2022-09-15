@@ -302,7 +302,7 @@ public class Fragment_Acceptance_singnature extends BaseFragment
                     new String[]{f.getPath()},
                     new String[]{"image/jpeg"}, null);
             fo.close();
-            CustomToast.showToast(getActivity(),"File Saved::--->"+f.getAbsolutePath(),1);
+            //CustomToast.showToast(getActivity(),"File Saved::--->"+f.getAbsolutePath(),1);
 
             Uri SignImage = Uri.fromFile(f);
 

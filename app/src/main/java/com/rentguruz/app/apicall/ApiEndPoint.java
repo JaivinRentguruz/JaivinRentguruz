@@ -42,10 +42,16 @@ public class ApiEndPoint {
     public static final String RESERVATIONUPDATE = "Reservation/Update";
     public static final String RESERVATIONDATECHANGE= "Reservation/DateChange";
     public static final String RESERVATIONVEHICLECHANGE="Reservation/VehicleChange";
+    public static final String RESERVATIONVALIDATION = "Reservation/IsValidReservation";
 
     public static final String CUSTOMERLIST = "Customer/GetAll";
     //testing
     public static final String TESTING = "RateMaster/GetById?id=";
+
+    public static final String COMPANYINSERT = "Company/QuickInsert";
+
+    public static final String SMSSENT = "Common/SendSMSOtp";
+    public static final String SMSVERIFY = "Common/VerifySMSOtp";
 
     //rentguru common
     public static final String COUNTRYLIST = "common/GetCountry";
@@ -57,6 +63,8 @@ public class ApiEndPoint {
     public static final String BusinessSourceMasterALL = "BusinessSourceMaster/GetAll";
     public static final String BusinessSourceMaster = "BusinessSourceMaster/GetSingle";
     public static final String REPORT = "Report/GetReport";
+
+    public static final String VALIDPICKUP  = "Reservation/IsValidProcessPickup";
 
     //insert
     public static final String INSERT = "customer/QuickInsert";
@@ -75,6 +83,7 @@ public class ApiEndPoint {
     //reservation status
     public static final String RESERVATIONSTATUS = "Reservation/GetTotalRsvInStatus";
     public static final String RESERVATIONSTATUSUPDATE ="Reservation/UpdateStatus";
+    public static final String RESERVATIONCHECKOUT = "Reservation/GetDocuments";
 
     //customer
     public static final String GETCUSTOMER = "Customer/GetById";
@@ -110,6 +119,8 @@ public class ApiEndPoint {
     public static final String VEHICLEDETAIL  = "Vehicle/GetVinDetail";
     //delete
     public static final String DELETE = "Common/ActiveDeActive";
+
+    public static final String CHECKOUTVALIDATION = "Reservation/IsValidProcessPickup";
 
     //company
     public static final String GETCOMPANY = "Company/GetById";
@@ -168,6 +179,7 @@ public class ApiEndPoint {
 
     public static final String CHECKINN = "Reservation/CheckIn";
     public static final String CHECKOUTODMETER = "Reservation/GetCheckOutData";
+    public static final String CHECKINODMETER = "Reservation/GetCheckInData";
     public static final String READYFORCHECKOUT = "Reservation/updateTypeOf";
 
     //rentguru common
